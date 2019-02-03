@@ -5,6 +5,7 @@ version := "1.0"
 scalaVersion := "2.12.6"
 
 lazy val akkaVersion = "2.5.20"
+
 val lift_json = "net.liftweb" %% "lift-json" % "2.5+"
 
 libraryDependencies ++= Seq(
