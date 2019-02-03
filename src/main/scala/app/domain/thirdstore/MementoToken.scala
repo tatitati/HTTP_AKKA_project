@@ -1,6 +1,6 @@
 package app.domain.thirdstore
 
-class MementoToken(
+case class MementoToken(
             val accessToken: String,
             val tokenType: String,
             val refreshToken: String,

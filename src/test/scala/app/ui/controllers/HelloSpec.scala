@@ -1,7 +1,7 @@
 package app.ui.controllers
 
 import akka.http.scaladsl.testkit.ScalatestRouteTest
-import org.scalatest.{FunSuite, Matchers, WordSpec}
+import org.scalatest.{FunSuite, Matchers}
 import akka.http.scaladsl.model.StatusCodes
 import app.ui.controller.Hello
 

@@ -22,8 +22,10 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-http-core" % akkaHttpVersion,
   "com.typesafe.akka" %% "akka-http-testkit" % akkaHttpVersion % Test,
 
+  "com.typesafe.akka" %% "akka-http-spray-json" % akkaHttpVersion,
+  "net.liftweb" %% "lift-json" % "3.3.0",
 
-  // others
+// others
   "com.github.nscala-time" %% "nscala-time" % "2.20.0",
   "org.scalatest" %% "scalatest" % "3.0.5" % Test,
 
