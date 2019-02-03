@@ -17,6 +17,6 @@ class SerializerTokenSpec extends FunSuite {
 
     assert(
       transformer.toJson() ==="""{"access_token":"47331985-9cd6-4632-b505-fceb476100a1","refresh_token":"b89a1ccb-18c9-41d0-bebc-48634b151991","token_type":"bearer","expires":6000}"""
-      )
+    )
   }
 }
