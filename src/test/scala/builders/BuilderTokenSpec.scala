@@ -3,7 +3,6 @@ package builders
 import java.util.UUID
 import app.domain.thirdstore.Token
 import org.scalatest.FunSuite
-import test.builders.BuilderToken
 
 class BuilderTokenSpec extends FunSuite{
 

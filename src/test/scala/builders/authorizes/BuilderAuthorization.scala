@@ -1,7 +1,7 @@
 package builders.authorizes
 
 import app.domain.ownerstore.authorizations.Authorization
-import test.builders.BuilderThird
+import builders.BuilderThird
 
 object BuilderAuthorization {
 

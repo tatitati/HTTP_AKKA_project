@@ -21,15 +21,15 @@ class TokenRefreshSpec extends FunSuite{
     assert(token.canRefreshWith(UUID.fromString("aaaa-bbbb-cccc-dddd-eeee"), "wrong_gran_type") === false)
   }
 
-  test("Can refresh it") {
-    val refreshToken = UUID.fromString("aaaa-bbbb-cccc-dddd-eeee")
-    val token = BuilderToken.anyExpired(refreshToken = Option(refreshToken))
-
-    assert(token.isExpired === true)
-    val newToken = token.refresh(refreshToken, "refresh_token")
-
-    assert(newToken match {
-      case Some(ntoken) => ntoken.isExpired
-    } === true)
-  }
+//  test("Can refresh it") {
+//    val refreshToken = UUID.fromString("aaaa-bbbb-cccc-dddd-eeee")
+//    val token = BuilderToken.anyExpired(refreshToken = Option(refreshToken))
+//
+//    assert(token.isExpired === true)
+//    val newToken = token.refresh(refreshToken, "refresh_token")
+//
+//    assert(newToken match {
+//      case Some(ntoken) => ntoken.isExpired
+//    } === true)
+//  }
 }

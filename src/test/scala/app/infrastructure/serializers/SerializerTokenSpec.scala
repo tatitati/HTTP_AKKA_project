@@ -1,11 +1,7 @@
 package app.infrastructure.serializers
 
-import java.util.UUID
-
 import app.domain.thirdstore.MementoToken
-import app.infrastructure.serializers.SerializerToken
 import org.scalatest.FunSuite
-import play.api.libs.json.Json
 
 class SerializerTokenSpec extends FunSuite {
 

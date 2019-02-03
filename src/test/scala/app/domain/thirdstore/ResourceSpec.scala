@@ -1,6 +1,5 @@
 package app.domain.thirdstore
 
-import app.domain.thirdstore.Token
 import builders.BuilderResource
 import builders.authorizes.BuilderScope
 import org.scalatest.FunSuite

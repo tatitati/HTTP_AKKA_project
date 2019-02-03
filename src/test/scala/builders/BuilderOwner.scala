@@ -1,7 +1,7 @@
 package builders
 
-import test.builders.permissions.BuilderAuthorizationsList
 import app.domain.ownerstore.Owner
+import builders.authorizes.BuilderAuthorizationsList
 
 object BuilderOwner {
     def any():Owner  = {

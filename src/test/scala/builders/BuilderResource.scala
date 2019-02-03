@@ -1,8 +1,8 @@
 package builders
 
-import test.builders.permissions.{BuilderAuthorizationsList, BuilderScope}
 import app.domain.thirdstore.Resource
 import app.domain.ownerstore.authorizations.Scope
+import builders.authorizes.BuilderScope
 
 object BuilderResource {
 

@@ -1,6 +1,5 @@
 package app.domain.ownerstore
 
-import app.domain.ownerstore.Owner
 import app.domain.ownerstore.authorizations.AuthorizationsList
 import builders.BuilderOwner
 import builders.authorizes.BuilderAuthorization
