@@ -8,10 +8,10 @@ import akka.stream.ActorMaterializer
 object Hello {
 
   val helloRoute =
-    path("hello") {
+    path("ping") {
       get {
         complete(
-          "Say hello to akka-http"
+          "pong"
         )
       }
     }
