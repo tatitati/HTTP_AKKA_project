@@ -1,15 +1,16 @@
 package builders.authorizes
 
-import app.domain.ownerstore.authorizations.Authorization
+import app.domain.ownerstore.authorizations.{Authorization, Scope}
+import app.domain.thirdstore.Third
 import builders.BuilderThird
 
 object BuilderAuthorization {
 
-  def any(): Authorization = {
-    new Authorization(
-      BuilderThird.any(),
-      BuilderScope.onlySurname()
-    )
+  def any(
+           third: Third = BuilderThird.any(),
+           scope: Scope = BuilderScope.onlySurname()
+         ): Authorization = {
+    new Authorization(third, scope)
   }
 
   def anyAuthorizationWithClientId(clientId: String): Authorization = {

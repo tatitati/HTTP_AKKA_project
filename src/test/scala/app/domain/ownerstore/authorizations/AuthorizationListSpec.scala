@@ -1,6 +1,7 @@
 package app.domain.ownerstore.authorizations
 
-import builders.authorizes.{BuilderAuthorization, BuilderAuthorizationsList}
+import builders.BuilderThird
+import builders.authorizes.{BuilderAuthorization, BuilderAuthorizationsList, BuilderScope}
 import org.scalatest.FunSuite
 
 class AuthorizationListSpec extends FunSuite {
@@ -65,4 +66,19 @@ class AuthorizationListSpec extends FunSuite {
     listmap.addThird(third)
     assert(listmap.count() === 3)
   }
+
+//  test("can provide scope by clientid") {
+//    val givenAuthorization1 = new Authorization(
+//      BuilderThird.anyWithClientId("clientid1"),
+//      BuilderScope.onlyEmailAndFirstname()
+//    )
+//
+//    val givenAuthorization2 = new Authorization(
+//      BuilderThird.anyWithClientId("clientid2"),
+//      BuilderScope.onlySurname()
+//    )
+//
+//    val authList = new AuthorizationsList(List(givenAuthorization1, givenAuthorization2))
+//    val scope = authList.scope("client1")
+//  }
 }

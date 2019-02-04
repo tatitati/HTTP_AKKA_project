@@ -24,4 +24,8 @@ class AuthorizationsList(private var list: List[Authorization]) {
       case true =>
     }
   }
+
+//  def scope(clientId: String): Scope = {
+//    list.filter(auth => auth.getClientId() == clientId).head
+//  }
 }

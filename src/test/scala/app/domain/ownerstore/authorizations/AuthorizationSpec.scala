@@ -1,7 +1,7 @@
 package app.domain.ownerstore.authorizations
 
 import builders.BuilderThird
-import builders.authorizes.BuilderScope
+import builders.authorizes.{BuilderAuthorization, BuilderScope}
 import org.scalatest.FunSuite
 
 class AuthorizationSpec extends FunSuite {
@@ -23,5 +23,17 @@ class AuthorizationSpec extends FunSuite {
 
     assert(apppermision.canAccessToFirstname() === false)
     assert(apppermision.canAccessToSurname() === true)
+  }
+
+  test("Can tell us basic information about the third") {
+    val auth = BuilderAuthorization.any(
+      third = BuilderThird.any(
+        name = "CircleCI",
+        homepage = "http://www.whatever.com"
+      )
+    )
+
+    assert(auth.name == "CircleCI")
+    assert(auth.homepage == "http://www.whatever.com")
   }
 }

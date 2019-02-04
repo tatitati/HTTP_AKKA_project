@@ -1,8 +1,8 @@
 package app.domain.ownerstore
 
-import app.domain.ownerstore.authorizations.AuthorizationsList
-import builders.{BuilderOwner, BuilderProfile}
-import builders.authorizes.BuilderAuthorization
+import app.domain.ownerstore.authorizations.{Authorization, AuthorizationsList}
+import builders.{BuilderOwner, BuilderProfile, BuilderThird}
+import builders.authorizes.{BuilderAuthorization, BuilderAuthorizationsList, BuilderScope}
 import org.scalatest.FunSuite
 
 class OwnerSpec extends FunSuite {
@@ -55,4 +55,23 @@ class OwnerSpec extends FunSuite {
     assert(user.has("newthirdclientId") === true)
     assert(user.countThirds() === 3)
   }
+
+//  test("can get scope given to a third") {
+//    val givenAuthorization1 = new Authorization(
+//      BuilderThird.anyWithClientId("clientid1"),
+//      BuilderScope.onlyEmailAndFirstname()
+//    )
+//
+//    val givenAuthorization2 = new Authorization(
+//      BuilderThird.anyWithClientId("clientid2"),
+//      BuilderScope.onlySurname()
+//    )
+//
+//    val givenOwner = BuilderOwner.any(authorizationsList = new AuthorizationsList(List(givenAuthorization1, givenAuthorization2)))
+//
+//    val scope = givenOwner.getscope("clientid1")
+//
+//
+//
+//  }
 }
