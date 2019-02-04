@@ -8,7 +8,7 @@ class Third(
              val homepage: String,
              val description: String) {
 
-  def revoke(token: Token) = {
+  def revoke(resource: Resource) = {
 
   }
 }

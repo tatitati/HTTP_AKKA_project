@@ -6,7 +6,7 @@ import org.scalatest.FunSuite
 
 class AuthorizationSpec extends FunSuite {
 
-  test("Builder can create a permission") {
+  test("Can create a permission") {
     val apppermision = new Authorization(
         third = BuilderThird.any(),
         scope = BuilderScope.onlySurname()

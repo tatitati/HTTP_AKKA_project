@@ -1,6 +1,6 @@
 package builders
 
-import app.domain.ownerstore.Profile
+import app.domain.Profile
 import com.github.nscala_time.time.Imports.{DateTime, _}
 
 object BuilderProfile {

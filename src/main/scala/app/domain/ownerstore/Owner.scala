@@ -1,5 +1,6 @@
 package app.domain.ownerstore
 
+import app.domain.Profile
 import app.domain.ownerstore.authorizations.{Authorization, AuthorizationsList}
 import com.github.nscala_time.time.Imports._
 

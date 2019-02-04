@@ -4,7 +4,7 @@ import app.domain.thirdstore.MementoToken
 import builders.{BuilderToken, BuilderUuid}
 import org.scalatest.FunSuite
 
-class TokenSpec extends FunSuite {
+class TokenCanExportStateSpec extends FunSuite {
 
   test("When exporting memento it hides the implementation details") {
     val givenAccessToken = BuilderUuid.uuidOne()

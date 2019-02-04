@@ -1,6 +1,6 @@
 package app.domain.thirdstore
 
-import app.domain.ownerstore.Profile
+import app.domain.Profile
 import app.domain.ownerstore.authorizations.Scope
 
 class Resource(

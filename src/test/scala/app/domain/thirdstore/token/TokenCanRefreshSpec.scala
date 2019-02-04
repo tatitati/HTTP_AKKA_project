@@ -4,7 +4,7 @@ import java.util.UUID
 import builders.{BuilderToken, BuilderUuid}
 import org.scalatest.FunSuite
 
-class TokenRefreshSpec extends FunSuite{
+class TokenCanRefreshSpec extends FunSuite{
   test("Can know if can be refreshed when used the proper refresh token") {
     val refreshToken = UUID.fromString("aaaa-bbbb-cccc-dddd-eeee")
     val token = BuilderToken.anyLive(refreshToken = refreshToken)

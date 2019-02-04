@@ -1,4 +1,4 @@
-package app.domain.ownerstore
+package app.domain
 
 import com.github.nscala_time.time.Imports._
 

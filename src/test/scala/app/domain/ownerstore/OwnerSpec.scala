@@ -1,7 +1,7 @@
 package app.domain.ownerstore
 
 import app.domain.ownerstore.authorizations.AuthorizationsList
-import builders.BuilderOwner
+import builders.{BuilderOwner, BuilderProfile}
 import builders.authorizes.BuilderAuthorization
 import org.scalatest.FunSuite
 
@@ -18,10 +18,14 @@ class OwnerSpec extends FunSuite {
     assert(user.countThirds === 2)
   }
 
-  test("Has a profile") {
-    val user = BuilderOwner.any()
+  test("Has an editable profile") {
+    val user = BuilderOwner.any(
+      profile = BuilderProfile.any(firstname = "gutierrez")
+    )
 
-    assert(user.firstname === "any firstname")
+    assert(user.firstname === "gutierrez")
+    user.firstname = "manolo"
+    assert(user.firstname === "manolo")
   }
 
   test("Know if a third is authorized") {
