@@ -2,7 +2,7 @@ package builders
 
 import java.util.UUID
 
-object BuilderUuid {
+object BuildUuid {
   def uuidOne(): UUID = {
     UUID.fromString("47331985-9cd6-4632-b505-fceb476100a1")
   }

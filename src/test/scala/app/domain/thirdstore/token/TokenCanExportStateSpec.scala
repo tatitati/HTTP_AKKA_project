@@ -1,15 +1,15 @@
 package app.domain.thirdstore.token
 
 import app.domain.thirdstore.MementoToken
-import builders.{BuilderToken, BuilderUuid}
+import builders.{BuildToken, BuildUuid}
 import org.scalatest.FunSuite
 
 class TokenCanExportStateSpec extends FunSuite {
 
   test("When exporting memento it hides the implementation details") {
-    val givenAccessToken = BuilderUuid.uuidOne()
-    val givenRefreshToken = BuilderUuid.uuidTwo()
-    val givenToken = BuilderToken.anyLive(accessToken = givenAccessToken, refreshToken = givenRefreshToken)
+    val givenAccessToken = BuildUuid.uuidOne()
+    val givenRefreshToken = BuildUuid.uuidTwo()
+    val givenToken = BuildToken.anyLive(accessToken = givenAccessToken, refreshToken = givenRefreshToken)
 
     val memento = givenToken.exportMemento()
 

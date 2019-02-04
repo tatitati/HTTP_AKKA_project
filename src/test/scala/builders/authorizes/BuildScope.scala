@@ -2,7 +2,7 @@ package builders.authorizes
 
 import app.domain.ownerstore.auth.Scope
 
-object BuilderScope {
+object BuildScope {
 
   def onlyEmailAndFirstname(): Scope = {
     new Scope(true, false, true)

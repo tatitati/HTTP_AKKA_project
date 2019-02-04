@@ -2,7 +2,7 @@ package app.domain.ownerstore
 
 import app.domain.ownerstore.auth.Auth
 
-class AuthList(private var list: List[Auth]) {
+class ListAuth(private var list: List[Auth]) {
 
   def count() :Int = list.size
 

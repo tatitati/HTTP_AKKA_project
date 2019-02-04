@@ -2,38 +2,38 @@ package builders
 
 import app.domain.thirdstore.Resource
 import app.domain.ownerstore.auth.Scope
-import builders.authorizes.BuilderScope
+import builders.authorizes.BuildScope
 
-object BuilderResource {
+object BuildResource {
 
   def anyWithLiveToken(withsurname: String = "any surname", scope: Option[Scope] = None): Resource  = {
     new Resource(
-      BuilderProfile.any(surname = withsurname),
-      scope.getOrElse(BuilderScope.onlySurname()),
-      Option(BuilderToken.anyLive())
+      BuildProfile.any(surname = withsurname),
+      scope.getOrElse(BuildScope.onlySurname()),
+      Option(BuildToken.anyLive())
     )
   }
 
   def anyWithExpiredToken(withsurname: String = "any surname", scope: Option[Scope] = None): Resource  = {
     new Resource(
-      BuilderProfile.any(surname = withsurname),
-      scope.getOrElse(BuilderScope.onlySurname()),
-      Option(BuilderToken.anyExpired())
+      BuildProfile.any(surname = withsurname),
+      scope.getOrElse(BuildScope.onlySurname()),
+      Option(BuildToken.anyExpired())
     )
   }
 
   def anyRevoked(withsurname: String = "any surname", scope: Option[Scope] = None): Resource  = {
     new Resource(
-      BuilderProfile.any(surname = withsurname),
-      scope.getOrElse(BuilderScope.onlySurname()),
+      BuildProfile.any(surname = withsurname),
+      scope.getOrElse(BuildScope.onlySurname()),
       None
     )
   }
 
   def anyWithoutToken(withsurname: String = "any surname", scope: Option[Scope] = None): Resource  = {
     new Resource(
-      BuilderProfile.any(surname = withsurname),
-      scope.getOrElse(BuilderScope.onlySurname()),
+      BuildProfile.any(surname = withsurname),
+      scope.getOrElse(BuildScope.onlySurname()),
       None
     )
   }

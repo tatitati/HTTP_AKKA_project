@@ -5,7 +5,7 @@ import java.util.UUID
 import com.github.nscala_time.time.Imports._
 import app.domain.thirdstore.Token
 
-object BuilderToken {
+object BuildToken {
   def anyLive(
                tokenType: String = "bearer",
                expiresIn: Int = 10,

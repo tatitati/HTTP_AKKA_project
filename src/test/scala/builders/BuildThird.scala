@@ -2,7 +2,7 @@ package builders
 
 import app.domain.thirdstore.Third
 
-object BuilderThird {
+object BuildThird {
     def any(
            name: String = "travis",
            clientId: String = "anyclientid",

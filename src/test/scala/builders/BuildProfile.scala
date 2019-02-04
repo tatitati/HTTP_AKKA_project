@@ -3,7 +3,7 @@ package builders
 import app.domain.Profile
 import com.github.nscala_time.time.Imports.{DateTime, _}
 
-object BuilderProfile {
+object BuildProfile {
 
   private val date = DateTime.now.withYear(2030).withMonth(8).withDay(20)
 

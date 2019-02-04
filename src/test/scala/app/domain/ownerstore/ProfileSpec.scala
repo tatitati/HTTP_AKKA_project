@@ -1,12 +1,12 @@
 package app.domain.ownerstore
 
-import builders.BuilderProfile
+import builders.BuildProfile
 import org.scalatest.FunSuite
 
 class ProfileSpec extends FunSuite {
 
   test("Has proper attributes") {
-    val profile = BuilderProfile.any()
+    val profile = BuildProfile.any()
 
     assert(profile.firstname === "any firstname")
     assert(profile.surname === "then surname")

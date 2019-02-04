@@ -1,26 +1,26 @@
 package app.domain.ownerstore
 
 import app.domain.ownerstore.auth.Auth
-import builders.{BuilderOwner, BuilderProfile, BuilderThird}
-import builders.authorizes.{BuilderAuth, BuilderAuthList, BuilderScope}
+import builders.{BuildOwner, BuildProfile, BuildThird}
+import builders.authorizes.{BuildAuth, BuildListAuth, BuildScope}
 import org.scalatest.FunSuite
 
 class OwnerSpec extends FunSuite {
 
   test("Can be created using a builder") {
-    assert(BuilderOwner.any().isInstanceOf[Owner])
+    assert(BuildOwner.any().isInstanceOf[Owner])
   }
 
   test("Has a list of authorizations ") {
-    val user = BuilderOwner.any()
+    val user = BuildOwner.any()
 
-    assert(user.authorizationsList.isInstanceOf[AuthList])
+    assert(user.listAuth.isInstanceOf[ListAuth])
     assert(user.countThirds === 2)
   }
 
   test("Has an editable profile") {
-    val user = BuilderOwner.any(
-      profile = BuilderProfile.any(firstname = "gutierrez")
+    val user = BuildOwner.any(
+      profile = BuildProfile.any(firstname = "gutierrez")
     )
 
     assert(user.firstname === "gutierrez")
@@ -29,14 +29,14 @@ class OwnerSpec extends FunSuite {
   }
 
   test("Know if a third is authorized") {
-    val user = BuilderOwner.any()
+    val user = BuildOwner.any()
 
     assert(user.has("anyclientid") === true)
     assert(user.has("anycountid") === false)
   }
 
   test("Can revoke thirds") {
-    val user = BuilderOwner.any()
+    val user = BuildOwner.any()
 
     assert(user.has("anyclientid") === true)
     user.revoke("anyclientid")
@@ -44,13 +44,13 @@ class OwnerSpec extends FunSuite {
   }
 
   test("Can authorize a third") {
-    val user = BuilderOwner.any()
+    val user = BuildOwner.any()
 
     assert(user.has("newthirdclientId") === false, "=> Initially shouldn't have this third in the list")
     assert(user.countThirds() === 2)
 
     user.grant(
-      BuilderAuth.anyAuthorizationWithClientId("newthirdclientId")
+      BuildAuth.anyAuthorizationWithClientId("newthirdclientId")
     )
 
     assert(user.has("newthirdclientId") === true, "=> After grant acces it should be in the lsit")
@@ -59,13 +59,13 @@ class OwnerSpec extends FunSuite {
 
   test("can provide info about a third in the list") {
 
-    val givenOwner = BuilderOwner.any(authorizationsList = new AuthList(List(
+    val givenOwner = BuildOwner.any(authorizationsList = new ListAuth(List(
       new Auth(
-        BuilderThird.any(name = "travis", clientId = "clientid1"),
-        BuilderScope.onlyEmailAndFirstname()
+        BuildThird.any(name = "travis", clientId = "clientid1"),
+        BuildScope.onlyEmailAndFirstname()
       ),
-      BuilderAuth.any(),
-      BuilderAuth.any(),
+      BuildAuth.any(),
+      BuildAuth.any(),
     )))
 
     val auth1 = givenOwner.find("clientid1")
