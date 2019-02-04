@@ -26,16 +26,16 @@ class Token(
   }
 
   def refresh(withRefreshToken: UUID, withGrantType: String): Option[Token] = {
-      if (canRefreshWith(withRefreshToken, withGrantType)) {
-          new Token(
+      if (canRefreshWith(withRefreshToken, withGrantType) && isExpired) {
+          Some(new Token(
               accessToken = java.util.UUID.randomUUID,
               refreshToken = java.util.UUID.randomUUID,
               generatedIn = DateTime.now(),
               tokenType = "bearer"
-          )
+          ))
+      } else {
+        None
       }
-
-      None
   }
 
   def exportMemento(): MementoToken = {

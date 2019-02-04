@@ -1,4 +1,4 @@
-package app.domain.thirdstore
+package app.domain.thirdstore.token
 
 import builders.BuilderToken
 import org.scalatest.FunSuite

@@ -6,21 +6,31 @@ import com.github.nscala_time.time.Imports._
 import app.domain.thirdstore.Token
 
 object BuilderToken {
-  def anyLive(tokenType: String = "bearer", expiresIn: Int = 10, refreshToken: Option[UUID] = None, accessToken: Option[UUID] = None): Token = {
+  def anyLive(
+               tokenType: String = "bearer",
+               expiresIn: Int = 10,
+               refreshToken: UUID = java.util.UUID.randomUUID,
+               accessToken: UUID = java.util.UUID.randomUUID
+             ): Token = {
     new Token(
-      accessToken.getOrElse(java.util.UUID.randomUUID),
+      accessToken,
       tokenType,
-      refreshToken.getOrElse(java.util.UUID.randomUUID),
+      refreshToken,
       DateTime.now() - 5.seconds,
       expiresIn
     )
   }
 
-  def anyExpired(tokenType: String = "bearer", expiresIn: Int = 10, refreshToken: Option[UUID] = None,  accessToken: Option[UUID] = None): Token = {
+  def anyExpired(
+                  tokenType: String = "bearer",
+                  expiresIn: Int = 10,
+                  refreshToken: UUID = java.util.UUID.randomUUID,
+                  accessToken: UUID = java.util.UUID.randomUUID
+                ): Token = {
     new Token(
-      accessToken.getOrElse(java.util.UUID.randomUUID),
+      accessToken,
       tokenType,
-      refreshToken.getOrElse(java.util.UUID.randomUUID),
+      refreshToken,
       DateTime.now() - 20.seconds,
       expiresIn
     )

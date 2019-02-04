@@ -17,12 +17,22 @@ class ResourceSpec extends FunSuite{
     assert(resource.surname() === Some("my surname"))
   }
 
-  test("Has a token") {
-    val resource = BuilderResource.anyWithLiveToken()
-    assert(resource.gettoken().isInstanceOf[Some[Token]])
+
+
+  test("Might or not have a token") {
+    val resource1 = BuilderResource.anyWithLiveToken()
+    assert(resource1.gettoken().isInstanceOf[Some[Token]])
+
+    val resource2 = BuilderResource.anyWithoutToken()
+    assert(resource2.gettoken() === None)
+
+    val resource3 = BuilderResource.anyRevoked()
+    assert(resource3.isTokenExpired() === None)
   }
 
-  test("Know if a token is expired") {
+
+
+  test("Might or not have an expired token") {
     var resource = BuilderResource.anyWithExpiredToken()
     assert(resource.isTokenExpired() === Some(true))
 
@@ -30,10 +40,7 @@ class ResourceSpec extends FunSuite{
     assert(resource.isTokenExpired() === Some(false))
   }
 
-  test("Know if a token is revoked") {
-    var resource = BuilderResource.anyRevoked()
-    assert(resource.isTokenExpired() === None)
-  }
+
 
   test("Can revoke token") {
     val resource = BuilderResource.anyWithLiveToken()
@@ -43,11 +50,20 @@ class ResourceSpec extends FunSuite{
     assert(resource.gettoken() === None)
   }
 
-  test("Can refresh token") {
+
+
+  test("Can refresh an expired token") {
     val resource = BuilderResource.anyWithExpiredToken()
 
     assert(resource.isTokenExpired() === Some(true))
     resource.refreshToken()
     assert(resource.isTokenExpired() === Some(false))
+  }
+
+  test("Cannot refresh if resource has not a token already") {
+    val resource = BuilderResource.anyWithoutToken()
+
+    resource.refreshToken()
+    assert(resource.gettoken() === None)
   }
 }

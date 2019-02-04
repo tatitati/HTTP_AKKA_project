@@ -29,5 +29,13 @@ object BuilderResource {
       None
     )
   }
+
+  def anyWithoutToken(withsurname: String = "any surname", scope: Option[Scope] = None): Resource  = {
+    new Resource(
+      BuilderProfile.any(surname = withsurname),
+      scope.getOrElse(BuilderScope.onlySurname()),
+      None
+    )
+  }
 }
 
