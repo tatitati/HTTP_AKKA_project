@@ -56,22 +56,29 @@ class OwnerSpec extends FunSuite {
     assert(user.countThirds() === 3)
   }
 
-//  test("can get scope given to a third") {
-//    val givenAuthorization1 = new Authorization(
-//      BuilderThird.anyWithClientId("clientid1"),
-//      BuilderScope.onlyEmailAndFirstname()
-//    )
-//
-//    val givenAuthorization2 = new Authorization(
-//      BuilderThird.anyWithClientId("clientid2"),
-//      BuilderScope.onlySurname()
-//    )
-//
-//    val givenOwner = BuilderOwner.any(authorizationsList = new AuthorizationsList(List(givenAuthorization1, givenAuthorization2)))
-//
-//    val scope = givenOwner.getscope("clientid1")
-//
-//
-//
-//  }
+  test("can provide info about a third in the list") {
+    val givenAuthorization1 = new Authorization(
+      BuilderThird.any(name = "travis", clientId = "clientid1"),
+      BuilderScope.onlyEmailAndFirstname()
+    )
+
+    val givenAuthorization2 = new Authorization(
+      BuilderThird.any(name = "circleci", clientId = "clientid2"),
+      BuilderScope.onlySurname()
+    )
+
+    val givenOwner = BuilderOwner.any(authorizationsList = new AuthorizationsList(List(givenAuthorization1, givenAuthorization2)))
+
+    val auth1 = givenOwner.find("clientid1")
+    assert(auth1.isInstanceOf[Some[Authorization]] === true)
+    assert(
+      auth1 match {
+        case Some(value) => value.name === "travis"
+        case _ => false
+      }
+    )
+
+    val auth2 = givenOwner.find("aaasadsfasdf")
+    assert(auth2 === None )
+  }
 }

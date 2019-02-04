@@ -28,7 +28,7 @@ class Owner(val profile: Profile, val authorizationsList: AuthorizationsList) {
     authorizationsList.addThird(mapThirdToPerm)
   }
 
-//  def getscope(clientId: String): Option[Scope] = {
-//
-//  }
+  def  find(clientId: String): Option[Authorization] = {
+    authorizationsList.find(clientId)
+  }
 }

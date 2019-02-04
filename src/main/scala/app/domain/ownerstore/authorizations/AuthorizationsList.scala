@@ -25,11 +25,11 @@ class AuthorizationsList(private var list: List[Authorization]) {
     }
   }
 
-  def scope(clientId: String): Option[Scope] = {
+  def find(clientId: String): Option[Authorization] = {
     val result: List[Authorization] = list.filter(auth => auth.clientId() == clientId)
 
     result.isEmpty match {
-      case false => Option(result.head.scope)
+      case false => Option(result.head)
       case true => None
     }
   }
