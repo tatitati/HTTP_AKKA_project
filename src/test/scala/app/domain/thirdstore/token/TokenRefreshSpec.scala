@@ -1,7 +1,6 @@
 package app.domain.thirdstore.token
 
 import java.util.UUID
-
 import builders.{BuilderToken, BuilderUuid}
 import org.scalatest.FunSuite
 
@@ -40,7 +39,7 @@ class TokenRefreshSpec extends FunSuite{
 
     val newToken = expiredToken.refresh(withRefreshToken = refreshToken, "refresh_token")
 
-    assert(newToken.equals(expiredToken) === false)
+    assert(!newToken.equals(expiredToken))
     assert(newToken === None)
   }
 }
