@@ -67,18 +67,22 @@ class AuthorizationListSpec extends FunSuite {
     assert(listmap.count() === 3)
   }
 
-//  test("can provide scope by clientid") {
-//    val givenAuthorization1 = new Authorization(
-//      BuilderThird.anyWithClientId("clientid1"),
-//      BuilderScope.onlyEmailAndFirstname()
-//    )
-//
-//    val givenAuthorization2 = new Authorization(
-//      BuilderThird.anyWithClientId("clientid2"),
-//      BuilderScope.onlySurname()
-//    )
-//
-//    val authList = new AuthorizationsList(List(givenAuthorization1, givenAuthorization2))
-//    val scope = authList.scope("client1")
-//  }
+  test("can provide scope by clientid") {
+    val givenAuthorization1 = new Authorization(
+      BuilderThird.anyWithClientId("clientid1"),
+      BuilderScope.onlyEmailAndFirstname()
+    )
+
+    val givenAuthorization2 = new Authorization(
+      BuilderThird.anyWithClientId("clientid2"),
+      BuilderScope.onlySurname()
+    )
+
+    val authList = new AuthorizationsList(List(givenAuthorization1, givenAuthorization2))
+    val scope1 = authList.scope("clientid1")
+    assert(scope1.isInstanceOf[Some[Scope]] === true)
+
+    val scope2 = authList.scope("aaaaaaaa")
+    assert(scope2 === None)
+  }
 }

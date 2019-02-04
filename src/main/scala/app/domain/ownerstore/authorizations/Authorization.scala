@@ -12,7 +12,7 @@ class Authorization(val third: Third, val scope: Scope) {
     third.homepage
   }
 
-  def getClientId(): String = {
+  def clientId(): String = {
     third.clientid
   }
 

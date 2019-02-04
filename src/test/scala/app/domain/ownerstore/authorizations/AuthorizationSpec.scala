@@ -29,11 +29,13 @@ class AuthorizationSpec extends FunSuite {
     val auth = BuilderAuthorization.any(
       third = BuilderThird.any(
         name = "CircleCI",
-        homepage = "http://www.whatever.com"
+        homepage = "http://www.whatever.com",
+        clientId = "myclientid"
       )
     )
 
     assert(auth.name == "CircleCI")
     assert(auth.homepage == "http://www.whatever.com")
+    assert(auth.clientId == "myclientid")
   }
 }
