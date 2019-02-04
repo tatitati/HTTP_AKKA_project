@@ -7,8 +7,4 @@ class Third(
              val callback: String,
              val homepage: String,
              val description: String) {
-
-  def revoke(resource: Resource) = {
-
-  }
 }

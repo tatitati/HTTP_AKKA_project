@@ -5,21 +5,21 @@ import app.domain.ownerstore.auth.Scope
 
 class Resource(
                 private val profile: Profile,
-                private val scopes: Scope,
+                private val scope: Scope,
                 private var token: Option[Token]
-          ){
+    ){
 
-    def firstname(): Option[String] = scopes.firstname match {
+    def firstname(): Option[String] = scope.firstname match {
         case true => Option(profile.firstname)
         case _ => None
     }
 
-    def surname(): Option[String] = scopes.surname match {
+    def surname(): Option[String] = scope.surname match {
         case true => Option(profile.surname)
         case _ => None
     }
 
-    def email(): Option[String] = scopes.email match {
+    def email(): Option[String] = scope.email match {
         case true => Option(profile.email)
         case _ => None
     }
@@ -31,11 +31,9 @@ class Resource(
     def isTokenExpired(): Option[Boolean] = token match {
         case Some(token) => Option(token.isExpired)
         case _ => None
-
     }
 
     def refreshToken(): Unit = {
-
       val newtoken = token match {
         case Some(token) => token.refresh(token.refreshToken, "refresh_token")
         case _ => None
@@ -45,7 +43,6 @@ class Resource(
         token = newtoken
       }
     }
-
 
     def revokeToken(): Unit = {
       token = None

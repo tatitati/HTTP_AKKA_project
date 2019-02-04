@@ -9,7 +9,7 @@ class Token(
              val refreshToken: UUID,
              private var generatedIn: DateTime,
              private val expiresIn: Int = 360000 // 10 hour,
-           )  {
+  ){
 
   def isExpired: Boolean = {
     val expireInDate = generatedIn + expiresIn.seconds
@@ -37,7 +37,5 @@ class Token(
       }
   }
 
-  def exportMemento(): MementoToken = {
-      new MementoToken(accessToken.toString, tokenType, refreshToken.toString, expiresIn)
-  }
+  def exportMemento(): MementoToken = new MementoToken(accessToken.toString, tokenType, refreshToken.toString, expiresIn)
 }

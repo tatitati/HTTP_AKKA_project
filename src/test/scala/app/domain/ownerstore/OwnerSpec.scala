@@ -2,7 +2,7 @@ package app.domain.ownerstore
 
 import app.domain.ownerstore.auth.Auth
 import builders.{BuildOwner, BuildProfile, BuildThird}
-import builders.authorizes.{BuildAuth, BuildListAuth, BuildScope}
+import builders.authorizes.{BuildAuth, BuildScope}
 import org.scalatest.FunSuite
 
 class OwnerSpec extends FunSuite {
