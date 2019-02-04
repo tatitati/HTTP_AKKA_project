@@ -1,6 +1,6 @@
 package builders.authorizes
 
-import app.domain.ownerstore.authorizations.AuthorizationsList
+import app.domain.ownerstore.AuthorizationsList
 
 object BuilderAuthorizationsList {
 

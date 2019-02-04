@@ -1,7 +1,7 @@
 package app.domain.thirdstore
 
 import app.domain.Profile
-import app.domain.ownerstore.authorizations.Scope
+import app.domain.ownerstore.authorization.Scope
 
 class Resource(
                 private val profile: Profile,

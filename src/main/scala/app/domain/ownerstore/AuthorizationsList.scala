@@ -1,4 +1,6 @@
-package app.domain.ownerstore.authorizations
+package app.domain.ownerstore
+
+import app.domain.ownerstore.authorization.Authorization
 
 class AuthorizationsList(private var list: List[Authorization]) {
 

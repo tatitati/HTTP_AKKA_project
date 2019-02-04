@@ -1,7 +1,7 @@
 package app.domain.ownerstore
 
 import app.domain.Profile
-import app.domain.ownerstore.authorizations.{Authorization, AuthorizationsList, Scope}
+import app.domain.ownerstore.authorization.{Authorization, Scope}
 import com.github.nscala_time.time.Imports._
 
 class Owner(val profile: Profile, val authorizationsList: AuthorizationsList) {
@@ -28,7 +28,7 @@ class Owner(val profile: Profile, val authorizationsList: AuthorizationsList) {
     authorizationsList.addThird(mapThirdToPerm)
   }
 
-  def  find(clientId: String): Option[Authorization] = {
+  def find(clientId: String): Option[Authorization] = {
     authorizationsList.find(clientId)
   }
 }

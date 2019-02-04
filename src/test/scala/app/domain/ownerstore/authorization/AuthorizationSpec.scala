@@ -1,4 +1,4 @@
-package app.domain.ownerstore.authorizations
+package app.domain.ownerstore.authorization
 
 import builders.BuilderThird
 import builders.authorizes.{BuilderAuthorization, BuilderScope}

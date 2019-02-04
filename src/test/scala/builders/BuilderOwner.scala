@@ -1,8 +1,7 @@
 package builders
 
 import app.domain.Profile
-import app.domain.ownerstore.Owner
-import app.domain.ownerstore.authorizations.AuthorizationsList
+import app.domain.ownerstore.{AuthorizationsList, Owner}
 import builders.authorizes.BuilderAuthorizationsList
 
 object BuilderOwner {

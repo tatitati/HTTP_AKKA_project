@@ -1,5 +1,6 @@
-package app.domain.ownerstore.authorizations
+package app.domain.ownerstore
 
+import app.domain.ownerstore.authorization.Authorization
 import builders.BuilderThird
 import builders.authorizes.{BuilderAuthorization, BuilderAuthorizationsList, BuilderScope}
 import org.scalatest.FunSuite

@@ -1,6 +1,6 @@
 package builders.authorizes
 
-import app.domain.ownerstore.authorizations.{Authorization, Scope}
+import app.domain.ownerstore.authorization.{Authorization, Scope}
 import app.domain.thirdstore.Third
 import builders.BuilderThird
 
