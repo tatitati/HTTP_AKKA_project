@@ -20,55 +20,14 @@ class AuthorizationListSpec extends FunSuite {
 
   }
 
-  test("Can check if a third party was granted any kind of access (is in the list)") {
+  test("Can know if exist an item in list") {
     val listmap = BuilderAuthorizationsList.any()
 
     assert(listmap.existThird("anyclientid") === true)
     assert(listmap.existThird("clientId2") === false)
   }
 
-
-  test("Can revoke") {
-    val listmap = BuilderAuthorizationsList.anyListWithClientIds(List("clientid1", "clientid2", "clientid3"))
-
-    assert(listmap.existThird("clientid1") === true)
-    assert(listmap.existThird("clientid2") === true)
-    assert(listmap.existThird("clientid3") === true)
-    listmap.removeThird("clientid2")
-    assert(listmap.existThird("clientid1") === true)
-    assert(listmap.existThird("clientid2") === false)
-    assert(listmap.existThird("clientid3") === true)
-  }
-
-  test("Can grant") {
-    val listmap = BuilderAuthorizationsList.anyListWithClientIds(List("clientid1", "clientid2"))
-
-    val third = BuilderAuthorization.anyAuthorizationWithClientId("clientid3")
-
-    assert(listmap.existThird("clientid1") === true)
-    assert(listmap.existThird("clientid2") === true)
-    assert(listmap.existThird("clientid3") === false)
-    listmap.addThird(third)
-    assert(listmap.existThird("clientid1") === true)
-    assert(listmap.existThird("clientid2") === true)
-    assert(listmap.existThird("clientid3") === true)
-
-    assert(listmap.count() === 3)
-  }
-
-  test("Cannot grant twice the same client id") {
-    val listmap = BuilderAuthorizationsList.anyListWithClientIds(List("clientid1", "clientid2"))
-
-    val third = BuilderAuthorization.anyAuthorizationWithClientId("clientid3")
-
-    assert(listmap.count() === 2)
-    listmap.addThird(third)
-    assert(listmap.count() === 3)
-    listmap.addThird(third)
-    assert(listmap.count() === 3)
-  }
-
-  test("can authorization by clientid") {
+  test("can find item by clientid") {
     val givenAuthorization1 = new Authorization(
       BuilderThird.anyWithClientId("clientid1"),
       BuilderScope.onlyEmailAndFirstname()
@@ -85,5 +44,45 @@ class AuthorizationListSpec extends FunSuite {
 
     val scope2 = authList.find("aaaaaaaa")
     assert(scope2 === None)
+  }
+
+  test("Can remove from list") {
+    val listmap = BuilderAuthorizationsList.anyListWithClientIds(List("clientid1", "clientid2", "clientid3"))
+
+    assert(listmap.existThird("clientid1") === true)
+    assert(listmap.existThird("clientid2") === true)
+    assert(listmap.existThird("clientid3") === true)
+    listmap.removeThird("clientid2")
+    assert(listmap.existThird("clientid1") === true)
+    assert(listmap.existThird("clientid2") === false)
+    assert(listmap.existThird("clientid3") === true)
+  }
+
+  test("Can add to list") {
+    val listmap = BuilderAuthorizationsList.anyListWithClientIds(List("clientid1", "clientid2"))
+
+    val third = BuilderAuthorization.anyAuthorizationWithClientId("clientid3")
+
+    assert(listmap.existThird("clientid1") === true)
+    assert(listmap.existThird("clientid2") === true)
+    assert(listmap.existThird("clientid3") === false)
+    listmap.addThird(third)
+    assert(listmap.existThird("clientid1") === true)
+    assert(listmap.existThird("clientid2") === true)
+    assert(listmap.existThird("clientid3") === true)
+
+    assert(listmap.count() === 3)
+  }
+
+  test("Cannot add twice the same to list") {
+    val listmap = BuilderAuthorizationsList.anyListWithClientIds(List("clientid1", "clientid2"))
+
+    val third = BuilderAuthorization.anyAuthorizationWithClientId("clientid3")
+
+    assert(listmap.count() === 2)
+    listmap.addThird(third)
+    assert(listmap.count() === 3)
+    listmap.addThird(third)
+    assert(listmap.count() === 3)
   }
 }

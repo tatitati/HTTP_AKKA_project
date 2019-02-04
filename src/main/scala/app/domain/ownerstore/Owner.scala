@@ -4,13 +4,29 @@ import app.domain.Profile
 import app.domain.ownerstore.authorization.{Authorization, Scope}
 import com.github.nscala_time.time.Imports._
 
-class Owner(val profile: Profile, val authorizationsList: AuthorizationsList) {
+class Owner(private var profile: Profile, val authorizationsList: AuthorizationsList) {
 
-  var firstname: String = profile.firstname
-  var surname: String = profile.surname
-  val email: String = profile.email
-  var emailconfirmed: Boolean = profile.emailconfirmed
-  val datebirth: DateTime = profile.datebirth
+  def firstname: String = profile.firstname
+  def setFirstname(newfirstname: String): Unit = {
+    profile = profile.copy(firstname = newfirstname)
+  }
+
+  def surname: String = profile.surname
+  def setSurname(newsurname: String): Unit = {
+    profile = profile.copy(surname = newsurname)
+  }
+
+  def email: String = profile.email
+  def setEmail(newemail: String): Unit = {
+    profile = profile.copy(email = newemail)
+  }
+
+  def datebirth: DateTime = profile.datebirth
+  def setDatebirth(newdatebirth: DateTime) = {
+    profile = profile.copy(datebirth = newdatebirth)
+  }
+
+  def emailconfirmed: Boolean = profile.emailconfirmed
 
   def countThirds(): Int = authorizationsList.count()
 

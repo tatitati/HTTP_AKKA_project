@@ -24,7 +24,7 @@ class OwnerSpec extends FunSuite {
     )
 
     assert(user.firstname === "gutierrez")
-    user.firstname = "manolo"
+    user.setFirstname("manolo")
     assert(user.firstname === "manolo")
   }
 
