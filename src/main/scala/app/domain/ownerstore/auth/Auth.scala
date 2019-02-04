@@ -6,7 +6,7 @@ class Auth(val third: Third, val scope: Scope) {
 
   def name(): String = third.name
   def homepage(): String = third.homepage
-  def clientId(): String = third.clientid
+  def clientId(): String = third.getclientid
 
   def canAccessToFirstname(): Boolean = scope.firstname
   def canAccessToSurname(): Boolean = scope.surname

@@ -5,9 +5,12 @@ import org.scalatest.FunSuite
 
 class ThirdSpec extends FunSuite {
   
-  test("Can revoke a resource") {
-    val resource = BuildResource.anyWithLiveToken()
-
+  test("can refresh credentials if they are compromised") {
     val third = BuildThird.any()
+
+    val clientId = third.getclientid
+    val clientSecret = third.getclientsecret
+
+    third.refreshCredentials()
   }
 }
