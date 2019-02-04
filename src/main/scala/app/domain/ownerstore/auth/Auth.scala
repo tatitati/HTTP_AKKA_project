@@ -1,8 +1,8 @@
-package app.domain.ownerstore.authorization
+package app.domain.ownerstore.auth
 
 import app.domain.thirdstore.Third
 
-class Authorization(val third: Third, val scope: Scope) {
+class Auth(val third: Third, val scope: Scope) {
 
   def name(): String = third.name
   def homepage(): String = third.homepage

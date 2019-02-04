@@ -1,53 +1,49 @@
 package app.domain.ownerstore
 
-import app.domain.ownerstore.authorization.Authorization
+import app.domain.ownerstore.auth.Auth
 import builders.BuilderThird
-import builders.authorizes.{BuilderAuthorization, BuilderAuthorizationsList, BuilderScope}
+import builders.authorizes.{BuilderAuth, BuilderAuthList, BuilderScope}
 import org.scalatest.FunSuite
 
-class AuthorizationListSpec extends FunSuite {
+class AuthListSpec extends FunSuite {
   test("Builder can create a list of AppPermissions") {
-    assert(
-      BuilderAuthorizationsList.any().count === 2
-    )
+    assert(BuilderAuthList.any().count === 2)
   }
 
   test("Builder can create a list of permissions with custom ids") {
-    val listmap = BuilderAuthorizationsList.anyListWithClientIds(List("clientid1", "clientid2", "clientid3"))
-    assert(
-      listmap.count === 3
-    )
+    val listmap = BuilderAuthList.anyListWithClientIds(List("clientid1", "clientid2", "clientid3"))
+    assert(listmap.count === 3)
 
   }
 
   test("Can know if exist an item in list") {
-    val listmap = BuilderAuthorizationsList.any()
+    val listmap = BuilderAuthList.any()
 
     assert(listmap.existThird("anyclientid") === true)
     assert(listmap.existThird("clientId2") === false)
   }
 
   test("can find item by clientid") {
-    val givenAuthorization1 = new Authorization(
+    val givenAuthorization1 = new Auth(
       BuilderThird.anyWithClientId("clientid1"),
       BuilderScope.onlyEmailAndFirstname()
     )
 
-    val givenAuthorization2 = new Authorization(
+    val givenAuthorization2 = new Auth(
       BuilderThird.anyWithClientId("clientid2"),
       BuilderScope.onlySurname()
     )
 
-    val authList = new AuthorizationsList(List(givenAuthorization1, givenAuthorization2))
+    val authList = new AuthList(List(givenAuthorization1, givenAuthorization2))
     val scope1 = authList.find("clientid1")
-    assert(scope1.isInstanceOf[Some[Authorization]] === true)
+    assert(scope1.isInstanceOf[Some[Auth]] === true)
 
     val scope2 = authList.find("aaaaaaaa")
     assert(scope2 === None)
   }
 
   test("Can remove from list") {
-    val listmap = BuilderAuthorizationsList.anyListWithClientIds(List("clientid1", "clientid2", "clientid3"))
+    val listmap = BuilderAuthList.anyListWithClientIds(List("clientid1", "clientid2", "clientid3"))
 
     assert(listmap.existThird("clientid1") === true)
     assert(listmap.existThird("clientid2") === true)
@@ -59,9 +55,9 @@ class AuthorizationListSpec extends FunSuite {
   }
 
   test("Can add to list") {
-    val listmap = BuilderAuthorizationsList.anyListWithClientIds(List("clientid1", "clientid2"))
+    val listmap = BuilderAuthList.anyListWithClientIds(List("clientid1", "clientid2"))
 
-    val third = BuilderAuthorization.anyAuthorizationWithClientId("clientid3")
+    val third = BuilderAuth.anyAuthorizationWithClientId("clientid3")
 
     assert(listmap.existThird("clientid1") === true)
     assert(listmap.existThird("clientid2") === true)
@@ -75,9 +71,9 @@ class AuthorizationListSpec extends FunSuite {
   }
 
   test("Cannot add twice the same to list") {
-    val listmap = BuilderAuthorizationsList.anyListWithClientIds(List("clientid1", "clientid2"))
+    val listmap = BuilderAuthList.anyListWithClientIds(List("clientid1", "clientid2"))
 
-    val third = BuilderAuthorization.anyAuthorizationWithClientId("clientid3")
+    val third = BuilderAuth.anyAuthorizationWithClientId("clientid3")
 
     assert(listmap.count() === 2)
     listmap.addThird(third)

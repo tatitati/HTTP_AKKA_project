@@ -1,8 +1,8 @@
 package app.domain.ownerstore
 
-import app.domain.ownerstore.authorization.Authorization
+import app.domain.ownerstore.auth.Auth
 import builders.{BuilderOwner, BuilderProfile, BuilderThird}
-import builders.authorizes.{BuilderAuthorization, BuilderAuthorizationsList, BuilderScope}
+import builders.authorizes.{BuilderAuth, BuilderAuthList, BuilderScope}
 import org.scalatest.FunSuite
 
 class OwnerSpec extends FunSuite {
@@ -14,7 +14,7 @@ class OwnerSpec extends FunSuite {
   test("Has a list of authorizations ") {
     val user = BuilderOwner.any()
 
-    assert(user.authorizationsList.isInstanceOf[AuthorizationsList])
+    assert(user.authorizationsList.isInstanceOf[AuthList])
     assert(user.countThirds === 2)
   }
 
@@ -25,7 +25,7 @@ class OwnerSpec extends FunSuite {
 
     assert(user.firstname === "gutierrez")
     user.setFirstname("manolo")
-    assert(user.firstname === "manolo")
+    assert(user.firstname === "manolo", "=> Firstname should be updated")
   }
 
   test("Know if a third is authorized") {
@@ -40,35 +40,37 @@ class OwnerSpec extends FunSuite {
 
     assert(user.has("anyclientid") === true)
     user.revoke("anyclientid")
-    assert(user.has("anyclientid") === false)
+    assert(user.has("anyclientid") === false, "=> Authorization should be removed from list")
   }
 
   test("Can authorize a third") {
     val user = BuilderOwner.any()
 
-    assert(user.has("newthirdclientId") === false)
+    assert(user.has("newthirdclientId") === false, "=> Initially shouldn't have this third in the list")
     assert(user.countThirds() === 2)
 
-    val mapThirdToperm = BuilderAuthorization.anyAuthorizationWithClientId("newthirdclientId")
-    user.grant(mapThirdToperm)
+    user.grant(
+      BuilderAuth.anyAuthorizationWithClientId("newthirdclientId")
+    )
 
-    assert(user.has("newthirdclientId") === true)
+    assert(user.has("newthirdclientId") === true, "=> After grant acces it should be in the lsit")
     assert(user.countThirds() === 3)
   }
 
   test("can provide info about a third in the list") {
 
-    val givenOwner = BuilderOwner.any(authorizationsList = new AuthorizationsList(List(
-      new Authorization(
+    val givenOwner = BuilderOwner.any(authorizationsList = new AuthList(List(
+      new Auth(
         BuilderThird.any(name = "travis", clientId = "clientid1"),
         BuilderScope.onlyEmailAndFirstname()
       ),
-      BuilderAuthorization.any()
+      BuilderAuth.any(),
+      BuilderAuth.any(),
     )))
 
     val auth1 = givenOwner.find("clientid1")
 
-    assert(auth1.isInstanceOf[Some[Authorization]] === true)
+    assert(auth1.isInstanceOf[Some[Auth]] === true)
     assert(auth1 match {
         case Some(value) => value.name === "travis"
         case _ => false

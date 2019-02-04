@@ -1,8 +1,8 @@
 package app.domain.ownerstore
 
-import app.domain.ownerstore.authorization.Authorization
+import app.domain.ownerstore.auth.Auth
 
-class AuthorizationsList(private var list: List[Authorization]) {
+class AuthList(private var list: List[Auth]) {
 
   def count() :Int = list.size
 
@@ -18,15 +18,15 @@ class AuthorizationsList(private var list: List[Authorization]) {
     )
   }
 
-  def addThird(authorization: Authorization): Unit = {
+  def addThird(authorization: Auth): Unit = {
     existThird(authorization.clientId()) match {
       case false => list = list ::: List(authorization)
       case true =>
     }
   }
 
-  def find(clientId: String): Option[Authorization] = {
-    val result: List[Authorization] = list.filter(auth => auth.clientId() == clientId)
+  def find(clientId: String): Option[Auth] = {
+    val result: List[Auth] = list.filter(auth => auth.clientId() == clientId)
 
     result.isEmpty match {
       case false => Option(result.head)

@@ -1,22 +1,22 @@
-package app.domain.ownerstore.authorization
+package app.domain.ownerstore.auth
 
 import builders.BuilderThird
-import builders.authorizes.{BuilderAuthorization, BuilderScope}
+import builders.authorizes.{BuilderAuth, BuilderScope}
 import org.scalatest.FunSuite
 
 class AuthorizationSpec extends FunSuite {
 
   test("Can create a permission") {
-    val apppermision = new Authorization(
+    val apppermision = new Auth(
         third = BuilderThird.any(),
         scope = BuilderScope.onlySurname()
     )
 
-    assert(apppermision.isInstanceOf[Authorization])
+    assert(apppermision.isInstanceOf[Auth])
   }
 
   test("Can tell us some information about what permissions were provided to the third party") {
-    val apppermision = new Authorization(
+    val apppermision = new Auth(
       third = BuilderThird.any(),
       scope = BuilderScope.onlySurname()
     )
@@ -26,7 +26,7 @@ class AuthorizationSpec extends FunSuite {
   }
 
   test("Can tell us basic information about the third") {
-    val auth = BuilderAuthorization.any(
+    val auth = BuilderAuth.any(
       third = BuilderThird.any(
         name = "CircleCI",
         homepage = "http://www.whatever.com",

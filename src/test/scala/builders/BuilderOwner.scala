@@ -1,13 +1,13 @@
 package builders
 
 import app.domain.Profile
-import app.domain.ownerstore.{AuthorizationsList, Owner}
-import builders.authorizes.BuilderAuthorizationsList
+import app.domain.ownerstore.{AuthList, Owner}
+import builders.authorizes.BuilderAuthList
 
 object BuilderOwner {
     def any(
              profile: Profile = BuilderProfile.any(),
-             authorizationsList: AuthorizationsList = BuilderAuthorizationsList.any()
+             authorizationsList: AuthList = BuilderAuthList.any()
            ):Owner  = {
       new Owner(profile, authorizationsList)
     }

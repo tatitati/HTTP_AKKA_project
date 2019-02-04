@@ -1,10 +1,10 @@
 package app.domain.ownerstore
 
 import app.domain.Profile
-import app.domain.ownerstore.authorization.{Authorization, Scope}
+import app.domain.ownerstore.auth.{Auth, Scope}
 import com.github.nscala_time.time.Imports._
 
-class Owner(private var profile: Profile, val authorizationsList: AuthorizationsList) {
+class Owner(private var profile: Profile, val authorizationsList: AuthList) {
 
   def firstname: String = profile.firstname
   def setFirstname(newfirstname: String): Unit = {
@@ -34,7 +34,7 @@ class Owner(private var profile: Profile, val authorizationsList: Authorizations
 
   def revoke(clientId: String): Unit = authorizationsList.removeThird(clientId)
 
-  def grant(mapThirdToPerm: Authorization): Unit = authorizationsList.addThird(mapThirdToPerm)
+  def grant(mapThirdToPerm: Auth): Unit = authorizationsList.addThird(mapThirdToPerm)
 
-  def find(clientId: String): Option[Authorization] = authorizationsList.find(clientId)
+  def find(clientId: String): Option[Auth] = authorizationsList.find(clientId)
 }
