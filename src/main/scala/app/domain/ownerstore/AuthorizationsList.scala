@@ -4,9 +4,7 @@ import app.domain.ownerstore.authorization.Authorization
 
 class AuthorizationsList(private var list: List[Authorization]) {
 
-  def count() :Int = {
-    list.size
-  }
+  def count() :Int = list.size
 
   def existThird(clientId: String): Boolean = {
     list.exists(

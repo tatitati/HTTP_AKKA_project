@@ -12,23 +12,13 @@ class Owner(val profile: Profile, val authorizationsList: AuthorizationsList) {
   var emailconfirmed: Boolean = profile.emailconfirmed
   val datebirth: DateTime = profile.datebirth
 
-  def countThirds(): Int = {
-    authorizationsList.count()
-  }
+  def countThirds(): Int = authorizationsList.count()
 
-  def has(clientId: String): Boolean = {
-    authorizationsList.existThird(clientId)
-  }
+  def has(clientId: String): Boolean = authorizationsList.existThird(clientId)
 
-  def revoke(clientId: String): Unit = {
-    authorizationsList.removeThird(clientId)
-  }
+  def revoke(clientId: String): Unit = authorizationsList.removeThird(clientId)
 
-  def grant(mapThirdToPerm: Authorization): Unit = {
-    authorizationsList.addThird(mapThirdToPerm)
-  }
+  def grant(mapThirdToPerm: Authorization): Unit = authorizationsList.addThird(mapThirdToPerm)
 
-  def find(clientId: String): Option[Authorization] = {
-    authorizationsList.find(clientId)
-  }
+  def find(clientId: String): Option[Authorization] = authorizationsList.find(clientId)
 }
