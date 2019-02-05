@@ -3,7 +3,7 @@ package app.domain.thirdstore.token
 import builders.BuildToken
 import org.scalatest.FunSuite
 
-class TokenIsExpiredSpec extends FunSuite{
+class CanBeExpiredSpec extends FunSuite{
 
   test("Can check if a token is live") {
     val token = BuildToken.anyLive()

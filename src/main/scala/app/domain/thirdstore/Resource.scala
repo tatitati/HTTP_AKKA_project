@@ -5,7 +5,7 @@ import app.domain.ownerstore.{OwnerProfile, Scope}
 class Resource(
                 private val ownerProfile: OwnerProfile,
                 private val scope: Scope,
-                private var token: Option[Token]
+                var token: Option[Token]
     ){
 
     def firstname(): Option[String] =
@@ -22,10 +22,6 @@ class Resource(
     def email(): Option[String] = scope.email match {
         case true if !isTokenExpired.getOrElse(false) => Option(ownerProfile.email)
         case _ => None
-    }
-
-    def gettoken(): Option[Token] = {
-      token
     }
 
     def isTokenExpired(): Option[Boolean] = token match {
@@ -47,5 +43,4 @@ class Resource(
     def revokeToken(): Unit = {
       token = None
     }
-
 }

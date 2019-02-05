@@ -13,7 +13,7 @@ class ThirdSpec extends FunSuite {
     assert(memento.isInstanceOf[MementoThird] === true)
   }
 
-  test("can refresh credentials if they are compromised") {
+  test("can refresh third credentials if they are compromised") {
     val third = BuildThird.any()
 
     val clientId = third.exportMemento().clientId
@@ -21,7 +21,7 @@ class ThirdSpec extends FunSuite {
     third.refreshCredentials()
   }
 
-  test("can edit name") {
+  test("can edit third name") {
     val third = BuildThird.any(name = "first name")
     val memento1 = third.exportMemento()
 

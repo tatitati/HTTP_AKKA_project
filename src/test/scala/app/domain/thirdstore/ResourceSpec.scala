@@ -6,7 +6,7 @@ import org.scalatest.FunSuite
 
 class ResourceSpec extends FunSuite{
 
-  test("Resource check token expiration before accessing owner profile") {
+  test("Resource check token expiration before accessing owner profile AND the scope") {
     val resource1 = BuildResource.anyWithLiveToken(
       withsurname = "my surname",
       scope = Option(BuildScope.onlySurname())
@@ -31,10 +31,10 @@ class ResourceSpec extends FunSuite{
 
   test("Might or not have a token") {
     val resource1 = BuildResource.anyWithLiveToken()
-    assert(resource1.gettoken().isInstanceOf[Some[Token]])
+    assert(resource1.token.isInstanceOf[Some[Token]])
 
     val resource2 = BuildResource.anyWithoutToken()
-    assert(resource2.gettoken() === None)
+    assert(resource2.token === None)
 
     val resource3 = BuildResource.anyRevoked()
     assert(resource3.isTokenExpired() === None)
@@ -42,7 +42,7 @@ class ResourceSpec extends FunSuite{
 
 
 
-  test("Might or not have an expired token") {
+  test("Token to access resource might be or not expired") {
     var resource = BuildResource.anyWithExpiredToken()
     assert(resource.isTokenExpired() === Some(true))
 
@@ -52,12 +52,12 @@ class ResourceSpec extends FunSuite{
 
 
 
-  test("Can revoke token") {
+  test("Can revoke resource token") {
     val resource = BuildResource.anyWithLiveToken()
 
-    assert(resource.gettoken().isInstanceOf[Some[Token]])
+    assert(resource.token.isInstanceOf[Some[Token]])
     resource.revokeToken()
-    assert(resource.gettoken() === None)
+    assert(resource.token === None)
   }
 
 
@@ -74,6 +74,6 @@ class ResourceSpec extends FunSuite{
     val resource = BuildResource.anyWithoutToken()
 
     resource.refreshToken()
-    assert(resource.gettoken() === None)
+    assert(resource.token === None)
   }
 }
