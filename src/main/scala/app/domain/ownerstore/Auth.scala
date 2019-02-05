@@ -1,9 +1,13 @@
 package app.domain.ownerstore
 
-import app.domain.Scope
+import app.domain.{Scope, Token}
 import app.domain.thirdstore.Third
 
-class Auth(private val third: Third, private val scope: Scope) {
+class Auth(
+            private val third: Third,
+            private val scope: Scope,
+            val token: Option[Token]
+  ) {
 
   def name(): String = third.profile.name
   def homepage(): String = third.profile.homepage
@@ -13,4 +17,6 @@ class Auth(private val third: Third, private val scope: Scope) {
   def canAccessToFirstname(): Boolean = scope.firstname
   def canAccessToSurname(): Boolean = scope.surname
   def canAccessEmail(): Boolean = scope.email
+
+
 }

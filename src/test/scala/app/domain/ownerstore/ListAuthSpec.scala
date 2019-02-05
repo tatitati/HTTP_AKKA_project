@@ -23,21 +23,22 @@ class ListAuthSpec extends FunSuite {
   }
 
   test("can find item by clientid") {
-    val givenAuthorization1 = new Auth(
-      BuildThird.anyWithClientId("clientid1"),
-      BuildScope.onlyEmailAndFirstname()
+    val givenAuth1 = BuildAuth.any(
+      withThird = BuildThird.anyWithClientId("clientid1"),
+      withScope = BuildScope.onlyEmailAndFirstname()
     )
 
-    val givenAuthorization2 = new Auth(
-      BuildThird.anyWithClientId("clientid2"),
-      BuildScope.onlySurname()
+    val givenAuth2 = BuildAuth.any(
+      withThird = BuildThird.anyWithClientId("clientid2"),
+      withScope = BuildScope.onlySurname()
     )
 
-    val authList = new ListAuth(List(givenAuthorization1, givenAuthorization2))
-    val scope1 = authList.find("clientid1")
+    val givenAuthList = new ListAuth(List(givenAuth1, givenAuth2))
+
+    val scope1 = givenAuthList.find("clientid1")
     assert(scope1.isInstanceOf[Some[Auth]] === true)
 
-    val scope2 = authList.find("aaaaaaaa")
+    val scope2 = givenAuthList.find("aaaaaaaa")
     assert(scope2 === None)
   }
 

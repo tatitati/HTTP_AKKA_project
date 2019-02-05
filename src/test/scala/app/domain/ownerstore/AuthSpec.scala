@@ -29,4 +29,9 @@ class AuthSpec extends FunSuite {
     assert(givenAuth.homepage == "http://www.whatever.com")
     assert(givenAuth.description == "any description")
   }
+
+  test("Auth can have a token (or not if it was revoked)") {
+    val givenAuth = BuildAuth.any()
+    givenAuth.isInstanceOf[Auth]
+  }
 }
