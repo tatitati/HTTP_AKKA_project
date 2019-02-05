@@ -9,7 +9,7 @@ class AuthSpec extends FunSuite {
   test("Can create a permission") {
     val auth = new Auth(
       third = BuildThird.any(),
-        scope = BuildScope.onlySurname()
+      scope = BuildScope.onlySurname()
     )
 
     assert(auth.isInstanceOf[Auth])
@@ -21,21 +21,21 @@ class AuthSpec extends FunSuite {
       scope = BuildScope.onlySurname()
     )
 
-    assert(auth.canAccessToFirstname() === false)
-    assert(auth.canAccessToSurname() === true)
+    assert(auth.canAccessToFirstname() === false, "=> Third should be able to access to firstname")
+    assert(auth.canAccessToSurname() === true, "=> Third should be able to access to surname")
   }
 
-  test("Can tell us basic information about the third") {
+  test("The owner only can see name, homepage and description about the third") {
     val auth = BuildAuth.any(
       third = BuildThird.any(
         name = "CircleCI",
         homepage = "http://www.whatever.com",
-        clientId = "myclientid"
+        description = "any description"
       )
     )
 
     assert(auth.name == "CircleCI")
     assert(auth.homepage == "http://www.whatever.com")
-    assert(auth.clientId == "myclientid")
+    assert(auth.description == "any description")
   }
 }
