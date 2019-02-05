@@ -21,15 +21,19 @@ class ThirdSpec extends FunSuite {
     third.refreshCredentials()
   }
 
-  test("can edit third name") {
+  test("can edit third basic profile") {
     val third = BuildThird.any(name = "first name")
-    val memento1 = third.exportMemento()
 
-    third.setname("second name")
-    val memento2 = third.exportMemento()
+    assert(third.profile.name === "first name")
+    third.profile.name = "second name"
+    assert(third.profile.name === "second name")
+  }
 
+  test("can edit clientid or clientsecret") {
+    val third = BuildThird.any(clientId = "clientid1")
 
-    assert(memento1.name === "first name")
-    assert(memento2.name === "second name")
+    assert(third.profile.clientid === "clientid1")
+    third.profile.name = "clientid2"
+    assert(third.profile.name === "clientid2")
   }
 }

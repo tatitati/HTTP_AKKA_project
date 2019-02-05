@@ -60,7 +60,7 @@ class OwnerSpec extends FunSuite {
 
     val givenOwner = BuildOwner.any(authorizationsList = new ListAuth(List(
       new Auth(
-        BuildThird.any(name = "travis", clientId = "clientid1").exportMemento(),
+        BuildThird.any(name = "travis", clientId = "clientid1"),
         BuildScope.onlyEmailAndFirstname()
       ),
       BuildAuth.any(),

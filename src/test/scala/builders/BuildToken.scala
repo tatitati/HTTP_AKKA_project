@@ -2,8 +2,8 @@ package builders
 
 import java.util.UUID
 
+import app.domain.Token
 import com.github.nscala_time.time.Imports._
-import app.domain.thirdstore.Token
 
 object BuildToken {
   def anyLive(

@@ -2,7 +2,7 @@ package BuildersSpec
 
 import java.util.UUID
 
-import app.domain.thirdstore.Token
+import app.domain.Token
 import builders.BuildToken
 import org.scalatest.FunSuite
 

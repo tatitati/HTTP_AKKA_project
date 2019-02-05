@@ -1,6 +1,6 @@
 package builders
 
-import app.domain.ownerstore.Scope
+import app.domain.Scope
 import app.domain.thirdstore.Resource
 import builders.authorizes.BuildScope
 

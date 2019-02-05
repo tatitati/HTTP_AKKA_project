@@ -13,10 +13,6 @@ class Third(var profile: ThirdProfile) {
     MementoThird(profile.name, profile.homepage, profile.clientid, profile.description)
   }
 
-  def setname(withname: String): Unit = {
-    profile.name = withname
-  }
-
   private def generateRandomString(): String = {
     val length = 10
     var text: String = ""

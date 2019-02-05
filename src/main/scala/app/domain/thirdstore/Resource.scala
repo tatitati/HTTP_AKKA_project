@@ -1,6 +1,7 @@
 package app.domain.thirdstore
 
-import app.domain.ownerstore.{OwnerProfile, Scope}
+import app.domain.{Scope, Token}
+import app.domain.ownerstore.OwnerProfile
 
 class Resource(
                 private val ownerProfile: OwnerProfile,

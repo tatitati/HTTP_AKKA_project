@@ -24,12 +24,12 @@ class ListAuthSpec extends FunSuite {
 
   test("can find item by clientid") {
     val givenAuthorization1 = new Auth(
-      BuildThird.anyWithClientId("clientid1").exportMemento(),
+      BuildThird.anyWithClientId("clientid1"),
       BuildScope.onlyEmailAndFirstname()
     )
 
     val givenAuthorization2 = new Auth(
-      BuildThird.anyWithClientId("clientid2").exportMemento(),
+      BuildThird.anyWithClientId("clientid2"),
       BuildScope.onlySurname()
     )
 

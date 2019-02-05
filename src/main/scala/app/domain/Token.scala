@@ -1,6 +1,8 @@
-package app.domain.thirdstore
+package app.domain
 
 import java.util.UUID
+
+import app.domain.thirdstore.MementoToken
 import com.github.nscala_time.time.Imports._
 
 class Token(
