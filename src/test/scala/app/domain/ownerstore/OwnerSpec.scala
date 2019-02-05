@@ -29,13 +29,6 @@ class OwnerSpec extends FunSuite {
     assert(givenUser.profile.firstname === "manolo", "=> Firstname should be updated")
   }
 
-  test("Know if a third is in the list (search by clientid)") {
-    val givenUser = BuildOwner.any()
-
-    assert(givenUser.has("anyclientid") === true)
-    assert(givenUser.has("anotherclientid") === false)
-  }
-
   test("Can delete(revoke) a third from the list") {
     val givenUser = BuildOwner.any()
 
@@ -62,7 +55,7 @@ class OwnerSpec extends FunSuite {
     assert(givenUser.countThirds() === 3)
   }
 
-  test("can provide info about a third in the list") {
+  test("can provide info about a third in the list when found") {
 
     val givenOwner = BuildOwner.any(
       withAuthorizationsList = new ListAuth(List(
