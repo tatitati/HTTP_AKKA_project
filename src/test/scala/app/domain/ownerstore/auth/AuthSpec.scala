@@ -8,7 +8,7 @@ class AuthSpec extends FunSuite {
 
   test("Can create a permission") {
     val auth = new Auth(
-        third = BuildThird.any(),
+      mementoThird = BuildThird.any().exportMemento(),
         scope = BuildScope.onlySurname()
     )
 
@@ -17,7 +17,7 @@ class AuthSpec extends FunSuite {
 
   test("Can tell us some information about what permissions were provided to the third party") {
     val auth = new Auth(
-      third = BuildThird.any(),
+      mementoThird = BuildThird.any().exportMemento(),
       scope = BuildScope.onlySurname()
     )
 

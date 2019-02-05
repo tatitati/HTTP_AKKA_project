@@ -1,15 +1,13 @@
 package app.domain.ownerstore.auth
 
-import app.domain.thirdstore.Third
+import app.domain.thirdstore.{MementoThird, Third}
 
-class Auth(private val third: Third, private val scope: Scope) {
+class Auth(mementoThird: MementoThird, private val scope: Scope) {
 
-  private val thirdmemento =   third.exportMemento()
-
-  def name(): String = thirdmemento.name
-  def homepage(): String = thirdmemento.homepage
-  def clientId(): String = thirdmemento.clientId
-  def description(): String = thirdmemento.description
+  def name(): String = mementoThird.name
+  def homepage(): String = mementoThird.homepage
+  def clientId(): String = mementoThird.clientId
+  def description(): String = mementoThird.description
 
   def canAccessToFirstname(): Boolean = scope.firstname
   def canAccessToSurname(): Boolean = scope.surname

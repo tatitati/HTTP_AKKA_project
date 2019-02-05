@@ -24,7 +24,7 @@ class Third(
     val length = 10
     var text: String = ""
 
-    for(a <- 1 to length) {
+    for(_ <- 1 to length) {
       text = text + Random.nextPrintableChar
     }
 

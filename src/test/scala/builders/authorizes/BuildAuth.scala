@@ -10,12 +10,12 @@ object BuildAuth {
            third: Third = BuildThird.any(),
            scope: Scope = BuildScope.onlySurname()
          ): Auth = {
-    new Auth(third, scope)
+    new Auth(third.exportMemento(), scope)
   }
 
   def anyAuthorizationWithClientId(clientId: String): Auth = {
     new Auth(
-      BuildThird.anyWithClientId(clientId),
+      BuildThird.anyWithClientId(clientId).exportMemento(),
       BuildScope.onlySurname()
     )
   }
