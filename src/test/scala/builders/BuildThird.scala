@@ -1,6 +1,6 @@
 package builders
 
-import app.domain.thirdstore.Third
+import app.domain.thirdstore.{ThirdProfile, Third}
 
 object BuildThird {
     def any(
@@ -11,11 +11,13 @@ object BuildThird {
            homepage: String = "homepage",
            description: String = "description"
            ): Third = {
-      new Third(name, clientId, clientSecret, callBack, homepage, description)
+
+      new Third(ThirdProfile(name, clientId, clientSecret, callBack, homepage, description))
+
     }
 
     def anyWithClientId(clientId: String): Third = {
-      new Third("travis", clientId, "anyclientsecret", "callback", "homepage", "description")
+      new Third(ThirdProfile("travis", clientId, "anyclientsecret", "callback", "homepage", "description"))
     }
 
 }

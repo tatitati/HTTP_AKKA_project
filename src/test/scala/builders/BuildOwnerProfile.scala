@@ -1,9 +1,9 @@
 package builders
 
-import app.domain.Profile
+import app.domain.ownerstore.OwnerProfile
 import com.github.nscala_time.time.Imports.{DateTime, _}
 
-object BuildProfile {
+object BuildOwnerProfile {
 
   private val date = DateTime.now.withYear(2030).withMonth(8).withDay(20)
 
@@ -13,9 +13,9 @@ object BuildProfile {
            email: String = "whatever@email.com",
            emailconfirmed: Boolean = true,
            datebirth: DateTime = date
-         ): Profile = {
+         ): OwnerProfile = {
 
-    new Profile(
+    new OwnerProfile(
       firstname = firstname,
       surname = surname,
       email = email,

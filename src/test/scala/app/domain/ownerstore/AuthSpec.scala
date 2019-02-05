@@ -1,4 +1,4 @@
-package app.domain.ownerstore.auth
+package app.domain.ownerstore
 
 import builders.BuildThird
 import builders.authorizes.{BuildAuth, BuildScope}

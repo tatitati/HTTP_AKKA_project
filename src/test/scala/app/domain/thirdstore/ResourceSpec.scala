@@ -6,15 +6,25 @@ import org.scalatest.FunSuite
 
 class ResourceSpec extends FunSuite{
 
-  test("Has an Scope") {
-    val resource = BuildResource.anyWithLiveToken(
+  test("Resource check token expiration before accessing owner profile") {
+    val resource1 = BuildResource.anyWithLiveToken(
       withsurname = "my surname",
       scope = Option(BuildScope.onlySurname())
     )
 
-    assert(resource.email() === None)
-    assert(resource.firstname() === None)
-    assert(resource.surname() === Some("my surname"))
+    assert(resource1.email() === None)
+    assert(resource1.firstname() === None)
+    assert(resource1.surname() === Some("my surname"), "=> Should return the surname because the scope allows it and the token is live")
+
+
+    val resource2 = BuildResource.anyWithExpiredToken(
+      withsurname = "my surname",
+      scope = Option(BuildScope.onlySurname())
+    )
+
+    assert(resource2.email() === None)
+    assert(resource2.firstname() === None)
+    assert(resource2.surname() === None, "=> Should returns None because even when the scope allows it, the token is expired")
   }
 
 

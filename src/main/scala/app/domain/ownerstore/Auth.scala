@@ -1,6 +1,6 @@
-package app.domain.ownerstore.auth
+package app.domain.ownerstore
 
-import app.domain.thirdstore.{MementoThird, Third}
+import app.domain.thirdstore.MementoThird
 
 class Auth(mementoThird: MementoThird, private val scope: Scope) {
 

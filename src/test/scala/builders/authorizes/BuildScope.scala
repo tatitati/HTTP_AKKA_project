@@ -1,6 +1,6 @@
 package builders.authorizes
 
-import app.domain.ownerstore.auth.Scope
+import app.domain.ownerstore.Scope
 
 object BuildScope {
 

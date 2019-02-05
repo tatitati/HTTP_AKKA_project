@@ -2,26 +2,19 @@ package app.domain.thirdstore
 
 import scala.util.Random
 
-class Third(
-             private var name: String,
-             private var clientid: String,
-             private var clientsecret: String,
-             private var callback: String,
-             private var homepage: String,
-             private var description: String
-  ) {
+class Third(var profile: ThirdProfile) {
 
   def refreshCredentials(): Unit = {
-    clientid = generateRandomString()
-    clientsecret = generateRandomString()
+    profile.clientid = generateRandomString()
+    profile.clientsecret = generateRandomString()
   }
 
   def exportMemento(): MementoThird = {
-    MementoThird(name, homepage, clientid, description)
+    MementoThird(profile.name, profile.homepage, profile.clientid, profile.description)
   }
 
   def setname(withname: String): Unit = {
-    name = withname
+    profile.name = withname
   }
 
   private def generateRandomString(): String = {

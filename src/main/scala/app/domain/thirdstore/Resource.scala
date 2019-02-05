@@ -1,26 +1,26 @@
 package app.domain.thirdstore
 
-import app.domain.Profile
-import app.domain.ownerstore.auth.Scope
+import app.domain.ownerstore.{OwnerProfile, Scope}
 
 class Resource(
-                private val profile: Profile,
+                private val ownerProfile: OwnerProfile,
                 private val scope: Scope,
                 private var token: Option[Token]
     ){
 
-    def firstname(): Option[String] = scope.firstname match {
-        case true => Option(profile.firstname)
+    def firstname(): Option[String] =
+      scope.firstname match {
+        case true if !isTokenExpired.getOrElse(false) => Option(ownerProfile.firstname)
         case _ => None
     }
 
     def surname(): Option[String] = scope.surname match {
-        case true => Option(profile.surname)
+        case true if !isTokenExpired.getOrElse(false) => Option(ownerProfile.surname)
         case _ => None
     }
 
     def email(): Option[String] = scope.email match {
-        case true => Option(profile.email)
+        case true if !isTokenExpired.getOrElse(false) => Option(ownerProfile.email)
         case _ => None
     }
 

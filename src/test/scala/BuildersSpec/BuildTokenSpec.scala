@@ -1,7 +1,9 @@
-package builders
+package BuildersSpec
 
 import java.util.UUID
+
 import app.domain.thirdstore.Token
+import builders.BuildToken
 import org.scalatest.FunSuite
 
 class BuildTokenSpec extends FunSuite{
