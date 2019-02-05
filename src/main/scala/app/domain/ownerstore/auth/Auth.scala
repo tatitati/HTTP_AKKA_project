@@ -2,7 +2,7 @@ package app.domain.ownerstore.auth
 
 import app.domain.thirdstore.Third
 
-class Auth(private val third: Third, val scope: Scope) {
+class Auth(private val third: Third, private val scope: Scope) {
 
   private val thirdmemento =   third.exportMemento()
 
