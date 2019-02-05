@@ -20,6 +20,10 @@ class Third(
     MementoThird(name, homepage, clientid, description)
   }
 
+  def setname(withname: String): Unit = {
+    name = withname
+  }
+
   private def generateRandomString(): String = {
     val length = 10
     var text: String = ""

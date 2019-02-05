@@ -17,4 +17,5 @@ object BuildThird {
     def anyWithClientId(clientId: String): Third = {
       new Third("travis", clientId, "anyclientsecret", "callback", "homepage", "description")
     }
+
 }
