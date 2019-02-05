@@ -4,9 +4,12 @@ import app.domain.thirdstore.Third
 
 class Auth(val third: Third, val scope: Scope) {
 
-  def name(): String = third.name
-  def homepage(): String = third.homepage
-  def clientId(): String = third.getclientid
+  private val thirdmemento =   third.exportMemento()
+
+  def name(): String = thirdmemento.name
+  def homepage(): String = thirdmemento.homepage
+  def clientId(): String = thirdmemento.clientId
+  def description(): String = thirdmemento.description
 
   def canAccessToFirstname(): Boolean = scope.firstname
   def canAccessToSurname(): Boolean = scope.surname
