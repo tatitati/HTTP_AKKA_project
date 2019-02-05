@@ -8,7 +8,7 @@ class Owner(var profile: OwnerProfile, val listAuth: ListAuth) {
 
   def revoke(clientId: String): Unit = listAuth.removeThird(clientId)
 
-  def grant(mapThirdToPerm: Auth): Unit = listAuth.addThird(mapThirdToPerm)
+  def grant(auth: Auth): Unit = listAuth.addThird(auth)
 
   def find(clientId: String): Option[Auth] = listAuth.find(clientId)
 }

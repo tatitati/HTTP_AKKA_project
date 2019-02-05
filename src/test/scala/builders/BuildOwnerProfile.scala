@@ -8,19 +8,19 @@ object BuildOwnerProfile {
   private val date = DateTime.now.withYear(2030).withMonth(8).withDay(20)
 
   def any(
-           firstname: String = "any firstname",
-           surname: String = "then surname",
-           email: String = "whatever@email.com",
-           emailconfirmed: Boolean = true,
-           datebirth: DateTime = date
+           withFirstname: String = "any firstname",
+           withSurname: String = "then surname",
+           withEmail: String = "whatever@email.com",
+           withEmailConfirmed: Boolean = true,
+           withDatebirth: DateTime = date
          ): OwnerProfile = {
 
     new OwnerProfile(
-      firstname = firstname,
-      surname = surname,
-      email = email,
-      emailconfirmed = emailconfirmed,
-      datebirth = datebirth
+      firstname = withFirstname,
+      surname = withSurname,
+      email = withEmail,
+      emailconfirmed = withEmailConfirmed,
+      datebirth = withDatebirth
     )
   }
 }

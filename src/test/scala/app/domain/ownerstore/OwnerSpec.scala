@@ -11,61 +11,69 @@ class OwnerSpec extends FunSuite {
   }
 
   test("Has a list of authorizations ") {
-    val user = BuildOwner.any()
+    val givenUser = BuildOwner.any()
 
-    assert(user.listAuth.isInstanceOf[ListAuth])
-    assert(user.countThirds === 2)
+    assert(givenUser.listAuth.isInstanceOf[ListAuth])
+    assert(givenUser.countThirds === 2)
   }
 
   test("Has an editable profile") {
-    val user = BuildOwner.any(
-      profile = BuildOwnerProfile.any(firstname = "gutierrez")
+    val givenUser = BuildOwner.any(
+      withProfile = BuildOwnerProfile.any(
+        withFirstname = "gutierrez"
+      )
     )
 
-    assert(user.profile.firstname === "gutierrez")
-    user.profile.firstname = "manolo"
-    assert(user.profile.firstname === "manolo", "=> Firstname should be updated")
+    assert(givenUser.profile.firstname === "gutierrez")
+    givenUser.profile.firstname = "manolo"
+    assert(givenUser.profile.firstname === "manolo", "=> Firstname should be updated")
   }
 
-  test("Know if a third is authorized") {
-    val user = BuildOwner.any()
+  test("Know if a third is in the list (search by clientid)") {
+    val givenUser = BuildOwner.any()
 
-    assert(user.has("anyclientid") === true)
-    assert(user.has("anycountid") === false)
+    assert(givenUser.has("anyclientid") === true)
+    assert(givenUser.has("anotherclientid") === false)
   }
 
-  test("Can revoke thirds") {
-    val user = BuildOwner.any()
+  test("Can delete(revoke) a third from the list") {
+    val givenUser = BuildOwner.any()
 
-    assert(user.has("anyclientid") === true)
-    user.revoke("anyclientid")
-    assert(user.has("anyclientid") === false, "=> Authorization should be removed from list")
+    assert(givenUser.has("anyclientid") === true)
+    givenUser.revoke("anyclientid")
+    assert(givenUser.has("anyclientid") === false, "=> Authorization should be removed from list")
   }
 
-  test("Can authorize a third") {
-    val user = BuildOwner.any()
+  test("Can authorize a third (add to the list)") {
+    val givenUser = BuildOwner.any()
 
-    assert(user.has("newthirdclientId") === false, "=> Initially shouldn't have this third in the list")
-    assert(user.countThirds() === 2)
+    assert(givenUser.has("newthirdclientId") === false, "=> Initially shouldn't have this third in the list")
+    assert(givenUser.countThirds() === 2)
 
-    user.grant(
-      BuildAuth.anyAuthorizationWithClientId("newthirdclientId")
+    givenUser.grant(
+      BuildAuth.any(
+        withThird = BuildThird.any(
+          withClientId = "newthirdclientId"
+        )
+      )
     )
 
-    assert(user.has("newthirdclientId") === true, "=> After grant acces it should be in the lsit")
-    assert(user.countThirds() === 3)
+    assert(givenUser.has("newthirdclientId") === true, "=> After grant acces it should be in the lsit")
+    assert(givenUser.countThirds() === 3)
   }
 
   test("can provide info about a third in the list") {
 
-    val givenOwner = BuildOwner.any(authorizationsList = new ListAuth(List(
-      new Auth(
-        BuildThird.any(withName = "travis", withClientId = "clientid1"),
-        BuildScope.onlyEmailAndFirstname()
-      ),
-      BuildAuth.any(),
-      BuildAuth.any(),
-    )))
+    val givenOwner = BuildOwner.any(
+      withAuthorizationsList = new ListAuth(List(
+        BuildAuth.any(
+          withThird = BuildThird.any(withName = "travis", withClientId = "clientid1"),
+          withScope = BuildScope.onlyEmailAndFirstname()
+        ),
+        BuildAuth.any(),
+        BuildAuth.any(),
+      )
+    ))
 
     val auth1 = givenOwner.find("clientid1")
 

@@ -8,7 +8,7 @@ object BuildResource {
 
   def anyWithLiveToken(withsurname: String = "any surname", scope: Option[Scope] = None): Resource  = {
     new Resource(
-      ownerProfile  = BuildOwnerProfile.any(surname = withsurname),
+      ownerProfile  = BuildOwnerProfile.any(withSurname = withsurname),
       scope = scope.getOrElse(BuildScope.onlySurname()),
       token = Option(BuildToken.anyLive())
     )
@@ -16,7 +16,7 @@ object BuildResource {
 
   def anyWithExpiredToken(withsurname: String = "any surname", scope: Option[Scope] = None): Resource  = {
     new Resource(
-      ownerProfile = BuildOwnerProfile.any(surname = withsurname),
+      ownerProfile = BuildOwnerProfile.any(withSurname = withsurname),
       scope = scope.getOrElse(BuildScope.onlySurname()),
       token = Option(BuildToken.anyExpired())
     )
@@ -24,7 +24,7 @@ object BuildResource {
 
   def anyRevoked(withsurname: String = "any surname", scope: Option[Scope] = None): Resource  = {
     new Resource(
-      BuildOwnerProfile.any(surname = withsurname),
+      BuildOwnerProfile.any(withSurname = withsurname),
       scope.getOrElse(BuildScope.onlySurname()),
       None
     )
@@ -32,7 +32,7 @@ object BuildResource {
 
   def anyWithoutToken(withsurname: String = "any surname", scope: Option[Scope] = None): Resource  = {
     new Resource(
-      BuildOwnerProfile.any(surname = withsurname),
+      BuildOwnerProfile.any(withSurname = withsurname),
       scope.getOrElse(BuildScope.onlySurname()),
       None
     )
