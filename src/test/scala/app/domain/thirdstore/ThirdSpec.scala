@@ -22,7 +22,7 @@ class ThirdSpec extends FunSuite {
   }
 
   test("can edit third basic profile") {
-    val third = BuildThird.any(name = "first name")
+    val third = BuildThird.any(withName = "first name")
 
     assert(third.profile.name === "first name")
     third.profile.name = "second name"
@@ -30,7 +30,7 @@ class ThirdSpec extends FunSuite {
   }
 
   test("can edit clientid or clientsecret") {
-    val third = BuildThird.any(clientId = "clientid1")
+    val third = BuildThird.any(withClientId = "clientid1")
 
     assert(third.profile.clientid === "clientid1")
     third.profile.name = "clientid2"

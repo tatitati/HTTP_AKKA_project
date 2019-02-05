@@ -10,13 +10,13 @@ class BuildThirdSpec extends FunSuite {
   }
 
   test("Profile data is accessible in the third") {
-    val third = BuildThird.any(name="whatever")
+    val third = BuildThird.any(withName="whatever")
 
     assert(third.profile.name === "whatever")
   }
 
   test("Profile data is editable in third") {
-    val third = BuildThird.any(name="whatever")
+    val third = BuildThird.any(withName="whatever")
 
     third.profile.name = "something new"
 

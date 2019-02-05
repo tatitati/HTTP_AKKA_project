@@ -8,10 +8,10 @@ import builders.BuildThird
 object BuildAuth {
 
   def any(
-           third: Third = BuildThird.any(),
-           scope: Scope = BuildScope.onlySurname()
+           withThird: Third = BuildThird.any(),
+           withScope: Scope = BuildScope.onlySurname()
          ): Auth = {
-    new Auth(third, scope)
+    new Auth(withThird, withScope)
   }
 
   def anyAuthorizationWithClientId(clientId: String): Auth = {
