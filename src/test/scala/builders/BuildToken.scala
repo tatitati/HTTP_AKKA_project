@@ -7,32 +7,32 @@ import com.github.nscala_time.time.Imports._
 
 object BuildToken {
   def anyLive(
-               tokenType: String = "bearer",
-               expiresIn: Int = 10,
-               refreshToken: UUID = java.util.UUID.randomUUID,
-               accessToken: UUID = java.util.UUID.randomUUID
+               withTokenType: String = "bearer",
+               withExpirationIn: Int = 10,
+               withRefreshToken: UUID = java.util.UUID.randomUUID,
+               withAccessToken: UUID = java.util.UUID.randomUUID
              ): Token = {
     new Token(
-      accessToken,
-      tokenType,
-      refreshToken,
+      withAccessToken,
+      withTokenType,
+      withRefreshToken,
       DateTime.now() - 5.seconds,
-      expiresIn
+      withExpirationIn
     )
   }
 
   def anyExpired(
-                  tokenType: String = "bearer",
-                  expiresIn: Int = 10,
-                  refreshToken: UUID = java.util.UUID.randomUUID,
-                  accessToken: UUID = java.util.UUID.randomUUID
+                  withTokenType: String = "bearer",
+                  withExpirationIn: Int = 10,
+                  withRefreshToken: UUID = java.util.UUID.randomUUID,
+                  withAccessToken: UUID = java.util.UUID.randomUUID
                 ): Token = {
     new Token(
-      accessToken,
-      tokenType,
-      refreshToken,
+      withAccessToken,
+      withTokenType,
+      withRefreshToken,
       DateTime.now() - 20.seconds,
-      expiresIn
+      withExpirationIn
     )
   }
 }

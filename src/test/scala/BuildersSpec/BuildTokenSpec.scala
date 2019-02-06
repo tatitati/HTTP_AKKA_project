@@ -15,7 +15,7 @@ class BuildTokenSpec extends FunSuite{
 
   test("Builder can create a token with an specific refresh token") {
     val refreshToken = UUID.fromString("aaaa-bbbb-cccc-dddd-eeee")
-    val token = BuildToken.anyLive(refreshToken = refreshToken)
+    val token = BuildToken.anyLive(withRefreshToken = refreshToken)
 
     assert(token.isInstanceOf[Token])
   }
