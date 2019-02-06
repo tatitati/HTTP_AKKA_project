@@ -17,7 +17,7 @@ class CanManageTokenSpec extends FunSuite{
   }
 
 
-  test("Token to access resource might be or not expired") {
+  test("Token for resource might be or not expired") {
     var resourceWithExpiredToken = BuildResource.withExpiredToken()
     val resourceWithLiveToken = BuildResource.withLiveToken()
 
