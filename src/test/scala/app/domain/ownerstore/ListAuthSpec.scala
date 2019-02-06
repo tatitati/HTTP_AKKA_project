@@ -66,12 +66,18 @@ class ListAuthSpec extends FunSuite {
   test("Can add to list") {
     val listmap = BuildListAuth.anyListWithClientIds(List("clientid1", "clientid2"))
 
-    val third = BuildAuth.anyAuthorizationWithClientId("clientid3")
+    val auth = BuildAuth.any(
+      withThird = BuildThird.any(
+        withThirdProfile = BuildThirdProfile.any(
+          withClientid = "clientid3"
+        )
+      )
+    )
 
     assert(listmap.existThird("clientid1") === true)
     assert(listmap.existThird("clientid2") === true)
     assert(listmap.existThird("clientid3") === false)
-    listmap.addThird(third)
+    listmap.addThird(auth)
     assert(listmap.existThird("clientid1") === true)
     assert(listmap.existThird("clientid2") === true)
     assert(listmap.existThird("clientid3") === true)
@@ -82,12 +88,18 @@ class ListAuthSpec extends FunSuite {
   test("Cannot add twice the same to list") {
     val listmap = BuildListAuth.anyListWithClientIds(List("clientid1", "clientid2"))
 
-    val third = BuildAuth.anyAuthorizationWithClientId("clientid3")
+    val auth = BuildAuth.any(
+      withThird = BuildThird.any(
+        withThirdProfile = BuildThirdProfile.any(
+          withClientid = "clientid3"
+        )
+      )
+    )
 
     assert(listmap.count() === 2)
-    listmap.addThird(third)
+    listmap.addThird(auth)
     assert(listmap.count() === 3)
-    listmap.addThird(third)
+    listmap.addThird(auth)
     assert(listmap.count() === 3)
   }
 }

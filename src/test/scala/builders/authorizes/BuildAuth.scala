@@ -14,16 +14,4 @@ object BuildAuth {
          ): Auth = {
     new Auth(withThird, withScope, withToken)
   }
-
-  def anyAuthorizationWithClientId(clientId: String): Auth = {
-    new Auth(
-      BuildThird.any(
-        withThirdProfile = BuildThirdProfile.any(
-          withClientid = clientId
-        )
-      ),
-      BuildScope.onlySurname(),
-      Some(BuildToken.anyLive())
-    )
-  }
 }

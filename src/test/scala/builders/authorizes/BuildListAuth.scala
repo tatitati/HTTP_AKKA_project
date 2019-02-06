@@ -1,6 +1,7 @@
 package builders.authorizes
 
 import app.domain.ownerstore.ListAuth
+import builders.{BuildThird, BuildThirdProfile}
 
 object BuildListAuth {
 
@@ -14,7 +15,13 @@ object BuildListAuth {
   }
 
   def anyListWithClientIds(clientIds: List[String]): ListAuth = {
-    val newlist = clientIds.map(clientId  => BuildAuth.anyAuthorizationWithClientId(clientId))
+    val newlist = clientIds.map(clientId  => BuildAuth.any(
+      withThird = BuildThird.any(
+        withThirdProfile = BuildThirdProfile.any(
+          withClientid = clientId
+        )
+      )
+    ))
 
     new ListAuth(newlist)
   }
