@@ -1,34 +1,10 @@
-package app.domain.thirdstore
+package test.app.domain.thirdstore.Resource
 
 import app.domain.Token
 import builders.BuildResource
-import builders.authorizes.BuildScope
 import org.scalatest.FunSuite
 
-class ResourceSpec extends FunSuite{
-
-  test("Resource check token expiration before accessing owner profile AND the scope") {
-    val givenResource1 = BuildResource.anyWithLiveToken(
-      withsurname = "my surname",
-      scope = Option(BuildScope.onlySurname())
-    )
-
-    assert(givenResource1.email() === None)
-    assert(givenResource1.firstname() === None)
-    assert(givenResource1.surname() === Some("my surname"), "=> Should return the surname because the scope allows it and the token is live")
-
-
-    val givenResource2 = BuildResource.anyWithExpiredToken(
-      withsurname = "my surname",
-      scope = Option(BuildScope.onlySurname())
-    )
-
-    assert(givenResource2.email() === None)
-    assert(givenResource2.firstname() === None)
-    assert(givenResource2.surname() === None, "=> Should returns None because even when the scope allows it, the token is expired")
-  }
-
-
+class CanManageTokenSpec extends FunSuite{
 
   test("Might or not have a token") {
     val givenResource1 = BuildResource.anyWithLiveToken()

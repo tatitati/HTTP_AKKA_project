@@ -1,59 +1,59 @@
 package app.domain.token
 
-import java.util.UUID
 import builders.{BuildToken, BuildUuid}
 import org.scalatest.FunSuite
 
 class CanBeRefreshedSpec extends FunSuite{
-  test("Can know if can be refreshed when used the proper refresh token") {
-    val givenRefreshToken = UUID.fromString("aaaa-bbbb-cccc-dddd-eeee")
+  test("WHEN using proper grant-type THEN can be refreshed") {
+    val rightRefreshToken = BuildUuid.uuidOne()
+    val wrongRefreshToken = BuildUuid.uuidTwo()
     val givenTOken = BuildToken.anyLive(
-      withRefreshToken = givenRefreshToken
+      withRefreshToken = rightRefreshToken
     )
 
-    assert(givenTOken.canRefreshWith(UUID.fromString("aaaa-bbbb-cccc-dddd-eeee"), "refresh_token") === true)
-    assert(givenTOken.canRefreshWith(UUID.fromString("aaaa-eeea-aaaa-eeee-aaaa"), "refresh_token") === false)
+    assert(givenTOken.canRefreshWith(rightRefreshToken, "refresh_token") === true)
+    assert(givenTOken.canRefreshWith(wrongRefreshToken, "refresh_token") === false)
   }
 
-  test("Can know if can be refreshed when used the proper grant_type ") {
-    val givenRefreshToken = UUID.fromString("aaaa-bbbb-cccc-dddd-eeee")
-    val givenTOken = BuildToken.anyLive(
-      withRefreshToken = givenRefreshToken
+  test("WHEN using wrong grant-type THEN cannot be refreshed") {
+    val rightRefreshToken = BuildUuid.uuidOne()
+    val givenToken = BuildToken.anyLive(
+      withRefreshToken = rightRefreshToken
     )
 
-    assert(givenTOken.canRefreshWith(UUID.fromString("aaaa-bbbb-cccc-dddd-eeee"), "wrong_gran_type") === false)
+    assert(givenToken.canRefreshWith(rightRefreshToken, "wrong_gran_type") === false)
   }
 
-  test("Can refresh an expired token") {
-    val givenRefreshTOken = BuildUuid.uuidOne()
-    val givenExpiredToken = BuildToken.anyExpired(
-      withRefreshToken = givenRefreshTOken
-    )
-
-    val thenNewToken = givenExpiredToken.refresh(
-      refreshToken = givenRefreshTOken,
-      grantType = "refresh_token"
-    )
-
-    assert(
-      thenNewToken match {
-        case Some(newtoken) => newtoken.equals(givenExpiredToken) === false
-        case _ => false
-    })
-  }
-
-  test("Cannot refresh a live token") {
-    val givenRefreshToken = BuildUuid.uuidOne()
-    val givenExpiredToken = BuildToken.anyLive(
-      withRefreshToken = givenRefreshToken
-    )
-
-    val thenNewToken = givenExpiredToken.refresh(
-      refreshToken = givenRefreshToken,
-      grantType = "refresh_token"
-    )
-
-    assert(!thenNewToken.equals(givenExpiredToken))
-    assert(thenNewToken === None)
-  }
+//  test("Can refresh an expired token") {
+//    val givenRefreshToken = BuildUuid.uuidOne()
+//    val givenExpiredToken = BuildToken.anyExpired(
+//      withRefreshToken = givenRefreshToken
+//    )
+//
+//    val thenNewToken = givenExpiredToken.refresh(
+//      refreshToken = givenRefreshToken,
+//      grantType = "refresh_token"
+//    )
+//
+//    assert(
+//      thenNewToken match {
+//        case Some(newtoken) => newtoken.equals(givenExpiredToken) === false
+//        case _ => false
+//    })
+//  }
+//
+//  test("Cannot refresh a live token") {
+//    val givenRefreshToken = BuildUuid.uuidOne()
+//    val givenExpiredToken = BuildToken.anyLive(
+//      withRefreshToken = givenRefreshToken
+//    )
+//
+//    val thenNewToken = givenExpiredToken.refresh(
+//      refreshToken = givenRefreshToken,
+//      grantType = "refresh_token"
+//    )
+//
+//    assert(!thenNewToken.equals(givenExpiredToken))
+//    assert(thenNewToken === None)
+//  }
 }
