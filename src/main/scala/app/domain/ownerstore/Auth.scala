@@ -4,7 +4,7 @@ import app.domain.{Scope, Token}
 import app.domain.thirdstore.Third
 
 class Auth(
-            private val third: Third,
+            private val third: Third, // change this to ThirdProfile!!!!!
             private val scope: Scope,
             val token: Option[Token]
   ) {
