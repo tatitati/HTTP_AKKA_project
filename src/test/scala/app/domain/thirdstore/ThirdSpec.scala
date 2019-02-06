@@ -6,20 +6,19 @@ import org.scalatest.FunSuite
 class ThirdSpec extends FunSuite {
 
   test("A third is built with a third profile and one resource") {
-    val third = BuildThird.any()
-    assert(third.isInstanceOf[Third])
+    val givenThird = BuildThird.any()
+    assert(givenThird.isInstanceOf[Third])
   }
 
   test("can refresh third credentials if they are compromised") {
-    val third = BuildThird.any()
+    val givenThird = BuildThird.any()
+    val clientId = givenThird.profile.clientid
+    val clientSecret = givenThird.profile.clientsecret
 
-    val clientId = third.profile.clientid
-    val clientSecret = third.profile.clientsecret
+    givenThird.refreshCredentials()
 
-    third.refreshCredentials()
-
-    val newclientid = third.profile.clientid
-    val newclientSecret = third.profile.clientsecret
+    val newclientid = givenThird.profile.clientid
+    val newclientSecret = givenThird.profile.clientsecret
 
     assert(clientId !== newclientid)
     assert(clientSecret !== newclientSecret)

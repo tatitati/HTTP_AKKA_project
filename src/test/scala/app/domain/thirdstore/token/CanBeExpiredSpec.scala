@@ -6,12 +6,12 @@ import org.scalatest.FunSuite
 class CanBeExpiredSpec extends FunSuite{
 
   test("Can check if a token is live") {
-    val token = BuildToken.anyLive()
-    assert(token.isExpired === false)
+    val givenToken = BuildToken.anyLive()
+    assert(givenToken.isExpired === false)
   }
 
   test("Can check if a token is expired") {
-    val token = BuildToken.anyExpired()
-    assert(token.isExpired === true)
+    val givenToken = BuildToken.anyExpired()
+    assert(givenToken.isExpired === true)
   }
 }

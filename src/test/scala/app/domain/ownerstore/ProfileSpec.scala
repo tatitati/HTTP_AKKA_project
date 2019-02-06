@@ -6,14 +6,14 @@ import org.scalatest.FunSuite
 class ProfileSpec extends FunSuite {
 
   test("Has proper attributes") {
-    val profile = BuildOwnerProfile.any()
+    val givenProfile = BuildOwnerProfile.any()
 
-    assert(profile.firstname === "any firstname")
-    assert(profile.surname === "then surname")
-    assert(profile.email === "whatever@email.com")
+    assert(givenProfile.firstname === "any firstname")
+    assert(givenProfile.surname === "then surname")
+    assert(givenProfile.email === "whatever@email.com")
 
-    assert(profile.datebirth.getDayOfMonth ===  20)
-    assert(profile.datebirth.getMonthOfYear ===  8)
-    assert(profile.datebirth.getYear ===  2030)
+    assert(givenProfile.datebirth.getDayOfMonth ===  20)
+    assert(givenProfile.datebirth.getMonthOfYear ===  8)
+    assert(givenProfile.datebirth.getYear ===  2030)
   }
 }
