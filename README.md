@@ -27,7 +27,7 @@ sbt run
 
 --- 
 
-# todo:
+# Todo:
 
 * token shouldnt have any behaviour, instead it should have the resource
 
