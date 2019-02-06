@@ -1,23 +1,14 @@
 package builders
 
-import app.domain.thirdstore.{ThirdProfile, Third}
+import app.domain.thirdstore.{Resource, Third, ThirdProfile}
 
 object BuildThird {
     def any(
-             withName: String = "travis",
-             withClientId: String = "anyclientid",
-             withClientSecret: String = "anyclientsecret",
-             withCallback: String = "callback",
-             withHomepage: String = "homepage",
-             withDescxription: String = "description"
-           ): Third = {
+           withThirdProfile: ThirdProfile = BuildThirdProfile.any(),
+           withReource: Resource = BuildResource.anyWithLiveToken()
+        ): Third = {
 
-      new Third(ThirdProfile(withName, withClientId, withClientSecret, withCallback, withHomepage, withDescxription))
+      new Third(withThirdProfile, withReource)
 
     }
-
-    def anyWithClientId(clientId: String): Third = {
-      new Third(ThirdProfile("travis", clientId, "anyclientsecret", "callback", "homepage", "description"))
-    }
-
 }

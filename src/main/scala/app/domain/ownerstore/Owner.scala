@@ -4,7 +4,7 @@ class Owner(var profile: OwnerProfile, val listAuth: ListAuth) {
 
   def countThirds(): Int = listAuth.count()
 
-  def has(clientId: String): Boolean = listAuth.existThird(clientId)
+  def exists(clientId: String): Boolean = listAuth.existThird(clientId)
 
   def revoke(clientId: String): Unit = listAuth.removeThird(clientId)
 

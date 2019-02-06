@@ -1,6 +1,6 @@
 package app.domain.ownerstore
 
-import builders.BuildThird
+import builders.{BuildThird, BuildThirdProfile}
 import builders.authorizes.{BuildAuth, BuildScope}
 import org.scalatest.FunSuite
 
@@ -19,9 +19,11 @@ class AuthSpec extends FunSuite {
   test("Can show data about third") {
     val givenAuth = BuildAuth.any(
       withThird = BuildThird.any(
-        withName = "CircleCI",
-        withHomepage = "http://www.whatever.com",
-        withDescxription = "any description"
+        withThirdProfile = BuildThirdProfile.any(
+          withName = "CircleCI",
+          withHomepage = "http://www.whatever.com",
+          withDescription = "any description"
+        )
       )
     )
 

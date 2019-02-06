@@ -3,7 +3,7 @@ package builders.authorizes
 import app.domain.{Scope, Token}
 import app.domain.ownerstore.Auth
 import app.domain.thirdstore.Third
-import builders.{BuildThird, BuildToken}
+import builders.{BuildThird, BuildThirdProfile, BuildToken}
 
 object BuildAuth {
 
@@ -17,7 +17,11 @@ object BuildAuth {
 
   def anyAuthorizationWithClientId(clientId: String): Auth = {
     new Auth(
-      BuildThird.anyWithClientId(clientId),
+      BuildThird.any(
+        withThirdProfile = BuildThirdProfile.any(
+          withClientid = clientId
+        )
+      ),
       BuildScope.onlySurname(),
       Some(BuildToken.anyLive())
     )

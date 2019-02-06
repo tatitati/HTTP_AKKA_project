@@ -1,7 +1,7 @@
 package BuildersSpec
 
 import app.domain.thirdstore.Third
-import builders.BuildThird
+import builders.{BuildThird, BuildThirdProfile}
 import org.scalatest.FunSuite
 
 class BuildThirdSpec extends FunSuite {
@@ -10,16 +10,24 @@ class BuildThirdSpec extends FunSuite {
   }
 
   test("Profile data is accessible in the third") {
-    val third = BuildThird.any(withName="whatever")
+    val givenThird = BuildThird.any(
+      withThirdProfile = BuildThirdProfile.any(
+        withName = "whatever"
+      )
+    )
 
-    assert(third.profile.name === "whatever")
+    assert(givenThird.profile.name === "whatever")
   }
 
   test("Profile data is editable in third") {
-    val third = BuildThird.any(withName="whatever")
+    val givenThird = BuildThird.any(
+      withThirdProfile = BuildThirdProfile.any(
+        withName = "whatever"
+      )
+    )
 
-    third.profile.name = "something new"
+    givenThird.profile.name = "something new"
 
-    assert(third.profile.name === "something new")
+    assert(givenThird.profile.name === "something new")
   }
 }

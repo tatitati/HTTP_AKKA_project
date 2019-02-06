@@ -1,6 +1,6 @@
 package app.domain.ownerstore
 
-import builders.{BuildOwner, BuildOwnerProfile, BuildThird}
+import builders.{BuildOwner, BuildOwnerProfile, BuildThird, BuildThirdProfile}
 import builders.authorizes.{BuildAuth, BuildScope}
 import org.scalatest.FunSuite
 
@@ -32,26 +32,28 @@ class OwnerSpec extends FunSuite {
   test("Can delete(revoke) a third from the list") {
     val givenUser = BuildOwner.any()
 
-    assert(givenUser.has("anyclientid") === true)
+    assert(givenUser.exists("anyclientid") === true)
     givenUser.revoke("anyclientid")
-    assert(givenUser.has("anyclientid") === false, "=> Authorization should be removed from list")
+    assert(givenUser.exists("anyclientid") === false, "=> Authorization should be removed from list")
   }
 
   test("Can authorize a third (add to the list)") {
     val givenUser = BuildOwner.any()
 
-    assert(givenUser.has("newthirdclientId") === false, "=> Initially shouldn't have this third in the list")
+    assert(givenUser.exists("newthirdclientId") === false, "=> Initially shouldn't have this third in the list")
     assert(givenUser.countThirds() === 2)
 
     givenUser.grant(
       BuildAuth.any(
         withThird = BuildThird.any(
-          withClientId = "newthirdclientId"
+          withThirdProfile = BuildThirdProfile.any(
+            withClientid = "newthirdclientId"
+          )
         )
       )
     )
 
-    assert(givenUser.has("newthirdclientId") === true, "=> After grant acces it should be in the lsit")
+    assert(givenUser.exists("newthirdclientId") === true, "=> After grant acces it should be in the lsit")
     assert(givenUser.countThirds() === 3)
   }
 
@@ -60,8 +62,12 @@ class OwnerSpec extends FunSuite {
     val givenOwner = BuildOwner.any(
       withAuthorizationsList = new ListAuth(List(
         BuildAuth.any(
-          withThird = BuildThird.any(withName = "travis", withClientId = "clientid1"),
-          withScope = BuildScope.onlyEmailAndFirstname()
+          withThird = BuildThird.any(
+            withThirdProfile = BuildThirdProfile.any(
+              withClientid = "clientid1",
+              withName = "travis"
+            )
+          )
         ),
         BuildAuth.any(),
         BuildAuth.any(),

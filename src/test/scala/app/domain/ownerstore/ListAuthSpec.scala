@@ -1,6 +1,6 @@
 package app.domain.ownerstore
 
-import builders.BuildThird
+import builders.{BuildThird, BuildThirdProfile}
 import builders.authorizes.{BuildAuth, BuildListAuth, BuildScope}
 import org.scalatest.FunSuite
 
@@ -23,13 +23,22 @@ class ListAuthSpec extends FunSuite {
   }
 
   test("can find item by clientid") {
+
     val givenAuth1 = BuildAuth.any(
-      withThird = BuildThird.anyWithClientId("clientid1"),
+      withThird = BuildThird.any(
+        withThirdProfile = BuildThirdProfile.any(
+          withClientid = "clientid1"
+        )
+      ),
       withScope = BuildScope.onlyEmailAndFirstname()
     )
 
     val givenAuth2 = BuildAuth.any(
-      withThird = BuildThird.anyWithClientId("clientid2"),
+      withThird = BuildThird.any(
+        withThirdProfile = BuildThirdProfile.any(
+          withClientid = "clientid2"
+        )
+      ),
       withScope = BuildScope.onlySurname()
     )
 

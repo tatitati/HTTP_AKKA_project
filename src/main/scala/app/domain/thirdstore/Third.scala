@@ -2,7 +2,7 @@ package app.domain.thirdstore
 
 import scala.util.Random
 
-class Third(var profile: ThirdProfile) {
+class Third(var profile: ThirdProfile, var resource: Resource) {
 
   def refreshCredentials(): Unit = {
     profile.clientid = generateRandomString()

@@ -1,9 +1,14 @@
 package app.domain.thirdstore
 
-import builders.BuildThird
+import builders.{BuildThird, BuildThirdProfile}
 import org.scalatest.FunSuite
 
 class ThirdSpec extends FunSuite {
+
+  test("A third is built with a third profile and one resource") {
+    val third = BuildThird.any()
+    assert(third.isInstanceOf[Third])
+  }
 
   test("can refresh third credentials if they are compromised") {
     val third = BuildThird.any()
@@ -21,18 +26,26 @@ class ThirdSpec extends FunSuite {
   }
 
   test("can edit third basic profile") {
-    val third = BuildThird.any(withName = "first name")
+    val givenThird = BuildThird.any(
+      withThirdProfile = BuildThirdProfile.any(
+        withName = "first name"
+      )
+    )
 
-    assert(third.profile.name === "first name")
-    third.profile.name = "second name"
-    assert(third.profile.name === "second name")
+    assert(givenThird.profile.name === "first name")
+    givenThird.profile.name = "second name"
+    assert(givenThird.profile.name === "second name")
   }
 
   test("can edit clientid or clientsecret") {
-    val third = BuildThird.any(withClientId = "clientid1")
+    val givenThird = BuildThird.any(
+      withThirdProfile = BuildThirdProfile.any(
+        withClientid = "clientid1"
+      )
+    )
 
-    assert(third.profile.clientid === "clientid1")
-    third.profile.name = "clientid2"
-    assert(third.profile.name === "clientid2")
+    assert(givenThird.profile.clientid === "clientid1")
+    givenThird.profile.name = "clientid2"
+    assert(givenThird.profile.name === "clientid2")
   }
 }
