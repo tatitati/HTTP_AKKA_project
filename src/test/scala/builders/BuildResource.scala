@@ -1,6 +1,6 @@
 package builders
 
-import app.domain.Scope
+import app.domain.{Scope, Token}
 import app.domain.thirdstore.Resource
 import builders.authorizes.BuildScope
 
@@ -35,6 +35,14 @@ object BuildResource {
       BuildOwnerProfile.any(withSurname = withsurname),
       scope.getOrElse(BuildScope.onlySurname()),
       None
+    )
+  }
+
+  def withToken(withToken: Token): Resource  = {
+    new Resource(
+      BuildOwnerProfile.any(),
+      BuildScope.onlySurname(),
+      Option(withToken)
     )
   }
 }

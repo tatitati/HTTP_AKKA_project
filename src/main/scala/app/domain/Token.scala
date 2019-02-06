@@ -23,17 +23,4 @@ class Token(
       case _ => false
     }
   }
-
-  def refresh(refreshToken: UUID, grantType: String): Option[Token] = {
-      if (canRefresh(refreshToken, grantType) && isExpired) {
-          Some(new Token(
-              accessToken = java.util.UUID.randomUUID,
-              refreshToken = java.util.UUID.randomUUID,
-              generatedIn = DateTime.now(),
-              tokenType = "bearer"
-          ))
-      } else {
-        None
-      }
-  }
 }

@@ -1,7 +1,10 @@
 package app.domain.thirdstore
 
+import java.util.UUID
+
 import app.domain.{Scope, Token}
 import app.domain.ownerstore.OwnerProfile
+import com.github.nscala_time.time.Imports.DateTime
 
 class Resource(
                 private val ownerProfile: OwnerProfile,
@@ -30,14 +33,19 @@ class Resource(
         case _ => None
     }
 
-    def refreshToken(): Unit = {
-      val newtoken = token match {
-        case Some(token) => token.refresh(token.refreshToken, "refresh_token")
-        case _ => None
+    def refreshToken(withRefreshToken: UUID, withGrantType: String): Unit = {
+      val canRefresh = token match {
+        case Some(token) => token.canRefresh(withRefreshToken, withGrantType)
+        case _ => false
       }
 
-      if(newtoken != None) {
-        token = newtoken
+      if (canRefresh) {
+        token = Some(new Token(
+          accessToken = java.util.UUID.randomUUID,
+          refreshToken = java.util.UUID.randomUUID,
+          generatedIn = DateTime.now(),
+          tokenType = "bearer"
+        ))
       }
     }
 

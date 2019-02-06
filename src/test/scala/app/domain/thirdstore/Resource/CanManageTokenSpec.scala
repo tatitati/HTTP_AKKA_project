@@ -1,7 +1,7 @@
 package test.app.domain.thirdstore.Resource
 
 import app.domain.Token
-import builders.BuildResource
+import builders.{BuildResource, BuildToken, BuildUuid}
 import org.scalatest.FunSuite
 
 class CanManageTokenSpec extends FunSuite{
@@ -36,26 +36,38 @@ class CanManageTokenSpec extends FunSuite{
 
 
   test("Can refresh an expired token") {
-    val resourceExpired = BuildResource.withExpiredToken()
+    val refreshToken = BuildUuid.uuidOne()
+    val resourceExpired = BuildResource.withToken(
+      withToken = BuildToken.anyExpired(withRefreshToken = refreshToken)
+    )
 
-    resourceExpired.refreshToken()
+    val originalToken = resourceExpired.token
+
+    resourceExpired.refreshToken(refreshToken, "refresh_token")
 
     assert(resourceExpired.isExpired() === Some(false))
+    assert(resourceExpired.token !== originalToken)
   }
 
-  test("Cannot refresh if token is still live") {
-    val resourceWithLiveToken = BuildResource.withLiveToken()
-    val originalToken = resourceWithLiveToken.token
+  test("Cannot refresh a live token") {
+    val refreshToken = BuildUuid.uuidOne()
+    val resourceExpired = BuildResource.withToken(
+      withToken = BuildToken.anyLive(withRefreshToken = refreshToken)
+    )
 
-    resourceWithLiveToken.refreshToken()
+    val originalToken = resourceExpired.token
 
-    assert(resourceWithLiveToken.token === originalToken)
+    resourceExpired.refreshToken(refreshToken, "refresh_token")
+
+    assert(resourceExpired.token === originalToken)
   }
+
 
   test("Cannot refresh if resource has not a token at all") {
+    val randomRefreshToken = BuildUuid.uuidOne()
     val resourceWithoutToken = BuildResource.withoutToken()
 
-    resourceWithoutToken.refreshToken()
+    resourceWithoutToken.refreshToken(randomRefreshToken, "refresh_token")
 
     assert(resourceWithoutToken.token === None)
   }
