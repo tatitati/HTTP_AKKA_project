@@ -1,4 +1,4 @@
-package app.domain.thirdstore.token
+package app.domain.token
 
 import java.util.UUID
 import builders.{BuildToken, BuildUuid}

@@ -1,7 +1,6 @@
 package app.domain
 
 import java.util.UUID
-import app.domain.thirdstore.MementoToken
 import com.github.nscala_time.time.Imports._
 
 class Token(
@@ -37,6 +36,4 @@ class Token(
         None
       }
   }
-
-  def exportMemento(): MementoToken = new MementoToken(accessToken.toString, tokenType, refreshToken.toString, expiresIn)
 }
