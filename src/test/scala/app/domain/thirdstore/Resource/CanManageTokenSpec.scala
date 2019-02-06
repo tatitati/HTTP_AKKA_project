@@ -30,7 +30,7 @@ class CanManageTokenSpec extends FunSuite{
     val resourceWithLiveToken = BuildResource.withLiveToken()
 
     resourceWithLiveToken.revoke()
-    
+
     assert(resourceWithLiveToken.token === None)
   }
 
@@ -41,6 +41,15 @@ class CanManageTokenSpec extends FunSuite{
     resourceExpired.refreshToken()
 
     assert(resourceExpired.isExpired() === Some(false))
+  }
+
+  test("Cannot refresh if token is still live") {
+    val resourceWithLiveToken = BuildResource.withLiveToken()
+    val originalToken = resourceWithLiveToken.token
+    
+    resourceWithLiveToken.refreshToken()
+
+    assert(resourceWithLiveToken.token === originalToken)
   }
 
   test("Cannot refresh if resource has not a token at all") {
