@@ -5,20 +5,19 @@ import org.scalatest.FunSuite
 
 class ThirdSpec extends FunSuite {
 
-  test("Can export state (memento)") {
-    val third = BuildThird.any()
-
-    val memento = third.exportMemento()
-
-    assert(memento.isInstanceOf[MementoThird] === true)
-  }
-
   test("can refresh third credentials if they are compromised") {
     val third = BuildThird.any()
 
-    val clientId = third.exportMemento().clientId
+    val clientId = third.profile.clientid
+    val clientSecret = third.profile.clientsecret
 
     third.refreshCredentials()
+
+    val newclientid = third.profile.clientid
+    val newclientSecret = third.profile.clientsecret
+
+    assert(clientId !== newclientid)
+    assert(clientSecret !== newclientSecret)
   }
 
   test("can edit third basic profile") {

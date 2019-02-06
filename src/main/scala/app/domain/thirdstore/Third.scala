@@ -9,10 +9,6 @@ class Third(var profile: ThirdProfile) {
     profile.clientsecret = generateRandomString()
   }
 
-  def exportMemento(): MementoThird = {
-    MementoThird(profile.name, profile.homepage, profile.clientid, profile.description)
-  }
-
   private def generateRandomString(): String = {
     val length = 10
     var text: String = ""

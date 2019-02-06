@@ -9,7 +9,10 @@ class CanExportStateSpec extends FunSuite {
   test("When exporting memento it hides the implementation details") {
     val givenAccessToken = BuildUuid.uuidOne()
     val givenRefreshToken = BuildUuid.uuidTwo()
-    val givenToken = BuildToken.anyLive(withAccessToken = givenAccessToken, withRefreshToken = givenRefreshToken)
+    val givenToken = BuildToken.anyLive(
+      withAccessToken = givenAccessToken,
+      withRefreshToken = givenRefreshToken
+    )
 
     val memento = givenToken.exportMemento()
 

@@ -13,11 +13,11 @@ object BuildToken {
                withAccessToken: UUID = java.util.UUID.randomUUID
              ): Token = {
     new Token(
-      withAccessToken,
-      withTokenType,
-      withRefreshToken,
-      DateTime.now() - 5.seconds,
-      withExpirationIn
+      accessToken = withAccessToken,
+      tokenType = withTokenType,
+      refreshToken = withRefreshToken,
+      generatedIn = DateTime.now() - 5.seconds,
+      expiresIn = withExpirationIn
     )
   }
 
@@ -28,11 +28,11 @@ object BuildToken {
                   withAccessToken: UUID = java.util.UUID.randomUUID
                 ): Token = {
     new Token(
-      withAccessToken,
-      withTokenType,
-      withRefreshToken,
-      DateTime.now() - 20.seconds,
-      withExpirationIn
+      accessToken = withAccessToken,
+      tokenType = withTokenType,
+      refreshToken = withRefreshToken,
+      generatedIn = DateTime.now() - 20.seconds,
+      expiresIn = withExpirationIn
     )
   }
 }

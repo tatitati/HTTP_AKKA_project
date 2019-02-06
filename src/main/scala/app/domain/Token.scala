@@ -1,7 +1,6 @@
 package app.domain
 
 import java.util.UUID
-
 import app.domain.thirdstore.MementoToken
 import com.github.nscala_time.time.Imports._
 
@@ -9,8 +8,8 @@ class Token(
              val accessToken: UUID,
              val tokenType: String,
              val refreshToken: UUID,
-             private var generatedIn: DateTime,
-             private val expiresIn: Int = 360000 // 10 hour,
+             val expiresIn: Int = 360000,
+             private var generatedIn: DateTime
   ){
 
   def isExpired: Boolean = {
