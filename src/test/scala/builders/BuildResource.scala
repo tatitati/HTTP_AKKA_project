@@ -6,7 +6,7 @@ import builders.authorizes.BuildScope
 
 object BuildResource {
 
-  def anyWithLiveToken(withsurname: String = "any surname", scope: Option[Scope] = None): Resource  = {
+  def withLiveToken(withsurname: String = "any surname", scope: Option[Scope] = None): Resource  = {
     new Resource(
       ownerProfile  = BuildOwnerProfile.any(withSurname = withsurname),
       scope = scope.getOrElse(BuildScope.onlySurname()),
@@ -14,7 +14,7 @@ object BuildResource {
     )
   }
 
-  def anyWithExpiredToken(withsurname: String = "any surname", scope: Option[Scope] = None): Resource  = {
+  def withExpiredToken(withsurname: String = "any surname", scope: Option[Scope] = None): Resource  = {
     new Resource(
       ownerProfile = BuildOwnerProfile.any(withSurname = withsurname),
       scope = scope.getOrElse(BuildScope.onlySurname()),
@@ -22,7 +22,7 @@ object BuildResource {
     )
   }
 
-  def anyRevoked(withsurname: String = "any surname", scope: Option[Scope] = None): Resource  = {
+  def withRevokedToken(withsurname: String = "any surname", scope: Option[Scope] = None): Resource  = {
     new Resource(
       BuildOwnerProfile.any(withSurname = withsurname),
       scope.getOrElse(BuildScope.onlySurname()),
@@ -30,7 +30,7 @@ object BuildResource {
     )
   }
 
-  def anyWithoutToken(withsurname: String = "any surname", scope: Option[Scope] = None): Resource  = {
+  def withoutToken(withsurname: String = "any surname", scope: Option[Scope] = None): Resource  = {
     new Resource(
       BuildOwnerProfile.any(withSurname = withsurname),
       scope.getOrElse(BuildScope.onlySurname()),

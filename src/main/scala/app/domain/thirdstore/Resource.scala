@@ -11,21 +11,21 @@ class Resource(
 
     def firstname(): Option[String] =
       scope.firstname match {
-        case true if !isTokenExpired.getOrElse(false) => Option(ownerProfile.firstname)
+        case true if !isExpired.getOrElse(false) => Option(ownerProfile.firstname)
         case _ => None
     }
 
     def surname(): Option[String] = scope.surname match {
-        case true if !isTokenExpired.getOrElse(false) => Option(ownerProfile.surname)
+        case true if !isExpired.getOrElse(false) => Option(ownerProfile.surname)
         case _ => None
     }
 
     def email(): Option[String] = scope.email match {
-        case true if !isTokenExpired.getOrElse(false) => Option(ownerProfile.email)
+        case true if !isExpired.getOrElse(false) => Option(ownerProfile.email)
         case _ => None
     }
 
-    def isTokenExpired(): Option[Boolean] = token match {
+    def isExpired(): Option[Boolean] = token match {
         case Some(token) => Option(token.isExpired)
         case _ => None
     }
@@ -41,7 +41,7 @@ class Resource(
       }
     }
 
-    def revokeToken(): Unit = {
+    def revoke(): Unit = {
       token = None
     }
 }

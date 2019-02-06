@@ -7,50 +7,47 @@ import org.scalatest.FunSuite
 class CanManageTokenSpec extends FunSuite{
 
   test("Might or not have a token") {
-    val givenResource1 = BuildResource.anyWithLiveToken()
-    assert(givenResource1.token.isInstanceOf[Some[Token]])
+    val resourceWithLiveToken = BuildResource.withLiveToken()
+    val resourceWithoutToken = BuildResource.withoutToken()
+    val resourceWithRevokedToken = BuildResource.withRevokedToken()
 
-    val givenResource2 = BuildResource.anyWithoutToken()
-    assert(givenResource2.token === None)
-
-    val givenResource3 = BuildResource.anyRevoked()
-    assert(givenResource3.isTokenExpired() === None)
+    assert(resourceWithLiveToken.token.isInstanceOf[Some[Token]])
+    assert(resourceWithoutToken.token === None)
+    assert(resourceWithRevokedToken.isExpired() === None)
   }
-
 
 
   test("Token to access resource might be or not expired") {
-    var givenResource = BuildResource.anyWithExpiredToken()
-    assert(givenResource.isTokenExpired() === Some(true))
+    var resourceWithExpiredToken = BuildResource.withExpiredToken()
+    val resourceWithLiveToken = BuildResource.withLiveToken()
 
-    givenResource = BuildResource.anyWithLiveToken()
-    assert(givenResource.isTokenExpired() === Some(false))
+    assert(resourceWithExpiredToken.isExpired() === Some(true))
+    assert(resourceWithLiveToken.isExpired() === Some(false))
   }
-
 
 
   test("Can revoke resource token") {
-    val givenResource = BuildResource.anyWithLiveToken()
+    val resourceWithLiveToken = BuildResource.withLiveToken()
 
-    assert(givenResource.token.isInstanceOf[Some[Token]])
-    givenResource.revokeToken()
-    assert(givenResource.token === None)
+    resourceWithLiveToken.revoke()
+    
+    assert(resourceWithLiveToken.token === None)
   }
-
 
 
   test("Can refresh an expired token") {
-    val givenResource = BuildResource.anyWithExpiredToken()
+    val resourceExpired = BuildResource.withExpiredToken()
 
-    assert(givenResource.isTokenExpired() === Some(true))
-    givenResource.refreshToken()
-    assert(givenResource.isTokenExpired() === Some(false))
+    resourceExpired.refreshToken()
+
+    assert(resourceExpired.isExpired() === Some(false))
   }
 
-  test("Cannot refresh if resource has not a token already") {
-    val givenResource = BuildResource.anyWithoutToken()
+  test("Cannot refresh if resource has not a token at all") {
+    val resourceWithoutToken = BuildResource.withoutToken()
 
-    givenResource.refreshToken()
-    assert(givenResource.token === None)
+    resourceWithoutToken.refreshToken()
+
+    assert(resourceWithoutToken.token === None)
   }
 }

@@ -7,7 +7,7 @@ import org.scalatest.FunSuite
 class CanReadProfileSpec extends FunSuite{
 
   test("When token is live, then we check scope") {
-    val givenResource1 = BuildResource.anyWithLiveToken(
+    val givenResource1 = BuildResource.withLiveToken(
       withsurname = "my surname",
       scope = Option(BuildScope.onlySurname())
     )
@@ -18,7 +18,7 @@ class CanReadProfileSpec extends FunSuite{
   }
 
   test("Even if the scope allows it, if the token is expired then the profile cannot be read") {
-    val givenResource2 = BuildResource.anyWithExpiredToken(
+    val givenResource2 = BuildResource.withExpiredToken(
       withsurname = "my surname",
       scope = Option(BuildScope.onlySurname())
     )
