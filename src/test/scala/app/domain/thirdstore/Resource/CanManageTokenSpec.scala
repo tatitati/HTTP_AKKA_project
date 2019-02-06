@@ -46,7 +46,7 @@ class CanManageTokenSpec extends FunSuite{
   test("Cannot refresh if token is still live") {
     val resourceWithLiveToken = BuildResource.withLiveToken()
     val originalToken = resourceWithLiveToken.token
-    
+
     resourceWithLiveToken.refreshToken()
 
     assert(resourceWithLiveToken.token === originalToken)

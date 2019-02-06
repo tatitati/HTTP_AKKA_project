@@ -17,15 +17,15 @@ class Token(
     expireInDate < now
   }
 
-  def canRefreshWith(givenReshToken: UUID, givenGrantType: String): Boolean = {
+  def canRefresh(givenRefreshToken: UUID, givenGrantType: String): Boolean = {
     givenGrantType match {
-      case "refresh_token" => refreshToken.equals(givenReshToken)
+      case "refresh_token" => refreshToken.equals(givenRefreshToken) && isExpired
       case _ => false
     }
   }
 
   def refresh(refreshToken: UUID, grantType: String): Option[Token] = {
-      if (canRefreshWith(refreshToken, grantType) && isExpired) {
+      if (canRefresh(refreshToken, grantType) && isExpired) {
           Some(new Token(
               accessToken = java.util.UUID.randomUUID,
               refreshToken = java.util.UUID.randomUUID,
