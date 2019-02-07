@@ -11,4 +11,8 @@ object AnyFrom {
   def text(): String = {
     Random.nextString(8)
   }
+
+  def boolean(): Boolean = {
+    Random.nextBoolean()
+  }
 }

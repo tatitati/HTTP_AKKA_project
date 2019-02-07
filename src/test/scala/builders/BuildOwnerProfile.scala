@@ -11,7 +11,7 @@ object BuildOwnerProfile {
            withFirstname: String = AnyFrom.text(),
            withSurname: String = AnyFrom.text(),
            withEmail: String = AnyFrom.text(),
-           withEmailConfirmed: Boolean = AnyFrom(true, false),
+           withEmailConfirmed: Boolean = AnyFrom.boolean(),
            withDatebirth: DateTime = date
          ): OwnerProfile = {
 
