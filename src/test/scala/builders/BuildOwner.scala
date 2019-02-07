@@ -6,8 +6,8 @@ import builders.authorizes.BuildListAuth
 object BuildOwner {
     def any(
              withProfile: OwnerProfile = BuildOwnerProfile.any(),
-             withAuthorizationsList: Auths = BuildListAuth.any()
+             withAuths: Auths = BuildListAuth.any()
            ):Owner  = {
-      new Owner(withProfile, withAuthorizationsList)
+      new Owner(withProfile, withAuths)
     }
 }

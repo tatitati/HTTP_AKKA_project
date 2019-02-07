@@ -4,12 +4,12 @@ import app.domain.thirdstore.ThirdProfile
 
 object BuildThirdProfile {
     def any(
-        withName: String = "travis",
+        withName: String = AnyFrom.text(),
         withClientid: String = "anyclientid",
-        withClientsecret: String = "anyclientsecret",
-        withCallback: String = "callback",
-        withHomepage: String = "homepage",
-        withDescription: String = "description"
+        withClientsecret: String = AnyFrom.text(),
+        withCallback: String = AnyFrom.text(),
+        withHomepage: String = AnyFrom.text(),
+        withDescription: String = AnyFrom.text()
            ): ThirdProfile = {
 
       new ThirdProfile(

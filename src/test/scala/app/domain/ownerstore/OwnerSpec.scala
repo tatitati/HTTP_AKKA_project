@@ -1,7 +1,7 @@
 package app.domain.ownerstore
 
 import builders.{BuildOwner, BuildOwnerProfile, BuildThird, BuildThirdProfile}
-import builders.authorizes.{BuildAuth, BuildScope}
+import builders.authorizes.{BuildAuth, BuildListAuth, BuildScope}
 import org.scalatest.FunSuite
 
 class OwnerSpec extends FunSuite {
@@ -60,7 +60,7 @@ class OwnerSpec extends FunSuite {
   test("can provide info about a third in the list when found") {
 
     val givenOwner = BuildOwner.any(
-      withAuthorizationsList = new Auths(Vector(
+      withAuths = new Auths(Vector(
         BuildAuth.any(
           withThird = BuildThird.any(
             withThirdProfile = BuildThirdProfile.any(
