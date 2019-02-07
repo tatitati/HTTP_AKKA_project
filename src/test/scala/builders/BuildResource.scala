@@ -7,7 +7,7 @@ import builders.authorizes.BuildScope
 object BuildResource {
 
   def withLiveToken(
-                     withsurname: String = AnyFrom.text(),
+                     withsurname: String = Faker.text(),
                      scope: Option[Scope] = None
                    ): Resource  = {
     new Resource(
@@ -18,7 +18,7 @@ object BuildResource {
   }
 
   def withExpiredToken(
-                        withsurname: String = AnyFrom.text(),
+                        withsurname: String = Faker.text(),
                         scope: Option[Scope] = None
                       ): Resource  = {
     new Resource(
@@ -29,7 +29,7 @@ object BuildResource {
   }
 
   def withRevokedToken(
-                        withsurname: String = AnyFrom.text(),
+                        withsurname: String = Faker.text(),
                         scope: Option[Scope] = None
                       ): Resource  = {
     new Resource(
@@ -40,7 +40,7 @@ object BuildResource {
   }
 
   def withoutToken(
-                    withsurname: String = AnyFrom.text(),
+                    withsurname: String = Faker.text(),
                     scope: Option[Scope] = None
                   ): Resource  = {
     new Resource(

@@ -1,7 +1,7 @@
 package builders.authorizes
 
 import app.domain.Scope
-import builders.AnyFrom
+import builders.Faker
 
 object BuildScope {
 
@@ -15,9 +15,9 @@ object BuildScope {
 
   def any(): Scope = {
     new Scope(
-      AnyFrom.boolean(),
-      AnyFrom.boolean(),
-      AnyFrom.boolean()
+      Faker.boolean(),
+      Faker.boolean(),
+      Faker.boolean()
     )
   }
 }

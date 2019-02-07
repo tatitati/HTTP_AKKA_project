@@ -37,6 +37,6 @@ object BuildToken {
   }
 
   def any(): Token = {
-    AnyFrom(anyLive(), anyExpired())
+    Faker(anyLive(), anyExpired())
   }
 }

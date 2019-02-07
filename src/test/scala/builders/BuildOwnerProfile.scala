@@ -6,11 +6,11 @@ import com.github.nscala_time.time.Imports.{DateTime, _}
 object BuildOwnerProfile {
 
   def any(
-           withFirstname: String = AnyFrom.text(),
-           withSurname: String = AnyFrom.text(),
-           withEmail: String = AnyFrom.text(),
-           withEmailConfirmed: Boolean = AnyFrom.boolean(),
-           withDatebirth: DateTime = AnyFrom.date()
+           withFirstname: String = Faker.text(),
+           withSurname: String = Faker.text(),
+           withEmail: String = Faker.text(),
+           withEmailConfirmed: Boolean = Faker.boolean(),
+           withDatebirth: DateTime = Faker.date()
          ): OwnerProfile = {
 
     new OwnerProfile(

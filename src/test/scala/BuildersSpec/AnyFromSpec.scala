@@ -1,6 +1,6 @@
 package BuildersSpec
 
-import builders.AnyFrom
+import builders.Faker
 import org.scalatest.FunSuite
 
 class AnyFromSpec extends FunSuite {
@@ -9,18 +9,18 @@ class AnyFromSpec extends FunSuite {
   test("I can use apply() to speed up process when coding") {
 
 
-    val one = AnyFrom("aa", "bb", "cc", "dd", "ee")
-    val two = AnyFrom("aa", "bb", "cc", "dd", "ee")
-    val three = AnyFrom("aa", "bb", "cc", "dd", "ee")
+    val one = Faker("aa", "bb", "cc", "dd", "ee")
+    val two = Faker("aa", "bb", "cc", "dd", "ee")
+    val three = Faker("aa", "bb", "cc", "dd", "ee")
 
     assert(one !== two !== three, "=> Should be random (they might match also sometimes...because of that is random)")
     assert(one.isInstanceOf[String] && two.isInstanceOf[String] && three.isInstanceOf[String])
   }
 
   test("I can generate random strings") {
-    val one = AnyFrom.text()
-    val two = AnyFrom.text()
-    val three = AnyFrom.text()
+    val one = Faker.text()
+    val two = Faker.text()
+    val three = Faker.text()
 
     assert(one !== two !== three)
     assert(one.isInstanceOf[String] && two.isInstanceOf[String] && three.isInstanceOf[String])

@@ -4,7 +4,7 @@ import com.github.nscala_time.time.Imports.{DateTime, _}
 
 import scala.util.Random
 
-object AnyFrom {
+object Faker {
   def apply[T](item: T*): T = {
     val items = item.toVector
     items(Random.nextInt(items.length))
