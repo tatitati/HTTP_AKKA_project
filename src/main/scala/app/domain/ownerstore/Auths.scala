@@ -16,9 +16,9 @@ class Auths(private var auths: Vector[Auth]) {
     )
   }
 
-  def addThird(authorization: Auth): Unit = {
-    existThird(authorization.clientId()) match {
-      case false => auths = auths :+ authorization
+  def addThird(auth: Auth): Unit = {
+    existThird(auth.clientId()) match {
+      case false => auths = auths :+ auth
       case true =>
     }
   }

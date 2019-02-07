@@ -6,7 +6,7 @@ import app.domain.thirdstore.ThirdProfile
 class Auth(
             private val thirdProfile: ThirdProfile,
             private val scope: Scope,
-            val token: Option[Token]
+            private val token: Option[Token]
   ) {
 
   def name(): String = thirdProfile.name
@@ -14,7 +14,7 @@ class Auth(
   def clientId(): String = thirdProfile.clientid
   def description(): String = thirdProfile.description
 
-  def canFirstname(): Boolean = scope.firstname
-  def canSurname(): Boolean = scope.surname
-  def canEmail(): Boolean = scope.email
+  def canFirstname: Boolean = scope.firstname
+  def canSurname: Boolean = scope.surname
+  def canEmail: Boolean = scope.email
 }

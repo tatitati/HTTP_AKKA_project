@@ -12,8 +12,8 @@ class AuthSpec extends FunSuite {
       withScope = BuildScope.onlySurname()
     )
 
-    assert(givenAuth.canFirstname() === false, "=> Third should be able to access to firstname")
-    assert(givenAuth.canSurname() === true, "=> Third should be able to access to surname")
+    assert(givenAuth.canFirstname === false, "=> Third should be able to access to firstname")
+    assert(givenAuth.canSurname === true, "=> Third should be able to access to surname")
   }
 
   test("Can show data about third") {
