@@ -1,5 +1,6 @@
 package BuildersSpec
 
+import builders.Randomizer
 import org.scalatest.FunSuite
 
 class RandomizerSpec extends FunSuite {
@@ -7,7 +8,15 @@ class RandomizerSpec extends FunSuite {
   // TODO: put in another trait the random-string-generator
 
   test("I can choost randomly an element from a Seq") {
-//    def getRandomElement(list: Seq[String], random: Random): String =
-//      list(random.nextInt(list.length))
+    val items = Vector("aa", "bb", "cc", "dd", "ee")
+
+    val one = Randomizer.any(items)
+    val two = Randomizer.any(items)
+    val three = Randomizer.any(items)
+
+    assert(one !== two !== three, "=> Should be random (they might match also sometimes...because of that is random)")
+    assert(one.isInstanceOf[String] && two.isInstanceOf[String] && three.isInstanceOf[String])
+
+
   }
 }

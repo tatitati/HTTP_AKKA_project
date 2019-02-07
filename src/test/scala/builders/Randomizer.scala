@@ -1,5 +1,9 @@
 package builders
 
-object Randomizer {
+import scala.util.Random
 
+object Randomizer {
+  def any[T](items: Seq[T]): T = {
+    items(Random.nextInt(items.length))
+  }
 }
