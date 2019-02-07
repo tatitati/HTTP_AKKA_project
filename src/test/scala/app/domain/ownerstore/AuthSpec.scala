@@ -8,7 +8,6 @@ class AuthSpec extends FunSuite {
 
   test("Can show scope granted to third") {
     val givenAuth = BuildAuth.any(
-      withThirdProfile = BuildThirdProfile.any(),
       withScope = BuildScope.onlySurname()
     )
 
@@ -20,14 +19,12 @@ class AuthSpec extends FunSuite {
     val givenAuth = BuildAuth.any(
         withThirdProfile = BuildThirdProfile.any(
           withName = "CircleCI",
-          withHomepage = "http://www.whatever.com",
           withDescription = "any description"
         )
     )
 
-    assert(givenAuth.name == "CircleCI")
-    assert(givenAuth.homepage == "http://www.whatever.com")
-    assert(givenAuth.description == "any description")
+    assert(givenAuth.name() == "CircleCI", "=> Should show third-name")
+    assert(givenAuth.description() == "any description", "=> Should show third-description")
   }
 
   test("Auth can have a token (or not if it was revoked)") {
