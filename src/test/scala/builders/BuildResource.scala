@@ -6,34 +6,46 @@ import builders.authorizes.BuildScope
 
 object BuildResource {
 
-  def withLiveToken(withsurname: String = "any surname", scope: Option[Scope] = None): Resource  = {
+  def withLiveToken(
+                     withsurname: String = AnyFrom.text(),
+                     scope: Option[Scope] = None
+                   ): Resource  = {
     new Resource(
       ownerProfile  = BuildOwnerProfile.any(withSurname = withsurname),
-      scope = scope.getOrElse(BuildScope.onlySurname()),
+      scope = scope.getOrElse(BuildScope.any()),
       token = Option(BuildToken.anyLive())
     )
   }
 
-  def withExpiredToken(withsurname: String = "any surname", scope: Option[Scope] = None): Resource  = {
+  def withExpiredToken(
+                        withsurname: String = AnyFrom.text(),
+                        scope: Option[Scope] = None
+                      ): Resource  = {
     new Resource(
       ownerProfile = BuildOwnerProfile.any(withSurname = withsurname),
-      scope = scope.getOrElse(BuildScope.onlySurname()),
+      scope = scope.getOrElse(BuildScope.any()),
       token = Option(BuildToken.anyExpired())
     )
   }
 
-  def withRevokedToken(withsurname: String = "any surname", scope: Option[Scope] = None): Resource  = {
+  def withRevokedToken(
+                        withsurname: String = AnyFrom.text(),
+                        scope: Option[Scope] = None
+                      ): Resource  = {
     new Resource(
       BuildOwnerProfile.any(withSurname = withsurname),
-      scope.getOrElse(BuildScope.onlySurname()),
+      scope.getOrElse(BuildScope.any()),
       None
     )
   }
 
-  def withoutToken(withsurname: String = "any surname", scope: Option[Scope] = None): Resource  = {
+  def withoutToken(
+                    withsurname: String = AnyFrom.text(),
+                    scope: Option[Scope] = None
+                  ): Resource  = {
     new Resource(
       BuildOwnerProfile.any(withSurname = withsurname),
-      scope.getOrElse(BuildScope.onlySurname()),
+      scope.getOrElse(BuildScope.any()),
       None
     )
   }
@@ -41,7 +53,7 @@ object BuildResource {
   def withToken(withToken: Token): Resource  = {
     new Resource(
       BuildOwnerProfile.any(),
-      BuildScope.onlySurname(),
+      BuildScope.any(),
       Option(withToken)
     )
   }
