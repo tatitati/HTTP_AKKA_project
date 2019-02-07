@@ -3,7 +3,7 @@ package builders.authorizes
 import app.domain.ownerstore.Auths
 import builders.{BuildThird, BuildThirdProfile}
 
-object BuildListAuth {
+object BuildAuths {
 
   def any(): Auths = {
     new Auths(
@@ -14,13 +14,14 @@ object BuildListAuth {
     )
   }
 
-  def anyListWithClientIds(clientIds: List[String]): Auths = {
-    val newlist = clientIds.map(clientId  => BuildAuth.any(
-      withThird = BuildThird.any(
-        withThirdProfile = BuildThirdProfile.any(
-          withClientid = clientId
+  def withClientIds(clientIds: List[String]): Auths = {
+    val newlist = clientIds.map(clientId  =>
+      BuildAuth.any(
+        withThird = BuildThird.any(
+          withThirdProfile = BuildThirdProfile.any(
+            withClientid = clientId
+          )
         )
-      )
     )).to[Vector]
 
     new Auths(newlist)

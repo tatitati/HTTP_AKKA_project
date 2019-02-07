@@ -1,7 +1,7 @@
 package app.domain.ownerstore
 
 import builders.{BuildOwner, BuildOwnerProfile, BuildThird, BuildThirdProfile}
-import builders.authorizes.{BuildAuth, BuildListAuth, BuildScope}
+import builders.authorizes.{BuildAuth, BuildAuths, BuildScope}
 import org.scalatest.FunSuite
 
 class OwnerSpec extends FunSuite {
@@ -30,7 +30,9 @@ class OwnerSpec extends FunSuite {
   }
 
   test("Can delete(revoke) a third from the list") {
-    val givenUser = BuildOwner.any()
+    val givenUser = BuildOwner.any(
+      withAuths = BuildAuths.withClientIds(List("anyclientid"))
+    )
 
     assert(givenUser.exists("anyclientid") === true)
     givenUser.revoke("anyclientid")

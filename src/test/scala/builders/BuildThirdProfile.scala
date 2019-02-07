@@ -5,7 +5,7 @@ import app.domain.thirdstore.ThirdProfile
 object BuildThirdProfile {
     def any(
         withName: String = AnyFrom.text(),
-        withClientid: String = "anyclientid",
+        withClientid: String = AnyFrom.text(),
         withClientsecret: String = AnyFrom.text(),
         withCallback: String = AnyFrom.text(),
         withHomepage: String = AnyFrom.text(),

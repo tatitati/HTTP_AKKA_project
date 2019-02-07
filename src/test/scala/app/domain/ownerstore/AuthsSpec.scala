@@ -1,22 +1,22 @@
 package app.domain.ownerstore
 
 import builders.{BuildThird, BuildThirdProfile}
-import builders.authorizes.{BuildAuth, BuildListAuth, BuildScope}
+import builders.authorizes.{BuildAuth, BuildAuths, BuildScope}
 import org.scalatest.FunSuite
 
 class AuthsSpec extends FunSuite {
   test("Builder can create a list of AppPermissions") {
-    assert(BuildListAuth.any().count === 2)
+    assert(BuildAuths.any().count === 2)
   }
 
   test("Builder can create a list of permissions with custom ids") {
-    val listmap = BuildListAuth.anyListWithClientIds(List("clientid1", "clientid2", "clientid3"))
+    val listmap = BuildAuths.withClientIds(List("clientid1", "clientid2", "clientid3"))
     assert(listmap.count === 3)
 
   }
 
   test("Can know if exist an item in list") {
-    val listmap = BuildListAuth.any()
+    val listmap = BuildAuths.withClientIds(List("anyclientid", "whatever"))
 
     assert(listmap.existThird("anyclientid") === true)
     assert(listmap.existThird("clientId2") === false)
@@ -52,7 +52,7 @@ class AuthsSpec extends FunSuite {
   }
 
   test("Can remove from list") {
-    val listmap = BuildListAuth.anyListWithClientIds(List("clientid1", "clientid2", "clientid3"))
+    val listmap = BuildAuths.withClientIds(List("clientid1", "clientid2", "clientid3"))
 
     assert(listmap.existThird("clientid1") === true)
     assert(listmap.existThird("clientid2") === true)
@@ -64,7 +64,7 @@ class AuthsSpec extends FunSuite {
   }
 
   test("Can add to list") {
-    val listmap = BuildListAuth.anyListWithClientIds(List("clientid1", "clientid2"))
+    val listmap = BuildAuths.withClientIds(List("clientid1", "clientid2"))
 
     val auth = BuildAuth.any(
       withThird = BuildThird.any(
@@ -86,7 +86,7 @@ class AuthsSpec extends FunSuite {
   }
 
   test("Cannot add twice the same to list") {
-    val listmap = BuildListAuth.anyListWithClientIds(List("clientid1", "clientid2"))
+    val listmap = BuildAuths.withClientIds(List("clientid1", "clientid2"))
 
     val auth = BuildAuth.any(
       withThird = BuildThird.any(
