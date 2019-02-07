@@ -2,6 +2,7 @@ package app.domain.ownerstore
 
 import builders.BuildOwnerProfile
 import org.scalatest.FunSuite
+import com.github.nscala_time.time.Imports.DateTime
 
 class ProfileSpec extends FunSuite {
 
@@ -16,8 +17,6 @@ class ProfileSpec extends FunSuite {
     assert(givenProfile.surname === "anysurname")
     assert(givenProfile.email === "whatever@email.com")
 
-    assert(givenProfile.datebirth.getDayOfMonth ===  20)
-    assert(givenProfile.datebirth.getMonthOfYear ===  8)
-    assert(givenProfile.datebirth.getYear ===  2030)
+    assert(givenProfile.datebirth.isInstanceOf[DateTime])
   }
 }

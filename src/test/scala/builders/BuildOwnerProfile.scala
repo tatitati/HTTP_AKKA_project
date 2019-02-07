@@ -5,8 +5,6 @@ import com.github.nscala_time.time.Imports.{DateTime, _}
 
 object BuildOwnerProfile {
 
-  private val date = DateTime.now.withYear(2030).withMonth(8).withDay(20)
-
   def any(
            withFirstname: String = AnyFrom.text(),
            withSurname: String = AnyFrom.text(),
