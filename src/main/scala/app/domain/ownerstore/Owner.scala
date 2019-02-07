@@ -1,6 +1,6 @@
 package app.domain.ownerstore
 
-class Owner(var profile: OwnerProfile, val listAuth: ListAuth) {
+class Owner(var profile: OwnerProfile, val listAuth: Auths) {
 
   def countThirds(): Int = listAuth.count()
 

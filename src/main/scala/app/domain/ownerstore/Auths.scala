@@ -1,30 +1,30 @@
 package app.domain.ownerstore
 
-class ListAuth(private var list: List[Auth]) {
+class Auths(private var auths: Vector[Auth]) {
 
-  def count() :Int = list.size
+  def count() :Int = auths.size
 
   def existThird(clientId: String): Boolean = {
-    list.exists(
+    auths.exists(
       map => map.clientId() == clientId
     )
   }
 
   def removeThird(clientId: String): Unit = {
-    list = list.filterNot(
+    auths = auths.filterNot(
       map => map.clientId() == clientId
     )
   }
 
   def addThird(authorization: Auth): Unit = {
     existThird(authorization.clientId()) match {
-      case false => list = list ::: List(authorization)
+      case false => auths = auths :+ authorization
       case true =>
     }
   }
 
   def find(clientId: String): Option[Auth] = {
-    val result: List[Auth] = list.filter(auth => auth.clientId() == clientId)
+    val result: Vector[Auth] = auths.filter(auth => auth.clientId() == clientId)
 
     result.isEmpty match {
       case false => Option(result.head)

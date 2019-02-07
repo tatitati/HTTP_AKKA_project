@@ -4,7 +4,7 @@ import builders.{BuildThird, BuildThirdProfile}
 import builders.authorizes.{BuildAuth, BuildListAuth, BuildScope}
 import org.scalatest.FunSuite
 
-class ListAuthSpec extends FunSuite {
+class AuthsSpec extends FunSuite {
   test("Builder can create a list of AppPermissions") {
     assert(BuildListAuth.any().count === 2)
   }
@@ -42,7 +42,7 @@ class ListAuthSpec extends FunSuite {
       withScope = BuildScope.onlySurname()
     )
 
-    val givenAuthList = new ListAuth(List(givenAuth1, givenAuth2))
+    val givenAuthList = new Auths(Vector(givenAuth1, givenAuth2))
 
     val scope1 = givenAuthList.find("clientid1")
     assert(scope1.isInstanceOf[Some[Auth]] === true)

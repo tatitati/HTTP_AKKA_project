@@ -1,12 +1,12 @@
 package builders
 
-import app.domain.ownerstore.{ListAuth, Owner, OwnerProfile}
+import app.domain.ownerstore.{Auths, Owner, OwnerProfile}
 import builders.authorizes.BuildListAuth
 
 object BuildOwner {
     def any(
              withProfile: OwnerProfile = BuildOwnerProfile.any(),
-             withAuthorizationsList: ListAuth = BuildListAuth.any()
+             withAuthorizationsList: Auths = BuildListAuth.any()
            ):Owner  = {
       new Owner(withProfile, withAuthorizationsList)
     }

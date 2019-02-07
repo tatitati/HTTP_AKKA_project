@@ -13,7 +13,7 @@ class OwnerSpec extends FunSuite {
   test("Has a list of authorizations ") {
     val givenUser = BuildOwner.any()
 
-    assert(givenUser.listAuth.isInstanceOf[ListAuth])
+    assert(givenUser.listAuth.isInstanceOf[Auths])
     assert(givenUser.countThirds === 2)
   }
 
@@ -60,7 +60,7 @@ class OwnerSpec extends FunSuite {
   test("can provide info about a third in the list when found") {
 
     val givenOwner = BuildOwner.any(
-      withAuthorizationsList = new ListAuth(List(
+      withAuthorizationsList = new Auths(Vector(
         BuildAuth.any(
           withThird = BuildThird.any(
             withThirdProfile = BuildThirdProfile.any(
