@@ -6,7 +6,7 @@ import org.scalatest.FunSuite
 
 class AuthSpec extends FunSuite {
 
-  test("Can show scope granted to third") {
+  test("User can know what permissions were granted to a third") {
     val givenAuth = BuildAuth.any(
       withScope = BuildScope.onlySurname()
     )
@@ -15,11 +15,10 @@ class AuthSpec extends FunSuite {
     assert(givenAuth.canSurname === true, "=> Third should be able to access to surname")
   }
 
-  test("Can show data about third") {
+  test("User can see basic information about the third that was granted permissions") {
     val givenAuth = BuildAuth.any(
         withThirdProfile = BuildThirdProfile.any(
-          withName = "CircleCI",
-          withDescription = "any description"
+          withName = "CircleCI", withDescription = "any description"
         )
     )
 
