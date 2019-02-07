@@ -35,4 +35,8 @@ object BuildToken {
       expiresIn = withExpirationIn
     )
   }
+
+  def any(): Token = {
+    AnyFrom(anyLive(), anyExpired())
+  }
 }

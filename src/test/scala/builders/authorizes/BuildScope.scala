@@ -1,6 +1,7 @@
 package builders.authorizes
 
 import app.domain.Scope
+import builders.AnyFrom
 
 object BuildScope {
 
@@ -10,5 +11,13 @@ object BuildScope {
 
   def onlySurname(): Scope = {
     new Scope(false, true, false)
+  }
+
+  def any(): Scope = {
+    new Scope(
+      AnyFrom.boolean(),
+      AnyFrom.boolean(),
+      AnyFrom.boolean()
+    )
   }
 }

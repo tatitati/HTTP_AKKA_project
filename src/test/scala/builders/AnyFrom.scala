@@ -18,6 +18,10 @@ object AnyFrom {
     Random.nextBoolean()
   }
 
+  def number(): Int = {
+    Random.nextInt()
+  }
+
   def date(): DateTime = {
     val past = DateTime.now.withYear(2000).withMonth(8).withDay(20)
     val now = DateTime.now

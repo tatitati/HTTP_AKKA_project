@@ -18,8 +18,6 @@ class AnyFromSpec extends FunSuite {
   }
 
   test("I can generate random strings") {
-
-
     val one = AnyFrom.text()
     val two = AnyFrom.text()
     val three = AnyFrom.text()

@@ -9,8 +9,8 @@ object BuildAuth {
 
   def any(
            withThird: Third = BuildThird.any(),
-           withScope: Scope = BuildScope.onlySurname(),
-           withToken: Option[Token] = Some(BuildToken.anyLive())
+           withScope: Scope = BuildScope.any,
+           withToken: Option[Token] = Some(BuildToken.any())
          ): Auth = {
     new Auth(withThird, withScope, withToken)
   }
