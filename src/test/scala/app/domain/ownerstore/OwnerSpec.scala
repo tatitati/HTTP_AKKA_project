@@ -47,11 +47,9 @@ class OwnerSpec extends FunSuite {
 
     givenUser.grant(
       BuildAuth.any(
-        withThird = BuildThird.any(
           withThirdProfile = BuildThirdProfile.any(
             withClientid = "newthirdclientId"
           )
-        )
       )
     )
 
@@ -64,12 +62,10 @@ class OwnerSpec extends FunSuite {
     val givenOwner = BuildOwner.any(
       withAuths = new Auths(Vector(
         BuildAuth.any(
-          withThird = BuildThird.any(
             withThirdProfile = BuildThirdProfile.any(
               withClientid = "clientid1",
               withName = "travis"
             )
-          )
         ),
         BuildAuth.any(),
         BuildAuth.any(),

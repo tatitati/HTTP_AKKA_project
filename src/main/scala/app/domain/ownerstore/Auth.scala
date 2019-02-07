@@ -1,22 +1,20 @@
 package app.domain.ownerstore
 
 import app.domain.{Scope, Token}
-import app.domain.thirdstore.Third
+import app.domain.thirdstore.ThirdProfile
 
 class Auth(
-            private val third: Third, // change this to ThirdProfile!!!!!
+            private val thirdProfile: ThirdProfile,
             private val scope: Scope,
             val token: Option[Token]
   ) {
 
-  def name(): String = third.profile.name
-  def homepage(): String = third.profile.homepage
-  def clientId(): String = third.profile.clientid
-  def description(): String = third.profile.description
+  def name(): String = thirdProfile.name
+  def homepage(): String = thirdProfile.homepage
+  def clientId(): String = thirdProfile.clientid
+  def description(): String = thirdProfile.description
 
-  def canAccessToFirstname(): Boolean = scope.firstname
-  def canAccessToSurname(): Boolean = scope.surname
-  def canAccessEmail(): Boolean = scope.email
-
-
+  def canFirstname(): Boolean = scope.firstname
+  def canSurname(): Boolean = scope.surname
+  def canEmail(): Boolean = scope.email
 }

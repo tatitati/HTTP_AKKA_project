@@ -25,19 +25,15 @@ class AuthsSpec extends FunSuite {
   test("can find item by clientid") {
 
     val givenAuth1 = BuildAuth.any(
-      withThird = BuildThird.any(
-        withThirdProfile = BuildThirdProfile.any(
+      withThirdProfile = BuildThirdProfile.any(
           withClientid = "clientid1"
-        )
       ),
       withScope = BuildScope.onlyEmailAndFirstname()
     )
 
     val givenAuth2 = BuildAuth.any(
-      withThird = BuildThird.any(
         withThirdProfile = BuildThirdProfile.any(
           withClientid = "clientid2"
-        )
       ),
       withScope = BuildScope.onlySurname()
     )
@@ -67,11 +63,9 @@ class AuthsSpec extends FunSuite {
     val listmap = BuildAuths.withClientIds(List("clientid1", "clientid2"))
 
     val auth = BuildAuth.any(
-      withThird = BuildThird.any(
         withThirdProfile = BuildThirdProfile.any(
           withClientid = "clientid3"
         )
-      )
     )
 
     assert(listmap.existThird("clientid1") === true)
@@ -89,11 +83,9 @@ class AuthsSpec extends FunSuite {
     val listmap = BuildAuths.withClientIds(List("clientid1", "clientid2"))
 
     val auth = BuildAuth.any(
-      withThird = BuildThird.any(
         withThirdProfile = BuildThirdProfile.any(
           withClientid = "clientid3"
         )
-      )
     )
 
     assert(listmap.count() === 2)

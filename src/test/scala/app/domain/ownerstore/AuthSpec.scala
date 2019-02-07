@@ -8,23 +8,21 @@ class AuthSpec extends FunSuite {
 
   test("Can show scope granted to third") {
     val givenAuth = BuildAuth.any(
-      withThird = BuildThird.any(),
+      withThirdProfile = BuildThirdProfile.any(),
       withScope = BuildScope.onlySurname()
     )
 
-    assert(givenAuth.canAccessToFirstname() === false, "=> Third should be able to access to firstname")
-    assert(givenAuth.canAccessToSurname() === true, "=> Third should be able to access to surname")
+    assert(givenAuth.canFirstname() === false, "=> Third should be able to access to firstname")
+    assert(givenAuth.canSurname() === true, "=> Third should be able to access to surname")
   }
 
   test("Can show data about third") {
     val givenAuth = BuildAuth.any(
-      withThird = BuildThird.any(
         withThirdProfile = BuildThirdProfile.any(
           withName = "CircleCI",
           withHomepage = "http://www.whatever.com",
           withDescription = "any description"
         )
-      )
     )
 
     assert(givenAuth.name == "CircleCI")
