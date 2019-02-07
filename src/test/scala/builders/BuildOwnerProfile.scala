@@ -12,7 +12,7 @@ object BuildOwnerProfile {
            withSurname: String = AnyFrom.text(),
            withEmail: String = AnyFrom.text(),
            withEmailConfirmed: Boolean = AnyFrom.boolean(),
-           withDatebirth: DateTime = date
+           withDatebirth: DateTime = AnyFrom.date()
          ): OwnerProfile = {
 
     new OwnerProfile(

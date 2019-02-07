@@ -1,5 +1,7 @@
 package builders
 
+import com.github.nscala_time.time.Imports.{DateTime, _}
+
 import scala.util.Random
 
 object AnyFrom {
@@ -14,5 +16,15 @@ object AnyFrom {
 
   def boolean(): Boolean = {
     Random.nextBoolean()
+  }
+
+  def date(): DateTime = {
+    val past = DateTime.now.withYear(2000).withMonth(8).withDay(20)
+    val now = DateTime.now
+    val future = DateTime.now.withYear(2030).withMonth(8).withDay(20)
+
+
+    val dates = Vector(past, now, future)
+    dates(Random.nextInt(dates.length))
   }
 }
