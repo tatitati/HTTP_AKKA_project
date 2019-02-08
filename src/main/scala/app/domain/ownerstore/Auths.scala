@@ -1,10 +1,10 @@
-package app.domain.ownerstore
+ package app.domain.ownerstore
 
 class Auths(private var auths: Vector[Auth]) {
 
   def count() :Int = auths.size
 
-  def existThird(clientId: String): Boolean = {
+  def existThird(clientId: String): Boolean = { // should be this private?, when a user is going to check if he has granted access to an especial third (I cannot imagine any scenario)
     auths.exists(
       map => map.clientId() == clientId
     )
@@ -23,7 +23,7 @@ class Auths(private var auths: Vector[Auth]) {
     }
   }
 
-  def find(clientId: String): Option[Auth] = {
+  def find(clientId: String): Option[Auth] = { 
     val result: Vector[Auth] = auths.filter(auth => auth.clientId() == clientId)
 
     result.isEmpty match {
