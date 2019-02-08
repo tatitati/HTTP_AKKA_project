@@ -2,6 +2,7 @@ package test.app.domain.thirdstore.Resource
 
 import builders.BuildResource
 import org.scalatest.FunSuite
+import org.scalatest.Matchers._
 
 class OnRevokeTokenSpec extends FunSuite{
 
@@ -16,8 +17,8 @@ class OnRevokeTokenSpec extends FunSuite{
   test("Receives an exception if there is no token") {
     val resourceWithLiveToken = BuildResource.withoutToken()
 
-    assertThrows[IllegalAccessException] {
+    the [IllegalAccessException] thrownBy(
       resourceWithLiveToken.revoke()
-    }
+    ) should have message "There is no token, so it cannot be revoked."
   }
 }

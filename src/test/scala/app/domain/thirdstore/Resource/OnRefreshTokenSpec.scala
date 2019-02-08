@@ -3,6 +3,7 @@ package test.app.domain.thirdstore.Resource
 import app.domain.Token
 import builders.{BuildResource, BuildToken, BuildUuid}
 import org.scalatest.FunSuite
+import org.scalatest.Matchers._
 
 class OnRefreshTokenSpec extends FunSuite{
 
@@ -45,18 +46,18 @@ class OnRefreshTokenSpec extends FunSuite{
       withToken = BuildToken.anyLive(withRefreshToken = refreshToken)
     )
 
-    assertThrows[IllegalAccessException] {
+    the [IllegalAccessException] thrownBy(
       resourceExpired.refreshToken(refreshToken, "refresh_token")
-    }
+    ) should have message "The token must be expired in order to be refreshed"
   }
 
   test("On Refresh-token receives an exception if there is not token") {
     val givenRandomUuid = BuildUuid.uuidOne()
     val givenResourceWithoutToken = BuildResource.withoutToken()
 
-    assertThrows[IllegalAccessException] {
+    the [IllegalAccessException] thrownBy(
       givenResourceWithoutToken.refreshToken(givenRandomUuid, "refresh_token")
-    }
+    ) should have message "There is no token to refresh. The token doesn't exist"
   }
 
   test("Receives an exception on Refreshing token with wrong refresh_token uuid") {
@@ -67,8 +68,9 @@ class OnRefreshTokenSpec extends FunSuite{
       )
     )
 
-    assertThrows[IllegalAccessException] {
+    the [IllegalAccessException] thrownBy(
       givenResourceExpired.refreshToken(givenWrongRefreshUui, "refresh_token")
-    }
+    ) should have message "The parameters used to refresh the token are invalid."
+
   }
 }

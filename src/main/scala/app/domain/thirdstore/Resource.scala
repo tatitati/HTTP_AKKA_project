@@ -16,6 +16,7 @@ class Resource(
     def firstname(): String =
       scope.firstname match {
         case true if !isExpired => ownerProfile.firstname
+        case true if isExpired => throw new IllegalAccessException("The scope allows to access this property. However your token is expired and need to be refreshed")
         case _ => throw new IllegalAccessException("The scope doesn't allow you to access to firstname")
     }
 
@@ -23,6 +24,7 @@ class Resource(
     def surname(): String = {
         scope.surname match {
           case true if !isExpired => ownerProfile.surname
+          case true if isExpired => throw new IllegalAccessException("The scope allows to access this property. However your token is expired and need to be refreshed")
           case _ => throw new IllegalAccessException("The scope doesn't allow you to access to surname")
         }
     }
@@ -30,6 +32,7 @@ class Resource(
     @throws(classOf[IllegalAccessException])
     def email(): String = scope.email match {
         case true if !isExpired => ownerProfile.email
+        case true if isExpired => throw new IllegalAccessException("The scope allows to access this property. However your token is expired and need to be refreshed")
         case _ => throw new IllegalAccessException("The scope doesn't allow you to access to email")
     }
 
