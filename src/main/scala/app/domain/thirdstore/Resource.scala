@@ -12,12 +12,14 @@ class Resource(
                 var token: Option[Token]
     ){
 
+    @throws(classOf[IllegalAccessException])
     def firstname(): String =
       scope.firstname match {
         case true if !isExpired.getOrElse(false) => ownerProfile.firstname
         case _ => throw new IllegalAccessException("The scope doesn't allow you to access to firstname")
     }
 
+    @throws(classOf[IllegalAccessException])
     def surname(): String = {
         scope.surname match {
           case true if !isExpired.getOrElse(false) => ownerProfile.surname
@@ -25,6 +27,7 @@ class Resource(
         }
     }
 
+    @throws(classOf[IllegalAccessException])
     def email(): String = scope.email match {
         case true if !isExpired.getOrElse(false) => ownerProfile.email
         case _ => throw new IllegalAccessException("The scope doesn't allow you to access to email")
