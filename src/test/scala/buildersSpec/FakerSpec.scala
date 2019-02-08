@@ -1,9 +1,9 @@
-package BuildersSpec
+package buildersSpec
 
 import builders.Faker
 import org.scalatest.FunSuite
 
-class AnyFromSpec extends FunSuite {
+class FakerSpec extends FunSuite {
   // TODO: test a trait that select randomly elements from a Seq
   // TODO: put in another trait the random-string-generator
   test("I can use apply() to speed up process when coding") {

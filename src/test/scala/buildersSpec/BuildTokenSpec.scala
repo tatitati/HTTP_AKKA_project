@@ -1,4 +1,4 @@
-package BuildersSpec
+package buildersSpec
 
 import java.util.UUID
 

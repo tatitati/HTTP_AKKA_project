@@ -4,6 +4,8 @@ import builders.BuildResource
 import builders.authorizes.BuildScope
 import org.scalatest.FunSuite
 
+import scala.util.{Failure, Success}
+
 class CanReadProfileSpec extends FunSuite{
 
   test("When token is live, then we check scope") {

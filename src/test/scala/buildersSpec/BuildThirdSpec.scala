@@ -1,4 +1,4 @@
-package BuildersSpec
+package buildersSpec
 
 import app.domain.thirdstore.Third
 import builders.{BuildThird, BuildThirdProfile}

@@ -1,9 +1,11 @@
 package app.domain.thirdstore
 
 import java.util.UUID
+
 import app.domain.{Scope, Token}
 import app.domain.ownerstore.OwnerProfile
 import com.github.nscala_time.time.Imports.DateTime
+import scala.util.{Success, Try}
 
 class Resource(
                 private val ownerProfile: OwnerProfile,
