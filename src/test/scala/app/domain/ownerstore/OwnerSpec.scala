@@ -55,7 +55,7 @@ class OwnerSpec extends FunSuite {
     assert(givenUser.countThirds() === 3)
   }
 
-  test("can provide info about a third in the list when found") {
+  test("can provide info about a third in the list when found") { // this test is a mess
 
     val givenOwner = BuildOwner.any(
       withAuths = new Auths(Vector(
