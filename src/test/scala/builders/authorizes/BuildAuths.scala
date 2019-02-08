@@ -6,6 +6,7 @@ import builders.BuildThirdProfile
 object BuildAuths {
 
   def any(): Auths = {
+
     new Auths(
       Vector(
         BuildAuth.any(),
