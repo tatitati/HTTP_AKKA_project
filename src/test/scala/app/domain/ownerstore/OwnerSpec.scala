@@ -31,7 +31,7 @@ class OwnerSpec extends FunSuite {
 
   test("Can delete(revoke) a third from the list") {
     val givenUser = BuildOwner.any(
-      withAuths = BuildAuths.withClientIds(List("anyclientid"))
+      withAuths = BuildAuths.withClientIds("anyclientid")
     )
 
     assert(givenUser.exists("anyclientid") === true)

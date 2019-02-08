@@ -10,13 +10,13 @@ class AuthsSpec extends FunSuite {
   }
 
   test("Builder can create a list of permissions with custom ids") {
-    val listmap = BuildAuths.withClientIds(List("clientid1", "clientid2", "clientid3"))
+    val listmap = BuildAuths.withClientIds("clientid1", "clientid2", "clientid3")
     assert(listmap.count === 3)
 
   }
 
   test("Can know if exist an item in list") {
-    val listmap = BuildAuths.withClientIds(List("anyclientid", "whatever"))
+    val listmap = BuildAuths.withClientIds("anyclientid", "whatever")
 
     assert(listmap.existThird("anyclientid") === true)
     assert(listmap.existThird("clientId2") === false)
@@ -48,7 +48,7 @@ class AuthsSpec extends FunSuite {
   }
 
   test("Can remove from list") {
-    val listmap = BuildAuths.withClientIds(List("clientid1", "clientid2", "clientid3"))
+    val listmap = BuildAuths.withClientIds("clientid1", "clientid2", "clientid3")
 
     assert(listmap.existThird("clientid1") === true)
     assert(listmap.existThird("clientid2") === true)
@@ -60,7 +60,7 @@ class AuthsSpec extends FunSuite {
   }
 
   test("Can add to list") {
-    val listmap = BuildAuths.withClientIds(List("clientid1", "clientid2"))
+    val listmap = BuildAuths.withClientIds("clientid1", "clientid2")
 
     val auth = BuildAuth.any(
         withThirdProfile = BuildThirdProfile.any(
@@ -80,7 +80,7 @@ class AuthsSpec extends FunSuite {
   }
 
   test("Cannot add twice the same to list") {
-    val listmap = BuildAuths.withClientIds(List("clientid1", "clientid2"))
+    val listmap = BuildAuths.withClientIds("clientid1", "clientid2")
 
     val auth = BuildAuth.any(
         withThirdProfile = BuildThirdProfile.any(

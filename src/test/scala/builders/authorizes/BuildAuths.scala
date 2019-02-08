@@ -14,11 +14,11 @@ object BuildAuths {
     )
   }
 
-  def withClientIds(clientIds: List[String]): Auths = {
-    val newlist = clientIds.map(clientId  =>
+  def withClientIds(clientIds: String*): Auths = {
+    val newlist = clientIds.map(id  =>
       BuildAuth.any(
           withThirdProfile = BuildThirdProfile.any(
-            withClientid = clientId
+            withClientid = id
           )
     )).to[Vector]
 
