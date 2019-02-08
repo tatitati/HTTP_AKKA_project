@@ -60,10 +60,12 @@ class OnRefreshTokenSpec extends FunSuite{
   }
 
   test("Receives an exception on Refreshing token with wrong refresh_token uuid") {
-    val givenRefreshUuid = BuildUuid.uuidOne()
     val givenWrongRefreshUui = BuildUuid.uuidTwo()
-    val givenTokenExpired = BuildToken.anyExpired(withRefreshToken = givenRefreshUuid)
-    val givenResourceExpired = BuildResource.withToken(withToken = givenTokenExpired)
+    val givenResourceExpired = BuildResource.withToken(
+      withToken = BuildToken.anyExpired(
+        withRefreshToken = BuildUuid.uuidOne()
+      )
+    )
 
     assertThrows[IllegalAccessException] {
       givenResourceExpired.refreshToken(givenWrongRefreshUui, "refresh_token")
