@@ -15,46 +15,57 @@ class Resource(
     @throws(classOf[IllegalAccessException])
     def firstname(): String =
       scope.firstname match {
-        case true if !isExpired.getOrElse(false) => ownerProfile.firstname
+        case true if !isExpired => ownerProfile.firstname
         case _ => throw new IllegalAccessException("The scope doesn't allow you to access to firstname")
     }
 
     @throws(classOf[IllegalAccessException])
     def surname(): String = {
         scope.surname match {
-          case true if !isExpired.getOrElse(false) => ownerProfile.surname
+          case true if !isExpired => ownerProfile.surname
           case _ => throw new IllegalAccessException("The scope doesn't allow you to access to surname")
         }
     }
 
     @throws(classOf[IllegalAccessException])
     def email(): String = scope.email match {
-        case true if !isExpired.getOrElse(false) => ownerProfile.email
+        case true if !isExpired => ownerProfile.email
         case _ => throw new IllegalAccessException("The scope doesn't allow you to access to email")
     }
 
-    def isExpired(): Option[Boolean] = token match {
-        case Some(token) => Option(token.isExpired)
-        case _ => None
+    @throws(classOf[IllegalAccessException])
+    def isExpired(): Boolean = token match {
+        case Some(token) => token.isExpired
+        case _ => throw new IllegalAccessException("There is no token. Cannot be possible to know if is expired.")
     }
 
     def refreshToken(withRefreshToken: UUID, withGrantType: String): Unit = {
-      val canRefresh = token match {
-        case Some(token) => token.canRefresh(withRefreshToken, withGrantType)
-        case _ => false
+      var currentToken = token match {
+        case Some(token) => token
+        case None => throw new IllegalAccessException("There is no token to refresh. The token doesn't exist")
       }
 
-      if (canRefresh) {
-        token = Some(new Token(
-          accessToken = java.util.UUID.randomUUID,
-          refreshToken = java.util.UUID.randomUUID,
-          generatedIn = DateTime.now(),
-          tokenType = "bearer"
-        ))
+      if(!currentToken.canRefreshWithParams(withRefreshToken, withGrantType)) {
+        throw new IllegalAccessException("The parameters used to refresh the token are invalid.")
       }
+
+      if (!currentToken.isExpired) {
+        throw new IllegalAccessException("The token must be expired in order to be refreshed")
+      }
+
+      token = Some(new Token(
+        accessToken = java.util.UUID.randomUUID,
+        refreshToken = java.util.UUID.randomUUID,
+        generatedIn = DateTime.now(),
+        tokenType = "bearer"
+      )
+      )
     }
 
     def revoke(): Unit = {
-      token = None
+      token = token match {
+        case Some(token) => None
+        case None => throw new IllegalAccessException("There is no token, so it cannot be revoked.")
+      }
     }
 }

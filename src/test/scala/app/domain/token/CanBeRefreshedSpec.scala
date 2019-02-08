@@ -4,33 +4,25 @@ import builders.{BuildToken, BuildUuid}
 import org.scalatest.FunSuite
 
 class CanBeRefreshedSpec extends FunSuite{
-  test("Must be used the valid refresh_token") {
+  test("Must be used the valid refresh_token and the token must be expired") {
     val rightRefreshToken = BuildUuid.uuidOne()
     val wrongRefreshToken = BuildUuid.uuidTwo()
     val expiredToken = BuildToken.anyExpired(
       withRefreshToken = rightRefreshToken
     )
 
-    assert(expiredToken.canRefresh(rightRefreshToken, "refresh_token") === true)
-    assert(expiredToken.canRefresh(wrongRefreshToken, "refresh_token") === false)
+    assert(expiredToken.canRefreshWithParams(rightRefreshToken, "refresh_token") === true)
   }
 
-  test("Must be used the right grant-type") {
+  test("cannot refresh token if using wrong parameters") {
     val rightRefreshToken = BuildUuid.uuidOne()
+    val wrongRefreshToken = BuildUuid.uuidTwo()
     val expiredToken = BuildToken.anyExpired(
       withRefreshToken = rightRefreshToken
     )
 
-    assert(expiredToken.canRefresh(rightRefreshToken, "wrong_gran_type") === false)
-  }
-
-  test("Must be expired the token") {
-    val rightRefreshToken = BuildUuid.uuidOne()
-    val liveToken = BuildToken.anyLive(
-      withRefreshToken = rightRefreshToken
-    )
-
-    assert(liveToken.canRefresh(rightRefreshToken, "refresh_token") === false)
+    assert(expiredToken.canRefreshWithParams(wrongRefreshToken, "refresh_token") === false)
+    assert(expiredToken.canRefreshWithParams(rightRefreshToken, "wrong_gran_type") === false)
   }
 
 //  test("Can refresh an expired token") {

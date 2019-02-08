@@ -23,4 +23,11 @@ class Token(
       case _ => false
     }
   }
+
+  def canRefreshWithParams(givenRefreshToken: UUID, givenGrantType: String): Boolean = {
+    givenGrantType match {
+      case "refresh_token" => refreshToken.equals(givenRefreshToken)
+      case _ => false
+    }
+  }
 }
