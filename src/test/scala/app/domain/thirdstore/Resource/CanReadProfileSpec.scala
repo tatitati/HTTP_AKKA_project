@@ -4,33 +4,35 @@ import builders.BuildResource
 import builders.authorizes.BuildScope
 import org.scalatest.FunSuite
 
-import scala.util.{Failure, Success}
-
 class CanReadProfileSpec extends FunSuite{
 
   test("Can read data when allowed and token is live") {
-    val givenResource1 = BuildResource.withLiveToken(
+    val givenResource = BuildResource.withLiveToken(
       withsurname = "my surname",
       withScope = Option(BuildScope.onlySurname())
     )
 
-    assert(givenResource1.surname() === Some("my surname"))
+    assert(givenResource.surname() === "my surname")
   }
 
-  test("Cannot read data when not allowed even though token is live") {
-    val givenResource1 = BuildResource.withLiveToken(
-      withScope = Option(BuildScope.onlySurname())
+  test("Exceptions are rised when a third try to read a field that is not allowed") {
+    val givenResource = BuildResource.withLiveToken(
+      withScope = Option(BuildScope.onlyEmailAndFirstname())
     )
 
-    assert(givenResource1.email() === None)
+    assertThrows[IllegalAccessException] {
+      givenResource.surname()
+    }
   }
 
   test("Even if the scope allows it, if the token is expired then the profile cannot be read") {
-    val givenResource2 = BuildResource.withExpiredToken(
+    val givenResource = BuildResource.withExpiredToken(
       withsurname = "my surname",
       withScope = Option(BuildScope.onlySurname())
     )
 
-    assert(givenResource2.surname() === None)
+    assertThrows[IllegalAccessException] {
+      givenResource.surname()
+    }
   }
 }

@@ -5,7 +5,6 @@ import java.util.UUID
 import app.domain.{Scope, Token}
 import app.domain.ownerstore.OwnerProfile
 import com.github.nscala_time.time.Imports.DateTime
-import scala.util.{Success, Try}
 
 class Resource(
                 private val ownerProfile: OwnerProfile,
@@ -13,20 +12,22 @@ class Resource(
                 var token: Option[Token]
     ){
 
-    def firstname(): Option[String] = // should this throw an exception??, it will be more clear.
+    def firstname(): String =
       scope.firstname match {
-        case true if !isExpired.getOrElse(false) => Option(ownerProfile.firstname)
-        case _ => None
+        case true if !isExpired.getOrElse(false) => ownerProfile.firstname
+        case _ => throw new IllegalAccessException("The scope doesn't allow you to access to firstname")
     }
 
-    def surname(): Option[String] = scope.surname match {
-        case true if !isExpired.getOrElse(false) => Option(ownerProfile.surname)
-        case _ => None
+    def surname(): String = {
+        scope.surname match {
+          case true if !isExpired.getOrElse(false) => ownerProfile.surname
+          case _ => throw new IllegalAccessException("The scope doesn't allow you to access to surname")
+        }
     }
 
-    def email(): Option[String] = scope.email match {
-        case true if !isExpired.getOrElse(false) => Option(ownerProfile.email)
-        case _ => None
+    def email(): String = scope.email match {
+        case true if !isExpired.getOrElse(false) => ownerProfile.email
+        case _ => throw new IllegalAccessException("The scope doesn't allow you to access to email")
     }
 
     def isExpired(): Option[Boolean] = token match {
