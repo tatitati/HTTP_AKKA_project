@@ -4,7 +4,7 @@ class Owner(var profile: OwnerProfile, val listAuth: Auths) { // the user can mo
 
   def countThirds(): Int = listAuth.count()
 
-  def exists(clientId: String): Boolean = listAuth.existThird(clientId)
+  def exists(clientId: String): Boolean = listAuth.existThird(clientId) // Is needed this function?
 
   def revoke(clientId: String): Unit = listAuth.removeThird(clientId)
 
