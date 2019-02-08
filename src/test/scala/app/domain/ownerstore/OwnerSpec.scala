@@ -1,14 +1,10 @@
 package app.domain.ownerstore
 
-import builders.{BuildOwner, BuildOwnerProfile, BuildThird, BuildThirdProfile}
-import builders.authorizes.{BuildAuth, BuildAuths, BuildScope}
+import builders.{BuildOwner, BuildOwnerProfile, BuildThirdProfile}
+import builders.authorizes.{BuildAuth, BuildAuths}
 import org.scalatest.FunSuite
 
 class OwnerSpec extends FunSuite {
-
-  test("Can be created using a builder") {
-    assert(BuildOwner.any().isInstanceOf[Owner])
-  }
 
   test("Has a list of authorizations ") {
     val givenUser = BuildOwner.any()
@@ -26,17 +22,19 @@ class OwnerSpec extends FunSuite {
 
     assert(givenUser.profile.firstname === "gutierrez")
     givenUser.profile.firstname = "manolo"
-    assert(givenUser.profile.firstname === "manolo", "=> Firstname should be updated")
+    assert(givenUser.profile.firstname === "manolo")
   }
 
   test("Can delete(revoke) a third from the list") {
     val givenUser = BuildOwner.any(
-      withAuths = BuildAuths.withClientIds("anyclientid")
+      withAuths = BuildAuths.withClientIds("anyclientid1", "anyclientid2")
     )
 
-    assert(givenUser.exists("anyclientid") === true)
-    givenUser.revoke("anyclientid")
-    assert(givenUser.exists("anyclientid") === false, "=> Authorization should be removed from list")
+    assert(givenUser.exists("anyclientid1") === true)
+    assert(givenUser.exists("anyclientid2") === true)
+    givenUser.revoke("anyclientid1")
+    assert(givenUser.exists("anyclientid1") === false)
+    assert(givenUser.exists("anyclientid2") === true)
   }
 
   test("Can authorize a third (add to the list)") {
