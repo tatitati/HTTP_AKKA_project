@@ -32,7 +32,6 @@ Visit: http://localhost:8080/ping
 # Todo:
 
 * How to tag tests? (and filter them in the CLI)
-* How to assert exception messages?
 
 
 
