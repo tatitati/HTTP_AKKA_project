@@ -4,7 +4,7 @@ class Auths(private var auths: Vector[Auth]) {
 
   def count() :Int = auths.size
 
-  private def existThird(clientId: String): Boolean = { // should be this private?, when a user is going to check if he has granted access to an especial third (I cannot imagine any scenario)
+  private def existThird(clientId: String): Boolean = {
     auths.exists(
       map => map.clientId() == clientId
     )
