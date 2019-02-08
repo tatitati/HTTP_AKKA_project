@@ -5,14 +5,9 @@ import builders.authorizes.{BuildAuth, BuildAuths, BuildScope}
 import org.scalatest.FunSuite
 
 class AuthsSpec extends FunSuite {
-  test("Builder can create a list of AppPermissions") {
-    assert(BuildAuths.any().count === 2)
-  }
-
   test("Builder can create a list of permissions with custom ids") {
     val listmap = BuildAuths.withClientIds("clientid1", "clientid2", "clientid3")
     assert(listmap.count === 3)
-
   }
 
   test("Can know if exist an item in list") {
@@ -27,24 +22,16 @@ class AuthsSpec extends FunSuite {
     val givenAuth1 = BuildAuth.any(
       withThirdProfile = BuildThirdProfile.any(
           withClientid = "clientid1"
-      ),
-      withScope = BuildScope.onlyEmailAndFirstname()
+      )
     )
 
-    val givenAuth2 = BuildAuth.any(
-        withThirdProfile = BuildThirdProfile.any(
-          withClientid = "clientid2"
-      ),
-      withScope = BuildScope.onlySurname()
-    )
+    val givenAuthList = new Auths(Vector(givenAuth1))
 
-    val givenAuthList = new Auths(Vector(givenAuth1, givenAuth2))
+    val foundAuth1 = givenAuthList.find("clientid1")
+    val foundAuth2 = givenAuthList.find("aaaaaaaa")
 
-    val scope1 = givenAuthList.find("clientid1")
-    assert(scope1.isInstanceOf[Some[Auth]] === true)
-
-    val scope2 = givenAuthList.find("aaaaaaaa")
-    assert(scope2 === None)
+    assert(foundAuth1.isInstanceOf[Some[Auth]] === true)
+    assert(foundAuth2 === None)
   }
 
   test("Can remove from list") {
