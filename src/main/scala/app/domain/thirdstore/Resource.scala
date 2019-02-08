@@ -12,7 +12,7 @@ class Resource(
                 var token: Option[Token]
     ){
 
-    def firstname(): Option[String] =
+    def firstname(): Option[String] = // should this throw an exception??, it will be more clear.
       scope.firstname match {
         case true if !isExpired.getOrElse(false) => Option(ownerProfile.firstname)
         case _ => None
