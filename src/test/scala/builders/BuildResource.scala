@@ -8,44 +8,44 @@ object BuildResource {
 
   def withLiveToken(
                      withsurname: String = Faker.text(),
-                     scope: Option[Scope] = None
+                     withScope: Option[Scope] = None
                    ): Resource  = {
     new Resource(
       ownerProfile  = BuildOwnerProfile.any(withSurname = withsurname),
-      scope = scope.getOrElse(BuildScope.any()),
+      scope = withScope.getOrElse(BuildScope.any()),
       token = Option(BuildToken.anyLive())
     )
   }
 
   def withExpiredToken(
                         withsurname: String = Faker.text(),
-                        scope: Option[Scope] = None
+                        withScope: Option[Scope] = None
                       ): Resource  = {
     new Resource(
       ownerProfile = BuildOwnerProfile.any(withSurname = withsurname),
-      scope = scope.getOrElse(BuildScope.any()),
+      scope = withScope.getOrElse(BuildScope.any()),
       token = Option(BuildToken.anyExpired())
     )
   }
 
   def withRevokedToken(
                         withsurname: String = Faker.text(),
-                        scope: Option[Scope] = None
+                        withScope: Option[Scope] = None
                       ): Resource  = {
     new Resource(
       BuildOwnerProfile.any(withSurname = withsurname),
-      scope.getOrElse(BuildScope.any()),
+      withScope.getOrElse(BuildScope.any()),
       None
     )
   }
 
   def withoutToken(
                     withsurname: String = Faker.text(),
-                    scope: Option[Scope] = None
+                    withScope: Option[Scope] = None
                   ): Resource  = {
     new Resource(
       BuildOwnerProfile.any(withSurname = withsurname),
-      scope.getOrElse(BuildScope.any()),
+      withScope.getOrElse(BuildScope.any()),
       None
     )
   }
