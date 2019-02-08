@@ -1,20 +1,13 @@
 package app.domain.ownerstore
 
 import builders.{BuildThirdProfile}
-import builders.authorizes.{BuildAuth, BuildAuths, BuildScope}
+import builders.authorizes.{BuildAuth, BuildAuths}
 import org.scalatest.FunSuite
 
 class AuthsSpec extends FunSuite {
   test("Builder can create a list of permissions with custom ids") {
     val listmap = BuildAuths.withClientIds("clientid1", "clientid2", "clientid3")
     assert(listmap.count === 3)
-  }
-
-  test("Can know if exist an item in list") {
-    val listmap = BuildAuths.withClientIds("anyclientid", "whatever")
-
-    assert(listmap.existThird("anyclientid") === true)
-    assert(listmap.existThird("clientId2") === false)
   }
 
   test("can find item by clientid") {
@@ -35,19 +28,17 @@ class AuthsSpec extends FunSuite {
   }
 
   test("Can remove from list") {
-    val listmap = BuildAuths.withClientIds("clientid1", "clientid2", "clientid3")
+    val listmap = BuildAuths.withClientIds("clientid1", "clientid2")
 
-    assert(listmap.existThird("clientid1") === true)
-    assert(listmap.existThird("clientid2") === true)
-    assert(listmap.existThird("clientid3") === true)
+    assert(listmap.find("clientid1") !== None)
+    assert(listmap.find("clientid2") !== None)
     listmap.removeThird("clientid2")
-    assert(listmap.existThird("clientid1") === true)
-    assert(listmap.existThird("clientid2") === false)
-    assert(listmap.existThird("clientid3") === true)
+    assert(listmap.find("clientid1") !== None)
+    assert(listmap.find("clientid2") === None)
   }
 
   test("Can add to list") {
-    val listmap = BuildAuths.withClientIds("clientid1", "clientid2")
+    val listmap = BuildAuths.withClientIds("clientid1")
 
     val auth = BuildAuth.any(
         withThirdProfile = BuildThirdProfile.any(
@@ -55,15 +46,15 @@ class AuthsSpec extends FunSuite {
         )
     )
 
-    assert(listmap.existThird("clientid1") === true)
-    assert(listmap.existThird("clientid2") === true)
-    assert(listmap.existThird("clientid3") === false)
-    listmap.addThird(auth)
-    assert(listmap.existThird("clientid1") === true)
-    assert(listmap.existThird("clientid2") === true)
-    assert(listmap.existThird("clientid3") === true)
+    assert(listmap.find("clientid1") !== None)
+    assert(listmap.find("clientid3") === None)
+    assert(listmap.count() === 1)
 
-    assert(listmap.count() === 3)
+    listmap.addThird(auth)
+
+    assert(listmap.find("clientid1") !== None)
+    assert(listmap.find("clientid3") !== None)
+    assert(listmap.count() === 2)
   }
 
   test("Cannot add twice the same to list") {

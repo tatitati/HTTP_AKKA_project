@@ -30,17 +30,17 @@ class OwnerSpec extends FunSuite {
       withAuths = BuildAuths.withClientIds("anyclientid1", "anyclientid2")
     )
 
-    assert(givenUser.exists("anyclientid1") === true)
-    assert(givenUser.exists("anyclientid2") === true)
+    assert(givenUser.find("anyclientid1") !== None)
+    assert(givenUser.find("anyclientid2") !== None)
     givenUser.revoke("anyclientid1")
-    assert(givenUser.exists("anyclientid1") === false)
-    assert(givenUser.exists("anyclientid2") === true)
+    assert(givenUser.find("anyclientid1") === None)
+    assert(givenUser.find("anyclientid2") !== None)
   }
 
   test("Can authorize a third (add to the list)") {
     val givenUser = BuildOwner.any()
 
-    assert(givenUser.exists("newthirdclientId") === false, "=> Initially shouldn't have this third in the list")
+    assert(givenUser.find("newthirdclientId") === None, "=> Initially shouldn't have this third in the list")
     assert(givenUser.countThirds() === 2)
 
     givenUser.grant(
@@ -51,7 +51,7 @@ class OwnerSpec extends FunSuite {
       )
     )
 
-    assert(givenUser.exists("newthirdclientId") === true, "=> After grant acces it should be in the lsit")
+    assert(givenUser.find("newthirdclientId") !== None, "=> After grant acces it should be in the lsit")
     assert(givenUser.countThirds() === 3)
   }
 
