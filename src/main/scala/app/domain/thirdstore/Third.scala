@@ -9,7 +9,7 @@ class Third(var profile: ThirdProfile, var resource: Resource) {
     profile.clientsecret = generateRandomString()
   }
 
-  private def generateRandomString(): String = {
+  private def generateRandomString(): String = { // move this function to a trait?, an object?....
     val length = 10
     var text: String = ""
 
