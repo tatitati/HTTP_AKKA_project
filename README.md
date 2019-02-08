@@ -31,6 +31,8 @@ Visit: http://localhost:8080/ping
 
 # Todo:
 
-* token shouldnt have any behaviour, instead it should have the resource
+* How to tag tests? (and filter them in the CLI)
+* How to assert exception messages?
 
-* token shouldn't be worried about exporting memento to serialize
+
+
