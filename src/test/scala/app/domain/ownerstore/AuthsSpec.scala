@@ -10,7 +10,7 @@ class AuthsSpec extends FunSuite {
     assert(listmap.count === 3)
   }
 
-  test("can find item by clientid") {
+  test("can find auth by clientid") {
 
     val givenAuth1 = BuildAuth.any(
       withThirdProfile = BuildThirdProfile.any(
