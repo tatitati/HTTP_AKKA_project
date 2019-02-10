@@ -6,31 +6,25 @@ import builders.authorizes.BuildScope
 
 object BuildResourceCode {
 
-  def withLiveCode(
-                     withsurname: String = Faker.text(),
-                     withScope: Option[Scope] = None
-                   ): ResourceCode  = {
+  def anyLive(withCode: String = Faker.text()): ResourceCode  = {
     new ResourceCode(
       thirdProfile = BuildThirdProfile.any(),
-      ownerProfile  = BuildOwnerProfile.any(withSurname = withsurname),
-      scope = withScope.getOrElse(BuildScope.any()),
-      code = BuildCode.anyLive()
+      ownerProfile = BuildOwnerProfile.any(),
+      scope = BuildScope.any(),
+      code = BuildCode.anyLive(withCode = withCode)
     )
   }
 
-  def withExpiredCode(
-                        withsurname: String = Faker.text(),
-                        withScope: Option[Scope] = None
-                      ): ResourceCode  = {
+  def anyExpired(withCode: String = Faker.text()): ResourceCode  = {
     new ResourceCode(
       thirdProfile = BuildThirdProfile.any(),
-      ownerProfile = BuildOwnerProfile.any(withSurname = withsurname),
-      scope = withScope.getOrElse(BuildScope.any()),
-      code = BuildCode.anyExpired()
+      ownerProfile = BuildOwnerProfile.any(),
+      scope = BuildScope.any(),
+      code = BuildCode.anyExpired(withCode = withCode)
     )
   }
 
-  def withCode(withCode: Code): ResourceCode  = {
+  def any(withCode: Code): ResourceCode  = {
     new ResourceCode(
       thirdProfile = BuildThirdProfile.any(),
       BuildOwnerProfile.any(),

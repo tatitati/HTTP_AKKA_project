@@ -16,7 +16,7 @@ class ResourceCode(
     code.isExpired
   }
 
-//  def  canExportCodeForToken(clientId: String, clientSecret: String, code: String): Boolean = {
-//
-//  }
+  def  canExportToRecourceToken(withCode: String): Boolean = {
+    code.code == withCode
+  }
 }

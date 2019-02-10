@@ -6,9 +6,9 @@ import com.github.nscala_time.time.Imports._
 
 object BuildCode extends RandomTextGenerator {
 
-  def anyLive(): Code = {
+  def anyLive(withCode: String = Faker.text()): Code = {
     new Code(
-      code = Faker.text(),
+      code = withCode,
       expiresIn = 10,
       generatedIn = DateTime.now() - 5.seconds,
       state = Faker.text(),
@@ -16,9 +16,9 @@ object BuildCode extends RandomTextGenerator {
     )
   }
 
-  def anyExpired(): Code = {
+  def anyExpired(withCode: String = Faker.text()): Code = {
     new Code(
-      code = Faker.text(),
+      code = withCode,
       expiresIn = 10,
       generatedIn = DateTime.now() - 20.seconds,
       state = Faker.text(),
@@ -26,7 +26,10 @@ object BuildCode extends RandomTextGenerator {
     )
   }
 
-  def any(): Code = {
-    Faker(anyLive(), anyExpired())
+  def any(withCode: String = Faker.text()): Code = {
+    Faker(
+      anyLive(withCode = withCode),
+      anyExpired(withCode = withCode)
+    )
   }
 }
