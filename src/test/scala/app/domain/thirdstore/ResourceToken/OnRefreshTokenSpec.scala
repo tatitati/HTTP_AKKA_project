@@ -10,15 +10,7 @@ class OnRefreshTokenSpec extends FunSuite{
   test("Can have a token") {
     val resWithLiveToken = BuildResourceToken.withLiveToken()
 
-    assert(resWithLiveToken.token.isInstanceOf[Some[Token]])
-  }
-
-  test("Might not have a token") {
-    val resWithRevokedToken = BuildResourceToken.withRevokedToken()
-    val resWithoutToken = BuildResourceToken.withoutToken()
-
-    assert(resWithRevokedToken.token === None)
-    assert(resWithoutToken.token === None)
+    assert(resWithLiveToken.token.isInstanceOf[Token])
   }
 
 
@@ -49,15 +41,6 @@ class OnRefreshTokenSpec extends FunSuite{
     the [IllegalAccessException] thrownBy(
       resourceExpired.refreshToken(refreshToken, "refresh_token")
     ) should have message "The token must be expired in order to be refreshed"
-  }
-
-  test("On Refresh-token receives an exception if there is not token") {
-    val givenRandomUuid = BuildUuid.uuidOne()
-    val givenResourceWithoutToken = BuildResourceToken.withoutToken()
-
-    the [IllegalAccessException] thrownBy(
-      givenResourceWithoutToken.refreshToken(givenRandomUuid, "refresh_token")
-    ) should have message "There is no token to refresh. The token doesn't exist"
   }
 
   test("Receives an exception on Refreshing token with wrong refresh_token uuid") {

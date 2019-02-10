@@ -9,7 +9,7 @@ import com.github.nscala_time.time.Imports.DateTime
 class ResourceToken(
                 private val ownerProfile: OwnerProfile,
                 private val scope: Scope,
-                var token: Option[Token]
+                var token: Token
     ){
 
     @throws(classOf[IllegalAccessException])
@@ -36,39 +36,24 @@ class ResourceToken(
         case _ => throw new IllegalAccessException("The scope doesn't allow you to access to email")
     }
 
-    @throws(classOf[IllegalAccessException])
-    def isTokenExpired(): Boolean = token match {
-        case Some(token) => token.isExpired
-        case _ => throw new IllegalAccessException("There is no token. Cannot be possible to know if is expired.")
+    def isTokenExpired(): Boolean =  {
+        token.isExpired
     }
 
     def refreshToken(withRefreshToken: UUID, withGrantType: String): Unit = {
-      var currentToken = token match {
-        case Some(token) => token
-        case None => throw new IllegalAccessException("There is no token to refresh. The token doesn't exist")
-      }
-
-      if(!currentToken.canRefreshWithParams(withRefreshToken, withGrantType)) {
+      if(!token.canRefreshWithParams(withRefreshToken, withGrantType)) {
         throw new IllegalAccessException("The parameters used to refresh the token are invalid.")
       }
 
-      if (!currentToken.isExpired) {
+      if (!token.isExpired) {
         throw new IllegalAccessException("The token must be expired in order to be refreshed")
       }
 
-      token = Some(new Token(
+      token = new Token(
         accessToken = java.util.UUID.randomUUID,
         refreshToken = java.util.UUID.randomUUID,
         generatedIn = DateTime.now(),
         tokenType = "bearer"
       )
-      )
-    }
-
-    def revoke(): Unit = {
-      token = token match {
-        case Some(token) => None
-        case None => throw new IllegalAccessException("There is no token, so it cannot be revoked.")
-      }
     }
 }

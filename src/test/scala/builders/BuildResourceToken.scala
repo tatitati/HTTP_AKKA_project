@@ -13,7 +13,7 @@ object BuildResourceToken {
     new ResourceToken(
       ownerProfile  = BuildOwnerProfile.any(withSurname = withsurname),
       scope = withScope.getOrElse(BuildScope.any()),
-      token = Option(BuildToken.anyLive())
+      token = BuildToken.anyLive()
     )
   }
 
@@ -24,29 +24,7 @@ object BuildResourceToken {
     new ResourceToken(
       ownerProfile = BuildOwnerProfile.any(withSurname = withsurname),
       scope = withScope.getOrElse(BuildScope.any()),
-      token = Option(BuildToken.anyExpired())
-    )
-  }
-
-  def withRevokedToken(
-                        withsurname: String = Faker.text(),
-                        withScope: Option[Scope] = None
-                      ): ResourceToken  = {
-    new ResourceToken(
-      BuildOwnerProfile.any(withSurname = withsurname),
-      withScope.getOrElse(BuildScope.any()),
-      None
-    )
-  }
-
-  def withoutToken(
-                    withsurname: String = Faker.text(),
-                    withScope: Option[Scope] = None
-                  ): ResourceToken  = {
-    new ResourceToken(
-      BuildOwnerProfile.any(withSurname = withsurname),
-      withScope.getOrElse(BuildScope.any()),
-      None
+      token = BuildToken.anyExpired()
     )
   }
 
@@ -54,7 +32,7 @@ object BuildResourceToken {
     new ResourceToken(
       BuildOwnerProfile.any(),
       BuildScope.any(),
-      Option(withToken)
+      withToken
     )
   }
 }

@@ -35,14 +35,4 @@ class OnReadOwnerProfileSpec extends FunSuite{
       givenResource.surname()
     ) should have message "The scope allows to access this property. However your token is expired and need to be refreshed"
   }
-
-  test("Even if the scope allows it, if the token doesn't exist or was revoked then an exception is triggered") {
-    val givenResource = BuildResourceToken.withoutToken(
-      withScope = Option(BuildScope.onlySurname())
-    )
-
-    the [IllegalAccessException] thrownBy(
-      givenResource.surname()
-    ) should have message "There is no token. Cannot be possible to know if is expired."
-  }
 }
