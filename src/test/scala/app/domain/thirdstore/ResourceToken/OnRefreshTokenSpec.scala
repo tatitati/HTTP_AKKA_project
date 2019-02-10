@@ -1,21 +1,21 @@
 package test.app.domain.thirdstore.Resource
 
 import app.domain.Token
-import builders.{BuildResource, BuildToken, BuildUuid}
+import builders.{BuildResourceToken, BuildToken, BuildUuid}
 import org.scalatest.FunSuite
 import org.scalatest.Matchers._
 
 class OnRefreshTokenSpec extends FunSuite{
 
   test("Can have a token") {
-    val resWithLiveToken = BuildResource.withLiveToken()
+    val resWithLiveToken = BuildResourceToken.withLiveToken()
 
     assert(resWithLiveToken.token.isInstanceOf[Some[Token]])
   }
 
   test("Might not have a token") {
-    val resWithRevokedToken = BuildResource.withRevokedToken()
-    val resWithoutToken = BuildResource.withoutToken()
+    val resWithRevokedToken = BuildResourceToken.withRevokedToken()
+    val resWithoutToken = BuildResourceToken.withoutToken()
 
     assert(resWithRevokedToken.token === None)
     assert(resWithoutToken.token === None)
@@ -23,8 +23,8 @@ class OnRefreshTokenSpec extends FunSuite{
 
 
   test("Token for resource might be or not expired") {
-    var resourceWithExpiredToken = BuildResource.withExpiredToken()
-    val resourceWithLiveToken = BuildResource.withLiveToken()
+    var resourceWithExpiredToken = BuildResourceToken.withExpiredToken()
+    val resourceWithLiveToken = BuildResourceToken.withLiveToken()
 
     assert(resourceWithExpiredToken.isTokenExpired() === true)
     assert(resourceWithLiveToken.isTokenExpired() === false)
@@ -33,7 +33,7 @@ class OnRefreshTokenSpec extends FunSuite{
   test("Can refresh an expired token") {
     val givenRefreshUuid = BuildUuid.uuidOne()
     val givenTokenExpired = BuildToken.anyExpired(withRefreshToken = givenRefreshUuid)
-    val givenResourceExpired = BuildResource.withToken(withToken = givenTokenExpired)
+    val givenResourceExpired = BuildResourceToken.withToken(withToken = givenTokenExpired)
 
     assert(givenResourceExpired.isTokenExpired() === true)
     givenResourceExpired.refreshToken(givenRefreshUuid, "refresh_token")
@@ -42,7 +42,7 @@ class OnRefreshTokenSpec extends FunSuite{
 
   test("Cannot refresh a live token") {
     val refreshToken = BuildUuid.uuidOne()
-    val resourceExpired = BuildResource.withToken(
+    val resourceExpired = BuildResourceToken.withToken(
       withToken = BuildToken.anyLive(withRefreshToken = refreshToken)
     )
 
@@ -53,7 +53,7 @@ class OnRefreshTokenSpec extends FunSuite{
 
   test("On Refresh-token receives an exception if there is not token") {
     val givenRandomUuid = BuildUuid.uuidOne()
-    val givenResourceWithoutToken = BuildResource.withoutToken()
+    val givenResourceWithoutToken = BuildResourceToken.withoutToken()
 
     the [IllegalAccessException] thrownBy(
       givenResourceWithoutToken.refreshToken(givenRandomUuid, "refresh_token")
@@ -62,7 +62,7 @@ class OnRefreshTokenSpec extends FunSuite{
 
   test("Receives an exception on Refreshing token with wrong refresh_token uuid") {
     val givenWrongRefreshUui = BuildUuid.uuidTwo()
-    val givenResourceExpired = BuildResource.withToken(
+    val givenResourceExpired = BuildResourceToken.withToken(
       withToken = BuildToken.anyExpired(
         withRefreshToken = BuildUuid.uuidOne()
       )

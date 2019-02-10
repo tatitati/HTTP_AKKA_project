@@ -1,16 +1,16 @@
 package builders
 
 import app.domain.{Scope, Token}
-import app.domain.thirdstore.Resource
+import app.domain.thirdstore.ResourceToken
 import builders.authorizes.BuildScope
 
-object BuildResource {
+object BuildResourceToken {
 
   def withLiveToken(
                      withsurname: String = Faker.text(),
                      withScope: Option[Scope] = None
-                   ): Resource  = {
-    new Resource(
+                   ): ResourceToken  = {
+    new ResourceToken(
       ownerProfile  = BuildOwnerProfile.any(withSurname = withsurname),
       scope = withScope.getOrElse(BuildScope.any()),
       token = Option(BuildToken.anyLive())
@@ -20,8 +20,8 @@ object BuildResource {
   def withExpiredToken(
                         withsurname: String = Faker.text(),
                         withScope: Option[Scope] = None
-                      ): Resource  = {
-    new Resource(
+                      ): ResourceToken  = {
+    new ResourceToken(
       ownerProfile = BuildOwnerProfile.any(withSurname = withsurname),
       scope = withScope.getOrElse(BuildScope.any()),
       token = Option(BuildToken.anyExpired())
@@ -31,8 +31,8 @@ object BuildResource {
   def withRevokedToken(
                         withsurname: String = Faker.text(),
                         withScope: Option[Scope] = None
-                      ): Resource  = {
-    new Resource(
+                      ): ResourceToken  = {
+    new ResourceToken(
       BuildOwnerProfile.any(withSurname = withsurname),
       withScope.getOrElse(BuildScope.any()),
       None
@@ -42,16 +42,16 @@ object BuildResource {
   def withoutToken(
                     withsurname: String = Faker.text(),
                     withScope: Option[Scope] = None
-                  ): Resource  = {
-    new Resource(
+                  ): ResourceToken  = {
+    new ResourceToken(
       BuildOwnerProfile.any(withSurname = withsurname),
       withScope.getOrElse(BuildScope.any()),
       None
     )
   }
 
-  def withToken(withToken: Token): Resource  = {
-    new Resource(
+  def withToken(withToken: Token): ResourceToken  = {
+    new ResourceToken(
       BuildOwnerProfile.any(),
       BuildScope.any(),
       Option(withToken)

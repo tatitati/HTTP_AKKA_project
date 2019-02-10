@@ -1,6 +1,6 @@
 package app.domain.thirdstore
 
-class Third(var profile: ThirdProfile, var resource: Resource) extends RandomTextGenerator {
+class Third(var profile: ThirdProfile, var resource: ResourceToken) extends RandomTextGenerator {
 
   def refreshCredentials(): Unit = {
     profile.clientid = generateRandomString()
