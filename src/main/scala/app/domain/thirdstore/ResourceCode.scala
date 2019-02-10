@@ -8,7 +8,7 @@ import com.github.nscala_time.time.Imports.DateTime
 class ResourceCode(
                      private val ownerProfile: OwnerProfile,
                      private val scope: Scope,
-                     var code: Code
+                     private val code: Code
                    ){
 
   def isCodeExpired(): Boolean = {
