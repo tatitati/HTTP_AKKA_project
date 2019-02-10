@@ -11,6 +11,7 @@ object BuildResourceCode {
                      withScope: Option[Scope] = None
                    ): ResourceCode  = {
     new ResourceCode(
+      thirdProfile = BuildThirdProfile.any(),
       ownerProfile  = BuildOwnerProfile.any(withSurname = withsurname),
       scope = withScope.getOrElse(BuildScope.any()),
       code = BuildCode.anyLive()
@@ -22,6 +23,7 @@ object BuildResourceCode {
                         withScope: Option[Scope] = None
                       ): ResourceCode  = {
     new ResourceCode(
+      thirdProfile = BuildThirdProfile.any(),
       ownerProfile = BuildOwnerProfile.any(withSurname = withsurname),
       scope = withScope.getOrElse(BuildScope.any()),
       code = BuildCode.anyExpired()
@@ -30,6 +32,7 @@ object BuildResourceCode {
 
   def withCode(withCode: Code): ResourceCode  = {
     new ResourceCode(
+      thirdProfile = BuildThirdProfile.any(),
       BuildOwnerProfile.any(),
       BuildScope.any(),
       withCode

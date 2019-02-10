@@ -6,6 +6,7 @@ import app.domain.ownerstore.OwnerProfile
 import com.github.nscala_time.time.Imports.DateTime
 
 class ResourceCode(
+                     private val thirdProfile: ThirdProfile,
                      private val ownerProfile: OwnerProfile,
                      private val scope: Scope,
                      private val code: Code
@@ -15,7 +16,7 @@ class ResourceCode(
     code.isExpired
   }
 
-//  def exportResourceToken(): ResourceToken = {
+//  def  canExportCodeForToken(clientId: String, clientSecret: String, code: String): Boolean = {
 //
 //  }
 }

@@ -11,6 +11,7 @@ object BuildResourceToken {
                      withScope: Option[Scope] = None
                    ): ResourceToken  = {
     new ResourceToken(
+      thirdProfile  = BuildThirdProfile.any(),
       ownerProfile  = BuildOwnerProfile.any(withSurname = withsurname),
       scope = withScope.getOrElse(BuildScope.any()),
       token = BuildToken.anyLive()
@@ -22,6 +23,7 @@ object BuildResourceToken {
                         withScope: Option[Scope] = None
                       ): ResourceToken  = {
     new ResourceToken(
+      thirdProfile  = BuildThirdProfile.any(),
       ownerProfile = BuildOwnerProfile.any(withSurname = withsurname),
       scope = withScope.getOrElse(BuildScope.any()),
       token = BuildToken.anyExpired()
@@ -30,6 +32,7 @@ object BuildResourceToken {
 
   def withToken(withToken: Token): ResourceToken  = {
     new ResourceToken(
+      thirdProfile  = BuildThirdProfile.any(),
       BuildOwnerProfile.any(),
       BuildScope.any(),
       withToken
