@@ -15,29 +15,29 @@ class Resource(
     @throws(classOf[IllegalAccessException])
     def firstname(): String =
       scope.firstname match {
-        case true if !isExpired => ownerProfile.firstname
-        case true if isExpired => throw new IllegalAccessException("The scope allows to access this property. However your token is expired and need to be refreshed")
+        case true if !isTokenExpired => ownerProfile.firstname
+        case true if isTokenExpired => throw new IllegalAccessException("The scope allows to access this property. However your token is expired and need to be refreshed")
         case _ => throw new IllegalAccessException("The scope doesn't allow you to access to firstname")
     }
 
     @throws(classOf[IllegalAccessException])
     def surname(): String = {
         scope.surname match {
-          case true if !isExpired => ownerProfile.surname
-          case true if isExpired => throw new IllegalAccessException("The scope allows to access this property. However your token is expired and need to be refreshed")
+          case true if !isTokenExpired => ownerProfile.surname
+          case true if isTokenExpired => throw new IllegalAccessException("The scope allows to access this property. However your token is expired and need to be refreshed")
           case _ => throw new IllegalAccessException("The scope doesn't allow you to access to surname")
         }
     }
 
     @throws(classOf[IllegalAccessException])
     def email(): String = scope.email match {
-        case true if !isExpired => ownerProfile.email
-        case true if isExpired => throw new IllegalAccessException("The scope allows to access this property. However your token is expired and need to be refreshed")
+        case true if !isTokenExpired => ownerProfile.email
+        case true if isTokenExpired => throw new IllegalAccessException("The scope allows to access this property. However your token is expired and need to be refreshed")
         case _ => throw new IllegalAccessException("The scope doesn't allow you to access to email")
     }
 
     @throws(classOf[IllegalAccessException])
-    def isExpired(): Boolean = token match {
+    def isTokenExpired(): Boolean = token match {
         case Some(token) => token.isExpired
         case _ => throw new IllegalAccessException("There is no token. Cannot be possible to know if is expired.")
     }

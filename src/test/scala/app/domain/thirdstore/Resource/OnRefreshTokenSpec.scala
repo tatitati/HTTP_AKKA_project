@@ -26,8 +26,8 @@ class OnRefreshTokenSpec extends FunSuite{
     var resourceWithExpiredToken = BuildResource.withExpiredToken()
     val resourceWithLiveToken = BuildResource.withLiveToken()
 
-    assert(resourceWithExpiredToken.isExpired() === true)
-    assert(resourceWithLiveToken.isExpired() === false)
+    assert(resourceWithExpiredToken.isTokenExpired() === true)
+    assert(resourceWithLiveToken.isTokenExpired() === false)
   }
 
   test("Can refresh an expired token") {
@@ -35,9 +35,9 @@ class OnRefreshTokenSpec extends FunSuite{
     val givenTokenExpired = BuildToken.anyExpired(withRefreshToken = givenRefreshUuid)
     val givenResourceExpired = BuildResource.withToken(withToken = givenTokenExpired)
 
-    assert(givenResourceExpired.isExpired() === true)
+    assert(givenResourceExpired.isTokenExpired() === true)
     givenResourceExpired.refreshToken(givenRefreshUuid, "refresh_token")
-    assert(givenResourceExpired.isExpired() === false)
+    assert(givenResourceExpired.isTokenExpired() === false)
   }
 
   test("Cannot refresh a live token") {
