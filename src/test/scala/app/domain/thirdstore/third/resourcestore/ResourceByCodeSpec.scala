@@ -1,6 +1,6 @@
-package test.app.domain.resourcestore
+package app.domain.thirdstore.third.resourcestore
 
-import app.domain.resourcestore.ResourceByToken
+import app.domain.thirdstore.resourcestore.ResourceByToken
 import builders.BuildResourceByCode
 import org.scalatest.FunSuite
 

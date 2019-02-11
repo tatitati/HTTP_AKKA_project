@@ -1,6 +1,6 @@
 package builders
 
-import app.domain.resourcestore.ResourceByCode
+import app.domain.thirdstore.resourcestore.ResourceByCode
 import builders.authorizes.BuildScope
 
 object BuildResourceByCode {

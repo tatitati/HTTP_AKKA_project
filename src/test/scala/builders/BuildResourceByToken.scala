@@ -1,6 +1,6 @@
 package builders
 
-import app.domain.resourcestore.ResourceByToken
+import app.domain.thirdstore.resourcestore.ResourceByToken
 import app.domain.{Scope, Token}
 import builders.authorizes.BuildScope
 

@@ -1,4 +1,4 @@
-package app.domain.resourcestore
+package app.domain.thirdstore.resourcestore
 
 import java.util.UUID
 

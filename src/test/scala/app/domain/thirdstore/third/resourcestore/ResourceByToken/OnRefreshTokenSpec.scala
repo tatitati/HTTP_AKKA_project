@@ -1,4 +1,4 @@
-package test.app.domain.resourcestore.ResourceByToken
+package app.domain.thirdstore.third.resourcestore.ResourceByToken
 
 import app.domain.Token
 import builders.{BuildResourceByToken, BuildToken, BuildUuid}
