@@ -1,6 +1,6 @@
 package app.domain.thirdstore
 
-class ThirdProfile( // a case class with VAR is not good....
+class ThirdProfile(
               var name: String,
               var clientid: String,
               var clientsecret: String,

@@ -14,10 +14,6 @@ object BuildScope {
   }
 
   def any(): Scope = {
-    new Scope(
-      Faker.boolean(),
-      Faker.boolean(),
-      Faker.boolean()
-    )
+    Faker(onlyEmailAndFirstname(), onlySurname())
   }
 }
