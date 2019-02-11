@@ -1,5 +1,5 @@
 
-https://travis-ci.org/tatitati/HTTP_AKKA_project.svg?branch=master
+[![Build Status](https://travis-ci.org/tatitati/HTTP_AKKA_project.svg?branch=master)](https://travis-ci.org/tatitati/HTTP_AKKA_project)
 
 
 # Purpose
