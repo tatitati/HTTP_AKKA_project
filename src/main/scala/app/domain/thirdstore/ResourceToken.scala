@@ -14,7 +14,7 @@ class ResourceToken(
     ){
 
     @throws(classOf[IllegalAccessException])
-    def firstname(): String =
+    def firstname(): String = // make dynamic all these accessors
       scope.firstname match {
         case true if !isTokenExpired => ownerProfile.firstname
         case true if isTokenExpired => throw new IllegalAccessException("The scope allows to access this property. However your token is expired and need to be refreshed")
