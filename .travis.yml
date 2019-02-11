@@ -1,0 +1,10 @@
+language: scala
+scala:
+  - 2.12.6
+
+
+install:
+  sbt reload update
+
+script:
+  - sbt test
