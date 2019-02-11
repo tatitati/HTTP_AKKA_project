@@ -30,6 +30,10 @@ Visit: http://localhost:8080/ping
 
 # Credits
 
+# License
+
+The MIT License (MIT). Please see License File for more information.
+
 --- 
 
 # Todo:
