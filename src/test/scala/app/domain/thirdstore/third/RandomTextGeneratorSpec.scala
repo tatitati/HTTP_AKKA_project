@@ -5,14 +5,14 @@ import org.scalatest.FunSuite
 
 class RandomTextGeneratorSpec extends FunSuite with RandomTextGenerator {
   test("I can test a trait that generate random text") {
-    assert(generateRandomString() !== generateRandomString() )
+    assert(makeRandomText() !== makeRandomText() )
   }
 
   test("By default I create texts with 10 characters") {
-    assert(generateRandomString().length === 10)
+    assert(makeRandomText().length === 10)
   }
 
   test("I can generate random texts with an specific length") {
-    assert(generateRandomString(length = 15).length === 15)
+    assert(makeRandomText(length = 15).length === 15)
   }
 }
