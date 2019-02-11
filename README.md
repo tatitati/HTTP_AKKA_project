@@ -2,6 +2,8 @@
 [![Build Status](https://travis-ci.org/tatitati/HTTP_AKKA_project.svg?branch=master)](https://travis-ci.org/tatitati/HTTP_AKKA_project)
 
 
+[![Stat](https://img.shields.io/github/commit-activity/w/tatitati/HTTP_AKKA_project.svg)](https://img.shields.io/github/commit-activity/m/tatitati/HTTP_AKKA_project.svg)
+
 # Purpose
 
 Is a project that try to implement some concepts about oauth.
