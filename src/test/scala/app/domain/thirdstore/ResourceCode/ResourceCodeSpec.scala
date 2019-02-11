@@ -1,7 +1,7 @@
 package test.app.domain.thirdstore.ResourceCode
 
 import app.domain.thirdstore.ResourceToken
-import builders.{BuildResourceCode, BuildThirdProfile}
+import builders.BuildResourceCode
 import org.scalatest.FunSuite
 
 class ResourceCodeSpec extends FunSuite {
