@@ -5,12 +5,12 @@ import builders.authorizes.BuildScope
 
 object BuildResourceCode {
 
-  def any(withCode: Code = BuildCode.any()): ResourceCode  = {
+  def any(): ResourceCode  = {
     new ResourceCode(
       thirdProfile = BuildThirdProfile.any(),
       BuildOwnerProfile.any(),
       BuildScope.any(),
-      withCode
+      BuildCode.anyLive()
     )
   }
 }
