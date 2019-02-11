@@ -1,6 +1,7 @@
 package builders
 
-import app.domain.thirdstore.{Code, RandomTextGenerator}
+import app.domain.RandomTextGenerator
+import app.domain.thirdstore.Code
 import com.github.nscala_time.time.Imports.DateTime
 import com.github.nscala_time.time.Imports._
 

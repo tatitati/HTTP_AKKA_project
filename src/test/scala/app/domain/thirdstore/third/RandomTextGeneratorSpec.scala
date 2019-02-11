@@ -1,6 +1,6 @@
 package app.domain.thirdstore.third
 
-import app.domain.thirdstore.RandomTextGenerator
+import app.domain.RandomTextGenerator
 import org.scalatest.FunSuite
 
 class RandomTextGeneratorSpec extends FunSuite with RandomTextGenerator {
