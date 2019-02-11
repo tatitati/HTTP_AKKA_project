@@ -8,10 +8,4 @@ class Code(
                private val generatedIn: DateTime,
                private val state: String
     ) {
-
-    def isExpired(): Boolean = {
-      val expireInDate = generatedIn + expiresIn.seconds
-      val now = DateTime.now()
-      expireInDate < now
-    }
 }
