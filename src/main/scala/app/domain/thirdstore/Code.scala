@@ -6,8 +6,7 @@ class Code(
                val code: String,
                private val expiresIn: Int,
                private val generatedIn: DateTime,
-               private val state: String,
-               private val clientId: String // dont need it
+               private val state: String
     ) {
 
     def isExpired(): Boolean = {

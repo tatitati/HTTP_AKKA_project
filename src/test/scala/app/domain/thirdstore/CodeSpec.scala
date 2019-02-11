@@ -5,9 +5,9 @@ import org.scalatest.FunSuite
 
 class CodeSpec extends FunSuite {
 
-  test("I can create some codes") {
-    val codeExpired = BuildCode.anyExpired()
+  test("A code exists like LIVE or simply doesn't exist") {
+    val codeExpired = BuildCode.anyLive()
 
-    assert(codeExpired.isExpired() === true)
+    assert(codeExpired.isExpired() === false)
   }
 }
