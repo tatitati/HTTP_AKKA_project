@@ -1,4 +1,4 @@
-package buildersSpec
+package learning
 
 import builders.Faker
 import org.scalatest.FunSuite
