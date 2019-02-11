@@ -2,9 +2,9 @@ package app.domain.thirdstore
 
 import com.github.nscala_time.time.Imports._
 
-class Code(
-               val code: String,
-               private val expiresIn: Int,
+case class Code(
+               private val code: String,
+               private val expiresIn: Int = 60,
                private val generatedIn: DateTime,
                private val state: String
     ) {
