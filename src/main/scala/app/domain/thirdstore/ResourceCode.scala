@@ -11,15 +11,7 @@ class ResourceCode(
                      private val code: Code
                    ){
 
-  def isCodeExpired(): Boolean = {
-    code.isExpired
-  }
-
   def toResourceToken(): ResourceToken = {
-    if (isCodeExpired()) {
-      throw new IllegalArgumentException("An expired code cannot be used to get a token")
-    }
-
     new ResourceToken(
       thirdProfile = thirdProfile,
       ownerProfile = ownerProfile,
