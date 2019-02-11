@@ -5,7 +5,7 @@ import app.domain.{Scope, Token}
 import app.domain.ownerstore.OwnerProfile
 import com.github.nscala_time.time.Imports.DateTime
 
-class ResourceToken(
+class ResourceByToken(
                 private val thirdProfile: ThirdProfile,
                 private val ownerProfile: OwnerProfile,
                 private val scope: Scope,

@@ -1,6 +1,6 @@
-package test.app.domain.thirdstore.Resource
+package test.app.domain.thirdstore.ResourceByToken
 
-import builders.BuildResourceToken
+import builders.BuildResourceByToken
 import builders.authorizes.BuildScope
 import org.scalatest.FunSuite
 import org.scalatest.Matchers._
@@ -8,7 +8,7 @@ import org.scalatest.Matchers._
 class OnReadOwnerProfileSpec extends FunSuite{
 
   test("Can read data when allowed and token is live") {
-    val givenResource = BuildResourceToken.withLiveToken(
+    val givenResource = BuildResourceByToken.withLiveToken(
       withsurname = "my surname",
       withScope = Option(BuildScope.onlySurname())
     )
@@ -17,7 +17,7 @@ class OnReadOwnerProfileSpec extends FunSuite{
   }
 
   test("Exceptions when reading not-authorised data") {
-    val givenResource = BuildResourceToken.withLiveToken(
+    val givenResource = BuildResourceByToken.withLiveToken(
       withScope = Option(BuildScope.onlyEmailAndFirstname())
     )
 
@@ -27,7 +27,7 @@ class OnReadOwnerProfileSpec extends FunSuite{
   }
 
   test("Even if the scope allows it, if the token is expired then the profile cannot be read") {
-    val givenResource = BuildResourceToken.withExpiredToken(
+    val givenResource = BuildResourceByToken.withExpiredToken(
       withScope = Option(BuildScope.onlySurname())
     )
 

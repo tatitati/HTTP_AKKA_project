@@ -1,22 +1,22 @@
-package test.app.domain.thirdstore.Resource
+package test.app.domain.thirdstore.ResourceByToken
 
 import app.domain.Token
-import builders.{BuildResourceToken, BuildToken, BuildUuid}
+import builders.{BuildResourceByToken, BuildToken, BuildUuid}
 import org.scalatest.FunSuite
 import org.scalatest.Matchers._
 
 class OnRefreshTokenSpec extends FunSuite{
 
   test("Can have a token") {
-    val resWithLiveToken = BuildResourceToken.withLiveToken()
+    val resWithLiveToken = BuildResourceByToken.withLiveToken()
 
     assert(resWithLiveToken.token.isInstanceOf[Token])
   }
 
 
   test("Token for resource might be or not expired") {
-    var resourceWithExpiredToken = BuildResourceToken.withExpiredToken()
-    val resourceWithLiveToken = BuildResourceToken.withLiveToken()
+    var resourceWithExpiredToken = BuildResourceByToken.withExpiredToken()
+    val resourceWithLiveToken = BuildResourceByToken.withLiveToken()
 
     assert(resourceWithExpiredToken.isTokenExpired() === true)
     assert(resourceWithLiveToken.isTokenExpired() === false)
@@ -25,7 +25,7 @@ class OnRefreshTokenSpec extends FunSuite{
   test("Can refresh an expired token") {
     val givenRefreshUuid = BuildUuid.uuidOne()
     val givenTokenExpired = BuildToken.anyExpired(withRefreshToken = givenRefreshUuid)
-    val givenResourceExpired = BuildResourceToken.withToken(withToken = givenTokenExpired)
+    val givenResourceExpired = BuildResourceByToken.withToken(withToken = givenTokenExpired)
 
     assert(givenResourceExpired.isTokenExpired() === true)
     givenResourceExpired.refreshToken(givenRefreshUuid, "refresh_token")
@@ -34,7 +34,7 @@ class OnRefreshTokenSpec extends FunSuite{
 
   test("Cannot refresh a live token") {
     val refreshToken = BuildUuid.uuidOne()
-    val resourceExpired = BuildResourceToken.withToken(
+    val resourceExpired = BuildResourceByToken.withToken(
       withToken = BuildToken.anyLive(withRefreshToken = refreshToken)
     )
 
@@ -45,7 +45,7 @@ class OnRefreshTokenSpec extends FunSuite{
 
   test("Receives an exception on Refreshing token with wrong refresh_token uuid") {
     val givenWrongRefreshUui = BuildUuid.uuidTwo()
-    val givenResourceExpired = BuildResourceToken.withToken(
+    val givenResourceExpired = BuildResourceByToken.withToken(
       withToken = BuildToken.anyExpired(
         withRefreshToken = BuildUuid.uuidOne()
       )

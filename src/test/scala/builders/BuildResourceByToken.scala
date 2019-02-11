@@ -1,16 +1,16 @@
 package builders
 
 import app.domain.{Scope, Token}
-import app.domain.thirdstore.ResourceToken
+import app.domain.thirdstore.ResourceByToken
 import builders.authorizes.BuildScope
 
-object BuildResourceToken {
+object BuildResourceByToken {
 
   def withLiveToken(
                      withsurname: String = Faker.text(),
                      withScope: Option[Scope] = None
-                   ): ResourceToken  = {
-    new ResourceToken(
+                   ): ResourceByToken  = {
+    new ResourceByToken(
       thirdProfile  = BuildThirdProfile.any(),
       ownerProfile  = BuildOwnerProfile.any(withSurname = withsurname),
       scope = withScope.getOrElse(BuildScope.any()),
@@ -21,8 +21,8 @@ object BuildResourceToken {
   def withExpiredToken(
                         withsurname: String = Faker.text(),
                         withScope: Option[Scope] = None
-                      ): ResourceToken  = {
-    new ResourceToken(
+                      ): ResourceByToken  = {
+    new ResourceByToken(
       thirdProfile  = BuildThirdProfile.any(),
       ownerProfile = BuildOwnerProfile.any(withSurname = withsurname),
       scope = withScope.getOrElse(BuildScope.any()),
@@ -30,8 +30,8 @@ object BuildResourceToken {
     )
   }
 
-  def withToken(withToken: Token): ResourceToken  = {
-    new ResourceToken(
+  def withToken(withToken: Token): ResourceByToken  = {
+    new ResourceByToken(
       thirdProfile  = BuildThirdProfile.any(),
       BuildOwnerProfile.any(),
       BuildScope.any(),

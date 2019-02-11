@@ -1,12 +1,12 @@
 package builders
 
-import app.domain.thirdstore.{Code, ResourceCode}
+import app.domain.thirdstore.{Code, ResourceByCode}
 import builders.authorizes.BuildScope
 
-object BuildResourceCode {
+object BuildResourceByCode {
 
-  def any(): ResourceCode  = {
-    new ResourceCode(
+  def any(): ResourceByCode  = {
+    new ResourceByCode(
       thirdProfile = BuildThirdProfile.any(),
       BuildOwnerProfile.any(),
       BuildScope.any(),
