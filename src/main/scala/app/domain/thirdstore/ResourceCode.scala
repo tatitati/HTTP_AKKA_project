@@ -17,6 +17,24 @@ class ResourceCode(
   }
 
   def  canExportToRecourceToken(withCode: String): Boolean = {
-    code.code == withCode
+    !isCodeExpired && code.code == withCode
+  }
+
+  def toResourceToken(): ResourceToken = {
+    if (isCodeExpired()) {
+      throw new IllegalArgumentException("An expired code cannot be used to get a token")
+    }
+
+    new ResourceToken(
+      thirdProfile = thirdProfile,
+      ownerProfile = ownerProfile,
+      scope = scope,
+      token = new Token(
+        accessToken = java.util.UUID.randomUUID,
+        refreshToken = java.util.UUID.randomUUID,
+        generatedIn = DateTime.now(),
+        tokenType = "bearer"
+      )
+    )
   }
 }
