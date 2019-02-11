@@ -11,25 +11,6 @@ class ResourceCodeSpec extends FunSuite {
         assert(resourceCodeExpired.isCodeExpired() === true)
     }
 
-    test("It checks the code and if is live") {
-      val resourceCodeLive = BuildResourceCode.anyLive(
-        withCode = "code1"
-      )
-
-      assert(resourceCodeLive.canExportToRecourceToken(withCode = "code2") === false)
-      assert(resourceCodeLive.canExportToRecourceToken(withCode = "code1") === true)
-
-
-    }
-
-    test("if ResourceCode is expired, then it cannot be transformed into a ResourceToken") {
-      val resourceCodeExpired = BuildResourceCode.anyExpired(
-        withCode = "codeA"
-      )
-
-      assert(resourceCodeExpired.canExportToRecourceToken(withCode = "codeA") === false)
-    }
-
     test("Exception is triggered when the code is expired") {
       val resourceCodeLive = BuildResourceCode.anyExpired(
         withCode = "code1"
@@ -39,5 +20,13 @@ class ResourceCodeSpec extends FunSuite {
         resourceCodeLive.toResourceToken()
       }
       assert(thrown.getMessage === "An expired code cannot be used to get a token")
+    }
+
+    test("Can convert a ResourceCode into a ResourceToken") {
+      val resourceCodeLive = BuildResourceCode.anyLive(
+        withCode = "code1"
+      )
+
+      assert(resourceCodeLive.toResourceToken().isInstanceOf[ResourceToken])
     }
 }

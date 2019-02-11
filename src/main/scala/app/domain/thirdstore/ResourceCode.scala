@@ -16,10 +16,6 @@ class ResourceCode(
     code.isExpired
   }
 
-  def  canExportToRecourceToken(withCode: String): Boolean = {
-    !isCodeExpired && code.code == withCode
-  }
-
   def toResourceToken(): ResourceToken = {
     if (isCodeExpired()) {
       throw new IllegalArgumentException("An expired code cannot be used to get a token")
