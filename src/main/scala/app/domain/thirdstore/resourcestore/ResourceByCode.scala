@@ -17,7 +17,7 @@ class ResourceByCode(
       thirdProfile = thirdProfile,
       ownerProfile = ownerProfile,
       scope = scope,
-      token = FactoryToken.createBearer()
+      token = FactoryToken.create()
     )
   }
 }

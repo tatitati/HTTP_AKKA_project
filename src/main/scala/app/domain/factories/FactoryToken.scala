@@ -5,10 +5,9 @@ import com.github.nscala_time.time.Imports.DateTime
 
 object FactoryToken {
 
-  def createBearer(): Token = {
+  def create(): Token = {
       new Token(
         accessToken = java.util.UUID.randomUUID,
-        tokenType = "bearer",
         refreshToken = java.util.UUID.randomUUID,
         generatedIn = DateTime.now()
       )

@@ -5,7 +5,7 @@ import com.github.nscala_time.time.Imports._
 
 class Token(
              private val accessToken: UUID,
-             private val tokenType: String,
+             private val tokenType: String = "bearer",
              private val refreshToken: UUID,
              private val expiresIn: Int = 360000,
              private val generatedIn: DateTime

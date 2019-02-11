@@ -6,7 +6,7 @@ import org.scalatest.FunSuite
 class FactoryTokenSpec extends FunSuite {
 
   test("Can create new Tokens") {
-    val token = FactoryToken.createBearer()
+    val token = FactoryToken.create()
 
     assert(token.isInstanceOf[Token])
   }

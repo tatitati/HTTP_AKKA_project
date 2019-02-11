@@ -51,6 +51,6 @@ class ResourceByToken(
         throw new IllegalAccessException("The token must be expired in order to be refreshed")
       }
 
-      token = FactoryToken.createBearer()
+      token = FactoryToken.create()
     }
 }
