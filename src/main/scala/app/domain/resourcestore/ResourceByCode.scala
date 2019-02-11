@@ -1,10 +1,10 @@
-package app.domain.thirdstore
+package app.domain.resourcestore
 
-import app.domain.{Scope, Token}
+import app.domain.Scope
+import app.domain.factories.FactoryToken
 import app.domain.ownerstore.OwnerProfile
-import com.github.nscala_time.time.Imports.DateTime
+import app.domain.thirdstore.ThirdProfile
 
-// By definition, if a resource code exists, is live. It cannot exists in any other state like expired
 class ResourceByCode(
                      val thirdProfile: ThirdProfile,
                      val ownerProfile: OwnerProfile,
@@ -17,12 +17,7 @@ class ResourceByCode(
       thirdProfile = thirdProfile,
       ownerProfile = ownerProfile,
       scope = scope,
-      token = new Token(
-        accessToken = java.util.UUID.randomUUID,
-        refreshToken = java.util.UUID.randomUUID,
-        generatedIn = DateTime.now(),
-        tokenType = "bearer"
-      )
+      token = FactoryToken.createBearer()
     )
   }
 }

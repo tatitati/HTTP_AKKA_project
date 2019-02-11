@@ -1,4 +1,4 @@
-package test.app.domain.thirdstore.ResourceByToken
+package test.app.domain.resourcestore.ResourceByToken
 
 import builders.BuildResourceByToken
 import builders.authorizes.BuildScope

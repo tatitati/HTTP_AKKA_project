@@ -1,4 +1,4 @@
-package app.domain.ownerstore
+package test.app.domain.ownerstore
 
 import builders.BuildOwnerProfile
 import org.scalatest.FunSuite

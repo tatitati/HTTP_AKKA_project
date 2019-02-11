@@ -1,4 +1,4 @@
-package app.domain.thirdstore.third
+package test.app.domain.thirdstore.third
 
 import app.domain.RandomTextGenerator
 import org.scalatest.FunSuite

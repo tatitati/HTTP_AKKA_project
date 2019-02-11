@@ -1,6 +1,6 @@
-package app.domain.thirdstore
+package app.domain.resourcestore
 
-import com.github.nscala_time.time.Imports._
+import com.github.nscala_time.time.Imports.DateTime
 
 case class Code(
                private val code: String,

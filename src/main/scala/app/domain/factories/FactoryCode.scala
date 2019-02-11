@@ -1,7 +1,7 @@
 package app.domain.factories
 
 import app.domain.RandomTextGenerator
-import app.domain.thirdstore.Code
+import app.domain.resourcestore.Code
 import com.github.nscala_time.time.Imports.DateTime
 
 object FactoryCode extends RandomTextGenerator {

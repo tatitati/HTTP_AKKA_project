@@ -1,6 +1,6 @@
 package builders
 
-import app.domain.thirdstore.{ResourceByToken, Third, ThirdProfile}
+import app.domain.thirdstore.{Third, ThirdProfile}
 
 object BuildThird {
     def any(

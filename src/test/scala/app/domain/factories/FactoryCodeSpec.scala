@@ -1,6 +1,6 @@
 package app.domain.factories
 
-import app.domain.thirdstore.Code
+import app.domain.resourcestore.Code
 import org.scalatest.FunSuite
 
 class FactoryCodeSpec extends FunSuite {

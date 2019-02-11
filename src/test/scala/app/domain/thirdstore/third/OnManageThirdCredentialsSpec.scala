@@ -1,4 +1,4 @@
-package app.domain.thirdstore.third
+package test.app.domain.thirdstore.third
 
 import builders.{BuildThird, BuildThirdProfile}
 import org.scalatest.FunSuite

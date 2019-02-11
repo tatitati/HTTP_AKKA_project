@@ -1,9 +1,11 @@
-package app.domain.thirdstore
+package app.domain.resourcestore
 
 import java.util.UUID
-import app.domain.{Scope, Token}
+
+import app.domain.factories.FactoryToken
 import app.domain.ownerstore.OwnerProfile
-import com.github.nscala_time.time.Imports.DateTime
+import app.domain.thirdstore.ThirdProfile
+import app.domain.{Scope, Token}
 
 class ResourceByToken(
                 private val thirdProfile: ThirdProfile,
@@ -49,11 +51,6 @@ class ResourceByToken(
         throw new IllegalAccessException("The token must be expired in order to be refreshed")
       }
 
-      token = new Token(
-        accessToken = java.util.UUID.randomUUID,
-        refreshToken = java.util.UUID.randomUUID,
-        generatedIn = DateTime.now(),
-        tokenType = "bearer"
-      )
+      token = FactoryToken.createBearer()
     }
 }

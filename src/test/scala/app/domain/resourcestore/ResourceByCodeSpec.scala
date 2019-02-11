@@ -1,7 +1,6 @@
-package test.app.domain.thirdstore
+package test.app.domain.resourcestore
 
-
-import app.domain.thirdstore.{ResourceByToken => ResByToken}
+import app.domain.resourcestore.ResourceByToken
 import builders.BuildResourceByCode
 import org.scalatest.FunSuite
 
@@ -12,7 +11,7 @@ class ResourceByCodeSpec extends FunSuite {
 
     val resourceToken = resourceCode.toResourceByToken()
 
-    assert(resourceToken.isInstanceOf[ResByToken])
+    assert(resourceToken.isInstanceOf[ResourceByToken])
     assert(resourceToken.isTokenExpired() === false)
   }
 }

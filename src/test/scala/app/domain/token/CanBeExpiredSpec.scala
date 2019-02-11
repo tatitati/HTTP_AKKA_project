@@ -1,4 +1,4 @@
-package app.domain.token
+package test.app.domain.token
 
 import builders.BuildToken
 import org.scalatest.FunSuite

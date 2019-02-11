@@ -1,6 +1,7 @@
-package app.domain.ownerstore
+package test.app.domain.ownerstore
 
-import builders.{BuildThirdProfile}
+import app.domain.ownerstore.{Auth, Auths}
+import builders.BuildThirdProfile
 import builders.authorizes.{BuildAuth, BuildAuths}
 import org.scalatest.FunSuite
 
