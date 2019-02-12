@@ -2,7 +2,6 @@
 [![Build Status](https://travis-ci.org/tatitati/HTTP_AKKA_project.svg?branch=master)](https://travis-ci.org/tatitati/HTTP_AKKA_project)
 
 
-[![Stat](https://img.shields.io/github/commit-activity/w/tatitati/HTTP_AKKA_project.svg)](https://img.shields.io/github/commit-activity/m/tatitati/HTTP_AKKA_project.svg)
 
 # Purpose
 
@@ -41,6 +40,6 @@ The MIT License (MIT). Please see License File for more information.
 # Todo:
 
 * How to tag tests? (and filter them in the CLI)
-
+* Add some cool shields to readme.md
 
 
