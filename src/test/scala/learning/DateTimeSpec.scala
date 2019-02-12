@@ -1,5 +1,7 @@
 package learning
 
+import java.sql.Timestamp
+
 import com.github.nscala_time.time.Imports._
 import org.scalatest.FunSuite
 
@@ -18,18 +20,24 @@ class DateTimeSpec extends FunSuite {
   }
 
   test("I can create an specific date") {
-    val now = new  DateTime()
-    val specificdate = now.withYear(2030).withMonth(8).withDay(20)
+    val specificdate1 = new DateTime().withYear(2030).withMonth(8).withDay(20)
+    val specificdate2 = new DateTime()
+      .withDate(2030, 8, 20)
+      .withTime(13, 8, 20, 400)
 
-    assert(specificdate.getYear === 2030)
-    assert(specificdate.getMonthOfYear === 8)
+    assert(specificdate1.getYear === 2030)
+    assert(specificdate1.getMonthOfYear === 8)
+    assert(specificdate2.toString === "2030-08-20T13:08:20.400+01:00")
   }
 
-  test("I can create an string in an specific format") {
+  test("I can create DateTime from timestamps") {
+
+  }
+
+  test("I can format an string in an specific format") {
     val now = new  DateTime()
     val specificdate = now.withYear(2030).withMonth(8).withDay(20)
 
     assert(specificdate.toString("Y-M--d") === "2030-8--20")
-
   }
 }
