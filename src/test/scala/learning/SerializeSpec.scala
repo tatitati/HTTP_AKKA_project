@@ -7,78 +7,36 @@ import org.scalatest.FunSuite
 import com.github.nscala_time.time.Imports._
 
 class SerializeSpec extends FunSuite {
+  implicit val formats = DefaultFormats
 
-  test("Can serialize (to json) an object, but days have some problems") {
+  test("Dates are not converted when serializing") {
+      val givenMap = Map(
+        "access_token" -> "whatever",
+        "refresh_token" -> 5,
+        "token_type" -> DateTime.now(),
+      )
 
-      val serialize = Serialization.write(Map(
-          "access_token" -> "whatever",
-          "refresh_token" -> 5,
-          "token_type" -> DateTime.now(),
-        ))(DefaultFormats)
+      val mapSerialized = Serialization.write(givenMap)(DefaultFormats)
 
-
-      assert(serialize === "{\"access_token\":\"whatever\",\"refresh_token\":5,\"token_type\":{}}")
+      assert(mapSerialized ===
+        """{
+          |"access_token":"whatever",
+          |"refresh_token":5,
+          |"token_type":{}
+          |}""".stripMargin.replaceAll("\n", ""))
   }
 
 
-  test("Can serialize (to json) an object, but with date properly converted to string") {
+  test("Can do some basic de-serialization from json") {
+    val givenJson = """{
+                      |"access_token":"whatever",
+                      |"refresh_token":5
+                      |}""".stripMargin.replaceAll("\n", "")
+    
+    val extracted = parse(givenJson).extract[Map[String, String]]
 
-    val givenDateTime = new DateTime()
-      .withDate(2030, 8, 20)
-      .withTime(13, 8, 20, 400)
-
-    val serialize = Serialization.write(Map(
-      "access_token" -> "whatever",
-      "refresh_token" -> 5,
-      "token_type" -> givenDateTime.toString,
-    ))(DefaultFormats)
-
-    assert(serialize === """{"access_token":"whatever","refresh_token":5,"token_type":"2030-08-20T13:08:20.400+01:00"}""")
-  }
-
-  test("Can de-serialize a json to some not useful strings....") {
-    case class someclass(access_token: String, refresh_token: Int, token_type: DateTime)
-
-    val expectedDateTime = new DateTime()
-      .withDate(2030, 8, 20)
-      .withTime(13, 8, 20, 400)
-
-    val expectedObject = Map(
-      "access_token" -> "whatever",
-      "refresh_token" -> 5,
-      "token_type" -> expectedDateTime,
-    )
-
-    val givenJson = """{"access_token":"whatever","refresh_token":5,"token_type":"2030-08-20T13:08:20.400+01:00"}"""
-
-    val parsedObject = parse(givenJson)
-    implicit val formats = DefaultFormats
-    val extracted = parsedObject.extract[Map[String, String]]
-
+    assert(extracted === Map("access_token" -> "whatever", "refresh_token" -> "5"))
     assert(extracted("access_token") == "whatever")
     assert(extracted("refresh_token") == "5")
-    assert(extracted("token_type") == "2030-08-20T13:08:20.400+01:00")
-  }
-
-  test("Can de-serialize a json to a useful object") {
-    case class someclass(access_token: String, refresh_token: Int, token_type: DateTime)
-
-    val expectedDateTime = new DateTime()
-      .withDate(2030, 8, 20)
-      .withTime(13, 8, 20, 400)
-
-    val expectedObject = Map(
-      "access_token" -> "whatever",
-      "refresh_token" -> 5,
-      "token_type" -> expectedDateTime,
-    )
-
-    val givenJson = """{"access_token":"whatever","refresh_token":5,"token_type":"2030-08-20T13:08:20.400+01:00"}"""
-
-    val parsedObject = parse(givenJson)
-
-    implicit val formats = DefaultFormats
-    //val extracted = parsedObject.extract[someclass]
-    //println(extracted)
   }
 }
