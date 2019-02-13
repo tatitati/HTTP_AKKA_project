@@ -6,10 +6,14 @@ class textSpec extends FunSuite {
   test("I can convert multiline to singleline") {
     val text ="""this
         |is
-        |whatever""".stripMargin.replaceAll("\n", " ")
+        |whatever"""
 
+    val text1 = text.stripMargin.replaceAll("\n", " ")
+    val text2 = text.stripMargin.replaceAll("\n", "")
 
-    assert(text === "this is whatever")
+    assert(text1 === "this is whatever")
+    assert(text2 === "thisiswhatever")
+
   }
 
   test("Without striping margins") {
