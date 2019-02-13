@@ -2,7 +2,6 @@ package learning
 
 import com.github.nscala_time.time.Imports._
 import org.scalatest.FunSuite
-import DateTimeFormat._
 
 class DateTimeSpec extends FunSuite {
 
@@ -40,6 +39,10 @@ class DateTimeSpec extends FunSuite {
     assert(specificdate.toString === "2030-08-20T13:08:20.400+01:00")
     assert(specificdate.toString("Y-M--d") === "2030-8--20")
   }
+
+  //
+  // Parsing dates from string
+  //
 
   test("Parse string to DateTime") {
     val parsed = DateTime.parse("2030-08-20T13:08:20.400+01:00")
