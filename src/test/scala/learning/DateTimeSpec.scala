@@ -40,13 +40,12 @@ class DateTimeSpec extends FunSuite {
     assert(specificdate.toString("Y-M--d") === "2030-8--20")
   }
 
-  test("Can create a DateTime from an string") {
-    val givenDateText = "2030-08-20T13:08:20.400+01:00"
+  test("Parse string to DateTime") {
     val givenDateEquivalent = new DateTime()
       .withDate(2030, 8, 20)
       .withTime(13, 8, 20, 400)
 
-    val thenParsedDate = DateTime.parse(givenDateText)
+    val thenParsedDate = DateTime.parse("2030-08-20T13:08:20.400+01:00")
     assert(thenParsedDate.isEqual(givenDateEquivalent) === true)
   }
 
