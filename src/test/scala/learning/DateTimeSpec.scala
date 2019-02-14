@@ -65,4 +65,17 @@ class DateTimeSpec extends FunSuite {
     assert(parsed.toString() === "2030-01-08T00:00:00.000Z")
   }
 
+  //
+  // From an string I can get the same precission than a datetime created object
+  //
+  test("From an string I can get the same object") {
+    val specificdate = new DateTime()
+      .withDate(2030, 8, 20)
+      .withTime(13, 8, 20, 400)
+
+    val parsed = DateTime.parse("2030-08-20T13:08:20.400+01:00")
+
+    assert(parsed.toString() === "2030-08-20T13:08:20.400+01:00")
+    assert(parsed.isEqual(specificdate))
+  }
 }
