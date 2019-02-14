@@ -1,9 +1,9 @@
 package app.domain.thirdstore.third.resourcestore.ResourceByToken
 
-import builders.BuildResourceByToken
 import builders.authorizes.BuildScope
 import org.scalatest.FunSuite
 import org.scalatest.Matchers._
+import test.builders.BuildResourceByToken
 
 class OnReadOwnerProfileSpec extends FunSuite{
 

@@ -1,9 +1,9 @@
 package app.domain.thirdstore.third.resourcestore.ResourceByToken
 
 import app.domain.Token
-import builders.{BuildResourceByToken, BuildToken, BuildUuid}
 import org.scalatest.FunSuite
 import org.scalatest.Matchers._
+import test.builders.{BuildResourceByToken, BuildToken, BuildUuid}
 
 class OnRefreshTokenSpec extends FunSuite{
 

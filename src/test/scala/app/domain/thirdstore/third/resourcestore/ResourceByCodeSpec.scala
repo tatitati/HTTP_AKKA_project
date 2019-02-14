@@ -1,8 +1,8 @@
 package app.domain.thirdstore.third.resourcestore
 
 import app.domain.thirdstore.resourcestore.ResourceByToken
-import builders.BuildResourceByCode
 import org.scalatest.FunSuite
+import test.builders.BuildResourceByCode
 
 class ResourceByCodeSpec extends FunSuite {
 

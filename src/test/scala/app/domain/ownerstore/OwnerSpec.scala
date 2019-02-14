@@ -1,9 +1,10 @@
 package test.app.domain.ownerstore
 
 import app.domain.ownerstore.{Auth, Auths}
-import builders.{BuildOwner, BuildOwnerProfile, BuildThirdProfile}
-import builders.authorizes.{BuildAuth, BuildAuths}
+import builders.authorizes.BuildAuths
 import org.scalatest.FunSuite
+import test.builders.authorizes.BuildAuth
+import test.builders.{BuildOwner, BuildOwnerProfile, BuildThirdProfile}
 
 class OwnerSpec extends FunSuite {
 

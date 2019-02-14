@@ -1,4 +1,4 @@
-package builders
+package test.builders
 
 import app.domain.ownerstore.OwnerProfile
 import com.github.nscala_time.time.Imports.{DateTime, _}

@@ -1,7 +1,7 @@
 package learning
 
-import builders.Faker
 import org.scalatest.FunSuite
+import test.builders.Faker
 
 class FakerSpec extends FunSuite {
   // TODO: test a trait that select randomly elements from a Seq

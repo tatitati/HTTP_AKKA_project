@@ -1,7 +1,7 @@
 package test.app.domain.token
 
-import builders.{BuildToken, BuildUuid}
 import org.scalatest.FunSuite
+import test.builders.{BuildToken, BuildUuid}
 
 class CanBeRefreshedSpec extends FunSuite{
   test("Must be used the valid refresh_token and the token must be expired") {

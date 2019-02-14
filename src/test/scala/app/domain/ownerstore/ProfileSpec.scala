@@ -1,8 +1,8 @@
 package test.app.domain.ownerstore
 
-import builders.BuildOwnerProfile
 import org.scalatest.FunSuite
 import com.github.nscala_time.time.Imports.DateTime
+import test.builders.BuildOwnerProfile
 
 class ProfileSpec extends FunSuite {
 

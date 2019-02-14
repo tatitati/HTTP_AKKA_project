@@ -1,7 +1,8 @@
 package builders.authorizes
 
 import app.domain.ownerstore.Auths
-import builders.BuildThirdProfile
+import test.builders.BuildThirdProfile
+import test.builders.authorizes.BuildAuth
 
 object BuildAuths {
 

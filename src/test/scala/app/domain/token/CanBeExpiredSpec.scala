@@ -1,7 +1,7 @@
 package test.app.domain.token
 
-import builders.BuildToken
 import org.scalatest.FunSuite
+import test.builders.BuildToken
 
 class CanBeExpiredSpec extends FunSuite{
 

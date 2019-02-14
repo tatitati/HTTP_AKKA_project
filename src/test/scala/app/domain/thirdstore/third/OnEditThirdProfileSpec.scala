@@ -1,7 +1,7 @@
 package test.app.domain.thirdstore.third
 
-import builders.{BuildThird, BuildThirdProfile}
 import org.scalatest.FunSuite
+import test.builders.{BuildThird, BuildThirdProfile}
 
 class OnEditThirdProfileSpec extends FunSuite {
 

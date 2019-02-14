@@ -1,7 +1,6 @@
-package builders
+package test.builders
 
 import java.util.UUID
-
 import app.domain.Token
 import com.github.nscala_time.time.Imports._
 

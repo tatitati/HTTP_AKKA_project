@@ -1,4 +1,4 @@
-package builders
+package test.builders
 
 import app.domain.thirdstore.{Third, ThirdProfile}
 
