@@ -13,8 +13,8 @@ class SerializerResourceByCodeSpec extends FunSuite {
       """{
         |"thirdProfile":{
             |"name":"name",
-            |"clientid":"clientid"
-            |,"clientsecret":"clientsecret",
+            |"clientid":"clientid",
+            |"clientsecret":"clientsecret",
             |"callback":"callback",
             |"homepage":"homepage",
             |"description":"description"
