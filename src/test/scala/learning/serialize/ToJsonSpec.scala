@@ -9,7 +9,7 @@ import Serialization.{read, write => swrite}
 
 class ToJsonSpec extends FunSuite {
 
-  test("Dates are not converted when serializing") {
+  test("Dates are not converted when serializing by default") {
       val givenMap = Map(
         "access_token" -> "whatever",
         "refresh_token" -> 5,
@@ -26,7 +26,7 @@ class ToJsonSpec extends FunSuite {
           |}""".stripMargin.replaceAll("\n", ""))
   }
 
-  test("You can specify the date format") {
+  test("You can specify keys and formats of every value if you wish") {
     val givenMap = Map(
       "access_token" -> "whatever",
       "refresh_token" -> 5,
@@ -55,7 +55,7 @@ class ToJsonSpec extends FunSuite {
 
     implicit val formats = Serialization.formats(NoTypeHints)
     val jsonString = write(thirdprofile)
-    
+
     assert(jsonString === """{"name":"any name","clientid":"any clientid","clientsecret":"one clientsecret","callback":"this is the callback","homepage":"a homepage","description":"boring description here"}""")
   }
 }
