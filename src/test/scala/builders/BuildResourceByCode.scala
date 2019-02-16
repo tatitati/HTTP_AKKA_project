@@ -17,5 +17,30 @@ object BuildResourceByCode {
 
     new ResourceByCode(withThirdProfile, withOwnerProfile, withScope, withCode)
   }
+
+  def specific(): ResourceByCode = {
+
+    any(
+      withThirdProfile = BuildThirdProfile.any(
+        withName = "name",
+        withClientid = "clientid",
+        withClientsecret = "clientsecret",
+        withCallback = "callback",
+        withHomepage = "homepage",
+        withDescription = "description"
+      ),
+      withOwnerProfile = BuildOwnerProfile.any(
+        withEmail = "email",
+        withEmailConfirmed = true,
+        withFirstname = "firstname",
+        withSurname = "surname"
+      ),
+      withScope = BuildScope.onlyEmailAndFirstname(),
+      withCode = BuildCode.anyLive(
+        withCode = "code",
+        withState = "state"
+      )
+    )
+  }
 }
 
