@@ -3,6 +3,8 @@ package learning
 import org.scalatest.FunSuite
 import test.builders.Faker
 
+import scala.util.matching.Regex
+
 class FakerSpec extends FunSuite {
   // TODO: test a trait that select randomly elements from a Seq
   // TODO: put in another trait the random-string-generator
@@ -24,5 +26,12 @@ class FakerSpec extends FunSuite {
 
     assert(one !== two !== three)
     assert(one.isInstanceOf[String] && two.isInstanceOf[String] && three.isInstanceOf[String])
+  }
+
+  test("random text return printable characters") {
+    val numberPattern: Regex = "[0-9a-zA-Z()#\\-_=?+.:]".r
+
+    val one = Faker.text()
+    assert(numberPattern.findFirstIn(one).isInstanceOf[Some[_]])
   }
 }

@@ -9,8 +9,9 @@ object Faker {
     items(Random.nextInt(items.length))
   }
 
-  def text(): String = {
-    Random.nextString(8)
+  def text(length: Int = 10): String = {
+    val value = for(i <- 1 to length) yield { Random.nextPrintableChar() }
+    value.mkString
   }
 
   def boolean(): Boolean = {

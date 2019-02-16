@@ -60,11 +60,10 @@ class ToJsonSpec extends FunSuite {
 
   test("I can convert to json also a CLASS using gson") {
     val two = BuildResourceByCode.any()
+
     implicit val formats = Serialization.formats(NoTypeHints)
     val jsonString = swrite(two)
 
     println(jsonString)
-
-
   }
 }
