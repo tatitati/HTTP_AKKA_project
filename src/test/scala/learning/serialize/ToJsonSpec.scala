@@ -2,12 +2,11 @@ package learning.serialize
 
 import com.github.nscala_time.time.Imports.DateTime
 import net.liftweb.json.Serialization.write
-import net.liftweb.json.{DefaultFormats, NoTypeHints, Serialization}
+import net.liftweb.json._
 import org.scalatest.FunSuite
-import test.builders.{BuildResourceByCode, BuildThirdProfile}
-import Serialization.{read, write => swrite}
 
 class ToJsonSpec extends FunSuite {
+
 
   test("Dates are not converted when serializing by default") {
       val givenMap = Map(
@@ -44,18 +43,10 @@ class ToJsonSpec extends FunSuite {
   }
 
   test("I can convert to json an object using lift-json") {
-    val thirdprofile = BuildThirdProfile.any(
-      withName = "any name",
-      withCallback = "this is the callback",
-      withClientid = "any clientid",
-      withClientsecret = "one clientsecret",
-      withDescription = "boring description here",
-      withHomepage = "a homepage"
-    )
-
+    class GivenClass(val name: String, val age: Int)
     implicit val formats = Serialization.formats(NoTypeHints)
-    val jsonString = write(thirdprofile)
+    val jsonString = write(new GivenClass("francisco", 34))
 
-    assert(jsonString === """{"name":"any name","clientid":"any clientid","clientsecret":"one clientsecret","callback":"this is the callback","homepage":"a homepage","description":"boring description here"}""")
+    assert(jsonString === """{"name":"francisco","age":34}""")
   }
 }
