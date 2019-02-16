@@ -31,6 +31,11 @@ class SerializerResourceByCodeSpec extends FunSuite {
             |"surname":false,
             |"email":true
         |},
-        |"code":{}}""".stripMargin.replaceAll("\n", ""))
+        |"code":{
+            |"code":"code",
+            |"expiresIn":10,
+            |"generatedIn":{},
+            |"state":"state"
+        |}}""".stripMargin.replaceAll("\n", ""))
   }
 }

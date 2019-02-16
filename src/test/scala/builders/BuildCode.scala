@@ -7,7 +7,10 @@ import com.github.nscala_time.time.Imports._
 
 object BuildCode extends RandomTextGenerator {
 
-  def anyLive(withCode: String = Faker.text(), withState: String = Faker.text()): Code = {
+  def anyLive(
+               withCode: String = Faker.text(),
+               withState: String = Faker.text()
+             ): Code = {
     new Code(
       code = withCode,
       expiresIn = 10,
