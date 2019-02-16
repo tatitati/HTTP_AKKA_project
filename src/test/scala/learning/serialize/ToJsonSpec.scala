@@ -43,7 +43,7 @@ class ToJsonSpec extends FunSuite {
         |}""".stripMargin.replaceAll("\n", ""))
   }
 
-  test("I can convert to json also a CLASS using lift-json") {
+  test("I can convert to json an object using lift-json") {
     val thirdprofile = BuildThirdProfile.any(
       withName = "any name",
       withCallback = "this is the callback",
@@ -55,15 +55,7 @@ class ToJsonSpec extends FunSuite {
 
     implicit val formats = Serialization.formats(NoTypeHints)
     val jsonString = write(thirdprofile)
+    
     assert(jsonString === """{"name":"any name","clientid":"any clientid","clientsecret":"one clientsecret","callback":"this is the callback","homepage":"a homepage","description":"boring description here"}""")
-  }
-
-  test("I can convert to json also a CLASS using gson") {
-    val two = BuildResourceByCode.any()
-
-    implicit val formats = Serialization.formats(NoTypeHints)
-    val jsonString = swrite(two)
-
-    println(jsonString)
   }
 }
