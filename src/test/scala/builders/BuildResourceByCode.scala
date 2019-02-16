@@ -9,13 +9,13 @@ import builders.authorizes.BuildScope
 object BuildResourceByCode {
 
   def any(
-           thirdProfile: ThirdProfile = BuildThirdProfile.any(),
-           ownerProfile: OwnerProfile = BuildOwnerProfile.any(),
-           scope: Scope = BuildScope.any(),
-           code: Code = BuildCode.anyLive()
+           withThirdProfile: ThirdProfile = BuildThirdProfile.any(),
+           withOwnerProfile: OwnerProfile = BuildOwnerProfile.any(),
+           withScope: Scope = BuildScope.any(),
+           withCode: Code = BuildCode.anyLive()
          ): ResourceByCode  = {
 
-    new ResourceByCode(thirdProfile, ownerProfile, scope, code)
+    new ResourceByCode(withThirdProfile, withOwnerProfile, withScope, withCode)
   }
 }
 
