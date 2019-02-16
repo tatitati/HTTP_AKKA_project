@@ -44,6 +44,7 @@ class ToJsonSpec extends FunSuite {
 
   test("I can convert to json an object using lift-json") {
     class GivenClass(val name: String, val age: Int)
+
     implicit val formats = Serialization.formats(NoTypeHints)
     val jsonString = write(new GivenClass("francisco", 34))
 
