@@ -11,31 +11,32 @@ class SerializerResourceByCodeSpec extends FunSuite {
 
     assert(inJson ===
       """{
-        |"thirdProfile":{
-            |"name":"name",
-            |"clientid":"clientid",
-            |"clientsecret":"clientsecret",
-            |"callback":"callback",
-            |"homepage":"homepage",
-            |"description":"description"
-        |},
-        |"ownerProfile":{
-            |"firstname":"firstname",
-            |"surname":"surname",
-            |"email":"email",
-            |"emailconfirmed":true,
-            |"datebirth":{}
-        |},
-        |"scope":{
-            |"firstname":true,
-            |"surname":false,
-            |"email":true
-        |},
-        |"code":{
-            |"code":"code",
-            |"expiresIn":10,
-            |"generatedIn":{},
-            |"state":"state"
-        |}}""".stripMargin.replaceAll("\n", ""))
+          |"thirdProfile":{
+              |"name":"name",
+              |"clientid":"clientid",
+              |"clientsecret":"clientsecret",
+              |"callback":"callback",
+              |"homepage":"homepage",
+              |"description":"description"
+          |},
+          |"ownerProfile":{
+              |"firstname":"firstname",
+              |"surname":"surname",
+              |"email":"email",
+              |"emailconfirmed":true,
+              |"datebirth":{}
+          |},
+          |"scope":{
+              |"firstname":true,
+              |"surname":false,
+              |"email":true
+          |},
+          |"code":{
+              |"code":"code",
+              |"expiresIn":10,
+              |"generatedIn":{},
+              |"state":"state"
+          |}
+        |}""".stripMargin.replaceAll("\n", ""))
   }
 }
