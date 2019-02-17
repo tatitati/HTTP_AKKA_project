@@ -40,7 +40,6 @@ class DateTimeCreationSpec extends FunSuite {
       .withDate(2030, 2, 20)
       .withTime(13, 8, 20, 20)
 
-    println(specificdate)
     assert(specificdate.toString === "2030-02-20T13:08:20.020Z")
     assert(specificdate.toString("Y-M--d") === "2030-2--20")
   }
