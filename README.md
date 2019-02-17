@@ -1,7 +1,6 @@
 
 [![Build Status](https://travis-ci.org/tatitati/HTTP_AKKA_project.svg?branch=master)](https://travis-ci.org/tatitati/HTTP_AKKA_project)
 
-![](https://img.shields.io/github/commit-activity/w/tatitati/HTTP_AKKA_project.svg?style=flat)
 
 
 
