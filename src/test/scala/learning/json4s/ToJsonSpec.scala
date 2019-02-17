@@ -75,9 +75,9 @@ class ToJsonSpec extends FunSuite {
   test("I can convert to json and use camel_names in the properties as well") {
     implicit val formats = Serialization.formats(NoTypeHints)
 
-    val instalcne = new GivenClass("francisco", 34)
+    val instance = new GivenClass("francisco", 34)
 
-    val step1 = write(instalcne)
+    val step1 = write(instance)
     assert(step1 === """{"firstName":"francisco","age":34}""")
 
     val step2 = parse(step1)
