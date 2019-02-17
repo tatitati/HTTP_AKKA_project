@@ -19,7 +19,7 @@ class DateTimeCreationSpec extends FunSuite {
     assert(date === expectedDate)
   }
 
-  test("Create an specific date in multiple ways") {
+  test("Create using fluent methods") {
     val specificdate1 = new DateTime()
       .withYear(2030)
       .withMonth(8)
