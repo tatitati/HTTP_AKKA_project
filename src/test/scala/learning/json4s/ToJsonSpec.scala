@@ -15,8 +15,8 @@ class ToJsonSpec extends FunSuite {
 
   test("Can serialize flat structures") {
       val givenMap = ("user" -> "whatever") ~ ("refresh_token" -> 5)
-      val rendered = render(givenMap)
 
+      val rendered = render(givenMap)
       assert(rendered === JObject(List(
         ("user",JString("whatever")),
         ("refresh_token",JInt(5)))
@@ -43,6 +43,7 @@ class ToJsonSpec extends FunSuite {
       )
 
     val rendered =  compact(render(givenMap))
+
     assert(rendered ===
       """{
         |"user":{
@@ -55,7 +56,7 @@ class ToJsonSpec extends FunSuite {
 
   }
 
-  test("I can a custom class into json") {
+  test("I can a custom class into json directly, but no controlling the keys used or the format") {
     implicit val formats = Serialization.formats(NoTypeHints)
 
     val instalcne = new GivenClass("francisco", 34)

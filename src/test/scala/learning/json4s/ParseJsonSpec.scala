@@ -1,13 +1,24 @@
-//package learning.serialize
-//
-//import org.scalatest.FunSuite
-//import scala.util.parsing.json._
-//import org.json4s._
-//import org.json4s.JsonDSL._
-//import org.json4s.jackson.JsonMethods._
-//
-//class ParseJsonSpec extends FunSuite {
-//
+package learning.serialize
+
+import org.json4s._
+import org.scalatest.FunSuite
+import org.json4s.native.Serialization
+import org.json4s.native.Serialization.{read, write}
+
+class ParseJsonSpec extends FunSuite {
+  class GivenClass(val name: String, val age: Int)
+
+  test("I can a custom class into json directly, but no controlling the keys used or the format") {
+    implicit val formats = Serialization.formats(NoTypeHints)
+
+    val givenExample = new GivenClass("francisco", 34)
+
+    val parsed = Serialization.read[GivenClass]("""{"name":"francisco","age":34}""")
+
+    assert(parsed.age === 34)
+    assert(parsed.name === "francisco")
+  }
+
 //  test("Can parse a flat json") {
 //    val givenJson = """
 //                   {
@@ -26,7 +37,7 @@
 //      Map("user" -> "whatever", "refresh_token" -> 5)
 //    )
 //  }
-//
+
 //
 //  test("after parsing, I can query some data") {
 //    case class Person(firstname: String, age: Int)
@@ -42,17 +53,17 @@
 //
 //    println(value)
 //  }
+
+//  test("Another way") {
+//    val givenJson = """
+//                   {
+//                      "access_token":"whatever",
+//                      "refresh_token":5
+//                    }
+//                    """
 //
-////  test("Another way") {
-////    val givenJson = """
-////                   {
-////                      "access_token":"whatever",
-////                      "refresh_token":5
-////                    }
-////                    """
-////
-////
-////
-////    assert(extracted === Some(Map("access_token" -> "whatever", "refresh_token" -> 5.0)))
-////  }
-//}
+//
+//
+//    assert(extracted === Some(Map("access_token" -> "whatever", "refresh_token" -> 5.0)))
+//  }
+}
