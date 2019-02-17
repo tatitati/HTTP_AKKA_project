@@ -1,10 +1,13 @@
 package learning.serialize
 
+import java.util.Date
+
 import org.json4s._
 import org.json4s.jackson.JsonMethods.{compact, parse, render}
 import org.scalatest.FunSuite
 import org.json4s.native.Serialization
 import org.json4s.native.Serialization.read
+import com.github.nscala_time.time.Imports._
 
 class ParseJsonSpec extends FunSuite {
   class GivenClass(val firstName: String, val age: Int)
@@ -36,15 +39,13 @@ class ParseJsonSpec extends FunSuite {
     val parsed = parse(jsonString)
 
     assert(parsed === JObject(List(("firstName",JString("francisco")), ("age",JInt(34)))))
-    
+
     val newparsed = parsed.transformField {
       case JField("firstName", JString(s)) => ("whatever", JString(s.toUpperCase))
     }
 
     assert(newparsed === JObject(List(("whatever",JString("FRANCISCO")), ("age",JInt(34)))))
   }
-
-
 
   test("Dates are parsed as string") {
     val jsonString = """{"firstName":"francisco","date":"2030-02-20T13:08:20.020Z"}"""
@@ -53,6 +54,21 @@ class ParseJsonSpec extends FunSuite {
     val parsedDate = parsed \\ "date"
 
     assert(parsedDate === JString("2030-02-20T13:08:20.020Z"))
+  }
+
+  test("Can transform dates strings to Date") {
+    implicit val formats = Serialization.formats(NoTypeHints)
+    val jsonString = """{"firstName":"francisco","date":"2030-02-20T13:08:20.020Z"}"""
+    val parsed = parse(jsonString)
+
+    val parsedDate = (parsed \\ "date").extract[Date]
+
+    assert("Wed Feb 20 13:08:20 GMT 2030" === parsedDate.toString)
+  }
+
+  test("Can transform dates strings to DateTime?????") {
+    implicit val formats = Serialization.formats(NoTypeHints)
+    
   }
 
   test("I can parse a custom class into json directly, but no controlling the keys used or the format") {
