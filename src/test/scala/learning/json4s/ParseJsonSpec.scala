@@ -16,10 +16,7 @@ class ParseJsonSpec extends FunSuite {
 
       val parsed = parse(jsonString)
 
-      assert(parsed === JObject(List(
-        ("firstName",JString("francisco")),
-        ("age",JInt(34))
-      )))
+      assert(parsed === JObject(List(("firstName",JString("francisco")), ("age",JInt(34)))))
   }
 
   test("Can Extract data from the JSobject") {
@@ -32,6 +29,22 @@ class ParseJsonSpec extends FunSuite {
     assert(age === JInt(34))
     assert(age.values === 34)
   }
+
+  test("Can transform fields") {
+    implicit val formats = Serialization.formats(NoTypeHints)
+    val jsonString = """{"firstName":"francisco","age":34}"""
+    val parsed = parse(jsonString)
+
+    assert(parsed === JObject(List(("firstName",JString("francisco")), ("age",JInt(34)))))
+    
+    val newparsed = parsed.transformField {
+      case JField("firstName", JString(s)) => ("whatever", JString(s.toUpperCase))
+    }
+
+    assert(newparsed === JObject(List(("whatever",JString("FRANCISCO")), ("age",JInt(34)))))
+  }
+
+
 
   test("Dates are parsed as string") {
     val jsonString = """{"firstName":"francisco","date":"2030-02-20T13:08:20.020Z"}"""
