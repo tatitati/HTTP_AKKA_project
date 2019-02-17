@@ -3,7 +3,7 @@ package learning.DateTime
 import com.github.nscala_time.time.Imports._
 import org.scalatest.FunSuite
 
-class DateTimeParsingSpec extends FunSuite {
+class ParsingSpec extends FunSuite {
 
   test("Parse string to DateTime") {
     val parsed1 = DateTime.parse("2030-02-20T13:08:20.400+01:00")
