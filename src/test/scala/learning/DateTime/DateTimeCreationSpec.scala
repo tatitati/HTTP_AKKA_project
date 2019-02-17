@@ -11,6 +11,15 @@ class DateTimeCreationSpec extends FunSuite {
     assert(date.isInstanceOf[DateTime])
   }
 
+  test("Create it using the constructor") {
+    val date = new DateTime("2030-02-20T13:08:20.020Z")
+    val expectedDate = new DateTime()
+      .withDate(2030, 2, 20)
+      .withTime(13, 8, 20, 20)
+
+    assert(date === expectedDate)
+  }
+
   test("Create an specific date in multiple ways") {
     val specificdate1 = new DateTime()
       .withYear(2030)
