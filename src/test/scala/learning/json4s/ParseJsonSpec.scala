@@ -22,7 +22,7 @@ class ParseJsonSpec extends FunSuite {
       )))
   }
 
-  test("Extract the parsed json to extract some values") {
+  test("Can Extract data from the JSobject") {
     implicit val formats = Serialization.formats(NoTypeHints)
     val jsonString = """{"firstName":"francisco","age":34}"""
     val parsed = parse(jsonString)
@@ -31,6 +31,15 @@ class ParseJsonSpec extends FunSuite {
 
     assert(age === JInt(34))
     assert(age.values === 34)
+  }
+
+  test("Dates are parsed as string") {
+    val jsonString = """{"firstName":"francisco","date":"2030-02-20T13:08:20.020Z"}"""
+    val parsed = parse(jsonString)
+
+    val parsedDate = parsed \\ "date"
+
+    assert(parsedDate === JString("2030-02-20T13:08:20.020Z"))
   }
 
   test("I can parse a custom class into json directly, but no controlling the keys used or the format") {
