@@ -56,19 +56,19 @@ class ParseJsonSpec extends FunSuite {
     assert(parsedDate === JString("2030-02-20T13:08:20.020Z"))
   }
 
-  test("Can transform dates strings to Date") {
-    implicit val formats = Serialization.formats(NoTypeHints)
-    val jsonString = """{"firstName":"francisco","date":"2030-02-20T13:08:20.020Z"}"""
-    val parsed = parse(jsonString)
-
-    val parsedDate = (parsed \\ "date").extract[Date]
-
-    assert("Wed Feb 20 13:08:20 GMT 2030" === parsedDate.toString)
-  }
+//  test("Can transform dates strings to Date") {
+//    implicit val formats = Serialization.formats(NoTypeHints)
+//    val jsonString = """{"firstName":"francisco","date":"2030-02-20T13:08:20.020Z"}"""
+//    val parsed = parse(jsonString)
+//
+//    val parsedDate = (parsed \\ "date").extract[Date]
+//
+//    assert("Wed Feb 20 13:08:20 GMT 2030" === parsedDate.toString)
+//  }
 
   test("Can transform dates strings to DateTime?????") {
     implicit val formats = Serialization.formats(NoTypeHints)
-    
+
   }
 
   test("I can parse a custom class into json directly, but no controlling the keys used or the format") {
