@@ -1,16 +1,15 @@
 package learning.serialize
 
 import com.github.nscala_time.time.Imports._
-
 import org.json4s._
 import org.json4s.native.Serialization.write
 import org.scalatest.FunSuite
 import FieldSerializer._
 
-class GivenClass(val firstName: String, val age: Int)
-class GivenClassWithDate(val firstName: String, val date: DateTime)
-
 class CustomSerializerSpec extends FunSuite {
+
+  class GivenClass(val firstName: String, val age: Int)
+  class GivenClassWithDate(val firstName: String, val date: DateTime)
 
   test("I can use a custom serializer that only rename fields when parsing or serializing") {
     val customSerializer = FieldSerializer[GivenClass](

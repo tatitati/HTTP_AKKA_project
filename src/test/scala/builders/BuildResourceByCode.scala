@@ -5,6 +5,7 @@ import app.domain.ownerstore.OwnerProfile
 import app.domain.thirdstore.ThirdProfile
 import app.domain.thirdstore.resourcestore.{Code, ResourceByCode}
 import builders.authorizes.BuildScope
+import com.github.nscala_time.time.Imports._
 
 object BuildResourceByCode {
 
@@ -36,9 +37,10 @@ object BuildResourceByCode {
         withSurname = "surname"
       ),
       withScope = BuildScope.onlyEmailAndFirstname(),
-      withCode = BuildCode.anyLive(
+      withCode = BuildCode.any(
         withCode = "code",
-        withState = "state"
+        withState = "state",
+        generatedIn = new DateTime("2015-02-10")
       )
     )
   }
