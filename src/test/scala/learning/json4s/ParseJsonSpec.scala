@@ -1,7 +1,7 @@
 package learning.serialize
 
 import org.json4s._
-import org.json4s.jackson.JsonMethods.parse
+import org.json4s.jackson.JsonMethods.{compact, parse, render}
 import org.scalatest.FunSuite
 import org.json4s.native.Serialization
 import org.json4s.native.Serialization.{read, write}
@@ -29,6 +29,19 @@ class ParseJsonSpec extends FunSuite {
 
     assert(parsed.age === 34)
     assert(parsed.firstName === "francisco")
+  }
+
+  test("I can parse a json and format the resulting keys to be camel_case") {
+    val givenJson = """{"firstName":"francisco","age":34}"""
+
+    val step2 = parse(givenJson)
+    assert(step2 === JObject(List(("firstName",JString("francisco")), ("age",JInt(34)))))
+
+    val step3 = render(step2.snakizeKeys)
+    assert(step3 === JObject(List(("first_name",JString("francisco")), ("age",JInt(34)))))
+
+    val step4 = compact(step3)
+    assert(step4 === """{"first_name":"francisco","age":34}""")
   }
 
 //  test("Can parse a flat json") {

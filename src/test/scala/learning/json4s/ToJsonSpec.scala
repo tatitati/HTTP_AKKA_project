@@ -72,7 +72,7 @@ class ToJsonSpec extends FunSuite {
     assert(jsonString === """{"firstName":"francisco","age":34}""")
   }
 
-  test("I can converto to json and use camel_names in the properties as well") {
+  test("I can convert to json and use camel_names in the properties as well") {
     implicit val formats = Serialization.formats(NoTypeHints)
 
     val instalcne = new GivenClass("francisco", 34)
@@ -88,8 +88,5 @@ class ToJsonSpec extends FunSuite {
 
     val step4 = compact(step3)
     assert(step4 === """{"first_name":"francisco","age":34}""")
-
-
-
   }
 }
