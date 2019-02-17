@@ -11,8 +11,6 @@ import org.json4s.native.Serialization.{read, write}
 import org.scalatest.FunSuite
 import FieldSerializer._
 
-//
-//
 class GivenClass(val firstName: String, val age: Int)
 class GivenClassWithDate(val firstName: String, val date: DateTime)
 //
@@ -33,16 +31,16 @@ class GivenClassWithDate(val firstName: String, val date: DateTime)
 //}
 //
 
-class IntervalSerializer extends CustomSerializer[Interval](format => (
-  {
-    case JObject(JField("date", JInt(s)) :: JField("end", JInt(e)) :: Nil) =>
-      new Interval(s.longValue, e.longValue)
-  },
-  {
-    case x: Interval =>
-      JObject(JField("start", JInt(BigInt(x.startTime))) :: JField("end", JInt(BigInt(x.endTime))) :: Nil)
-  }
-))
+//class SerializerDateTimeCustom extends CustomSerializer[Interval](format => (
+//  {
+//    case JObject(JField("date", JInt(s)) :: JField("end", JInt(e)) :: Nil) =>
+//      new Interval(s.longValue, e.longValue)
+//  },
+//  {
+//    case x: Interval =>
+//      JObject(JField("start", JInt(BigInt(x.startTime))) :: JField("end", JInt(BigInt(x.endTime))) :: Nil)
+//  }
+//))
 
 
 class CustomSerializerSpec extends FunSuite {
