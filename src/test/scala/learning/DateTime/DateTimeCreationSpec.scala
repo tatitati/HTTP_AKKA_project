@@ -1,6 +1,5 @@
 package learning.DateTime
 
-
 import com.github.nscala_time.time.Imports._
 import org.scalatest.FunSuite
 
@@ -52,6 +51,4 @@ class DateTimeCreationSpec extends FunSuite {
     assert(specificdate.toString === "2030-02-20T13:08:20.020Z")
     assert(specificdate.toString("Y-M--d") === "2030-2--20")
   }
-
-
 }
