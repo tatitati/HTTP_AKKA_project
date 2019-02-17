@@ -1,15 +1,14 @@
 package app.infrastructure.serializer
 
 import app.domain.thirdstore.resourcestore.ResourceByCode
-import org.json4s._
 import org.json4s.jackson.JsonMethods.{compact, render}
-import org.json4s.native.Serialization
-import org.json4s.native.Serialization.write
 import org.json4s.JsonDSL._
-import org.json4s.jackson.JsonMethods._
 
 object SerializerResourceByCode {
 
+  //
+  // TODO: THIS BULLSHIT BLOCK OF CODE IS MORE PRONE TO ERRORS THAN A CAR WITH 2 WHEELS, I SAID.
+  //
   def toJson(resourceByCode: ResourceByCode): String = {
     val givenMap =
       ("thirdProfile" ->
@@ -34,8 +33,6 @@ object SerializerResourceByCode {
           ("expiresIn" -> resourceByCode.code.expiresIn) ~
           ("generatedIn" -> resourceByCode.code.generatedIn.toString()) ~
           ("state" -> resourceByCode.code.state))
-
-
 
     compact(render(givenMap))
   }
