@@ -20,6 +20,19 @@ class ToJsonSpec extends FunSuite {
     assert(jsonString === """{"firstName":"francisco","age":34}""")
   }
 
+  test("Display with pretty") {
+    implicit val formats = Serialization.formats(NoTypeHints)
+
+    val instance = new GivenClass("francisco", 34)
+    val jsonString = Serialization.writePretty(instance)
+
+    assert(jsonString ===
+      """|{
+         |  "firstName":"francisco",
+         |  "age":34
+         |}""".stripMargin)
+  }
+
   test("I can convert to json and use camel_names in the properties as well") {
     implicit val formats = Serialization.formats(NoTypeHints)
 
