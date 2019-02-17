@@ -1,22 +1,34 @@
 package learning.serialize
 
 import org.json4s._
+import org.json4s.jackson.JsonMethods.parse
 import org.scalatest.FunSuite
 import org.json4s.native.Serialization
 import org.json4s.native.Serialization.{read, write}
 
 class ParseJsonSpec extends FunSuite {
-  class GivenClass(val name: String, val age: Int)
+  class GivenClass(val firstName: String, val age: Int)
+
+  test("Parse returns a JSobject") {
+      implicit val formats = Serialization.formats(NoTypeHints)
+
+      val jsonString = """{"firstName":"francisco","age":34}"""
+
+      val parsed = parse(jsonString)
+
+      assert(parsed === JObject(List(("firstName",JString("francisco")), ("age",JInt(34)))))
+  }
+
 
   test("I can a custom class into json directly, but no controlling the keys used or the format") {
     implicit val formats = Serialization.formats(NoTypeHints)
 
     val givenExample = new GivenClass("francisco", 34)
 
-    val parsed = Serialization.read[GivenClass]("""{"name":"francisco","age":34}""")
+    val parsed = Serialization.read[GivenClass]("""{"firstName":"francisco","age":34}""")
 
     assert(parsed.age === 34)
-    assert(parsed.name === "francisco")
+    assert(parsed.firstName === "francisco")
   }
 
 //  test("Can parse a flat json") {

@@ -11,19 +11,26 @@ import org.json4s.native.Serialization.{read, write}
 
 
 class ToJsonSpec extends FunSuite {
-  class GivenClass(val name: String, val age: Int)
+  class GivenClass(val firstName: String, val age: Int)
+
+
+  test("Render() gives me a JObject") {
+    val givenMap = ("user" -> "whatever") ~ ("refresh_token" -> 5)
+
+    val rendered = render(givenMap)
+
+    assert(rendered === JObject(List(
+      ("user",JString("whatever")),
+      ("refresh_token",JInt(5)))
+    ))
+  }
 
   test("Can serialize flat structures") {
       val givenMap = ("user" -> "whatever") ~ ("refresh_token" -> 5)
 
-      val rendered = render(givenMap)
-      assert(rendered === JObject(List(
-        ("user",JString("whatever")),
-        ("refresh_token",JInt(5)))
-      ))
+      val jsonString = compact(render(givenMap))
 
-      val compacted = compact(render(givenMap))
-      assert(compacted ===
+      assert(jsonString ===
         """{
           |"user":"whatever",
           |"refresh_token":5
@@ -62,6 +69,27 @@ class ToJsonSpec extends FunSuite {
     val instalcne = new GivenClass("francisco", 34)
     val jsonString = write(instalcne)
 
-    assert(jsonString === """{"name":"francisco","age":34}""")
+    assert(jsonString === """{"firstName":"francisco","age":34}""")
+  }
+
+  test("I can converto to json and use camel_names in the properties as well") {
+    implicit val formats = Serialization.formats(NoTypeHints)
+
+    val instalcne = new GivenClass("francisco", 34)
+
+    val step1 = write(instalcne)
+    assert(step1 === """{"firstName":"francisco","age":34}""")
+
+    val step2 = parse(step1)
+    assert(step2 === JObject(List(("firstName",JString("francisco")), ("age",JInt(34)))))
+
+    val step3 = render(step2.snakizeKeys)
+    assert(step3 === JObject(List(("first_name",JString("francisco")), ("age",JInt(34)))))
+
+    val step4 = compact(step3)
+    assert(step4 === """{"first_name":"francisco","age":34}""")
+
+
+
   }
 }
