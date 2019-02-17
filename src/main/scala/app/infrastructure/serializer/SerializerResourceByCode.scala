@@ -7,7 +7,7 @@ import org.json4s.JsonDSL._
 object SerializerResourceByCode {
 
   //
-  // TODO: THIS BULLSHIT BLOCK OF CODE IS MORE PRONE TO ERRORS THAN A CAR WITH 2 WHEELS, I SAID.
+  // TODO: THIS BULLSHIT BLOCK OF CODE IS JUST FUCKING HORRIBLE, I SAID.
   //
   def toJson(resourceByCode: ResourceByCode): String = {
     val givenMap =
