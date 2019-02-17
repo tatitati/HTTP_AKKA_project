@@ -32,15 +32,11 @@ class DslSpec extends FunSuite {
 
   test("Can serialize nested structures") {
     val givenMap =
-      (
-        "user" ->
-          ("name" -> "Francisco") ~
-            ("surname" -> "any surname")
-        ) ~
-        (
-          "address" ->
-            ("street" -> "95 avenue")
-          )
+      ("user" ->
+            ("name" -> "Francisco") ~
+            ("surname" -> "any surname")) ~
+        ("address" ->
+            ("street" -> "95 avenue"))
 
     val rendered =  compact(render(givenMap))
 

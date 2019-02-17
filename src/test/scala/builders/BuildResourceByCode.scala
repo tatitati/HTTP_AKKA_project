@@ -34,7 +34,8 @@ object BuildResourceByCode {
         withEmail = "email",
         withEmailConfirmed = true,
         withFirstname = "firstname",
-        withSurname = "surname"
+        withSurname = "surname",
+        withDatebirth = new DateTime("1900-03-10")
       ),
       withScope = BuildScope.onlyEmailAndFirstname(),
       withCode = BuildCode.any(

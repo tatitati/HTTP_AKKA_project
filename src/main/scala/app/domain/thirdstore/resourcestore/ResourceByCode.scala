@@ -9,7 +9,7 @@ case class ResourceByCode(
                      val thirdProfile: ThirdProfile,
                      val ownerProfile: OwnerProfile,
                      val scope: Scope,
-                     private val code: Code
+                     val code: Code
                    ) {
 
   def toResourceByToken(): ResourceByToken = {
