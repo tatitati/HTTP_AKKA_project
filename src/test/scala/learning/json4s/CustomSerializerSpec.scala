@@ -33,17 +33,16 @@ class GivenClassWithDate(val firstName: String, val date: DateTime)
 //}
 //
 
-//class IntervalSerializer extends CustomSerializer[Interval](format => (
-//  {
-//    case JObject(JField("start", JInt(s)) :: JField("end", JInt(e)) :: Nil) =>
-//      new Interval(s.longValue, e.longValue)
-//  },
-//  {
-//    case x: Interval =>
-//      JObject(JField("start", JInt(BigInt(x.startTime))) ::
-//        JField("end",   JInt(BigInt(x.endTime))) :: Nil)
-//  }
-//))
+class IntervalSerializer extends CustomSerializer[Interval](format => (
+  {
+    case JObject(JField("date", JInt(s)) :: JField("end", JInt(e)) :: Nil) =>
+      new Interval(s.longValue, e.longValue)
+  },
+  {
+    case x: Interval =>
+      JObject(JField("start", JInt(BigInt(x.startTime))) :: JField("end", JInt(BigInt(x.endTime))) :: Nil)
+  }
+))
 
 
 class CustomSerializerSpec extends FunSuite {
@@ -62,6 +61,15 @@ class CustomSerializerSpec extends FunSuite {
   }
 
   test("DateTimes are not serialized properly") {
+    implicit val formats = DefaultFormats
+
+    val instance = new GivenClassWithDate("francisco", DateTime.now())
+    val jsonString = write(instance)
+
+    assert(jsonString === """{"firstName":"francisco","date":{}}""")
+  }
+
+  test("We can enforce a format for dates") {
     implicit val formats = DefaultFormats
 
     val instance = new GivenClassWithDate("francisco", DateTime.now())
