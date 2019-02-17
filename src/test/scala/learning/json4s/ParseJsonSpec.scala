@@ -20,7 +20,7 @@ class ParseJsonSpec extends FunSuite {
   }
 
 
-  test("I can a custom class into json directly, but no controlling the keys used or the format") {
+  test("I can parse a custom class into json directly, but no controlling the keys used or the format") {
     implicit val formats = Serialization.formats(NoTypeHints)
 
     val givenExample = new GivenClass("francisco", 34)
@@ -31,7 +31,7 @@ class ParseJsonSpec extends FunSuite {
     assert(parsed.firstName === "francisco")
   }
 
-  test("I can parse a json and format the resulting keys to be camel_case") {
+  test("I can re-format a json and format the resulting keys to be camel_case") {
     val givenJson = """{"firstName":"francisco","age":34}"""
 
     val step2 = parse(givenJson)
