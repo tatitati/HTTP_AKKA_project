@@ -22,7 +22,7 @@ class ParseJsonSpec extends FunSuite {
       )))
   }
 
-  test("Extract convert the parsed json into the specified object") {
+  test("Extract the parsed json to extract some values") {
     implicit val formats = Serialization.formats(NoTypeHints)
     val jsonString = """{"firstName":"francisco","age":34}"""
     val parsed = parse(jsonString)

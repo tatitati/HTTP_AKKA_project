@@ -15,10 +15,12 @@ class DateTimeCreationSpec extends FunSuite {
       .withYear(2030)
       .withMonth(8)
       .withDay(20)
+      .withZone(DateTimeZone.UTC)
 
     val specificdate2 = new DateTime()
       .withDate(2030, 8, 20)
       .withTime(13, 8, 20, 400)
+      .withZone(DateTimeZone.UTC)
 
     assert(specificdate1.getYear === 2030)
     assert(specificdate2.getMonthOfYear === 8)
@@ -35,8 +37,9 @@ class DateTimeCreationSpec extends FunSuite {
     val specificdate = new DateTime()
       .withDate(2030, 8, 20)
       .withTime(13, 8, 20, 400)
+      .withZone(DateTimeZone.UTC)
 
-    assert(specificdate.toString === "2030-08-20T13:08:20.400+01:00")
+    assert(specificdate.toString === "2030-08-20T12:08:20.400Z")
     assert(specificdate.toString("Y-M--d") === "2030-8--20")
   }
 
