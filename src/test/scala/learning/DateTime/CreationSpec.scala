@@ -11,12 +11,13 @@ class CreationSpec extends FunSuite {
   }
 
   test("Create it using the constructor") {
-    val date = new DateTime("2030-02-20T13:08:20.020Z")
+    val givenDate = new DateTime("2030-02-20T13:08:20.020Z")
+
     val expectedDate = new DateTime()
       .withDate(2030, 2, 20)
       .withTime(13, 8, 20, 20)
 
-    assert(date === expectedDate)
+    assert(givenDate === expectedDate)
   }
 
   test("Create using fluent methods") {
