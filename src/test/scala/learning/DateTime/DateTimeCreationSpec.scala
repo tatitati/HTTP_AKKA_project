@@ -36,10 +36,10 @@ class DateTimeCreationSpec extends FunSuite {
   test("Format an string in an specific format") {
     val specificdate = new DateTime()
       .withDate(2030, 8, 20)
-      .withTime(13, 8, 20, 400)
+      .withTime(13, 8, 20, 20)
       .withZone(DateTimeZone.UTC)
 
-    assert(specificdate.toString === "2030-08-20T12:08:20.400Z")
+    assert(specificdate.toString === "2030-08-20T12:08:20.020Z")
     assert(specificdate.toString("Y-M--d") === "2030-8--20")
   }
 
