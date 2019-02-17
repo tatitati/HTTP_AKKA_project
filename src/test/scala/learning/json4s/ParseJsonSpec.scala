@@ -11,6 +11,7 @@ import com.github.nscala_time.time.Imports._
 
 class ParseJsonSpec extends FunSuite {
   class GivenClass(val firstName: String, val age: Int)
+  class GivenClassWithDate(val firstName: String, val date: DateTime)
 
   test("Parse returns a JSobject") {
       implicit val formats = Serialization.formats(NoTypeHints)

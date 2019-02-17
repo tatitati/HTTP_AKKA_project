@@ -1,5 +1,6 @@
 package learning.json4s
 
+import com.github.nscala_time.time.Imports.DateTime
 import org.json4s._
 import org.json4s.jackson.JsonMethods._
 import org.scalatest.FunSuite
@@ -8,6 +9,7 @@ import org.json4s.native.Serialization.{read, write}
 
 class ToJsonSpec extends FunSuite {
   class GivenClass(val firstName: String, val age: Int)
+  class GivenClassWithDate(val firstName: String, val date: DateTime)
 
   test("I can serialize a custom class into json directly, but no controlling the keys used or the format") {
     implicit val formats = Serialization.formats(NoTypeHints)
