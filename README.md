@@ -42,6 +42,6 @@ The MIT License (MIT). Please see License File for more information.
 
 * How to tag tests? (and filter them in the CLI)
 * Add some cool shields to readme.md
-* Add serializer for ResourceByCode (needed to store in Redis)
+* fight with json4s.....
 
 
