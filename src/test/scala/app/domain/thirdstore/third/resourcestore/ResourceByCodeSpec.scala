@@ -16,7 +16,7 @@ class ResourceByCodeSpec extends FunSuite {
     assert(resourceToken.isTokenExpired() === false)
   }
 
-  test("Can export memento to allow serialization of its whole state") {
+  test("Can export memento to allow serialization of its whole state and keep encapsulation") {
     val resourceCode = BuildResourceByCode.specific()
 
     val memento = resourceCode.exportMemento()

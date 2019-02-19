@@ -6,35 +6,34 @@ import org.json4s.JsonDSL._
 
 object SerializerResourceByCode {
 
-  //
-  // TODO: THIS BULLSHIT BLOCK OF CODE IS JUST FUCKING HORRIBLE, I SAID.
-  //
   def toJson(resourceByCode: ResourceByCode): String = {
-    ""
-//    val givenMap =
-//      ("thirdProfile" ->
-//          ("name" -> resourceByCode.thirdProfile.name) ~
-//          ("clientid" -> resourceByCode.thirdProfile.clientid) ~
-//          ("clientsecret" -> resourceByCode.thirdProfile.clientsecret) ~
-//          ("callback" -> resourceByCode.thirdProfile.callback) ~
-//          ("homepage" -> resourceByCode.thirdProfile.homepage) ~
-//          ("description" -> resourceByCode.thirdProfile.description)) ~
-//        ("ownerProfile" ->
-//          ("firstname" -> resourceByCode.ownerProfile.firstname) ~
-//          ("surname" -> resourceByCode.ownerProfile.surname) ~
-//          ("email" -> resourceByCode.ownerProfile.email) ~
-//          ("emailconfirmed" -> resourceByCode.ownerProfile.emailconfirmed) ~
-//          ("datebirth" -> resourceByCode.ownerProfile.datebirth.toString())) ~
-//        ("scope" ->
-//          ("firstname" -> resourceByCode.scope.firstname) ~
-//          ("surname" -> resourceByCode.scope.surname) ~
-//          ("email" -> resourceByCode.scope.email)) ~
-//        ("code" ->
-//          ("code" -> resourceByCode.code.code) ~
-//          ("expiresIn" -> resourceByCode.code.expiresIn) ~
-//          ("generatedIn" -> resourceByCode.code.generatedIn.toString()) ~
-//          ("state" -> resourceByCode.code.state))
-//
-//    compact(render(givenMap))
+
+    val memento = resourceByCode.exportMemento()
+
+    val givenMap =
+      ("thirdProfile" ->
+          ("name" -> memento.thirdProfileName) ~
+          ("clientid" -> memento.thirdClientId) ~
+          ("clientsecret" -> memento.thirdClientSecret) ~
+          ("callback" -> memento.thirdCallback) ~
+          ("homepage" -> memento.thirdHomepage) ~
+          ("description" -> memento.thirdDescription)) ~
+        ("ownerProfile" ->
+          ("firstname" -> memento.ownerFirstname) ~
+          ("surname" -> memento.ownerSurname) ~
+          ("email" -> memento.ownerEmail) ~
+          ("emailconfirmed" -> memento.ownerEmailconfirmed) ~
+          ("datebirth" -> memento.ownerDatebirth.toString())) ~
+        ("scope" ->
+          ("firstname" -> memento.scopeFirstname) ~
+          ("surname" -> memento.scopeSurname) ~
+          ("email" -> memento.scopeEmail)) ~
+        ("code" ->
+          ("code" -> memento.code) ~
+          ("expiresIn" -> memento.codeExpiresin) ~
+          ("generatedIn" -> memento.codeGeneratedIn.toString()) ~
+          ("state" -> memento.codeState))
+
+    compact(render(givenMap))
   }
 }
