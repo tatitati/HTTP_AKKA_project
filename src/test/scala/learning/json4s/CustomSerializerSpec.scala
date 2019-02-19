@@ -10,6 +10,7 @@ class CustomSerializerSpec extends FunSuite {
 
   class GivenClass(val firstName: String, val age: Int)
   class GivenClassWithDate(val firstName: String, val date: DateTime)
+  case class GivenClassWithDateCase(val firstName: String, val date: DateTime)
 
   test("I can use a custom serializer that only rename fields when parsing or serializing") {
     val customSerializer = FieldSerializer[GivenClass](
@@ -28,6 +29,15 @@ class CustomSerializerSpec extends FunSuite {
     implicit val formats = DefaultFormats
 
     val instance = new GivenClassWithDate("francisco", DateTime.now())
+    val jsonString = write(instance)
+
+    assert(jsonString === """{"firstName":"francisco","date":{}}""")
+  }
+
+  test("Case classes also cannot render properly dates") {
+    implicit val formats = DefaultFormats
+
+    val instance = new GivenClassWithDateCase("francisco", DateTime.now())
     val jsonString = write(instance)
 
     assert(jsonString === """{"firstName":"francisco","date":{}}""")
