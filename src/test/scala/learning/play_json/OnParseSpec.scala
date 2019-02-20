@@ -41,5 +41,7 @@ class OnParseSpec extends FunSuite {
 
     assert(extracted.toString() === "\"2030-02-20T13:08:20.020Z\"")
     assert((json \ "mydatetime").as[String] === "2030-02-20T13:08:20.020Z")
+    assert(json("mydatetime").as[String] === "2030-02-20T13:08:20.020Z")
+
   }
 }
