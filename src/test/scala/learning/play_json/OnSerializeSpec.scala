@@ -4,7 +4,7 @@ import org.joda.time.DateTime
 import org.scalatest.FunSuite
 import play.api.libs.json._
 
-class ToJsonSpec extends FunSuite {
+class OnSerializeSpec extends FunSuite {
   class GivenClassWithDate(val firstName: String, val mydatetime: DateTime)
 
   test("I can pass to json using custom writes") {

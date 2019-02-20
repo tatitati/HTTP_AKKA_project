@@ -1,10 +1,9 @@
 package learning.play_json
 
-import org.joda.time.DateTime
 import org.scalatest.FunSuite
 import play.api.libs.json.{JsValue, Json}
 
-class RenderSpec extends FunSuite {
+class OnRenderSpec extends FunSuite {
 
   val givenJson: JsValue = Json.obj(
     "aname" -> "francisco",
