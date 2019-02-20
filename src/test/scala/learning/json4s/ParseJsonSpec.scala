@@ -1,7 +1,5 @@
 package learning.serialize
 
-import java.text.SimpleDateFormat
-
 import org.joda.time.DateTime
 import org.json4s._
 import org.json4s.jackson.JsonMethods.{compact, parse, render}
@@ -63,20 +61,14 @@ class ParseJsonSpec extends FunSuite {
     val jsonString = """{"firstName":"francisco","date":"2030-02-20T13:08:20.020Z"}"""
     val parsed = parse(jsonString)
 
-    val valueDate = (parsed \\ "date").extract[String]
-
     val givenWithDate = new GivenClassWithDate(
       firstName = (parsed \\ "firstName").extract[String],
-      date = new DateTime(valueDate)
+      date = new DateTime({
+        (parsed \\ "date").extract[String]
+      })
     )
 
     assert(givenWithDate.date.toString() === "2030-02-20T13:08:20.020Z")
-  }
-
-
-  test("Can transform dates strings to DateTime?????") {
-    implicit val formats = Serialization.formats(NoTypeHints)
-
   }
 
   test("I can parse a custom class into json directly, but no controlling the keys used or the format") {
