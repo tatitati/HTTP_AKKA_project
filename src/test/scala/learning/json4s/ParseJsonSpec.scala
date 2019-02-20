@@ -1,13 +1,13 @@
 package learning.serialize
 
-import java.util.Date
+import java.text.SimpleDateFormat
 
+import org.joda.time.DateTime
 import org.json4s._
 import org.json4s.jackson.JsonMethods.{compact, parse, render}
 import org.scalatest.FunSuite
 import org.json4s.native.Serialization
 import org.json4s.native.Serialization.read
-import com.github.nscala_time.time.Imports._
 
 class ParseJsonSpec extends FunSuite {
   class GivenClass(val firstName: String, val age: Int)
@@ -57,15 +57,22 @@ class ParseJsonSpec extends FunSuite {
     assert(parsedDate === JString("2030-02-20T13:08:20.020Z"))
   }
 
-//  test("Can transform dates strings to Date") {
-//    implicit val formats = Serialization.formats(NoTypeHints)
-//    val jsonString = """{"firstName":"francisco","date":"2030-02-20T13:08:20.020Z"}"""
-//    val parsed = parse(jsonString)
-//
-//    val parsedDate = (parsed \\ "date").extract[Date]
-//
-//    assert("Wed Feb 20 13:08:20 GMT 2030" === parsedDate.toString)
-//  }
+  test("Can transform dates strings to Date, but no directly") {
+    implicit val formats = DefaultFormats
+
+    val jsonString = """{"firstName":"francisco","date":"2030-02-20T13:08:20.020Z"}"""
+    val parsed = parse(jsonString)
+
+    val valueDate = (parsed \\ "date").extract[String]
+
+    val givenWithDate = new GivenClassWithDate(
+      firstName = (parsed \\ "firstName").extract[String],
+      date = new DateTime(valueDate)
+    )
+
+    assert(givenWithDate.date.toString() === "2030-02-20T13:08:20.020Z")
+  }
+
 
   test("Can transform dates strings to DateTime?????") {
     implicit val formats = Serialization.formats(NoTypeHints)

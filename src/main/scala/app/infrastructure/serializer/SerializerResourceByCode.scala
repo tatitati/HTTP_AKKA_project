@@ -36,4 +36,8 @@ object SerializerResourceByCode {
 
     compact(render(givenMap))
   }
+
+//  def toDomain(serialized: String): ResourceByCode = {
+//
+//  }
 }
