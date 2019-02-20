@@ -17,8 +17,7 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-http-core" % akkaHttpVersion,
   "com.typesafe.akka" %% "akka-http-spray-json" % akkaHttpVersion,
   "com.github.nscala-time" %% "nscala-time" % "2.20.0",
-  "org.json4s" %% "json4s-native" % "3.6.4",
-  "org.json4s" %% "json4s-jackson" % "3.6.4",
+  "com.typesafe.play" %% "play-json" % "2.6.10",
 
   // dev
   "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test,

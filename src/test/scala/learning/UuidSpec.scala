@@ -1,4 +1,4 @@
-package learning
+package test.learning
 
 import java.util.UUID
 import org.scalatest._
