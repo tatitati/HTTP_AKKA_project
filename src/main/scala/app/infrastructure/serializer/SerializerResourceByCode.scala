@@ -1,7 +1,10 @@
 package app.infrastructure.serializer
 
+import app.domain.thirdstore.ThirdProfile
 import app.domain.thirdstore.resourcestore.ResourceByCode
-import org.json4s.jackson.JsonMethods.{compact, render}
+import org.joda.time.DateTime
+import org.json4s.DefaultFormats
+import org.json4s.jackson.JsonMethods.{compact, parse, render}
 import org.json4s.JsonDSL._
 
 object SerializerResourceByCode {
@@ -37,7 +40,18 @@ object SerializerResourceByCode {
     compact(render(givenMap))
   }
 
-//  def toDomain(serialized: String): ResourceByCode = {
-//
-//  }
+  def toDomain(serialized: String): ResourceByCode = {
+    implicit val formats = DefaultFormats
+
+    val parsed = parse(serialized)
+
+    val thirdProfile = new ThirdProfile(
+      name = (parsed \ "thirdProfile" \ "name").extract[String],
+      clientid = (parsed \ "thirdProfile" \ "clientid").extract[String],
+      clientsecret = (parsed \ "thirdProfile" \ "clientsecret").extract[String],
+      callback = (parsed \ "thirdProfile" \ "callback").extract[String],
+      homepage = (parsed \ "thirdProfile" \ "homepage").extract[String],
+      description = (parsed \ "thirdProfile" \ "description").extract[String]
+    )
+  }
 }
