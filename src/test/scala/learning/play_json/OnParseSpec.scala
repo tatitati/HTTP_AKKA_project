@@ -97,14 +97,17 @@ class OnParseSpec extends FunSuite {
     val givenClassReads: Reads[GivenClassWithDate] = (
         (JsPath \ "firstName").read[String] and
         (JsPath \ "mydatetime").read[DateTime](jodaDateReads)
-      )(new GivenClassWithDate(_))
+      )((a, b) => new GivenClassWithDate(a, b))
 
 
     val parsed = json.validate[GivenClassWithDate](givenClassReads)
-    val fetched = parsed.getOrElse("Undefined")
+    val fetched = parsed.get
 
-    assert(parsed === JsSuccess(GivenCaseClassWithDate("francisco", new DateTime("2030-02-20T13:08:20.020Z"))))
-    assert(fetched === GivenCaseClassWithDate("francisco", new DateTime("2030-02-20T13:08:20.020Z")))
+    val expected = new GivenClassWithDate("francisco", new DateTime("2030-02-20T13:08:20.020Z"))
+
+    assert(parsed.isInstanceOf[JsSuccess[GivenClassWithDate]] === true)
+    assert(fetched.firstName === "francisco")
+    assert(fetched.mydatetime === new DateTime("2030-02-20T13:08:20.020Z"))
 
   }
 }
