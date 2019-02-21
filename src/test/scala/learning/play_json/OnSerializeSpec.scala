@@ -1,4 +1,4 @@
-package learning.play_json
+package test.learning.play_json
 
 import org.joda.time.DateTime
 import org.scalatest.FunSuite
@@ -32,7 +32,6 @@ class OnSerializeSpec extends FunSuite {
       "aname" -> sample.firstName,
       "onedate" -> sample.mydatetime.toString()
     )
-
 
     assert(inJson.isInstanceOf[JsValue])
     assert(inJson.toString() === """{"aname":"francisco","onedate":"2019-02-20T23:20:36.642Z"}""")
