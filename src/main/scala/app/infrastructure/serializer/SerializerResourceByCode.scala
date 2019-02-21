@@ -12,12 +12,12 @@ object SerializerResourceByCode {
     val memento = resourceByCode.exportMemento()
     val givenMap = Json.obj(
   "thirdProfile" -> Json.obj(
-            "name" -> memento.thirdProfileName,
-            "clientid" -> memento.thirdClientId,
-            "clientsecret" -> memento.thirdClientSecret,
-            "callback" -> memento.thirdCallback,
-            "homepage" -> memento.thirdHomepage,
-            "description" -> memento.thirdDescription
+        "name" -> memento.thirdProfileName,
+          "clientid" -> memento.thirdClientId,
+          "clientsecret" -> memento.thirdClientSecret,
+          "callback" -> memento.thirdCallback,
+          "homepage" -> memento.thirdHomepage,
+          "description" -> memento.thirdDescription
         ),
         "ownerProfile" -> Json.obj(
           "firstname" -> memento.ownerFirstname,
