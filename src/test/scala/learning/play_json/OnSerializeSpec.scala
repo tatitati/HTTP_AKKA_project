@@ -36,6 +36,4 @@ class OnSerializeSpec extends FunSuite {
     assert(inJson.isInstanceOf[JsValue])
     assert(inJson.toString() === """{"aname":"francisco","onedate":"2019-02-20T23:20:36.642Z"}""")
   }
-
-
 }

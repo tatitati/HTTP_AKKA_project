@@ -44,11 +44,19 @@ class OnParseSpec extends FunSuite {
       }
       """)
 
+    val jodaDateReads = Reads[DateTime](js =>
+      js.validate[String].map[DateTime](dtString =>
+        DateTime.parse(dtString, DateTimeFormat.forPattern( "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        ))
+      )
+    )
+
     val extracted = (json \ "mydatetime").get
 
     assert(extracted.toString() === "\"2030-02-20T13:08:20.020Z\"")
     assert((json \ "mydatetime").as[String] === "2030-02-20T13:08:20.020Z")
     assert(json("mydatetime").as[String] === "2030-02-20T13:08:20.020Z")
+    assert(json("mydatetime").as[DateTime](jodaDateReads) === new DateTime("2030-02-20T13:08:20.020Z"))
   }
 
   test("WITH CASE CLASSES: I can parse an string datetime into a DateTime object") {
