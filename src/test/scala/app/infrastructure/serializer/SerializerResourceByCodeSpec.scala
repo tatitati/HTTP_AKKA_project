@@ -74,10 +74,21 @@ class SerializerResourceByCodeSpec extends FunSuite {
 
 
     val resByCode = SerializerResourceByCode.toDomain(givenJson)
-    
+
     val memento1 = resByCode.exportMemento()
     val memento2 = BuildResourceByCode.specific().exportMemento()
 
     assert(memento1 === memento2)
+  }
+
+  test("No data is lost in both processes") {
+    val resByCode = BuildResourceByCode.specific()
+    val inJson = SerializerResourceByCode.toJson(resByCode)
+    val fromJson = SerializerResourceByCode.toDomain(inJson)
+
+    val mementoFromOriginal = resByCode.exportMemento()
+    val mementoFromParsed = fromJson.exportMemento()
+
+    assert(mementoFromParsed === mementoFromOriginal)
   }
 }
