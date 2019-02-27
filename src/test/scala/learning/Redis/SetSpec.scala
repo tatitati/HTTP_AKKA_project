@@ -1,4 +1,4 @@
-package learning.Redis
+package test.learning.Redis
 
 import com.redis.RedisClient
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FunSuite}

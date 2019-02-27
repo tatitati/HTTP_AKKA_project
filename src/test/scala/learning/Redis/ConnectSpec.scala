@@ -1,4 +1,4 @@
-package learning.Redis
+package test.learning.Redis
 
 import org.scalatest.FunSuite
 import com.redis._

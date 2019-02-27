@@ -21,7 +21,7 @@ libraryDependencies ++= Seq(
   "net.debasishg" %% "redisclient" % "3.9",
 
 
-// dev
+  // dev
   "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test,
   "com.typesafe.akka" %% "akka-stream-testkit" % akkaVersion % Test,
   "com.typesafe.akka" %% "akka-http-testkit" % akkaHttpVersion % Test,
