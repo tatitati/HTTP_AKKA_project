@@ -41,7 +41,8 @@ The MIT License (MIT). Please see License File for more information.
 # Todo:
 
 * How to tag tests? (and filter them in the CLI)
+* ~How to use beforeAll, beforeEach, afterAll, afterEach in tests~
 * Add some cool shields to readme.md
-* fight with json4s.....
+* Create repository to write/read ResourceByCode in Redis
 
 
