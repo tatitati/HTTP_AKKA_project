@@ -8,6 +8,9 @@ val akkaVersion = "2.5.17"
 
 val akkaHttpVersion = "10.1.7"
 
+resolvers += "fyrie snapshots" at "http://repo.fyrie.net/snapshots"
+
+
 libraryDependencies ++= Seq(
 
   // prod
@@ -18,8 +21,10 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-http-spray-json" % akkaHttpVersion,
   "com.github.nscala-time" %% "nscala-time" % "2.20.0",
   "com.typesafe.play" %% "play-json" % "2.6.10",
+  "net.debasishg" %% "redisclient" % "3.9",
 
-  // dev
+
+// dev
   "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test,
   "com.typesafe.akka" %% "akka-stream-testkit" % akkaVersion % Test,
   "com.typesafe.akka" %% "akka-http-testkit" % akkaHttpVersion % Test,
