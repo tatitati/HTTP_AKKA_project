@@ -2,6 +2,10 @@ language: scala
 scala:
   - 2.12.6
 
+before_script:
+  - sudo apt-get install redis
+  - redis-server &
+
 install:
   sbt reload update
 
