@@ -8,9 +8,6 @@ val akkaVersion = "2.5.17"
 
 val akkaHttpVersion = "10.1.7"
 
-resolvers += "fyrie snapshots" at "http://repo.fyrie.net/snapshots"
-
-
 libraryDependencies ++= Seq(
 
   // prod
