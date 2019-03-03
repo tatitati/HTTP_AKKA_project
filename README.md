@@ -44,5 +44,6 @@ The MIT License (MIT). Please see License File for more information.
 * ~How to use beforeAll, beforeEach, afterAll, afterEach in tests~
 * Add some cool shields to readme.md
 * Create repository to write/read ResourceByCode in Redis
+* How to set environment variables like Hosts, port for Redis?, for each environment
 
 
