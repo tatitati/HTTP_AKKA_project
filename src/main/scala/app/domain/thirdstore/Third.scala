@@ -2,7 +2,7 @@ package app.domain.thirdstore
 
 import app.domain.RandomTextGenerator
 
-case class Third(val profile: ThirdProfile) extends RandomTextGenerator { // the resource is not needed anymore here
+case class Third(val profile: ThirdProfile) extends RandomTextGenerator {
 
   def refreshCredentials(): Third = {
     val updatedProfile = profile.copy(
