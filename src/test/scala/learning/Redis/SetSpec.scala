@@ -34,6 +34,18 @@ class SetSpec extends FunSuite with BeforeAndAfterEach with BeforeAndAfterAll {
     assert(readValue2 === None)
   }
 
+  test("Can set expiring keys at the same time I store") {
+    red.setex(key =  "mykey", expiry = 2, value = "my value")
+
+    val readValue1 = red.get("mykey")
+    assert(readValue1 === Some("my value"))
+
+    Thread.sleep(2000)
+
+    val readValue2 = red.get("mykey")
+    assert(readValue2 === None)
+  }
+
 
   override def beforeAll() {
     red.flushall
