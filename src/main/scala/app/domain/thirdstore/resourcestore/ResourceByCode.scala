@@ -12,7 +12,7 @@ case class ResourceByCode(
                      private val code: Code
                    ) {
 
-  def toResourceByToken(): ResourceByToken = {
+  def exchangeByResourceByToken(): ResourceByToken = {
     new ResourceByToken(
       thirdProfile = thirdProfile,
       ownerProfile = ownerProfile,

@@ -10,7 +10,7 @@ class ResourceByCodeSpec extends FunSuite {
   test("Can convert a ResourceByCode into a ResourceByToken") {
     val resourceCode = BuildResourceByCode.any()
 
-    val resourceToken = resourceCode.toResourceByToken()
+    val resourceToken = resourceCode.exchangeByResourceByToken()
 
     assert(resourceToken.isInstanceOf[ResourceByToken])
     assert(resourceToken.isTokenExpired() === false)

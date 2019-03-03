@@ -5,7 +5,7 @@ import org.scalatest.FunSuite
 import org.scalatest.Matchers._
 import test.builders.{BuildResourceByToken, BuildToken, BuildUuid}
 
-class OnRefreshTokenSpec extends FunSuite{
+class ContainsTokenSpec extends FunSuite{
 
   test("Can have a token") {
     val resWithLiveToken = BuildResourceByToken.withLiveToken()
@@ -28,8 +28,8 @@ class OnRefreshTokenSpec extends FunSuite{
     val givenResourceExpired = BuildResourceByToken.withToken(withToken = givenTokenExpired)
 
     assert(givenResourceExpired.isTokenExpired() === true)
-    givenResourceExpired.refreshToken(givenRefreshUuid, "refresh_token")
-    assert(givenResourceExpired.isTokenExpired() === false)
+    val thirdUpdated = givenResourceExpired.refreshToken(givenRefreshUuid, "refresh_token")
+    assert(thirdUpdated.isTokenExpired() === false)
   }
 
   test("Cannot refresh a live token") {

@@ -5,7 +5,7 @@ import org.scalatest.FunSuite
 import org.scalatest.Matchers._
 import test.builders.BuildResourceByToken
 
-class OnReadOwnerProfileSpec extends FunSuite{
+class ContainsOwnerProfileSpec extends FunSuite{
 
   test("Can read data when allowed and token is live") {
     val givenResource = BuildResourceByToken.withLiveToken(
