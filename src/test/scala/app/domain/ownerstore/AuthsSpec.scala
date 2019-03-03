@@ -32,10 +32,10 @@ class AuthsSpec extends FunSuite {
   test("Can remove from list") {
     val listmap = BuildAuths.withClientIds("clientid1", "clientid2")
 
-    assert(listmap.find("clientid1") !== None)
-    assert(listmap.find("clientid2") !== None)
+    assert(listmap.find("clientid1").isInstanceOf[Some[Auth]])
+    assert(listmap.find("clientid2").isInstanceOf[Some[Auth]])
     listmap.removeThird("clientid2")
-    assert(listmap.find("clientid1") !== None)
+    assert(listmap.find("clientid1").isInstanceOf[Some[Auth]])
     assert(listmap.find("clientid2") === None)
   }
 
