@@ -48,14 +48,14 @@ class AuthsSpec extends FunSuite {
         )
     )
 
-    assert(listmap.find("clientid1") !== None)
+    assert(listmap.find("clientid1").isInstanceOf[Some[Auth]])
     assert(listmap.find("clientid3") === None)
     assert(listmap.count() === 1)
 
     listmap.addThird(auth)
 
-    assert(listmap.find("clientid1") !== None)
-    assert(listmap.find("clientid3") !== None)
+    assert(listmap.find("clientid1").isInstanceOf[Some[Auth]])
+    assert(listmap.find("clientid3").isInstanceOf[Some[Auth]])
     assert(listmap.count() === 2)
   }
 
