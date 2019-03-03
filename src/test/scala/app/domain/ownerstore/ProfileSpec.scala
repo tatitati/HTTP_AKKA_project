@@ -23,14 +23,25 @@ class ProfileSpec extends FunSuite {
 
   test("Can be updated in a FP way") {
     val givenProfile = BuildOwnerProfile.any(
-      withFirstname = "anyfirstname",
-      withSurname = "anysurname",
-      withEmail = "whatever@email.com"
+      withFirstname = "anyfirstname"
     )
 
     val profileUpdated = givenProfile.setFirstname("new name")
 
     assert(profileUpdated.isInstanceOf[OwnerProfile])
     assert(profileUpdated.firstname === "new name")
+  }
+
+  test("When changed the emal, this is not confirmed until we confirm it") {
+    val givenProfile = BuildOwnerProfile.any(
+      withEmail = "whatever@email.com",
+      withEmailConfirmed = false
+    )
+
+    val profileUpdated = givenProfile.setEmail("newemail@whatever.com")
+
+    assert(profileUpdated.isInstanceOf[OwnerProfile])
+    assert(profileUpdated.email === "newemail@whatever.com")
+    assert(profileUpdated.emailconfirmed === false)
   }
 }

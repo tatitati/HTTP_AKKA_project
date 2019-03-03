@@ -19,7 +19,11 @@ case class OwnerProfile(
   }
 
   def setEmail(email: String): OwnerProfile = {
-    this.copy(email = email)
+    this.copy(email = email, emailconfirmed = false)
+  }
+
+  def confirmEmail(): OwnerProfile = {
+    this.copy(emailconfirmed = true)
   }
 
   def setDatebirth(datebirth: DateTime): OwnerProfile = {
