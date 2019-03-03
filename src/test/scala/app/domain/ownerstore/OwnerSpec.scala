@@ -22,9 +22,9 @@ class OwnerSpec extends FunSuite {
       )
     )
 
-    assert(givenUser.profile.firstname === "gutierrez")
-    givenUser.profile.firstname = "manolo"
-    assert(givenUser.profile.firstname === "manolo")
+    val profileUpdated = givenUser.profile.setFirstname("gutierrez")
+    val ownerUpdated = givenUser.setProfile(profileUpdated)
+    assert(ownerUpdated.profile.firstname === "gutierrez")
   }
 
   test("Can delete(revoke) a third from the list") {
