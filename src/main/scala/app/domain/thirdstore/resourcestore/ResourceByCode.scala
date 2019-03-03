@@ -6,10 +6,10 @@ import app.domain.ownerstore.OwnerProfile
 import app.domain.thirdstore.ThirdProfile
 
 case class ResourceByCode(
-                     private val thirdProfile: ThirdProfile,
-                     private val ownerProfile: OwnerProfile,
-                     private val scope: Scope,
-                     private val code: Code
+                     val thirdProfile: ThirdProfile,
+                     val ownerProfile: OwnerProfile,
+                     val scope: Scope,
+                     val code: Code
                    ) {
 
   def toResourceByToken(): ResourceByToken = {
