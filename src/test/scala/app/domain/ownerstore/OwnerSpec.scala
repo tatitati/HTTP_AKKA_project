@@ -34,9 +34,11 @@ class OwnerSpec extends FunSuite {
 
     assert(givenUser.find("anyclientid1") !== None)
     assert(givenUser.find("anyclientid2") !== None)
-    givenUser.revoke("anyclientid1")
-    assert(givenUser.find("anyclientid1") === None)
-    assert(givenUser.find("anyclientid2") !== None)
+
+    val ownerUpdated = givenUser.revoke("anyclientid1")
+
+    assert(ownerUpdated.find("anyclientid1") === None)
+    assert(ownerUpdated.find("anyclientid2") !== None)
   }
 
   test("Can authorize a third (add to the list)") {
@@ -45,7 +47,7 @@ class OwnerSpec extends FunSuite {
     assert(givenUser.find("newthirdclientId") === None, "=> Initially shouldn't have this third in the list")
     assert(givenUser.countThirds() === 2)
 
-    givenUser.grant(
+    val ownerUpdated = givenUser.grant(
       BuildAuth.any(
           withThirdProfile = BuildThirdProfile.any(
             withClientid = "newthirdclientId"
@@ -53,8 +55,8 @@ class OwnerSpec extends FunSuite {
       )
     )
 
-    assert(givenUser.find("newthirdclientId") !== None, "=> After grant acces it should be in the lsit")
-    assert(givenUser.countThirds() === 3)
+    assert(ownerUpdated.find("newthirdclientId") !== None, "=> After grant acces it should be in the lsit")
+    assert(ownerUpdated.countThirds() === 3)
   }
 
   test("can provide info about a third in the list when found") { // this test is a mess

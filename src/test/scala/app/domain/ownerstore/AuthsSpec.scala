@@ -25,7 +25,7 @@ class AuthsSpec extends FunSuite {
     val foundAuth1 = givenAuthList.find("clientid1")
     val foundAuth2 = givenAuthList.find("aaaaaaaa")
 
-    assert(foundAuth1.isInstanceOf[Some[Auth]] === true)
+    assert(foundAuth1.isInstanceOf[Some[Auth]])
     assert(foundAuth2 === None)
   }
 
@@ -34,9 +34,11 @@ class AuthsSpec extends FunSuite {
 
     assert(listmap.find("clientid1").isInstanceOf[Some[Auth]])
     assert(listmap.find("clientid2").isInstanceOf[Some[Auth]])
-    listmap.removeThird("clientid2")
-    assert(listmap.find("clientid1").isInstanceOf[Some[Auth]])
-    assert(listmap.find("clientid2") === None)
+
+    val listUpdated = listmap.removeThird("clientid2")
+
+    assert(listUpdated.find("clientid1").isInstanceOf[Some[Auth]])
+    assert(listUpdated.find("clientid2") === None)
   }
 
   test("Can add to list") {
@@ -52,11 +54,11 @@ class AuthsSpec extends FunSuite {
     assert(listmap.find("clientid3") === None)
     assert(listmap.count() === 1)
 
-    listmap.addThird(auth)
+    val listUpdated = listmap.addThird(auth)
 
-    assert(listmap.find("clientid1").isInstanceOf[Some[Auth]])
-    assert(listmap.find("clientid3").isInstanceOf[Some[Auth]])
-    assert(listmap.count() === 2)
+    assert(listUpdated.find("clientid1").isInstanceOf[Some[Auth]])
+    assert(listUpdated.find("clientid3").isInstanceOf[Some[Auth]])
+    assert(listUpdated.count() === 2)
   }
 
   test("Cannot add twice the same to list") {
@@ -69,9 +71,11 @@ class AuthsSpec extends FunSuite {
     )
 
     assert(listmap.count() === 2)
-    listmap.addThird(auth)
-    assert(listmap.count() === 3)
-    listmap.addThird(auth)
-    assert(listmap.count() === 3)
+
+    val listUpdated = listmap.addThird(auth)
+    assert(listUpdated.count() === 3)
+
+    val listUpdated2 = listUpdated.addThird(auth)
+    assert(listUpdated2.count() === 3)
   }
 }
