@@ -1,6 +1,6 @@
 package app.domain.ownerstore
 
-case class Owner(var profile: OwnerProfile, val listAuth: Auths) { // the user can modify the OwnerProfile. And every modification creates a new OwnerProfile
+case class Owner(val profile: OwnerProfile, val listAuth: Auths) { // the user can modify the OwnerProfile. And every modification creates a new OwnerProfile
 
   def countThirds(): Int = listAuth.count()
 
