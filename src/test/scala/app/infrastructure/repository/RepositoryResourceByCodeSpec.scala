@@ -31,7 +31,7 @@ class RepositoryResourceByCodeSpec extends FunSuite with BeforeAndAfterEach with
     val result = repo.read(givenResourceByCode.exportMemento().code)
 
     assert(result.isInstanceOf[Some[ResourceByCode]])
-    assert(result.get === givenResourceByCode)
+    assert(result.get.exportMemento() === givenResourceByCode.exportMemento())
   }
 
   override def beforeAll() {
