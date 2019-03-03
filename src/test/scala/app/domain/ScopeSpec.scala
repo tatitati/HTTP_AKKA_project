@@ -1,4 +1,4 @@
-package test.app.domain.thirdstore
+package test.app.domain
 
 import app.domain.Scope
 import org.scalatest.FunSuite

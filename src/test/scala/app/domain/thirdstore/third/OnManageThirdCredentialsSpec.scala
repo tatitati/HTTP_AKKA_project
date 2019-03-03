@@ -10,24 +10,12 @@ class OnManageThirdCredentialsSpec extends FunSuite {
     val clientId = givenThird.profile.clientid
     val clientSecret = givenThird.profile.clientsecret
 
-    givenThird.refreshCredentials()
+    val updatedThird = givenThird.refreshCredentials()
 
-    val newclientid = givenThird.profile.clientid
-    val newclientSecret = givenThird.profile.clientsecret
+    val newclientid = updatedThird.profile.clientid
+    val newclientSecret = updatedThird.profile.clientsecret
 
     assert(clientId !== newclientid)
     assert(clientSecret !== newclientSecret)
-  }
-
-  test("can edit clientid or clientsecret") {
-    val givenThird = BuildThird.any(
-      withThirdProfile = BuildThirdProfile.any(
-        withClientid = "clientid1"
-      )
-    )
-
-    assert(givenThird.profile.clientid === "clientid1")
-    givenThird.profile.name = "clientid2"
-    assert(givenThird.profile.name === "clientid2")
   }
 }
