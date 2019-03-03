@@ -20,6 +20,11 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-json" % "2.6.10",
   "net.debasishg" %% "redisclient" % "3.9",
 
+  // slick
+  "com.typesafe.slick" %% "slick" % "3.3.0",
+  "org.slf4j" % "slf4j-nop" % "1.6.4",
+  "com.typesafe.slick" %% "slick-hikaricp" % "3.3.0",
+
 
   // dev
   "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test,
