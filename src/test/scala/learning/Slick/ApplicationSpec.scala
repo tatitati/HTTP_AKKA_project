@@ -30,10 +30,6 @@ class ApplicationSpec extends FunSuite {
 
   test("Slick database configuration can be loaded in a different way as well") {
     val db = Database.forConfig("h2mem1")
-
-
-    println(db)
-
-
+    assert(db.isInstanceOf[Database])
   }
 }
