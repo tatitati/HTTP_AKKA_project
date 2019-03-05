@@ -1,7 +1,7 @@
 package test.learning.Slick
 
 
-import org.scalatest.{BeforeAndAfterAll, FunSuite}
+import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FunSuite}
 import slick.jdbc.MySQLProfile.api._
 import slick.lifted.TableQuery
 import test.learning.Slick.user.UserSchema
@@ -18,6 +18,10 @@ class CliCreateDatabaseSpec extends FunSuite with BeforeAndAfterAll with Exec {
 
 
     exec(userSchema.schema.create)
+  }
+
+  override def beforeAll() {
+    exec(userSchema.schema.dropIfExists)
   }
 
   override def afterAll() {
