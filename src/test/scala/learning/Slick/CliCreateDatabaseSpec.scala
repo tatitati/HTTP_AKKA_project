@@ -1,6 +1,5 @@
 package test.learning.Slick
 
-
 import org.scalatest.{BeforeAndAfterAll, FunSuite}
 import slick.jdbc.MySQLProfile.api._
 import slick.lifted.TableQuery
