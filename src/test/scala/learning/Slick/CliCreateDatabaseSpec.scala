@@ -1,25 +1,27 @@
 package test.learning.Slick
 
-import app.infrastructure.user.{User, UserSchema}
-import org.scalatest.FunSuite
+
+import org.scalatest.{BeforeAndAfterAll, FunSuite}
 import slick.jdbc.MySQLProfile.api._
 import slick.lifted.TableQuery
-import scala.concurrent.duration._
+import test.learning.Slick.user.UserSchema
 
-import scala.concurrent.Await
-
-
-class CliCreateDatabaseSpec extends FunSuite with Exec {
-  val userTable = TableQuery[UserSchema]
+class CliCreateDatabaseSpec extends FunSuite with BeforeAndAfterAll with Exec {
+  val userSchema = TableQuery[UserSchema]
+  implicit val db = Database.forConfig("mydb")
 
   test("SQL files (migrations.sql) are found") {
-    assert(userTable.schema.create.statements === Vector("create table `user` (`first_name` TEXT NOT NULL,`last_name` TEXT NOT NULL,`id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY)"))
+    assert(userSchema.schema.create.statements === Vector("create table `user` (`first_name` TEXT NOT NULL,`last_name` TEXT NOT NULL,`id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY)"))
   }
 
-    test("Statements represent the SQL query CREATE TABLE") {
-      implicit val db = Database.forConfig("mydb")
+  test("Statements represent the SQL query CREATE TABLE") {
 
-      exec(userTable.schema.create)
-    }
+
+    exec(userSchema.schema.create)
+  }
+
+  override def afterAll() {
+    exec(userSchema.schema.drop)
+  }
 
 }

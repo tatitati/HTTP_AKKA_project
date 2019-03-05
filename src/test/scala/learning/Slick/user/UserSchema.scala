@@ -1,4 +1,4 @@
-package app.infrastructure.user
+package test.learning.Slick.user
 
 
 import slick.jdbc.MySQLProfile.api._
