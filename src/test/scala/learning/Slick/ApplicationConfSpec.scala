@@ -4,9 +4,6 @@ import com.typesafe.config.{Config, ConfigFactory}
 import org.scalatest.FunSuite
 import slick.jdbc.H2Profile.api._
 
-import scala.concurrent.Await
-import scala.concurrent.ExecutionContext.Implicits.global
-
 class ApplicationSpec extends FunSuite {
 
   test("System find application.conf and find some configuration keys") {
