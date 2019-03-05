@@ -1,7 +1,7 @@
 package test.learning.Slick
 
 
-import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FunSuite}
+import org.scalatest.{BeforeAndAfterAll, FunSuite}
 import slick.jdbc.MySQLProfile.api._
 import slick.lifted.TableQuery
 import test.learning.Slick.user.UserSchema
@@ -15,8 +15,6 @@ class CliCreateDatabaseSpec extends FunSuite with BeforeAndAfterAll with Exec {
   }
 
   test("Statements represent the SQL query CREATE TABLE") {
-
-
     exec(userSchema.schema.create)
   }
 
