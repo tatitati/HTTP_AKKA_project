@@ -1,10 +1,10 @@
-package learning.Slick
+package test.learning.Slick
 
 import com.typesafe.config.{Config, ConfigFactory}
 import org.scalatest.FunSuite
 import slick.jdbc.H2Profile.api._
 
-class ApplicationSpec extends FunSuite {
+class ApplicationConfSpec extends FunSuite {
 
   test("System find application.conf and find some configuration keys") {
     val value = ConfigFactory.load()
@@ -15,6 +15,7 @@ class ApplicationSpec extends FunSuite {
     assert(value.hasPath("h2mem1") === true, "h2mem1 should be found in application.conf")
     assert(value.hasPath("h2mem1.connectionPool") === true, "h2mem1.connectionPool should be found in application.conf")
     assert(value.hasPath("h2mem1.url") === true, "h2mem1.url should be found in application.conf")
+    assert(value.hasPath("mydb") === true, "mydb should be found in application.conf")
     assert(value.hasPath("slick") === true, "slick should be found in application.conf")
   }
 
