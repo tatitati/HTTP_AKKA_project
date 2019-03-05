@@ -12,20 +12,14 @@ import scala.concurrent.Await
 class CliCreateDatabaseSpec extends FunSuite with Exec {
   val userTable = TableQuery[UserSchema]
 
-
-//  test("Statements represent the SQL query CREATE TABLE") {
-//    val db = Database.forConfig("mydb")
-//
-//    val result = DBIO.seq(
-//      userTable.schema.create
-//    )
-//
-//    val setupFuture = db.run(result)
-//    Await.result(setupFuture, 2.second)
-//  }
-
-  test("SQL files to create database (migrations) are found") {
+  test("SQL files (migrations.sql) are found") {
     assert(userTable.schema.create.statements === Vector("create table `user` (`first_name` TEXT NOT NULL,`last_name` TEXT NOT NULL,`id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY)"))
   }
+
+    test("Statements represent the SQL query CREATE TABLE") {
+      implicit val db = Database.forConfig("mydb")
+
+      exec(userTable.schema.create)
+    }
 
 }
