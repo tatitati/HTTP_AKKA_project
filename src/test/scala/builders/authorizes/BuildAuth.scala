@@ -2,9 +2,9 @@ package test.builders.authorizes
 
 import app.domain.owner.Auth
 import app.domain.resource.{Scope, Token}
-import app.domain.third.{Third, ThirdProfile}
+import app.domain.third.Third
 import builders.authorizes.BuildScope
-import test.builders.{BuildThird, BuildThirdProfile, BuildToken}
+import test.builders.{BuildThird, BuildToken}
 
 object BuildAuth {
 
