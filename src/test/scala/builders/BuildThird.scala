@@ -7,7 +7,7 @@ object BuildThird {
            withThirdProfile: ThirdProfile = BuildThirdProfile.any()
         ): Third = {
 
-      new Third(withThirdProfile)
+      new Third(withThirdProfile, BuildThirdCredentials.any())
 
     }
 }
