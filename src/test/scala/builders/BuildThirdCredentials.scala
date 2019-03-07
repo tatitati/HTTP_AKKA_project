@@ -3,7 +3,12 @@ package test.builders
 import app.domain.thirdstore.ThirdCredentials
 
 object BuildThirdCredentials {
-  def any(): ThirdCredentials = {
-    ThirdCredentials(Faker.text(), Faker.text())
+
+  def any(
+           withClientid: String = Faker.text(),
+           withClientsecret: String = Faker.text()
+         ): ThirdCredentials = {
+
+    ThirdCredentials(withClientid, withClientsecret)
   }
 }

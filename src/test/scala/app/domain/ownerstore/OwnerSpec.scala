@@ -4,7 +4,7 @@ import app.domain.ownerstore.{Auth, Auths}
 import builders.authorizes.BuildAuths
 import org.scalatest.FunSuite
 import test.builders.authorizes.BuildAuth
-import test.builders.{BuildOwner, BuildOwnerProfile, BuildThirdProfile}
+import test.builders._
 
 class OwnerSpec extends FunSuite {
 
@@ -49,9 +49,11 @@ class OwnerSpec extends FunSuite {
 
     val ownerUpdated = givenUser.grant(
       BuildAuth.any(
-          withThirdProfile = BuildThirdProfile.any(
-            withClientid = "newthirdclientId"
+          withThird = BuildThird.any(
+            withCredentials = BuildThirdCredentials.any(
+              withClientid = "newthirdclientId"
           )
+        )
       )
     )
 
@@ -64,9 +66,13 @@ class OwnerSpec extends FunSuite {
     val givenOwner = BuildOwner.any(
       withAuths = new Auths(Vector(
         BuildAuth.any(
-            withThirdProfile = BuildThirdProfile.any(
-              withClientid = "clientid1",
-              withName = "travis"
+            withThird = BuildThird.any(
+              withCredentials = BuildThirdCredentials.any(
+                withClientid = "clientid1"
+              ),
+              withThirdProfile = BuildThirdProfile.any(
+                withName = "travis"
+              )
             )
         ),
         BuildAuth.any(),

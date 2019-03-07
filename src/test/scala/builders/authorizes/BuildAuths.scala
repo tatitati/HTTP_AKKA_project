@@ -1,7 +1,7 @@
 package builders.authorizes
 
 import app.domain.ownerstore.Auths
-import test.builders.BuildThirdProfile
+import test.builders.{BuildThird, BuildThirdCredentials, BuildThirdProfile}
 import test.builders.authorizes.BuildAuth
 
 object BuildAuths {
@@ -19,8 +19,10 @@ object BuildAuths {
   def withClientIds(clientIds: String*): Auths = {
     val newlist = clientIds.map(id  =>
       BuildAuth.any(
-          withThirdProfile = BuildThirdProfile.any(
-            withClientid = id
+          withThird = BuildThird.any(
+            withCredentials = BuildThirdCredentials.any(
+              withClientid = id
+            )
           )
     )).to[Vector]
 

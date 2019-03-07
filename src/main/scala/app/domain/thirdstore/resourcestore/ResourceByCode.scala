@@ -3,10 +3,10 @@ package app.domain.thirdstore.resourcestore
 import app.domain.Scope
 import app.domain.factories.FactoryToken
 import app.domain.ownerstore.OwnerProfile
-import app.domain.thirdstore.ThirdProfile
+import app.domain.thirdstore.Third
 
 case class ResourceByCode(
-                     private val thirdProfile: ThirdProfile,
+                     private val third: Third,
                      private val ownerProfile: OwnerProfile,
                      private val scope: Scope,
                      private val code: Code
@@ -14,7 +14,7 @@ case class ResourceByCode(
 
   def exchangeByResourceByToken(): ResourceByToken = {
     new ResourceByToken(
-      thirdProfile = thirdProfile,
+      thirdProfile = third.profile,
       ownerProfile = ownerProfile,
       scope = scope,
       token = FactoryToken.create()
@@ -24,12 +24,12 @@ case class ResourceByCode(
   def exportMemento(): MementoResourceByCode = {
     MementoResourceByCode(
       // third
-      thirdProfile.name,
-      thirdProfile.clientid,
-      thirdProfile.clientsecret,
-      thirdProfile.callback,
-      thirdProfile.homepage,
-      thirdProfile.description,
+      third.profile.name,
+      third.credentials.clientId,
+      third.credentials.clientSecret,
+      third.profile.callback,
+      third.profile.homepage,
+      third.profile.description,
       // owner
       ownerProfile.firstname,
       ownerProfile.surname,

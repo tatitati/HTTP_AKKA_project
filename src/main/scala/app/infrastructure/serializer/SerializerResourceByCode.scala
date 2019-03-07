@@ -2,7 +2,7 @@ package app.infrastructure.serializer
 
 import app.domain.Scope
 import app.domain.ownerstore.OwnerProfile
-import app.domain.thirdstore.ThirdProfile
+import app.domain.thirdstore.{Third, ThirdCredentials, ThirdProfile}
 import app.domain.thirdstore.resourcestore.{Code, ResourceByCode}
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
@@ -14,7 +14,7 @@ object SerializerResourceByCode {
 
     val memento = resourceByCode.exportMemento()
     val givenMap = Json.obj(
-  "thirdProfile" -> Json.obj(
+  "third" -> Json.obj(
         "name" -> memento.thirdProfileName,
           "clientid" -> memento.thirdClientId,
           "clientsecret" -> memento.thirdClientSecret,
@@ -55,16 +55,18 @@ object SerializerResourceByCode {
     )
 
 
-
     val parsed = Json.parse(serialized)
 
     val thirdProfile = new ThirdProfile(
-      name = (parsed \ "thirdProfile" \ "name").as[String],
-      clientid = (parsed \ "thirdProfile" \ "clientid").as[String],
-      clientsecret = (parsed \ "thirdProfile" \ "clientsecret").as[String],
-      callback = (parsed \ "thirdProfile" \ "callback").as[String],
-      homepage = (parsed \ "thirdProfile" \ "homepage").as[String],
-      description = (parsed \ "thirdProfile" \ "description").as[String]
+      name = (parsed \ "third" \ "name").as[String],
+      callback = (parsed \ "third" \ "callback").as[String],
+      homepage = (parsed \ "third" \ "homepage").as[String],
+      description = (parsed \ "third" \ "description").as[String]
+    )
+
+    val thirdCredentials = ThirdCredentials(
+      clientId = (parsed \ "third" \ "clientid").as[String],
+      clientSecret = (parsed \ "third" \ "clientsecret").as[String],
     )
 
     val ownerProfile = new OwnerProfile(
@@ -89,7 +91,7 @@ object SerializerResourceByCode {
     )
 
     new ResourceByCode(
-      thirdProfile = thirdProfile,
+      third = Third(profile = thirdProfile, credentials = thirdCredentials),
       ownerProfile = ownerProfile,
       scope = scope,
       code = code

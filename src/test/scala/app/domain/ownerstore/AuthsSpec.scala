@@ -3,7 +3,7 @@ package test.app.domain.ownerstore
 import app.domain.ownerstore.{Auth, Auths}
 import builders.authorizes.BuildAuths
 import org.scalatest.FunSuite
-import test.builders.BuildThirdProfile
+import test.builders.{BuildThird, BuildThirdCredentials, BuildThirdProfile}
 import test.builders.authorizes.BuildAuth
 
 class AuthsSpec extends FunSuite {
@@ -15,8 +15,10 @@ class AuthsSpec extends FunSuite {
   test("can find auth by clientid") {
 
     val givenAuth1 = BuildAuth.any(
-      withThirdProfile = BuildThirdProfile.any(
+      withThird = BuildThird.any(
+        withCredentials = BuildThirdCredentials.any(
           withClientid = "clientid1"
+        )
       )
     )
 
@@ -45,9 +47,11 @@ class AuthsSpec extends FunSuite {
     val listmap = BuildAuths.withClientIds("clientid1")
 
     val auth = BuildAuth.any(
-        withThirdProfile = BuildThirdProfile.any(
+      withThird = BuildThird.any(
+        withCredentials = BuildThirdCredentials.any(
           withClientid = "clientid3"
         )
+      )
     )
 
     assert(listmap.find("clientid1").isInstanceOf[Some[Auth]])
@@ -65,9 +69,11 @@ class AuthsSpec extends FunSuite {
     val listmap = BuildAuths.withClientIds("clientid1", "clientid2")
 
     val auth = BuildAuth.any(
-        withThirdProfile = BuildThirdProfile.any(
+      withThird = BuildThird.any(
+        withCredentials = BuildThirdCredentials.any(
           withClientid = "clientid3"
         )
+      )
     )
 
     assert(listmap.count() === 2)

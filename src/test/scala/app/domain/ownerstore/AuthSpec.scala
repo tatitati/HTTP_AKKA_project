@@ -3,7 +3,7 @@ package test.app.domain.ownerstore
 import app.domain.ownerstore.Auth
 import builders.authorizes.BuildScope
 import org.scalatest.FunSuite
-import test.builders.BuildThirdProfile
+import test.builders.{BuildThird, BuildThirdProfile}
 import test.builders.authorizes.BuildAuth
 
 class AuthSpec extends FunSuite {
@@ -19,8 +19,10 @@ class AuthSpec extends FunSuite {
 
   test("User can see basic information about the third that was granted permissions") {
     val givenAuth = BuildAuth.any(
-        withThirdProfile = BuildThirdProfile.any(
-          withName = "CircleCI", withDescription = "any description"
+        withThird = BuildThird.any(
+          withThirdProfile = BuildThirdProfile.any(
+            withName = "CircleCI", withDescription = "any description"
+          )
         )
     )
 

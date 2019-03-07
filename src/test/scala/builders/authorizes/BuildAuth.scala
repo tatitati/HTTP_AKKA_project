@@ -2,17 +2,17 @@ package test.builders.authorizes
 
 import app.domain.{Scope, Token}
 import app.domain.ownerstore.Auth
-import app.domain.thirdstore.ThirdProfile
+import app.domain.thirdstore.{Third, ThirdProfile}
 import builders.authorizes.BuildScope
-import test.builders.{BuildThirdProfile, BuildToken}
+import test.builders.{BuildThird, BuildThirdProfile, BuildToken}
 
 object BuildAuth {
 
   def any(
-           withThirdProfile: ThirdProfile = BuildThirdProfile.any(),
+           withThird: Third = BuildThird.any(),
            withScope: Scope = BuildScope.any,
            withToken: Option[Token] = Some(BuildToken.any())
          ): Auth = {
-    new Auth(withThirdProfile, withScope, withToken)
+    new Auth(withThird, withScope, withToken)
   }
 }

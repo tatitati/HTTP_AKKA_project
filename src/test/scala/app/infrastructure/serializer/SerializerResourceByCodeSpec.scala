@@ -11,7 +11,7 @@ class SerializerResourceByCodeSpec extends FunSuite {
     val inJson = SerializerResourceByCode.toJson(resByCode)
 
     assert(inJson ===
-      """{"thirdProfile":{
+      """{"third":{
           |"name":"name",
           |"clientid":"clientid",
           |"clientsecret":"clientsecret",
@@ -44,7 +44,7 @@ class SerializerResourceByCodeSpec extends FunSuite {
 
     val givenJson =
       """{
-        |"thirdProfile":{
+        |"third":{
           |"name":"name",
           |"clientid":"clientid",
           |"clientsecret":"clientsecret",

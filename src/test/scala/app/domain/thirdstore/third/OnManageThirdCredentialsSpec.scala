@@ -12,8 +12,8 @@ class OnManageThirdCredentialsSpec extends FunSuite {
 
     val updatedThird = givenThird.refreshCredentials()
 
-    val newclientid = updatedThird.profile.clientid
-    val newclientSecret = updatedThird.profile.clientsecret
+    val newclientid = updatedThird.credentials.clientId
+    val newclientSecret = updatedThird.credentials.clientSecret
 
     assert(clientId !== newclientid)
     assert(clientSecret !== newclientSecret)
