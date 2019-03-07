@@ -1,6 +1,6 @@
 package test.app.infrastructure.repository
 
-import app.domain.thirdstore.resourcestore.ResourceByCode
+import app.domain.resource.ResourceByCode
 import app.infrastructure.repository.RepositoryResourceByCode
 import com.redis.RedisClient
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FunSuite}

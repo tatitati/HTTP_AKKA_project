@@ -1,9 +1,9 @@
-package app.domain.thirdstore.third.resourcestore
+package test.app.domain.resource
 
-import app.domain.thirdstore.resourcestore.ResourceByToken
+import app.domain.resource.ResourceByToken
+import com.github.nscala_time.time.Imports.DateTime
 import org.scalatest.FunSuite
 import test.builders.BuildResourceByCode
-import com.github.nscala_time.time.Imports.DateTime
 
 class ResourceByCodeSpec extends FunSuite {
 

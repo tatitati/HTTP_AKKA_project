@@ -1,4 +1,4 @@
- package app.domain.ownerstore
+ package app.domain.owner
 
 case class Auths(private val auths: Vector[Auth]) {
 

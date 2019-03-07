@@ -1,6 +1,6 @@
 package app.infrastructure.repository
 
-import app.domain.thirdstore.resourcestore.ResourceByCode
+import app.domain.resource.ResourceByCode
 import app.infrastructure.serializer.SerializerResourceByCode
 import com.redis.RedisClient
 

@@ -1,4 +1,4 @@
-package app.domain.thirdstore.resourcestore
+package app.domain.resource
 
 import com.github.nscala_time.time.Imports.DateTime
 

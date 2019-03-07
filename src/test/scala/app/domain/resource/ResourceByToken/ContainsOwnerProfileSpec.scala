@@ -1,4 +1,4 @@
-package app.domain.thirdstore.third.resourcestore.ResourceByToken
+package test.app.domain.resource.ResourceByToken
 
 import builders.authorizes.BuildScope
 import org.scalatest.FunSuite

@@ -1,4 +1,4 @@
-package app.domain.thirdstore
+package app.domain.third
 
 case class ThirdProfile(
               name: String,

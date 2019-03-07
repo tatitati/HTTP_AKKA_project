@@ -1,9 +1,9 @@
 package test.builders
 
 import app.domain.Scope
-import app.domain.ownerstore.OwnerProfile
-import app.domain.thirdstore.{Third, ThirdProfile}
-import app.domain.thirdstore.resourcestore.{Code, ResourceByCode}
+import app.domain.owner.OwnerProfile
+import app.domain.resource.{Code, ResourceByCode}
+import app.domain.third.{Third, ThirdProfile}
 import builders.authorizes.BuildScope
 import com.github.nscala_time.time.Imports._
 

@@ -1,6 +1,6 @@
 package test.builders
 
-import app.domain.thirdstore.ThirdCredentials
+import app.domain.third.ThirdCredentials
 
 object BuildThirdCredentials {
 

@@ -1,6 +1,6 @@
 package test.builders
 
-import app.domain.ownerstore.{Auths, Owner, OwnerProfile}
+import app.domain.owner.{Auths, Owner, OwnerProfile}
 import builders.authorizes.BuildAuths
 
 object BuildOwner {

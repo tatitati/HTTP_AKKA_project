@@ -1,6 +1,6 @@
 package test.builders
 
-import app.domain.thirdstore.{Third, ThirdCredentials, ThirdProfile}
+import app.domain.third.{Third, ThirdCredentials, ThirdProfile}
 
 object BuildThird {
     def any(

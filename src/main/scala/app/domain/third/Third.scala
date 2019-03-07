@@ -1,4 +1,4 @@
-package app.domain.thirdstore
+package app.domain.third
 
 import app.domain.RandomTextGenerator
 

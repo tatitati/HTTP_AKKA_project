@@ -1,9 +1,9 @@
 package app.infrastructure.serializer
 
 import app.domain.Scope
-import app.domain.ownerstore.OwnerProfile
-import app.domain.thirdstore.{Third, ThirdCredentials, ThirdProfile}
-import app.domain.thirdstore.resourcestore.{Code, ResourceByCode}
+import app.domain.owner.OwnerProfile
+import app.domain.resource.{Code, ResourceByCode}
+import app.domain.third.{Third, ThirdCredentials, ThirdProfile}
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
 import play.api.libs.json.{Json, _}

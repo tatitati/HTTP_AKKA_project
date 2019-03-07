@@ -1,7 +1,7 @@
-package app.domain.ownerstore
+package app.domain.owner
 
 import app.domain.{Scope, Token}
-import app.domain.thirdstore.{Third, ThirdProfile}
+import app.domain.third.{Third, ThirdProfile}
 
 class Auth(
             private val third: Third,
