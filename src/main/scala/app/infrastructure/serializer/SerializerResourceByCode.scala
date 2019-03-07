@@ -1,8 +1,7 @@
 package app.infrastructure.serializer
 
-import app.domain.Scope
 import app.domain.owner.OwnerProfile
-import app.domain.resource.{Code, ResourceByCode}
+import app.domain.resource.{Code, ResourceByCode, Scope}
 import app.domain.third.{Third, ThirdCredentials, ThirdProfile}
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat

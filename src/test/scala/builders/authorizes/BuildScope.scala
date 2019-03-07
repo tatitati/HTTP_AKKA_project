@@ -1,6 +1,6 @@
 package builders.authorizes
 
-import app.domain.Scope
+import app.domain.resource.Scope
 import test.builders.Faker
 
 object BuildScope {

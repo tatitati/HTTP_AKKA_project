@@ -1,6 +1,6 @@
 package app.domain.factories
 
-import app.domain.Token
+import app.domain.resource.Token
 import org.scalatest.FunSuite
 
 class FactoryTokenSpec extends FunSuite {

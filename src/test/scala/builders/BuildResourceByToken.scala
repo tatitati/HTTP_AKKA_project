@@ -1,7 +1,6 @@
 package test.builders
 
-import app.domain.resource.ResourceByToken
-import app.domain.{Scope, Token}
+import app.domain.resource.{ResourceByToken, Scope, Token}
 import builders.authorizes.BuildScope
 
 object BuildResourceByToken {

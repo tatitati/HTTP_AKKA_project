@@ -1,6 +1,7 @@
-package app.domain
+package app.domain.resource
 
 import java.util.UUID
+
 import com.github.nscala_time.time.Imports._
 
 class Token(

@@ -1,6 +1,6 @@
 package app.domain.owner
 
-import app.domain.{Scope, Token}
+import app.domain.resource.{Scope, Token}
 import app.domain.third.{Third, ThirdProfile}
 
 class Auth(

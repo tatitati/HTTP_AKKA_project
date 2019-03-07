@@ -1,6 +1,6 @@
 package test.app.domain.resource
 
-import app.domain.resource.ResourceByToken
+import app.domain.resource._
 import com.github.nscala_time.time.Imports.DateTime
 import org.scalatest.FunSuite
 import test.builders.BuildResourceByCode

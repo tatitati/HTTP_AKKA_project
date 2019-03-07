@@ -1,11 +1,9 @@
 package app.domain.resource
 
 import java.util.UUID
-
 import app.domain.factories.FactoryToken
 import app.domain.owner.OwnerProfile
 import app.domain.third.ThirdProfile
-import app.domain.{Scope, Token}
 
 case class ResourceByToken(
                 private val thirdProfile: ThirdProfile,
