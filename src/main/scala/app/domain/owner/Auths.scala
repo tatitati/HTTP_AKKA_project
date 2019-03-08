@@ -4,7 +4,6 @@ case class Auths(private var auths: Vector[Auth]) {
 
   def count() :Int = auths.size
   def getList: Vector[Auth] = auths
-  def memento: AuthsMemento = AuthsMemento(auths)
 
   private def existThird(clientId: String): Boolean = {
     auths.exists(
@@ -33,4 +32,6 @@ case class Auths(private var auths: Vector[Auth]) {
       case true => None
     }
   }
+
+  def memento: AuthsMemento = AuthsMemento(auths)
 }
