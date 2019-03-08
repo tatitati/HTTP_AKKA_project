@@ -1,8 +1,8 @@
 package app.domain.third
 
-import app.domain.RandomTextGenerator
+import app.domain.{Id, RandomTextGenerator}
 
-case class Third(val profile: ThirdProfile, val credentials: ThirdCredentials) extends RandomTextGenerator {
+case class Third(id: Option[Int], val profile: ThirdProfile, val credentials: ThirdCredentials) extends Id with RandomTextGenerator {
 
   def refreshCredentials(): Third = {
     val updatedCredentials = credentials.copy(

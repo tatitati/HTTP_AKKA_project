@@ -8,6 +8,7 @@ class ThirdMapperSpec extends FunSuite {
 
   test("ThirdPersistedModel -> Third") {
     val persistent = ThirdPersistedModel(
+      None,
       name = "whatever",
       callback = "callback",
       homepage = "homepage",

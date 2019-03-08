@@ -4,11 +4,11 @@ import app.domain.third.{Third, ThirdCredentials, ThirdProfile}
 
 object BuildThird {
     def any(
-           withThirdProfile: ThirdProfile = BuildThirdProfile.any(),
-           withCredentials: ThirdCredentials = BuildThirdCredentials.any()
+             withId: Option[Int] = Faker(Some(Faker.number()), None),
+             withThirdProfile: ThirdProfile = BuildThirdProfile.any(),
+             withCredentials: ThirdCredentials = BuildThirdCredentials.any()
         ): Third = {
 
-      new Third(withThirdProfile, withCredentials)
-
+      new Third(withId, withThirdProfile, withCredentials)
     }
 }

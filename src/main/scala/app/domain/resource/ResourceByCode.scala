@@ -23,6 +23,7 @@ case class ResourceByCode(
   def exportMemento(): MementoResourceByCode = {
     MementoResourceByCode(
       // third
+      third.id.get,
       third.profile.name,
       third.credentials.clientId,
       third.credentials.clientSecret,
