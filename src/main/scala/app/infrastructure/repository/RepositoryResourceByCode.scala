@@ -8,7 +8,7 @@ class RepositoryResourceByCode(val redisClient: RedisClient) {
 
   def save(resourceByCode: ResourceByCode, expiryTime: Int = 60): Boolean = {
 
-    val memento = resourceByCode.exportMemento()
+    val memento = resourceByCode.memento()
 
     redisClient.setex(
       key = memento.code,

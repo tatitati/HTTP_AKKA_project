@@ -14,14 +14,14 @@ case class ResourceByCode(
   def exchangeByResourceByToken(): ResourceByToken = {
     new ResourceByToken(
       thirdProfile = third.getProfile,
-      ownerProfile = ownerProfile,
+      ownerProfile = ownerProfile.memento,
       scope = scope,
       token = FactoryToken.create()
     )
   }
 
-  def exportMemento(): MementoResourceByCode = {
-    MementoResourceByCode(
+  def memento(): ResourceByCodeMemento = {
+    ResourceByCodeMemento(
       // third
       third.id.get,
       third.getProfile.name,

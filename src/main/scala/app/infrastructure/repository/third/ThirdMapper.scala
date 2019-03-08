@@ -7,7 +7,7 @@ object ThirdMapper {
   def toDomain(fromPersistent: ThirdPersistedModel): Third = {
     Third(
       id = fromPersistent.id,
-      profile = ThirdProfile(
+      profile = new ThirdProfile(
         name = fromPersistent.name,
         callback = fromPersistent.callback,
         homepage = fromPersistent.homepage,

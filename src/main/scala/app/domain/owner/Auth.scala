@@ -1,7 +1,7 @@
 package app.domain.owner
 
 import app.domain.resource.{Scope, Token}
-import app.domain.third.{Third, ThirdProfile}
+import app.domain.third.{Third, ThirdProfile, ThirdProfileMemento}
 
 class Auth(
             private val givenToThird: Third,
@@ -9,7 +9,7 @@ class Auth(
             private val throughToken: Option[Token]
   ) {
 
-  def getThirdProfile: ThirdProfile = givenToThird.getProfile
+  def getThirdProfile: ThirdProfileMemento = givenToThird.getProfile
   def thirdClientId(): String = givenToThird.getCredentials.clientId
 
   def canThirdReadFirstname: Boolean = withScope.firstname

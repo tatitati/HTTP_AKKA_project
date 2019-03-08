@@ -5,7 +5,7 @@ import app.domain.{Id, RandomTextGenerator}
 case class Third(id: Option[Long], private var profile: ThirdProfile, private var credentials: ThirdCredentials) extends Id with RandomTextGenerator {
 
   def getCredentials: ThirdCredentials = credentials
-  def getProfile: ThirdProfile = profile
+  def getProfile: ThirdProfileMemento = profile.memento
 
   def refreshCredentials(): Unit = {
     credentials = ThirdCredentials(
@@ -15,18 +15,18 @@ case class Third(id: Option[Long], private var profile: ThirdProfile, private va
   }
 
   def updateName(withName: String): Unit = {
-    profile = profile.copy(name = withName)
+    profile.updateName(withName)
   }
 
   def updateCallbackUrl(withCallback: String): Unit = {
-    profile = profile.copy(callback = withCallback)
+    profile.updateCallbackUrl(withCallback)
   }
 
   def updateHomepage(withHomepage: String): Unit = {
-    profile = profile.copy(homepage = withHomepage)
+    profile.updateHomepage(withHomepage)
   }
 
   def updateDescription(withDescription: String): Unit = {
-    profile = profile.copy(description = withDescription)
+    profile.updateDescription(withDescription)
   }
 }

@@ -11,7 +11,7 @@ object SerializerResourceByCode {
 
   def toJson(resourceByCode: ResourceByCode): String = {
 
-    val memento = resourceByCode.exportMemento()
+    val memento = resourceByCode.memento()
     val givenMap = Json.obj(
   "third" -> Json.obj(
           "id" -> memento.thirdId,

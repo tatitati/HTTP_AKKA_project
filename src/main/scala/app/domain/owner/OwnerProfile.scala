@@ -30,4 +30,14 @@ class OwnerProfile(
   def setDatebirth(newdatebirth: DateTime): Unit = {
     datebirth = newdatebirth
   }
+
+  def memento: OwnerProfileMemento = {
+    OwnerProfileMemento(
+      firstname,
+      surname,
+      email,
+      emailconfirmed,
+      datebirth
+    )
+  }
 }

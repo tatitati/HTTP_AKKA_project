@@ -77,8 +77,8 @@ class SerializerResourceByCodeSpec extends FunSuite {
 
     val resByCode = SerializerResourceByCode.toDomain(givenJson)
 
-    val memento1 = resByCode.exportMemento()
-    val memento2 = BuildResourceByCode.specific().exportMemento()
+    val memento1 = resByCode.memento()
+    val memento2 = BuildResourceByCode.specific().memento()
 
     assert(memento1 === memento2)
   }
@@ -88,8 +88,8 @@ class SerializerResourceByCodeSpec extends FunSuite {
     val inJson = SerializerResourceByCode.toJson(resByCode)
     val fromJson = SerializerResourceByCode.toDomain(inJson)
 
-    val mementoFromOriginal = resByCode.exportMemento()
-    val mementoFromParsed = fromJson.exportMemento()
+    val mementoFromOriginal = resByCode.memento()
+    val mementoFromParsed = fromJson.memento()
 
     assert(mementoFromParsed === mementoFromOriginal)
   }

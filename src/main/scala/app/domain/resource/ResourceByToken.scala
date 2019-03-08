@@ -1,15 +1,16 @@
 package app.domain.resource
 
 import java.util.UUID
+
 import app.domain.factories.FactoryToken
-import app.domain.owner.OwnerProfile
-import app.domain.third.ThirdProfile
+import app.domain.owner.{OwnerProfile, OwnerProfileMemento}
+import app.domain.third.{ThirdProfile, ThirdProfileMemento}
 
 case class ResourceByToken(
-                private val thirdProfile: ThirdProfile,
-                private val ownerProfile: OwnerProfile,
-                private val scope: Scope,
-                private var token: Token
+                            private val thirdProfile: ThirdProfileMemento,
+                            private val ownerProfile: OwnerProfileMemento,
+                            private val scope: Scope,
+                            private var token: Token
     ){
 
     def getToken: Token = {

@@ -19,7 +19,7 @@ class ResourceByCodeSpec extends FunSuite {
   test("Can export memento to allow serialization of its whole state and keep encapsulation") {
     val resourceCode = BuildResourceByCode.specific()
 
-    val memento = resourceCode.exportMemento()
+    val memento = resourceCode.memento()
 
     assert(memento.code === "code")
     assert(memento.ownerEmail === "email")

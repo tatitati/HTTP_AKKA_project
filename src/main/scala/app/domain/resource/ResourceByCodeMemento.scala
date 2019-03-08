@@ -2,7 +2,7 @@ package app.domain.resource
 
 import com.github.nscala_time.time.Imports.DateTime
 
-case class MementoResourceByCode(
+case class ResourceByCodeMemento(
                            // third
                            val thirdId: Long,
                            val thirdProfileName: String,

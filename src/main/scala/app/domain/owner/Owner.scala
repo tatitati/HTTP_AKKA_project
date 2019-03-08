@@ -4,14 +4,8 @@ import com.github.nscala_time.time.Imports.DateTime
 
 class Owner(private var profile: OwnerProfile, private var listAuth: Auths) {
 
-  def getOwnerProfile = OwnerProfileMemento(
-    profile.firstname,
-    profile.surname,
-    profile.email,
-    profile.emailconfirmed,
-    profile.datebirth
-  )
-  def getListAuths = AuthsMemento(listAuth.getList)
+  def getOwnerProfile = profile.memento
+  def getListAuths = listAuth.memento
 
   def countThirds(): Int = listAuth.count()
   def revoke(clientId: String): Unit = listAuth.removeAuth(clientId)
