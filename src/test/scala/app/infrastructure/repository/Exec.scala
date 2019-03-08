@@ -1,9 +1,9 @@
-package test.learning.Slick
+package app.infrastructure.repository
 
+import slick.dbio.DBIO
 import slick.jdbc.JdbcProfile
-import slick.jdbc.MySQLProfile.api._
-import scala.concurrent.Await
 import scala.concurrent.duration._
+import scala.concurrent.Await
 
 trait Exec {
   def exec[T](action: DBIO[T])(implicit db: JdbcProfile#Backend#Database): T =

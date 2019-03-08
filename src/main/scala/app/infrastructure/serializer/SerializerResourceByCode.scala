@@ -53,7 +53,7 @@ object SerializerResourceByCode {
         ))
       )
     )
-    
+
     val parsed = Json.parse(serialized)
 
     val thirdId = (parsed \ "third" \ "id").as[Long]

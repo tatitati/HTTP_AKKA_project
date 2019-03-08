@@ -6,7 +6,7 @@ import test.builders.Faker
 object BuildThirdPersistedModel {
 
   def any(
-           withId: Option[Int] = Faker(Some(Faker.number()), None),
+           withId: Option[Long] = Faker(Some(Faker.number()), None),
            withName: String = Faker.text(),
            withCallback: String = Faker.text(),
            withHomepage: String = Faker.text(),
