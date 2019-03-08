@@ -36,6 +36,7 @@ class ThirdSchemaSpec extends FunSuite with BeforeAndAfterAll with Exec {
     assert(rows2.head.isInstanceOf[ThirdPersistedModel])
   }
 
+
   test("On select I get a vector of ThirdPersistedModel elements") {
 
     exec(thirdSchema += BuildThirdPersistedModel.any(
