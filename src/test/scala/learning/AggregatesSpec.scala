@@ -2,9 +2,6 @@ package learning
 
 import org.scalatest.FunSuite
 
-
-
-
 class AggregatesSpec extends FunSuite {
 
   test("Inner entities can be updated from outside, what SHOULDNT HAPPEN ever") {

@@ -26,8 +26,8 @@ class AuthSpec extends FunSuite {
         )
     )
 
-    assert(givenAuth.thirdName() == "CircleCI", "=> Should show third-name")
-    assert(givenAuth.thirdDescription() == "any description", "=> Should show third-description")
+    assert(givenAuth.getThirdProfile.name == "CircleCI", "=> Should show third-name")
+    assert(givenAuth.getThirdProfile.description == "any description", "=> Should show third-description")
   }
 
   test("Auth can have a token (or not if it was revoked)") {
