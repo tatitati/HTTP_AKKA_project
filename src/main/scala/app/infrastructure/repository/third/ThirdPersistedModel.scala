@@ -1,7 +1,7 @@
 package app.infrastructure.repository.third
 
 case class ThirdPersistedModel(
-                                id: Option[Int] = None,
+                                id: Option[Long] = None,
                                 name: String,
                                 callback: String,
                                 homepage: String,

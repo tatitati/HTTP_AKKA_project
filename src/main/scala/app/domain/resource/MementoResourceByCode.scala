@@ -4,7 +4,7 @@ import com.github.nscala_time.time.Imports.DateTime
 
 case class MementoResourceByCode(
                            // third
-                           val thirdId: Int,
+                           val thirdId: Long,
                            val thirdProfileName: String,
                            val thirdClientId: String,
                            val thirdClientSecret: String,

@@ -1,5 +1,5 @@
 package app.domain
 
 abstract class Id {
-  def id: Option[Int]
+  def id: Option[Long]
 }
