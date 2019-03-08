@@ -22,6 +22,7 @@ object ThirdMapper {
 
   def toPersistent(third: Third): ThirdPersistedModel= {
     ThirdPersistedModel(
+      id = third.id,
       name = third.profile.name,
       callback = third.profile.callback,
       homepage = third.profile.homepage,

@@ -2,24 +2,23 @@ package app.infrastructure.repository.third
 
 import app.domain.third.Third
 import org.scalatest.FunSuite
+import test.builders.infrastructure.BuildThirdPersistedModel
 import test.builders.{BuildThird, BuildThirdCredentials, BuildThirdProfile}
 
 class ThirdMapperSpec extends FunSuite {
 
   test("ThirdPersistedModel -> Third") {
-    val persistent = ThirdPersistedModel(
-      None,
-      name = "whatever",
-      callback = "callback",
-      homepage = "homepage",
-      description = "my description",
-      clientId = "client_id",
-      clientSecret = "client_secret"
+    val persistent = BuildThirdPersistedModel.any(
+      withId = Some(5),
+      withName = "whatever",
+      withCallback = "callback",
+      withClientId = "client_id"
     )
 
     val domain = ThirdMapper.toDomain(persistent)
 
     assert(domain.isInstanceOf[Third])
+    assert(domain.id === Some(5))
     assert(domain.profile.name === "whatever")
     assert(domain.profile.callback === "callback")
     assert(domain.credentials.clientId === "client_id")
