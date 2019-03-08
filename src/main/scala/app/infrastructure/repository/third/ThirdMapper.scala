@@ -23,10 +23,10 @@ object ThirdMapper {
   def toPersistent(third: Third): ThirdPersistedModel= {
     ThirdPersistedModel(
       id = third.id,
-      name = third.profile.name,
-      callback = third.profile.callback,
-      homepage = third.profile.homepage,
-      description = third.profile.description,
+      name = third.getProfile.name,
+      callback = third.getProfile.callback,
+      homepage = third.getProfile.homepage,
+      description = third.getProfile.description,
       clientId = third.getCredentials.clientId,
       clientSecret = third.getCredentials.clientSecret
     )

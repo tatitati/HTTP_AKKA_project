@@ -13,7 +13,7 @@ case class ResourceByCode(
 
   def exchangeByResourceByToken(): ResourceByToken = {
     new ResourceByToken(
-      thirdProfile = third.profile,
+      thirdProfile = third.getProfile,
       ownerProfile = ownerProfile,
       scope = scope,
       token = FactoryToken.create()
@@ -24,12 +24,12 @@ case class ResourceByCode(
     MementoResourceByCode(
       // third
       third.id.get,
-      third.profile.name,
+      third.getProfile.name,
       third.getCredentials.clientId,
       third.getCredentials.clientSecret,
-      third.profile.callback,
-      third.profile.homepage,
-      third.profile.description,
+      third.getProfile.callback,
+      third.getProfile.homepage,
+      third.getProfile.description,
       // owner
       ownerProfile.firstname,
       ownerProfile.surname,

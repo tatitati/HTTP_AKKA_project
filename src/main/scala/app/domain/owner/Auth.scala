@@ -9,10 +9,10 @@ class Auth(
             private val throughToken: Option[Token]
   ) {
 
-  def thirdName(): String = givenToThird.profile.name
-  def thirdHomepage(): String = givenToThird.profile.homepage
+  def thirdName(): String = givenToThird.getProfile.name
+  def thirdHomepage(): String = givenToThird.getProfile.homepage
   def thirdClientId(): String = givenToThird.getCredentials.clientId
-  def thirdDescription(): String = givenToThird.profile.description
+  def thirdDescription(): String = givenToThird.getProfile.description
 
   def canThirdReadFirstname: Boolean = withScope.firstname
   def canThirdReadSurname: Boolean = withScope.surname

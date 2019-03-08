@@ -19,8 +19,8 @@ class ThirdMapperSpec extends FunSuite {
 
     assert(domain.isInstanceOf[Third])
     assert(domain.id === Some(5))
-    assert(domain.profile.name === "whatever")
-    assert(domain.profile.callback === "callback")
+    assert(domain.getProfile.name === "whatever")
+    assert(domain.getProfile.callback === "callback")
     assert(domain.getCredentials.clientId === "client_id")
   }
 
