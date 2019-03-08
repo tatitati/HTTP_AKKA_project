@@ -25,8 +25,8 @@ case class ResourceByCode(
       // third
       third.id.get,
       third.profile.name,
-      third.credentials.clientId,
-      third.credentials.clientSecret,
+      third.getCredentials.clientId,
+      third.getCredentials.clientSecret,
       third.profile.callback,
       third.profile.homepage,
       third.profile.description,

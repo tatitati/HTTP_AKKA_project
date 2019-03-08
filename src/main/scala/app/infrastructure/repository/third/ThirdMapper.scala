@@ -27,8 +27,8 @@ object ThirdMapper {
       callback = third.profile.callback,
       homepage = third.profile.homepage,
       description = third.profile.description,
-      clientId = third.credentials.clientId,
-      clientSecret = third.credentials.clientSecret
+      clientId = third.getCredentials.clientId,
+      clientSecret = third.getCredentials.clientSecret
     )
   }
 }

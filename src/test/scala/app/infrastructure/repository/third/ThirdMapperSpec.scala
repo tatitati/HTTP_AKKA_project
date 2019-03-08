@@ -21,7 +21,7 @@ class ThirdMapperSpec extends FunSuite {
     assert(domain.id === Some(5))
     assert(domain.profile.name === "whatever")
     assert(domain.profile.callback === "callback")
-    assert(domain.credentials.clientId === "client_id")
+    assert(domain.getCredentials.clientId === "client_id")
   }
 
   test("ThirdPersistedModel <- Third") {

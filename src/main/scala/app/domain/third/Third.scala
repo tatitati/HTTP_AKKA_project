@@ -2,15 +2,15 @@ package app.domain.third
 
 import app.domain.{Id, RandomTextGenerator}
 
-case class Third(id: Option[Long], val profile: ThirdProfile, val credentials: ThirdCredentials) extends Id with RandomTextGenerator {
+case class Third(id: Option[Long], val profile: ThirdProfile, private var credentials: ThirdCredentials) extends Id with RandomTextGenerator {
 
-  def refreshCredentials(): Third = {
-    val updatedCredentials = credentials.copy(
+  def getCredentials: ThirdCredentials = credentials
+
+  def refreshCredentials(): Unit = {
+    credentials = ThirdCredentials(
       clientId = makeRandomText(),
       clientSecret = makeRandomText()
     )
-
-    this.copy(credentials = updatedCredentials)
   }
 
   def updateProfile(thirdProfile: ThirdProfile): Third = {

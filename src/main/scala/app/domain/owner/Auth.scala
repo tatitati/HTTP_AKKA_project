@@ -11,7 +11,7 @@ class Auth(
 
   def thirdName(): String = givenToThird.profile.name
   def thirdHomepage(): String = givenToThird.profile.homepage
-  def thirdClientId(): String = givenToThird.credentials.clientId
+  def thirdClientId(): String = givenToThird.getCredentials.clientId
   def thirdDescription(): String = givenToThird.profile.description
 
   def canThirdReadFirstname: Boolean = withScope.firstname
