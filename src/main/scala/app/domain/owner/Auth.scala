@@ -1,20 +1,20 @@
 package app.domain.owner
 
 import app.domain.resource.{Scope, Token}
-import app.domain.third.{Third, ThirdProfile}
+import app.domain.third.Third
 
 class Auth(
-            private val third: Third,
-            private val scope: Scope,
-            private val token: Option[Token]
+            private val givenToThird: Third,
+            private val withScope: Scope,
+            private val throughToken: Option[Token]
   ) {
 
-  def name(): String = third.profile.name
-  def homepage(): String = third.profile.homepage
-  def clientId(): String = third.credentials.clientId
-  def description(): String = third.profile.description
+  def thirdName(): String = givenToThird.profile.name
+  def thirdHomepage(): String = givenToThird.profile.homepage
+  def thirdClientId(): String = givenToThird.credentials.clientId
+  def thirdDescription(): String = givenToThird.profile.description
 
-  def canFirstname: Boolean = scope.firstname
-  def canSurname: Boolean = scope.surname
-  def canEmail: Boolean = scope.email
+  def canThirdReadFirstname: Boolean = withScope.firstname
+  def canThirdReadSurname: Boolean = withScope.surname
+  def canThirdReadEmail: Boolean = withScope.email
 }

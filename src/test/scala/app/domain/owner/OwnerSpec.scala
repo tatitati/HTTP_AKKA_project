@@ -84,7 +84,7 @@ class OwnerSpec extends FunSuite {
 
     assert(auth1.isInstanceOf[Some[Auth]] === true)
     assert(auth1 match {
-        case Some(value) => value.name === "travis"
+        case Some(value) => value.thirdName === "travis"
         case _ => false
     })
 

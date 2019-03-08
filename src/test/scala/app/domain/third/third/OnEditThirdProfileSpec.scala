@@ -12,8 +12,8 @@ class OnEditThirdProfileSpec extends FunSuite {
       )
     )
 
-    val updatedProfile = givenThird.profile.setName("second name")
-    val updatedThird = givenThird.setProfile(updatedProfile)
+    val updatedProfile = givenThird.profile.updateName("second name")
+    val updatedThird = givenThird.updateProfile(updatedProfile)
 
     assert(updatedThird.profile.name === "second name")
   }

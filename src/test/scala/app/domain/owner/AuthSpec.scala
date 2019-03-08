@@ -13,8 +13,8 @@ class AuthSpec extends FunSuite {
       withScope = BuildScope.onlySurname()
     )
 
-    assert(givenAuth.canFirstname === false, "=> Third should be able to access to firstname")
-    assert(givenAuth.canSurname === true, "=> Third should be able to access to surname")
+    assert(givenAuth.canThirdReadFirstname === false, "=> Third should be able to access to firstname")
+    assert(givenAuth.canThirdReadSurname === true, "=> Third should be able to access to surname")
   }
 
   test("User can see basic information about the third that was granted permissions") {
@@ -26,8 +26,8 @@ class AuthSpec extends FunSuite {
         )
     )
 
-    assert(givenAuth.name() == "CircleCI", "=> Should show third-name")
-    assert(givenAuth.description() == "any description", "=> Should show third-description")
+    assert(givenAuth.thirdName() == "CircleCI", "=> Should show third-name")
+    assert(givenAuth.thirdDescription() == "any description", "=> Should show third-description")
   }
 
   test("Auth can have a token (or not if it was revoked)") {

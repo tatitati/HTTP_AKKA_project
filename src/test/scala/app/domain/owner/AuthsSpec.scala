@@ -24,8 +24,8 @@ class AuthsSpec extends FunSuite {
 
     val givenAuthList = new Auths(Vector(givenAuth1))
 
-    val foundAuth1 = givenAuthList.find("clientid1")
-    val foundAuth2 = givenAuthList.find("aaaaaaaa")
+    val foundAuth1 = givenAuthList.findAuth("clientid1")
+    val foundAuth2 = givenAuthList.findAuth("aaaaaaaa")
 
     assert(foundAuth1.isInstanceOf[Some[Auth]])
     assert(foundAuth2 === None)
@@ -34,13 +34,13 @@ class AuthsSpec extends FunSuite {
   test("Can remove from list") {
     val listmap = BuildAuths.withClientIds("clientid1", "clientid2")
 
-    assert(listmap.find("clientid1").isInstanceOf[Some[Auth]])
-    assert(listmap.find("clientid2").isInstanceOf[Some[Auth]])
+    assert(listmap.findAuth("clientid1").isInstanceOf[Some[Auth]])
+    assert(listmap.findAuth("clientid2").isInstanceOf[Some[Auth]])
 
-    val listUpdated = listmap.removeThird("clientid2")
+    val listUpdated = listmap.removeAuth("clientid2")
 
-    assert(listUpdated.find("clientid1").isInstanceOf[Some[Auth]])
-    assert(listUpdated.find("clientid2") === None)
+    assert(listUpdated.findAuth("clientid1").isInstanceOf[Some[Auth]])
+    assert(listUpdated.findAuth("clientid2") === None)
   }
 
   test("Can add to list") {
@@ -54,14 +54,14 @@ class AuthsSpec extends FunSuite {
       )
     )
 
-    assert(listmap.find("clientid1").isInstanceOf[Some[Auth]])
-    assert(listmap.find("clientid3") === None)
+    assert(listmap.findAuth("clientid1").isInstanceOf[Some[Auth]])
+    assert(listmap.findAuth("clientid3") === None)
     assert(listmap.count() === 1)
 
-    val listUpdated = listmap.addThird(auth)
+    val listUpdated = listmap.addAuth(auth)
 
-    assert(listUpdated.find("clientid1").isInstanceOf[Some[Auth]])
-    assert(listUpdated.find("clientid3").isInstanceOf[Some[Auth]])
+    assert(listUpdated.findAuth("clientid1").isInstanceOf[Some[Auth]])
+    assert(listUpdated.findAuth("clientid3").isInstanceOf[Some[Auth]])
     assert(listUpdated.count() === 2)
   }
 
@@ -78,10 +78,10 @@ class AuthsSpec extends FunSuite {
 
     assert(listmap.count() === 2)
 
-    val listUpdated = listmap.addThird(auth)
+    val listUpdated = listmap.addAuth(auth)
     assert(listUpdated.count() === 3)
 
-    val listUpdated2 = listUpdated.addThird(auth)
+    val listUpdated2 = listUpdated.addAuth(auth)
     assert(listUpdated2.count() === 3)
   }
 }

@@ -13,7 +13,7 @@ case class Third(id: Option[Long], val profile: ThirdProfile, val credentials: T
     this.copy(credentials = updatedCredentials)
   }
 
-  def setProfile(thirdProfile: ThirdProfile): Third = {
+  def updateProfile(thirdProfile: ThirdProfile): Third = {
     this.copy(profile = thirdProfile)
   }
 }
