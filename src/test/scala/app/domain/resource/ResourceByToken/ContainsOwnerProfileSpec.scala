@@ -13,7 +13,7 @@ class ContainsOwnerProfileSpec extends FunSuite{
       withScope = Option(BuildScope.onlySurname())
     )
 
-    assert(givenResource.surname() === "my surname")
+    assert(givenResource.getSurname() === "my surname")
   }
 
   test("Exceptions when reading not-authorised data") {
@@ -22,7 +22,7 @@ class ContainsOwnerProfileSpec extends FunSuite{
     )
 
     the [IllegalAccessException] thrownBy(
-      givenResource.surname()
+      givenResource.getSurname()
       ) should have message "The scope doesn't allow you to access to surname"
   }
 
@@ -32,7 +32,7 @@ class ContainsOwnerProfileSpec extends FunSuite{
     )
 
     the [IllegalAccessException] thrownBy(
-      givenResource.surname()
+      givenResource.getSurname()
     ) should have message "The scope allows to access this property. However your token is expired and need to be refreshed"
   }
 }

@@ -9,11 +9,15 @@ case class ResourceByToken(
                 private val thirdProfile: ThirdProfile,
                 private val ownerProfile: OwnerProfile,
                 private val scope: Scope,
-                val token: Token
+                private var token: Token
     ){
 
+    def getToken: Token = {
+      token
+    }
+
     @throws(classOf[IllegalAccessException])
-    def firstname(): String =
+    def getFirstname(): String =
       scope.firstname match {
         case true if !isTokenExpired => ownerProfile.firstname
         case true if isTokenExpired => throw new IllegalAccessException("The scope allows to access this property. However your token is expired and need to be refreshed")
@@ -21,7 +25,7 @@ case class ResourceByToken(
     }
 
     @throws(classOf[IllegalAccessException])
-    def surname(): String = {
+    def getSurname(): String = {
         scope.surname match {
           case true if !isTokenExpired => ownerProfile.surname
           case true if isTokenExpired => throw new IllegalAccessException("The scope allows to access this property. However your token is expired and need to be refreshed")
@@ -30,7 +34,7 @@ case class ResourceByToken(
     }
 
     @throws(classOf[IllegalAccessException])
-    def email(): String = scope.email match {
+    def getEmail(): String = scope.email match {
         case true if !isTokenExpired => ownerProfile.email
         case true if isTokenExpired => throw new IllegalAccessException("The scope allows to access this property. However your token is expired and need to be refreshed")
         case _ => throw new IllegalAccessException("The scope doesn't allow you to access to email")
@@ -40,7 +44,7 @@ case class ResourceByToken(
         token.isExpired
     }
 
-    def refreshToken(withRefreshToken: UUID, withGrantType: String): ResourceByToken = {
+    def refreshToken(withRefreshToken: UUID, withGrantType: String): Unit = {
       if(!token.canRefreshWithParams(withRefreshToken, withGrantType)) {
         throw new IllegalAccessException("The parameters used to refresh the token are invalid.")
       }
@@ -49,6 +53,6 @@ case class ResourceByToken(
         throw new IllegalAccessException("The token must be expired in order to be refreshed")
       }
 
-      this.copy(token = FactoryToken.create())
+      token = FactoryToken.create()
     }
 }

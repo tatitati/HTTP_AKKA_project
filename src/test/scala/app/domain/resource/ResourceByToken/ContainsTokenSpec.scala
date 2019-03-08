@@ -10,9 +10,8 @@ class ContainsTokenSpec extends FunSuite{
   test("Can have a token") {
     val resWithLiveToken = BuildResourceByToken.withLiveToken()
 
-    assert(resWithLiveToken.token.isInstanceOf[Token])
+    assert(resWithLiveToken.getToken.isInstanceOf[Token])
   }
-
 
   test("Token for resource might be or not expired") {
     var resourceWithExpiredToken = BuildResourceByToken.withExpiredToken()
@@ -28,8 +27,8 @@ class ContainsTokenSpec extends FunSuite{
     val givenResourceExpired = BuildResourceByToken.withToken(withToken = givenTokenExpired)
 
     assert(givenResourceExpired.isTokenExpired() === true)
-    val thirdUpdated = givenResourceExpired.refreshToken(givenRefreshUuid, "refresh_token")
-    assert(thirdUpdated.isTokenExpired() === false)
+    givenResourceExpired.refreshToken(givenRefreshUuid, "refresh_token")
+    assert(givenResourceExpired.isTokenExpired() === false)
   }
 
   test("Cannot refresh a live token") {
