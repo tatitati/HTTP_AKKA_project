@@ -25,7 +25,8 @@ class ThirdMapperSpec extends FunSuite {
   }
 
   test("ThirdPersistedModel <- Third") {
-    val third = BuildThird.any(
+    val thirdDomain = BuildThird.any(
+      withId = Some(5),
       withThirdProfile = BuildThirdProfile.any(
         withName = "whatever",
         withCallback = "callback",
@@ -38,9 +39,10 @@ class ThirdMapperSpec extends FunSuite {
       )
     )
 
-    val persistent = ThirdMapper.toPersistent(third)
+    val persistent = ThirdMapper.toPersistent(thirdDomain)
 
     assert(persistent.isInstanceOf[ThirdPersistedModel])
+    assert(persistent.id === Some(5))
     assert(persistent.name === "whatever")
     assert(persistent.callback === "callback")
     assert(persistent.clientId === "client_id")
