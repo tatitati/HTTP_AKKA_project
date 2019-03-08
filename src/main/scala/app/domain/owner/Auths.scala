@@ -1,8 +1,9 @@
 package app.domain.owner
 
-case class Auths(private val auths: Vector[Auth]) {
+case class Auths(private var auths: Vector[Auth]) {
 
   def count() :Int = auths.size
+  def getList: Vector[Auth] = auths
 
   private def existThird(clientId: String): Boolean = {
     auths.exists(
@@ -10,21 +11,17 @@ case class Auths(private val auths: Vector[Auth]) {
     )
   }
 
-  def removeAuth(clientId: String): Auths = {
-    val listUpdated = auths.filterNot(
+  def removeAuth(clientId: String): Unit = {
+    auths = auths.filterNot(
       map => map.thirdClientId() == clientId
     )
-
-    this.copy(auths = listUpdated)
   }
 
-  def addAuth(auth: Auth): Auths = {
-    val listUpdated = existThird(auth.thirdClientId()) match {
+  def addAuth(auth: Auth): Unit = {
+    auths = existThird(auth.thirdClientId()) match {
       case false => auths :+ auth
       case true => auths
     }
-
-    this.copy(auths = listUpdated)
   }
 
   def findAuth(clientId: String): Option[Auth] = {
