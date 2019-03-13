@@ -1,5 +1,6 @@
 package app.infrastructure.Persistence.repository.third
 
+import app.domain.third.Third
 import app.infrastructure.Persistence.Exec
 import org.scalatest.{BeforeAndAfterEach, FunSuite}
 import slick.jdbc.MySQLProfile.api._
@@ -31,18 +32,16 @@ class ThirdDaoSpec extends FunSuite with BeforeAndAfterEach with Exec {
     assert(query === "select `id`, `name`, `callback`, `homepage`, `description`, `client_id`, `client_secret` from `third` where `name` = 'something'")
   }
 
-  test("I can read") {
+  test("Read return a third aggregate") {
     ThirdDao.save(
       BuildThirdPersistedModel.anyNoPersisted(withName = "my row")
     )
 
-    val rows = ThirdDao.read(byname = "my row")
+    val third = ThirdDao.read(byname = "my row")
 
-    assert(rows.size === 1)
-    assert(rows.isInstanceOf[Vector[_]])
-    assert(rows.head.isInstanceOf[ThirdPersistedModel])
-    assert(rows.head.name === "my row")
-    assert(rows.head.id.isInstanceOf[Some[_]])
+    assert(third.isInstanceOf[Third])
+    assert(third.getProfile.name === "my row")
+    assert(third.getSurrogateId().isInstanceOf[Some[_]])
   }
 
   override def beforeEach() {

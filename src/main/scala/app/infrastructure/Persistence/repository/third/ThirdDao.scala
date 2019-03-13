@@ -1,5 +1,6 @@
 package app.infrastructure.Persistence.repository.third
 
+import app.domain.third.Third
 import slick.jdbc.MySQLProfile.api._
 import slick.lifted.TableQuery
 import app.infrastructure.Persistence.Exec
@@ -13,7 +14,11 @@ object ThirdDao extends Exec {
     exec(thirdSchema += persistentModel)
   }
 
-  def read(byname: String): Seq[ThirdPersistedModel] = {
-    exec(thirdSchema.filter(_.name === byname).result)
+  def read(byname: String): Third = {
+    val rows = exec(thirdSchema.filter(_.name === byname).result)
+
+    val thirdPersisted = rows.head
+
+    ThirdMapper.toDomain(thirdPersisted)
   }
 }
