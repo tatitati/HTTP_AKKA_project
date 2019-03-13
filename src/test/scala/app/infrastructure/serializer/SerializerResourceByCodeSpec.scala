@@ -13,12 +13,12 @@ class SerializerResourceByCodeSpec extends FunSuite {
     assert(inJson ===
       """{"third":{
           |"id":22,
-          |"name":"name",
-          |"clientid":"clientid",
-          |"clientsecret":"clientsecret",
+          |"name":"whatever",
+          |"clientid":"client_id",
+          |"clientsecret":"client_secret",
           |"callback":"callback",
           |"homepage":"homepage",
-          |"description":"description"
+          |"description":"my description"
         |},
         |"ownerProfile":{
           |"firstname":"firstname",
@@ -47,12 +47,12 @@ class SerializerResourceByCodeSpec extends FunSuite {
       """{
         |"third":{
           |"id":22,
-          |"name":"name",
-          |"clientid":"clientid",
-          |"clientsecret":"clientsecret",
+          |"name":"whatever",
+          |"clientid":"client_id",
+          |"clientsecret":"client_secret",
           |"callback":"callback",
           |"homepage":"homepage",
-          |"description":"description"
+          |"description":"my description"
         |},
         |"ownerProfile":{
           |"firstname":"firstname",
