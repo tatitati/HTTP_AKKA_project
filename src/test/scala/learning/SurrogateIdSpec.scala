@@ -30,7 +30,7 @@ class SurrogateIdSpec extends FunSuite {
 
   test("I don't need to pass any extra parameter to the " +
     "MyConcret constructor, and in this way I can hide better the Surrogate ID") {
-      var a = new MyConcret(age=32)
+      val a = new MyConcret(age=32)
 
       // I prefer this way because it keeps clean each DOMAIN model constructor. So I can develop
       // the domain easily, with no noise of persistence
