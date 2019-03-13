@@ -1,4 +1,4 @@
-package learning
+package test.learning
 
 import org.scalatest.FunSuite
 
@@ -9,7 +9,7 @@ class SurrogateIdSpec extends FunSuite {
 
     def setSurrogateId(withSurrogateId: String): Unit = {
 
-      if (persistentSurrogateId !== null) {
+      if (persistentSurrogateId != null) {
         throw new IllegalArgumentException("Surrogate ID cannot be modified once that is set")
       }
 
