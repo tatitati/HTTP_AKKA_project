@@ -19,24 +19,20 @@ object BuildResourceByCode {
   }
 
   def specific(): ResourceByCode = {
-
-    val withThird = BuildThird.any(
-      withThirdProfile = BuildThirdProfile.any(
-        withName = "name",
-        withCallback = "callback",
-        withHomepage = "homepage",
-        withDescription = "description"
-      ),
-      withCredentials = BuildThirdCredentials.any(
-        withClientid = "clientid",
-        withClientsecret = "clientsecret"
-      )
-    )
-
-    withThird.setSurrogateId(Some(232))
-
     any(
-      withThird,
+      BuildThird.any(
+        withSurrogateId = Some(22),
+        withThirdProfile = BuildThirdProfile.any(
+          withName = "name",
+          withCallback = "callback",
+          withHomepage = "homepage",
+          withDescription = "description"
+        ),
+        withCredentials = BuildThirdCredentials.any(
+          withClientid = "clientid",
+          withClientsecret = "clientsecret"
+        )
+      ),
       withOwnerProfile = BuildOwnerProfile.any(
         withEmail = "email",
         withEmailConfirmed = true,

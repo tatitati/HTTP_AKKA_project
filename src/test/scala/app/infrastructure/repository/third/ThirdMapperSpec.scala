@@ -26,6 +26,7 @@ class ThirdMapperSpec extends FunSuite {
 
   test("ThirdDomain -> ThirdPersistedModel with no surrogate id in domain yet") {
     val thirdDomain = BuildThird.any(
+      withSurrogateId = None,
       withThirdProfile = BuildThirdProfile.any(
         withName = "whatever",
         withCallback = "callback",
@@ -48,8 +49,9 @@ class ThirdMapperSpec extends FunSuite {
   }
 
   test("ThirdDomain -> ThirdPersistedModel with surrogate") {
-    val thirdDomain = BuildThird.any()
-    thirdDomain.setSurrogateId(Some(6))
+    val thirdDomain = BuildThird.any(
+      withSurrogateId = Some(6)
+    )
 
     val persistent = ThirdMapper.toPersistent(thirdDomain)
 

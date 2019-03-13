@@ -4,7 +4,7 @@ import app.domain.resource.ResourceByCode
 import app.infrastructure.repository.RepositoryResourceByCode
 import com.redis.RedisClient
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FunSuite}
-import test.builders.{BuildResourceByCode, BuildThird}
+import test.builders.{BuildResourceByCode, BuildSurrogateId, BuildThird}
 
 class RepositoryResourceByCodeSpec extends FunSuite with BeforeAndAfterEach with BeforeAndAfterAll {
 
@@ -12,12 +12,7 @@ class RepositoryResourceByCodeSpec extends FunSuite with BeforeAndAfterEach with
   val repo = new RepositoryResourceByCode(redisClient)
 
   test("Can persist in redis") {
-      val builtThird = BuildThird.any()
-      builtThird.setSurrogateId(Some(32))
-
-      val givenResourceByCode = BuildResourceByCode.any(
-        withThird = builtThird
-      )
+    val givenResourceByCode = BuildResourceByCode.any()
 
       assert(repo.save(givenResourceByCode) === true)
   }
@@ -29,12 +24,7 @@ class RepositoryResourceByCodeSpec extends FunSuite with BeforeAndAfterEach with
   }
 
   test("Return Some when reading an existing code") {
-    val builtThird = BuildThird.any()
-    builtThird.setSurrogateId(Some(32))
-
-    val givenResourceByCode = BuildResourceByCode.any(
-      withThird = builtThird
-    )
+    val givenResourceByCode = BuildResourceByCode.any()
 
     repo.save(givenResourceByCode, 1)
 
