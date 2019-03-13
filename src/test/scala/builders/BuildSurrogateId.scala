@@ -5,7 +5,11 @@ object BuildSurrogateId {
     Faker(None, Some(23), Some(21), Some(2))
   }
 
-  def anyNotNone(): Option[Long] = {
+  def anyPersisted(): Option[Long] = {
     Faker(Some(23), Some(21), Some(2))
+  }
+
+  def anyNoPersisted(): Option[Long] = {
+    None
   }
 }

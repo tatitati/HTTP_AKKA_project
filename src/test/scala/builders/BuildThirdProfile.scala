@@ -17,4 +17,14 @@ object BuildThirdProfile {
           description = withDescription
       )
     }
+
+  def specific(): ThirdProfile = {
+    new ThirdProfile(
+      name = "whatever",
+      callback = "callback",
+      homepage = "homepage",
+      description = "my description"
+    )
+  }
+
 }

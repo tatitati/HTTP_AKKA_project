@@ -11,4 +11,11 @@ object BuildThirdCredentials {
 
     ThirdCredentials(withClientid, withClientsecret)
   }
+
+  def specific(): ThirdCredentials = {
+    ThirdCredentials(
+      clientId = "client_id",
+      clientSecret = "client_secret"
+    )
+  }
 }

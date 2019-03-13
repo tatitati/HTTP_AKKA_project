@@ -4,7 +4,7 @@ import app.domain.third.{Third, ThirdCredentials, ThirdProfile}
 
 object BuildThird {
     def any(
-             withSurrogateId: Option[Long] =  BuildSurrogateId.anyNotNone(),
+             withSurrogateId: Option[Long] =  BuildSurrogateId.anyPersisted(),
              withThirdProfile: ThirdProfile = BuildThirdProfile.any(),
              withCredentials: ThirdCredentials = BuildThirdCredentials.any()
         ): Third = {
