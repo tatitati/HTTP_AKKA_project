@@ -1,10 +1,9 @@
-package test.app.infrastructure.repository
+package app.infrastructure.Persistence
 
 import app.domain.resource.ResourceByCode
-import app.infrastructure.repository.RepositoryResourceByCode
 import com.redis.RedisClient
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FunSuite}
-import test.builders.{BuildResourceByCode, BuildSurrogateId, BuildThird}
+import test.builders.BuildResourceByCode
 
 class RepositoryResourceByCodeSpec extends FunSuite with BeforeAndAfterEach with BeforeAndAfterAll {
 

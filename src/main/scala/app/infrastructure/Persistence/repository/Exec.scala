@@ -1,4 +1,4 @@
-package app.infrastructure.repository
+package app.infrastructure.Persistence.repository
 
 import slick.jdbc.JdbcProfile
 import slick.jdbc.MySQLProfile.api._

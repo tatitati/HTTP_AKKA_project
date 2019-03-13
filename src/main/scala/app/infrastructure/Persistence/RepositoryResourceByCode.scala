@@ -1,4 +1,4 @@
-package app.infrastructure.repository
+package app.infrastructure.Persistence
 
 import app.domain.resource.ResourceByCode
 import app.infrastructure.serializer.SerializerResourceByCode

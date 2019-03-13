@@ -1,4 +1,4 @@
-package app.infrastructure.repository.third
+package app.infrastructure.Persistence.repository.third
 
 case class ThirdPersistedModel(
   id: Option[Long] = None,

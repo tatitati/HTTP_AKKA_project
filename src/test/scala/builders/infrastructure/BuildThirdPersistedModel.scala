@@ -1,6 +1,6 @@
 package test.builders.infrastructure
 
-import app.infrastructure.repository.third.ThirdPersistedModel
+import app.infrastructure.Persistence.repository.third.ThirdPersistedModel
 import test.builders.Faker
 
 object BuildThirdPersistedModel {

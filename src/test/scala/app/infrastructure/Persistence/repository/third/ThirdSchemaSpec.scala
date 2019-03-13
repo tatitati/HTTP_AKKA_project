@@ -1,7 +1,7 @@
 package test.app.infrastructure.repository.third
 
-import app.infrastructure.repository.Exec
-import app.infrastructure.repository.third.{ThirdPersistedModel, ThirdSchema}
+import app.infrastructure.Persistence.repository.Exec
+import app.infrastructure.Persistence.repository.third.{ThirdPersistedModel, ThirdSchema}
 import org.scalatest.{BeforeAndAfterAll, FunSuite}
 import slick.jdbc.MySQLProfile.api._
 import slick.lifted.TableQuery

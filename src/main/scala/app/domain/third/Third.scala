@@ -1,6 +1,6 @@
 package app.domain.third
 
-import app.domain.{Id, IdentifiableInPersistence, RandomTextGenerator}
+import app.domain.{IdentifiableInPersistence, RandomTextGenerator}
 
 case class Third(private var profile: ThirdProfile, private var credentials: ThirdCredentials) extends IdentifiableInPersistence with RandomTextGenerator {
 
