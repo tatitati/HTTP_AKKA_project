@@ -26,7 +26,6 @@ object BuildThirdPersistedModel {
   }
 
   def anyPersisted(
-           withId: Option[Long] = Faker(Some(Faker.number())),
            withName: String = Faker.text(),
            withCallback: String = Faker.text(),
            withHomepage: String = Faker.text(),
@@ -35,7 +34,7 @@ object BuildThirdPersistedModel {
            withClientSecret: String = Faker.text()
          ): ThirdPersistedModel = {
     ThirdPersistedModel(
-      withId,
+      Faker(Some(Faker.number())),
       withName,
       withCallback,
       withHomepage,
@@ -46,7 +45,6 @@ object BuildThirdPersistedModel {
   }
 
   def anyNoPersisted(
-                    withId: Option[Long] = None,
                     withName: String = Faker.text(),
                     withCallback: String = Faker.text(),
                     withHomepage: String = Faker.text(),
@@ -55,7 +53,7 @@ object BuildThirdPersistedModel {
                     withClientSecret: String = Faker.text()
                   ): ThirdPersistedModel = {
     ThirdPersistedModel(
-      withId,
+      None,
       withName,
       withCallback,
       withHomepage,

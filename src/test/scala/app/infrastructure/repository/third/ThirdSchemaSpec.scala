@@ -50,8 +50,7 @@ class ThirdSchemaSpec extends FunSuite with BeforeAndAfterAll with Exec {
 
   test("On insert the id is created automatically") {
 
-    exec(thirdSchema += BuildThirdPersistedModel.any(
-      withId = None,
+    exec(thirdSchema += BuildThirdPersistedModel.anyNoPersisted(
       withName = "my row"
     ))
 
