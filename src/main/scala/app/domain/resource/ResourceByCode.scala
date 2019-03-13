@@ -23,7 +23,7 @@ case class ResourceByCode(
   def memento(): ResourceByCodeMemento = {
     ResourceByCodeMemento(
       // third
-      third.id.get,
+      third.getSurrogateId().get,
       third.getProfile.name,
       third.getCredentials.clientId,
       third.getCredentials.clientSecret,

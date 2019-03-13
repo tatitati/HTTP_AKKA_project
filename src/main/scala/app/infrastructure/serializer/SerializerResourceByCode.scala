@@ -91,8 +91,11 @@ object SerializerResourceByCode {
       state = (parsed \ "code" \ "state").as[String],
     )
 
+    val third = Third(profile = thirdProfile, credentials = thirdCredentials)
+    third.setSurrogateId(Some(thirdId))
+
     new ResourceByCode(
-      third = Third(id = Some(thirdId), profile = thirdProfile, credentials = thirdCredentials),
+      third,
       ownerProfile = ownerProfile,
       scope = scope,
       code = code

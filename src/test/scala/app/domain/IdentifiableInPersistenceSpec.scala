@@ -20,18 +20,30 @@ class IdentifiableInPersistenceSpec extends FunSuite {
   test("I can set a surrogate-id") {
     val a = new Concrete()
 
-    a.setSurrogateId(withSurrogateId = 23)
+    a.setSurrogateId(withSurrogateId = Some(23))
     assert(a.getSurroId() === Some(23))
   }
 
   test("A surrogate is immutable once that is set") {
     val a = new Concrete()
 
-    a.setSurrogateId(withSurrogateId = 23)
+    a.setSurrogateId(withSurrogateId = Some(23))
 
 
     val thrown = intercept[IllegalArgumentException] {
-      a.setSurrogateId(withSurrogateId = 24)
+      a.setSurrogateId(withSurrogateId = Some(24))
+    }
+    assert(thrown.getMessage() === "Surrogate ID cannot be modified once that is set")
+  }
+
+  test("I cannot set NONE") {
+    val a = new Concrete()
+
+    a.setSurrogateId(withSurrogateId = Some(23))
+
+
+    val thrown = intercept[IllegalArgumentException] {
+      a.setSurrogateId(withSurrogateId = None)
     }
     assert(thrown.getMessage() === "Surrogate ID cannot be modified once that is set")
   }

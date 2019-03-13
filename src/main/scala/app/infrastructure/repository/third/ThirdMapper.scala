@@ -5,8 +5,7 @@ import app.domain.third.{Third, ThirdCredentials, ThirdProfile}
 object ThirdMapper {
 
   def toDomain(fromPersistent: ThirdPersistedModel): Third = {
-    Third(
-      id = fromPersistent.id,
+    val domain = Third(
       profile = new ThirdProfile(
         name = fromPersistent.name,
         callback = fromPersistent.callback,
@@ -18,11 +17,14 @@ object ThirdMapper {
         clientSecret = fromPersistent.clientSecret
       )
     )
+
+    domain.setSurrogateId(fromPersistent.id)
+    domain
   }
 
   def toPersistent(third: Third): ThirdPersistedModel= {
     ThirdPersistedModel(
-      id = third.id,
+      id = third.getSurrogateId(),
       name = third.getProfile.name,
       callback = third.getProfile.callback,
       homepage = third.getProfile.homepage,

@@ -1,8 +1,8 @@
 package app.domain.third
 
-import app.domain.{Id, RandomTextGenerator}
+import app.domain.{Id, IdentifiableInPersistence, RandomTextGenerator}
 
-case class Third(id: Option[Long], private var profile: ThirdProfile, private var credentials: ThirdCredentials) extends Id with RandomTextGenerator {
+case class Third(private var profile: ThirdProfile, private var credentials: ThirdCredentials) extends IdentifiableInPersistence with RandomTextGenerator {
 
   def getCredentials: ThirdCredentials = credentials
   def getProfile: ThirdProfileMemento = profile.memento

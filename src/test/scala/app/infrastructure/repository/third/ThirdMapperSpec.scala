@@ -7,7 +7,7 @@ import test.builders.{BuildThird, BuildThirdCredentials, BuildThirdProfile}
 
 class ThirdMapperSpec extends FunSuite {
 
-  test("ThirdPersistedModel -> Third") {
+  test("ThirdPersistedModel -> ThirdDomain") {
     val persistent = BuildThirdPersistedModel.any(
       withId = Some(5),
       withName = "whatever",
@@ -18,15 +18,14 @@ class ThirdMapperSpec extends FunSuite {
     val domain = ThirdMapper.toDomain(persistent)
 
     assert(domain.isInstanceOf[Third])
-    assert(domain.id === Some(5))
+    assert(domain.getSurrogateId() === Some(5))
     assert(domain.getProfile.name === "whatever")
     assert(domain.getProfile.callback === "callback")
     assert(domain.getCredentials.clientId === "client_id")
   }
 
-  test("ThirdPersistedModel <- Third") {
+  test("ThirdDomain -> ThirdPersistedModel with no surrogate id in domain yet") {
     val thirdDomain = BuildThird.any(
-      withId = Some(5),
       withThirdProfile = BuildThirdProfile.any(
         withName = "whatever",
         withCallback = "callback",
@@ -42,9 +41,19 @@ class ThirdMapperSpec extends FunSuite {
     val persistent = ThirdMapper.toPersistent(thirdDomain)
 
     assert(persistent.isInstanceOf[ThirdPersistedModel])
-    assert(persistent.id === Some(5))
+    assert(persistent.id === None)
     assert(persistent.name === "whatever")
     assert(persistent.callback === "callback")
     assert(persistent.clientId === "client_id")
+  }
+
+  test("ThirdDomain -> ThirdPersistedModel with surrogate") {
+    val thirdDomain = BuildThird.any()
+    thirdDomain.setSurrogateId(Some(6))
+
+    val persistent = ThirdMapper.toPersistent(thirdDomain)
+
+    assert(persistent.isInstanceOf[ThirdPersistedModel])
+    assert(persistent.id === Some(6))
   }
 }
