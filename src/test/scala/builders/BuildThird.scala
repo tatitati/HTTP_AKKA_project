@@ -10,4 +10,5 @@ object BuildThird {
 
       new Third(withThirdProfile, withCredentials)
     }
+
 }
