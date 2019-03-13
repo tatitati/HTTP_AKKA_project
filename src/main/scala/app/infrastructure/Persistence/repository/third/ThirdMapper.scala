@@ -19,6 +19,7 @@ object ThirdMapper {
     )
 
     domain.setSurrogateId(fromPersistent.id)
+
     domain
   }
 

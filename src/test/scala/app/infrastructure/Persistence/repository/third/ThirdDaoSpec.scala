@@ -11,6 +11,10 @@ class ThirdDaoSpec extends FunSuite with BeforeAndAfterEach with Exec {
   val thirdSchema = TableQuery[ThirdSchema]
   implicit val db = Database.forConfig("mydb")
 
+  test("database forconfig type is:") {
+    assert(db.isInstanceOf[Database])
+  }
+
   test("I can insert a new third") {
     ThirdDao.save(
       BuildThirdPersistedModel.anyNoPersisted(

@@ -10,7 +10,7 @@ object ThirdDao extends Exec {
   val thirdSchema = TableQuery[ThirdSchema]
   implicit val db = Database.forConfig("mydb")
 
-  def save(persistentModel: ThirdPersistedModel) = {
+  def save(persistentModel: ThirdPersistedModel): Unit = {
     exec(thirdSchema += persistentModel)
   }
 
