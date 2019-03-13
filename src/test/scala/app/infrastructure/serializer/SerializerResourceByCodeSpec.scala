@@ -77,10 +77,7 @@ class SerializerResourceByCodeSpec extends FunSuite {
 
     val resByCode = SerializerResourceByCode.toDomain(givenJson)
 
-    val memento1 = resByCode.memento()
-    val memento2 = BuildResourceByCode.specific().memento()
-
-    assert(memento1 === memento2)
+    assert(resByCode.memento() === BuildResourceByCode.specific().memento())
   }
 
   test("No data is lost in both processes") {
@@ -88,9 +85,6 @@ class SerializerResourceByCodeSpec extends FunSuite {
     val inJson = SerializerResourceByCode.toJson(resByCode)
     val fromJson = SerializerResourceByCode.toDomain(inJson)
 
-    val mementoFromOriginal = resByCode.memento()
-    val mementoFromParsed = fromJson.memento()
-
-    assert(mementoFromParsed === mementoFromOriginal)
+    assert(resByCode.memento() === fromJson.memento())
   }
 }

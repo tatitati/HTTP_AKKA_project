@@ -17,7 +17,6 @@ class ThirdMapperToPersistenceSpec extends FunSuite {
 
     assert(thenPersistent.isInstanceOf[ThirdPersistedModel])
     assert(thenPersistent.name === "whatever")
-    assert(thenPersistent.callback === "callback")
     assert(thenPersistent.clientId === "client_id")
   }
 
