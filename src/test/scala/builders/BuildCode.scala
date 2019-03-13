@@ -34,5 +34,12 @@ object BuildCode extends RandomTextGenerator {
     )
   }
 
-
+  def specific(): Code = {
+    new Code(
+      code = "code",
+      state = "state",
+      expiresIn = 10,
+      generatedIn = new DateTime("2015-02-10")
+    )
+  }
 }

@@ -25,19 +25,9 @@ object BuildResourceByCode {
         withThirdProfile = BuildThirdProfile.specific(),
         withCredentials = BuildThirdCredentials.specific()
       ),
-      withOwnerProfile = BuildOwnerProfile.any(
-        withEmail = "email",
-        withEmailConfirmed = true,
-        withFirstname = "firstname",
-        withSurname = "surname",
-        withDatebirth = new DateTime("1900-03-10")
-      ),
+      withOwnerProfile = BuildOwnerProfile.specific(),
       withScope = BuildScope.onlyEmailAndFirstname(),
-      withCode = BuildCode.any(
-        withCode = "code",
-        withState = "state",
-        generatedIn = new DateTime("2015-02-10")
-      )
+      withCode = BuildCode.specific()
     )
   }
 }

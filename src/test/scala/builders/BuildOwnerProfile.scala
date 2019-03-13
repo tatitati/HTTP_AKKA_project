@@ -21,4 +21,14 @@ object BuildOwnerProfile {
       datebirth = withDatebirth
     )
   }
+
+  def specific(): OwnerProfile = {
+    new OwnerProfile(
+      email = "email",
+      emailconfirmed = true,
+      firstname = "firstname",
+      surname = "surname",
+      datebirth = new DateTime("1900-03-10")
+    )
+  }
 }
