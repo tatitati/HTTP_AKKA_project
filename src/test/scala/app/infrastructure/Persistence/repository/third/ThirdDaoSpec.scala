@@ -1,8 +1,7 @@
 package app.infrastructure.Persistence.repository.third
 
 import app.infrastructure.Persistence.Exec
-import app.infrastructure.Persistence.repository.third.ThirdDao.{exec, thirdSchema}
-import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FunSuite}
+import org.scalatest.{BeforeAndAfterEach, FunSuite}
 import slick.jdbc.MySQLProfile.api._
 import slick.lifted.TableQuery
 import test.builders.infrastructure.BuildThirdPersistedModel
@@ -54,7 +53,4 @@ class ThirdDaoSpec extends FunSuite with BeforeAndAfterEach with Exec {
   override def afterEach() {
     exec(thirdSchema.schema.drop)
   }
-
-
-
 }
