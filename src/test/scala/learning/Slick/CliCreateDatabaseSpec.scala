@@ -1,7 +1,6 @@
 package test.learning.Slick
 
-
-import app.infrastructure.Persistence.repository.Exec
+import app.infrastructure.Persistence.Exec
 import org.scalatest.{BeforeAndAfterAll, FunSuite}
 import slick.jdbc.MySQLProfile.api._
 import slick.lifted.TableQuery
