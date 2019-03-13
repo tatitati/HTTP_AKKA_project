@@ -13,7 +13,7 @@ object SerializerResourceByCode {
 
     val memento = resourceByCode.memento()
     val givenMap = Json.obj(
-  "third" -> Json.obj(
+      "third" -> Json.obj(
           "id" -> memento.thirdId,
           "name" -> memento.thirdProfileName,
           "clientid" -> memento.thirdClientId,
