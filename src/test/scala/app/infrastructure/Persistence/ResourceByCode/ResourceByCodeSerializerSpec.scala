@@ -1,14 +1,14 @@
-package app.infrastructure.serializer
+package app.infrastructure.Persistence.ResourceByCode
 
 import org.scalatest.FunSuite
 import test.builders.BuildResourceByCode
 
-class SerializerResourceByCodeSpec extends FunSuite {
+class ResourceByCodeSerializerSpec extends FunSuite {
 
   test("Can serialize an specific object") {
     val resByCode = BuildResourceByCode.specific()
 
-    val inJson = SerializerResourceByCode.toJson(resByCode)
+    val inJson = ResourceByCodeSerializer.toJson(resByCode)
 
     assert(inJson ===
       """{"third":{
@@ -75,15 +75,15 @@ class SerializerResourceByCodeSpec extends FunSuite {
         |}""".stripMargin.replaceAll("\n", "")
 
 
-    val resByCode = SerializerResourceByCode.toDomain(givenJson)
+    val resByCode = ResourceByCodeSerializer.toDomain(givenJson)
 
     assert(resByCode.memento() === BuildResourceByCode.specific().memento())
   }
 
   test("No data is lost in both processes") {
     val resByCode = BuildResourceByCode.specific()
-    val inJson = SerializerResourceByCode.toJson(resByCode)
-    val fromJson = SerializerResourceByCode.toDomain(inJson)
+    val inJson = ResourceByCodeSerializer.toJson(resByCode)
+    val fromJson = ResourceByCodeSerializer.toDomain(inJson)
 
     assert(resByCode.memento() === fromJson.memento())
   }

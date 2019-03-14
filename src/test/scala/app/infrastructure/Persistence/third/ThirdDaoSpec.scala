@@ -16,7 +16,7 @@ class ThirdDaoSpec extends FunSuite with BeforeAndAfterEach with Exec {
   }
 
   test("I can insert a new third") {
-    ThirdDao.save(
+    ThirdRepository.save(
       BuildThirdPersistedModel.anyNoPersisted(
         withName = "my row"
       )
@@ -37,11 +37,11 @@ class ThirdDaoSpec extends FunSuite with BeforeAndAfterEach with Exec {
   }
 
   test("Read return a third aggregate") {
-    ThirdDao.save(
+    ThirdRepository.save(
       BuildThirdPersistedModel.anyNoPersisted(withName = "my row")
     )
 
-    val third = ThirdDao.read(byname = "my row")
+    val third = ThirdRepository.read(byname = "my row")
 
     assert(third.isInstanceOf[Third])
     assert(third.getProfile.name === "my row")

@@ -1,13 +1,13 @@
-package app.infrastructure.serializer
+package app.infrastructure.Persistence.ResourceByCode
 
 import app.domain.owner.OwnerProfile
 import app.domain.resource.{Code, ResourceByCode, Scope}
 import app.domain.third.{Third, ThirdCredentials, ThirdProfile}
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
-import play.api.libs.json.{Json, _}
+import play.api.libs.json.{Json, Reads}
 
-object SerializerResourceByCode {
+object ResourceByCodeSerializer {
 
   def toJson(resourceByCode: ResourceByCode): String = {
 

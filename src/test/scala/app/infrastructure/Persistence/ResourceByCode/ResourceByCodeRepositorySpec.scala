@@ -1,14 +1,14 @@
-package app.infrastructure.Persistence
+package app.infrastructure.Persistence.ResourceByCode
 
 import app.domain.resource.ResourceByCode
 import com.redis.RedisClient
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FunSuite}
 import test.builders.BuildResourceByCode
 
-class RepositoryResourceByCodeSpec extends FunSuite with BeforeAndAfterEach with BeforeAndAfterAll {
+class ResourceByCodeRepositorySpec extends FunSuite with BeforeAndAfterEach with BeforeAndAfterAll {
 
   val redisClient = new RedisClient("localhost", 6379)
-  val repo = new RepositoryResourceByCode(redisClient)
+  val repo = new ResourceByCodeRepository(redisClient)
 
   test("Can persist in redis") {
     val givenResourceByCode = BuildResourceByCode.any()
