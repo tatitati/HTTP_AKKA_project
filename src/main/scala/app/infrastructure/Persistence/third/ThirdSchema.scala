@@ -1,4 +1,4 @@
-package app.infrastructure.Persistence.repository.third
+package app.infrastructure.Persistence.third
 
 import slick.jdbc.MySQLProfile.api._
 import slick.lifted.Tag

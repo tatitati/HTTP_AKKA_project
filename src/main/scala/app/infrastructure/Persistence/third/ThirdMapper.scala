@@ -1,4 +1,4 @@
-package app.infrastructure.Persistence.repository.third
+package app.infrastructure.Persistence.third
 
 import app.domain.third.{Third, ThirdCredentials, ThirdProfile}
 
