@@ -2,6 +2,15 @@
 [![Build Status](https://travis-ci.org/tatitati/HTTP_AKKA_project.svg?branch=master)](https://travis-ci.org/tatitati/HTTP_AKKA_project)
 
 
+# Todo:
+
+[ ] **Persist owner**
+
+[ ] How to tag tests? (and filter them in the CLI)
+
+[ ] Create custom taks in SBT to run tests in specific app-layers
+
+[ ] How to set environment variables like Hosts, port for Redis?, for each environment...scala-env
 
 
 # Purpose
@@ -35,15 +44,7 @@ Visit: http://localhost:8080/ping
 # License
 
 The MIT License (MIT). Please see License File for more information.
+ 
 
---- 
-
-# Todo:
-
-* How to tag tests? (and filter them in the CLI)
-* ~How to use beforeAll, beforeEach, afterAll, afterEach in tests~
-* Add some cool shields to readme.md
-* Create repository to write/read ResourceByCode in Redis
-* How to set environment variables like Hosts, port for Redis?, for each environment
 
 
