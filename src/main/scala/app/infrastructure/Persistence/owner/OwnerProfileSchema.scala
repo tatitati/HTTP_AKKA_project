@@ -1,25 +1,25 @@
 package test.app.infrastructure.Persistence.owner
 
 import app.infrastructure.Persistence.owner.OwnerProfilePersistModel
+import com.github.nscala_time.time.Imports.DateTime
 import slick.jdbc.MySQLProfile.api._
 import slick.lifted.Tag
 
 class OwnerProfileSchema(tag: Tag) extends Table[OwnerProfilePersistModel](tag, "third") {
+
   def id = column[Option[Long]]("id", O.PrimaryKey, O.AutoInc)
-  def name = column[String]("name")
-  def callback = column[String]("callback")
-  def homepage = column[String]("homepage")
-  def description = column[String]("description")
-  def clientId = column[String]("client_id")
-  def clientSecret = column[String]("client_secret")
+  def firstname = column[String]("firstname")
+  def surname = column[String]("surname")
+  def email = column[String]("email")
+  def emailconfirmed = column[Boolean]("email_confirmed")
+  def datebirth = column[DateTime]("datebirth") // I need to create my own custom mapper
 
   def * = (
     id,
-    name,
-    callback,
-    homepage,
-    description,
-    clientId,
-    clientSecret
+    firstname,
+    surname,
+    email,
+    emailconfirmed,
+    datebirth
   ).mapTo[OwnerProfilePersistModel]
 }
