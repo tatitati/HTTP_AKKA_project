@@ -27,6 +27,10 @@ Is a project that try to implement some concepts about oauth.
 
 # Pre-requisites
 
+```
+redis-server
+brew services start mysql@5.7
+```
 
 # Instructions
 
