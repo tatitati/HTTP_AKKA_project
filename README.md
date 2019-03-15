@@ -33,6 +33,8 @@ Is a project that try to implement some concepts about oauth.
 ```
 sbt reload update
 sbt test
+sbt 'testOnly *app.domain*'
+sbt 'testOnly *app.persistence*'
 sbt run
 ```
 
