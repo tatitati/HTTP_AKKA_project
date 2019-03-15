@@ -1,10 +1,10 @@
-package app.infrastructure.Persistence.third
+package test.app.infrastructure.Persistence.owner
 
+import app.infrastructure.Persistence.owner.OwnerProfilePersistModel
 import slick.jdbc.MySQLProfile.api._
 import slick.lifted.Tag
 
-
-class ThirdSchema(tag: Tag) extends Table[ThirdPersistModel](tag, "third") {
+class OwnerProfileSchema(tag: Tag) extends Table[OwnerProfilePersistModel](tag, "third") {
   def id = column[Option[Long]]("id", O.PrimaryKey, O.AutoInc)
   def name = column[String]("name")
   def callback = column[String]("callback")
@@ -21,5 +21,5 @@ class ThirdSchema(tag: Tag) extends Table[ThirdPersistModel](tag, "third") {
     description,
     clientId,
     clientSecret
-  ).mapTo[ThirdPersistModel]
+  ).mapTo[OwnerProfilePersistModel]
 }

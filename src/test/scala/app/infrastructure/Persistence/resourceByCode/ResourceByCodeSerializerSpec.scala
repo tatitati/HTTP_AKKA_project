@@ -1,4 +1,4 @@
-package app.infrastructure.Persistence.ResourceByCode
+package app.infrastructure.Persistence.resourceByCode
 
 import org.scalatest.FunSuite
 import test.builders.BuildResourceByCode

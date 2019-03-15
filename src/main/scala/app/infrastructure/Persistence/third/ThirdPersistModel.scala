@@ -1,6 +1,6 @@
 package app.infrastructure.Persistence.third
 
-case class ThirdPersistedModel(
+case class ThirdPersistModel(
   id: Option[Long] = None,
   name: String,
   callback: String,

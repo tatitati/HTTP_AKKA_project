@@ -1,4 +1,4 @@
-package app.infrastructure.Persistence.ResourceByCode
+package app.infrastructure.Persistence.resourceByCode
 
 import app.domain.owner.OwnerProfile
 import app.domain.resource.{Code, ResourceByCode, Scope}

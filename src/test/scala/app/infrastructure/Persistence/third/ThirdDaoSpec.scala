@@ -26,7 +26,7 @@ class ThirdDaoSpec extends FunSuite with BeforeAndAfterEach with Exec {
 
     assert(rows.size === 1)
     assert(rows.isInstanceOf[Vector[_]])
-    assert(rows.head.isInstanceOf[ThirdPersistedModel])
+    assert(rows.head.isInstanceOf[ThirdPersistModel])
     assert(rows.head.name === "my row")
     assert(rows.head.id.isInstanceOf[Some[_]])
   }

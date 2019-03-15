@@ -3,8 +3,8 @@ package app.domain.resource
 import java.util.UUID
 
 import app.domain.factories.FactoryToken
-import app.domain.owner.{OwnerProfile, OwnerProfileMemento}
-import app.domain.third.{ThirdProfile, ThirdProfileMemento}
+import app.domain.owner.OwnerProfileMemento
+import app.domain.third.ThirdProfileMemento
 
 case class ResourceByToken(
                             private val thirdProfile: ThirdProfileMemento,
