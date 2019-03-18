@@ -13,6 +13,7 @@
 - [ ] Create custom taks in SBT to run tests in specific app-layers
 
 - [ ] How to set environment variables like Hosts, port for Redis?, for each environment...scala-env
+- [ ] Create database to fix Travis build
 
 
 # Purpose
