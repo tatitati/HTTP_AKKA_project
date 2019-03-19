@@ -7,12 +7,14 @@ import slick.lifted.Tag
 
 class OwnerProfileSchema(tag: Tag) extends Table[OwnerProfilePersistModel](tag, "third") {
 
+  import app.infrastructure.Persistence.CustomDateTimeToTimestamp._
+
   def id = column[Option[Long]]("id", O.PrimaryKey, O.AutoInc)
   def firstname = column[String]("firstname")
   def surname = column[String]("surname")
   def email = column[String]("email")
   def emailconfirmed = column[Boolean]("email_confirmed")
-  def datebirth = column[DateTime]("datebirth") // I need to create my own custom mapper
+  def datebirth = column[DateTime]("datebirth")
 
   def * = (
     id,
