@@ -1,7 +1,6 @@
 package test.builders.infrastructure
 
 import app.infrastructure.Persistence.owner.OwnerProfilePersistModel
-import app.infrastructure.Persistence.third.ThirdPersistModel
 import test.builders.Faker
 import com.github.nscala_time.time.Imports.DateTime
 
