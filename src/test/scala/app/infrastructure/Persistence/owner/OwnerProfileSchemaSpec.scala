@@ -1,6 +1,7 @@
 package app.infrastructure.Persistence.owner
 
 import app.infrastructure.Persistence.Exec
+import app.infrastructure.Persistence.third.ThirdRepository.{exec, thirdSchema}
 import org.scalatest.{BeforeAndAfterEach, FunSuite}
 import slick.jdbc.MySQLProfile.api._
 import slick.jdbc.meta.MTable
@@ -18,6 +19,11 @@ class OwnerProfileSchemaSpec extends FunSuite with BeforeAndAfterEach with Exec 
   test("owner_profile table exists") {
     val tables = exec(MTable.getTables).toList
     assert(tables.exists(_.name.name == "owner_profile") === true)
+  }
+
+  test("Can save one owner profile persistence model") {
+    val persistentModel = Build
+    exec(thirdSchema += persistentModel)
   }
 
 

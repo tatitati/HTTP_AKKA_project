@@ -22,6 +22,8 @@ class ThirdSchemaSpec extends FunSuite with BeforeAndAfterEach with Exec {
   }
 
 
+
+
   override def beforeEach() {
     exec(ownerSchema.schema.dropIfExists)
     exec(ownerSchema.schema.create)

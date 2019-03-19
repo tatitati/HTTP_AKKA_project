@@ -12,10 +12,6 @@ class ThirdRepositorySpec extends FunSuite with BeforeAndAfterEach with Exec {
   val thirdSchema = TableQuery[ThirdSchema]
   implicit val db = Database.forConfig("mydb")
 
-  test("database forconfig type is:") {
-    assert(db.isInstanceOf[Database])
-  }
-
   test("I can insert a new third") {
     ThirdRepository.save(
       BuildThirdPersistedModel.anyNoPersisted(
@@ -52,9 +48,5 @@ class ThirdRepositorySpec extends FunSuite with BeforeAndAfterEach with Exec {
   override def beforeEach() {
     exec(thirdSchema.schema.dropIfExists)
     exec(thirdSchema.schema.create)
-  }
-
-  override def afterEach() {
-    exec(thirdSchema.schema.drop)
   }
 }
