@@ -11,9 +11,9 @@ class OwnerSpec extends FunSuite with BeforeAndAfterEach with Exec {
   val ownerSchema = TableQuery[OwnerProfileSchema]
   implicit val db = Database.forConfig("mydb")
 
-  test("third table exists") {
+  test("owner table exists") {
     val tables = exec(MTable.getTables).toList
-    assert(tables.exists(_.name.name == "third") === true)
+    assert(tables.exists(_.name.name == "owner") === true)
   }
 
   test("database forconfig type is:") {
