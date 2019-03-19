@@ -1,13 +1,14 @@
-package app.infrastructure.Persistence.third
+package test.app.infrastructure.Persistence.third
 
 import app.domain.third.Third
 import app.infrastructure.Persistence.Exec
+import app.infrastructure.Persistence.third.{ThirdPersistModel, ThirdRepository, ThirdSchema}
 import org.scalatest.{BeforeAndAfterEach, FunSuite}
 import slick.jdbc.MySQLProfile.api._
 import slick.lifted.TableQuery
 import test.builders.infrastructure.BuildThirdPersistedModel
 
-class ThirdDaoSpec extends FunSuite with BeforeAndAfterEach with Exec {
+class ThirdRepositorySpec extends FunSuite with BeforeAndAfterEach with Exec {
   val thirdSchema = TableQuery[ThirdSchema]
   implicit val db = Database.forConfig("mydb")
 

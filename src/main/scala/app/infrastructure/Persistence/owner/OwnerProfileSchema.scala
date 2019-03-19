@@ -5,7 +5,7 @@ import com.github.nscala_time.time.Imports.DateTime
 import slick.jdbc.MySQLProfile.api._
 import slick.lifted.Tag
 
-class OwnerProfileSchema(tag: Tag) extends Table[OwnerProfilePersistModel](tag, "owner") {
+class OwnerProfileSchema(tag: Tag) extends Table[OwnerProfilePersistModel](tag, "owner_profile") {
 
   import app.infrastructure.Persistence.CustomDateTimeToTimestamp._
 

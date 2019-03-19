@@ -7,18 +7,19 @@ import slick.jdbc.meta.MTable
 import slick.lifted.TableQuery
 import test.app.infrastructure.Persistence.owner.OwnerProfileSchema
 
-class OwnerSpec extends FunSuite with BeforeAndAfterEach with Exec {
+class OwnerProfileSchemaSpec extends FunSuite with BeforeAndAfterEach with Exec {
   val ownerSchema = TableQuery[OwnerProfileSchema]
   implicit val db = Database.forConfig("mydb")
-
-  test("owner table exists") {
-    val tables = exec(MTable.getTables).toList
-    assert(tables.exists(_.name.name == "owner") === true)
-  }
 
   test("database forconfig type is:") {
     assert(db.isInstanceOf[Database])
   }
+
+  test("owner_profile table exists") {
+    val tables = exec(MTable.getTables).toList
+    assert(tables.exists(_.name.name == "owner_profile") === true)
+  }
+
 
   override def beforeEach() {
     exec(ownerSchema.schema.dropIfExists)
