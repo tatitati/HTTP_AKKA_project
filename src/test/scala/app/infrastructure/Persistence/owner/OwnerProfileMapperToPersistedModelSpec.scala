@@ -23,4 +23,11 @@ class OwnerProfileMapperToPersistedModelSpec extends FunSuite {
 
     assert(thenPersistent.id === Some(6))
   }
+
+  test("Surrogate id is also mapped properly to persistence2") {
+    val givenDomain = BuildOwnerProfile.any(withSurrogateId = None)
+    val thenPersistent = OwnerProfileMapper.toPersistent(givenDomain)
+
+    assert(thenPersistent.id === None)
+  }
 }

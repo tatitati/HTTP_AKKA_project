@@ -22,7 +22,10 @@ object BuildOwnerProfile {
       datebirth = withDatebirth
     )
 
-    ownerProfile.setSurrogateId(withSurrogateId)
+    if (withSurrogateId != None) {
+      ownerProfile.setSurrogateId(withSurrogateId)
+    }
+
 
     ownerProfile
   }
