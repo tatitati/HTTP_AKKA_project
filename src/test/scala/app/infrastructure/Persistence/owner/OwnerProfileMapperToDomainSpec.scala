@@ -1,7 +1,6 @@
 package test.app.infrastructure.repository.owner
 
 import app.domain.owner.OwnerProfile
-import app.domain.resource.Scope
 import app.infrastructure.Persistence.owner.OwnerProfileMapper
 import org.joda.time.DateTime
 import org.scalatest.FunSuite

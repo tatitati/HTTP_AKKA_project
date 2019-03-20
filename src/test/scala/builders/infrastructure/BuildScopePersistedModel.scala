@@ -17,4 +17,13 @@ object BuildScopePersistedModel {
       email = withEmail
     )
   }
+
+  def anyWithOnlyEmail(withId: Option[Long] = Faker(Some(Faker.number()), None)): ScopePersistedModel = {
+    any(
+      withId = withId,
+      withFirstname = false,
+      withSurname = false,
+      withEmail = true
+    )
+  }
 }
