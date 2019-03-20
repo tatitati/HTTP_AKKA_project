@@ -1,6 +1,6 @@
 package app.infrastructure.Persistence.resource
 
-import builders.domain.{BuildSurrogateId, BuildToken}
+import builders.domain.BuildToken
 import org.scalatest.FunSuite
 
 class TokenMapperToPersistedSpec extends FunSuite {
