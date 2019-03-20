@@ -11,31 +11,29 @@ class OwnerProfileMapperToDomainSpec extends FunSuite {
   test("Fields are mapped to domain") {
 
     val givenPersistent = BuildOwnerProfilePersistedModel.anyPersisted(
-      withEmail = "any@something.com",
       withFirstname = "any firstname",
-      withDateBirth = (new DateTime).withYear(2016)
-        .withMonthOfYear(12)
+      withDateBirth = (new DateTime)
+        .withYear(2016)
         .withDayOfMonth(1)
-        .withHourOfDay(10)
     )
 
     val thenDomain = OwnerProfileMapper.toDomain(givenPersistent)
 
     assert(thenDomain.isInstanceOf[OwnerProfile], "Should be an instance of OwnerProfile")
-
-    assert(thenDomain.memento.email === "any@something.com", "email should match")
-    assert(thenDomain.memento.firstname === "any firstname", "firstname should match")
+    assert(thenDomain.memento.firstname === "any firstname", "email should match")
     assert(thenDomain.memento.datebirth.dayOfMonth().get() === 1, "day month birth should match")
     assert(thenDomain.memento.datebirth.year().get() === 2016, "year birth should match")
   }
 
+  test("Builder can create 'persisted' data models, ready to map later") {
+    val givenPersistedModelWithSurrogateId = BuildOwnerProfilePersistedModel.anyPersisted()
+    assert(givenPersistedModelWithSurrogateId.id.isInstanceOf[Some[_]])
+  }
+
   test("Surrogate id is also mapped properly to domain") {
-    val givenPersistent = BuildOwnerProfilePersistedModel.anyPersisted()
-
-    assert(givenPersistent.id.isInstanceOf[Some[_]])
-
-    val thenDomain = OwnerProfileMapper.toDomain(givenPersistent)
-
-    assert(thenDomain.getSurrogateId().isInstanceOf[Some[_]])
+    val givenPersistedModel = BuildOwnerProfilePersistedModel.anyPersisted()
+    val thenMappedDomain = OwnerProfileMapper.toDomain(givenPersistedModel)
+    
+    assert(thenMappedDomain.getSurrogateId().isInstanceOf[Some[_]])
   }
 }
