@@ -1,5 +1,8 @@
 package app.infrastructure.Persistence.resourceByCode
 
-class ScopePersistedModel {
-
-}
+case class ScopePersistedModel(
+  id: Option[Long] = None,
+  firstname: Boolean,
+  surname: Boolean,
+  email: Boolean
+)
