@@ -33,7 +33,7 @@ class OwnerProfileMapperToDomainSpec extends FunSuite {
   test("Surrogate id is also mapped properly to domain") {
     val givenPersistedModel = BuildOwnerProfilePersistedModel.anyPersisted()
     val thenMappedDomain = OwnerProfileMapper.toDomain(givenPersistedModel)
-    
+
     assert(thenMappedDomain.getSurrogateId().isInstanceOf[Some[_]])
   }
 }
