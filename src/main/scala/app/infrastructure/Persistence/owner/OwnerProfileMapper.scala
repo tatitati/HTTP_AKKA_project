@@ -13,7 +13,10 @@ object OwnerProfileMapper {
         datebirth = fromPersistent.datebirth
     )
 
-    domain.setSurrogateId(fromPersistent.id)
+    fromPersistent.id match {
+      case None => throw new IllegalArgumentException("A persisted OwnerProfile is expected to have a surrogate id in order to be mapped to domain")
+      case Some(value) if value.isInstanceOf[Long] => domain.setSurrogateId(fromPersistent.id)
+    }
 
     domain
   }

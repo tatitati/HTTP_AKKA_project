@@ -1,6 +1,7 @@
 package test.app.infrastructure.repository.owner
 
 import app.domain.owner.OwnerProfile
+import app.domain.resource.Scope
 import app.infrastructure.Persistence.owner.OwnerProfileMapper
 import org.joda.time.DateTime
 import org.scalatest.FunSuite
@@ -35,5 +36,15 @@ class OwnerProfileMapperToDomainSpec extends FunSuite {
     val thenMappedDomain = OwnerProfileMapper.toDomain(givenPersistedModel)
 
     assert(thenMappedDomain.getSurrogateId().isInstanceOf[Some[_]])
+  }
+
+  test("Invariants: a persisted one must have a surrogate id in order to be mapped to domai") {
+    val givenPersistent = BuildOwnerProfilePersistedModel.anyNoPersisted()
+
+    val thrown = intercept[IllegalArgumentException] {
+      OwnerProfileMapper.toDomain(givenPersistent)
+    }
+    assert(thrown.getMessage() === "A persisted OwnerProfile is expected to have a surrogate id in order to be mapped to domain")
+
   }
 }
