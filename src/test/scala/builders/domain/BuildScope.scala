@@ -7,7 +7,7 @@ object BuildScope {
 
   def onlyEmailAndFirstname(withSurrogateId: Option[Long] = None): Scope = {
     val scope = new Scope(true, false, true)
-    
+
     if (withSurrogateId != None) {
       scope.setSurrogateId(withSurrogateId)
     }
@@ -15,11 +15,20 @@ object BuildScope {
     scope
   }
 
-  def onlySurname(): Scope = {
-    new Scope(false, true, false)
+  def onlySurname(withSurrogateId: Option[Long] = None): Scope = {
+    val scope = new Scope(false, true, false)
+
+    if (withSurrogateId != None) {
+      scope.setSurrogateId(withSurrogateId)
+    }
+
+    scope
   }
 
-  def any(): Scope = {
-    Faker(onlyEmailAndFirstname(), onlySurname())
+  def any(withSurrogateId: Option[Long] = None): Scope = {
+    Faker(
+      onlyEmailAndFirstname(withSurrogateId),
+      onlySurname(withSurrogateId)
+    )
   }
 }

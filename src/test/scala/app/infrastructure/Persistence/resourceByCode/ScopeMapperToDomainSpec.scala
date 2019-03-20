@@ -13,4 +13,13 @@ class ScopeMapperToDomainSpec extends FunSuite {
     assert(thenMapped.firstname == true)
     assert(thenMapped.surname == false)
   }
+
+  test("Surrogate id is also mapped properly") {
+    val givenDomainScope = BuildScope.onlyEmailAndFirstname(
+      withSurrogateId = Some(6)
+    )
+    val thenMapped = ScopeMapper.toPersistedModel(givenDomainScope)
+
+    assert(thenMapped.id === Some(6))
+  }
 }
