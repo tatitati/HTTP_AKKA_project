@@ -1,13 +1,13 @@
 package test.builders.infrastructure
 
 import app.infrastructure.Persistence.owner.OwnerProfilePersistModel
-import test.builders.Faker
+import test.builders.{BuildSurrogateId, Faker}
 import com.github.nscala_time.time.Imports.DateTime
 
 object BuildOwnerProfilePersistedModel {
 
   def any(
-           withId: Option[Long] = Faker(Some(Faker.number()), None),
+           withSurrogateId: Option[Long] =  BuildSurrogateId.any(),
            withFirstname: String = Faker.text(),
            withSurname: String = Faker.text(),
            withEmail: String = Faker.text(),
@@ -15,7 +15,7 @@ object BuildOwnerProfilePersistedModel {
            withDateBirth: DateTime = Faker.date()
          ): OwnerProfilePersistModel = {
     OwnerProfilePersistModel(
-      withId,
+      withSurrogateId,
       withFirstname,
       withSurname,
       withEmail,
@@ -25,6 +25,7 @@ object BuildOwnerProfilePersistedModel {
   }
 
   def anyPersisted(
+                    withSurrogateId: Option[Long] =  BuildSurrogateId.anyPersisted(),
                     withFirstname: String = Faker.text(),
                     withSurname: String = Faker.text(),
                     withEmail: String = Faker.text(),
@@ -32,7 +33,7 @@ object BuildOwnerProfilePersistedModel {
                     withDateBirth: DateTime = Faker.date()
                   ): OwnerProfilePersistModel = {
     OwnerProfilePersistModel(
-      Faker(Some(Faker.number())),
+      withSurrogateId,
       withFirstname,
       withSurname,
       withEmail,
