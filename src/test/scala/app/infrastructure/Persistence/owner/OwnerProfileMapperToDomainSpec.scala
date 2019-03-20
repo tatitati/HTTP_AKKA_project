@@ -23,21 +23,19 @@ class OwnerProfileMapperToDomainSpec extends FunSuite {
 
     assert(thenDomain.isInstanceOf[OwnerProfile], "Should be an instance of OwnerProfile")
 
-    println(thenDomain.memento.datebirth.toString)
     assert(thenDomain.memento.email === "any@something.com", "email should match")
     assert(thenDomain.memento.firstname === "any firstname", "firstname should match")
     assert(thenDomain.memento.datebirth.dayOfMonth().get() === 1, "day month birth should match")
     assert(thenDomain.memento.datebirth.year().get() === 2016, "year birth should match")
   }
 
-//  test("Surrogate id is also mapped properly to domain") {
-//    val givenPersistent = BuildThirdPersistedModel.anyPersisted()
-//
-//    assert(givenPersistent.id.isInstanceOf[Some[_]])
-//
-//    val thenDomain = ThirdMapper.toDomain(givenPersistent)
-//
-//    assert(thenDomain.isInstanceOf[Third])
-//    assert(thenDomain.getSurrogateId().isInstanceOf[Some[_]])
-//  }
+  test("Surrogate id is also mapped properly to domain") {
+    val givenPersistent = BuildOwnerProfilePersistedModel.anyPersisted()
+
+    assert(givenPersistent.id.isInstanceOf[Some[_]])
+
+    val thenDomain = OwnerProfileMapper.toDomain(givenPersistent)
+
+    assert(thenDomain.getSurrogateId().isInstanceOf[Some[_]])
+  }
 }

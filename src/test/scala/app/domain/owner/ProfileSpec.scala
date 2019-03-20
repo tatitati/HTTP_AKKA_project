@@ -13,10 +13,10 @@ class ProfileSpec extends FunSuite {
       withEmail = "whatever@email.com"
     )
 
-    assert(givenProfile.firstname === "anyfirstname")
-    assert(givenProfile.surname === "anysurname")
-    assert(givenProfile.email === "whatever@email.com")
+    assert(givenProfile.memento.firstname === "anyfirstname")
+    assert(givenProfile.memento.surname === "anysurname")
+    assert(givenProfile.memento.email === "whatever@email.com")
 
-    assert(givenProfile.datebirth.isInstanceOf[DateTime])
+    assert(givenProfile.memento.datebirth.isInstanceOf[DateTime])
   }
 }

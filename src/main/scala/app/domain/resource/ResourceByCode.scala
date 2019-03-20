@@ -31,11 +31,11 @@ case class ResourceByCode(
       third.getProfile.homepage,
       third.getProfile.description,
       // owner
-      ownerProfile.firstname,
-      ownerProfile.surname,
-      ownerProfile.email,
-      ownerProfile.emailconfirmed,
-      ownerProfile.datebirth,
+      ownerProfile.memento.firstname,
+      ownerProfile.memento.surname,
+      ownerProfile.memento.email,
+      ownerProfile.memento.emailconfirmed,
+      ownerProfile.memento.datebirth,
       // scope
       scope.firstname,
       scope.surname,

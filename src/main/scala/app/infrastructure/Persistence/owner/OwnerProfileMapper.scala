@@ -13,20 +13,19 @@ object OwnerProfileMapper {
         datebirth = fromPersistent.datebirth
     )
 
-//    domain.setSurrogateId(fromPersistent.id)
+    domain.setSurrogateId(fromPersistent.id)
 
     domain
   }
 
-//  def toPersistent(third: Third): ThirdPersistModel= {
-//    ThirdPersistModel(
-//      id = third.getSurrogateId(),
-//      name = third.getProfile.name,
-//      callback = third.getProfile.callback,
-//      homepage = third.getProfile.homepage,
-//      description = third.getProfile.description,
-//      clientId = third.getCredentials.clientId,
-//      clientSecret = third.getCredentials.clientSecret
-//    )
-//  }
+  def toPersistent(ownerProfile: OwnerProfile): OwnerProfilePersistModel= {
+    new OwnerProfilePersistModel(
+      id = ownerProfile.getSurrogateId(),
+      firstname = ownerProfile.memento.firstname,
+      surname = ownerProfile.memento.surname,
+      email = ownerProfile.memento.email,
+      isEmailConfirmed = ownerProfile.memento.emailconfirmed,
+      datebirth = ownerProfile.memento.datebirth
+    )
+  }
 }
