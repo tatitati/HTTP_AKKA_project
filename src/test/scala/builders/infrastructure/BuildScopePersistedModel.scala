@@ -1,6 +1,6 @@
 package builders.infrastructure
 
-import app.infrastructure.Persistence.resourceByCode.ScopePersistedModel
+import app.infrastructure.Persistence.resource.ScopePersistedModel
 import test.builders.Faker
 
 object BuildScopePersistedModel {

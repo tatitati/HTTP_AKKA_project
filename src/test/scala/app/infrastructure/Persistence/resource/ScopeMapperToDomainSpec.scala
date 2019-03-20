@@ -1,6 +1,7 @@
-package app.infrastructure.Persistence.resourceByCode
+package test.app.infrastructure.Persistence.resource
 
 import app.domain.resource.Scope
+import app.infrastructure.Persistence.resource.ScopeMapper
 import builders.infrastructure.BuildScopePersistedModel
 import org.scalatest.FunSuite
 

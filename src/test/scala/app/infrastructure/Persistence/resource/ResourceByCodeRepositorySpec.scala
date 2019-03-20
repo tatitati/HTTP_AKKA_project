@@ -1,6 +1,7 @@
-package app.infrastructure.Persistence.resourceByCode
+package test.app.infrastructure.Persistence.resource
 
 import app.domain.resource.ResourceByCode
+import app.infrastructure.Persistence.resource.ResourceByCodeRepository
 import builders.domain.BuildResourceByCode
 import com.redis.RedisClient
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FunSuite}
