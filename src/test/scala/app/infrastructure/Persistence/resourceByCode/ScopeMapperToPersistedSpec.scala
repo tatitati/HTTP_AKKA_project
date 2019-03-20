@@ -12,9 +12,10 @@ class ScopeMapperToPersistedSpec extends FunSuite {
     assert(thenPersisted.email == true)
     assert(thenPersisted.firstname == true)
     assert(thenPersisted.surname == false)
+    assert(thenPersisted.id === None)
   }
 
-  test("Surrogate id is also mapped properly") {
+  test("Surrogate id is also mapped to persisted properly") {
     val givenDomainScope = BuildScope.onlyEmailAndFirstname(withSurrogateId = Some(6))
     val thenPersisted = ScopeMapper.toPersistedModel(givenDomainScope)
 

@@ -26,19 +26,14 @@ class OwnerProfileMapperToDomainSpec extends FunSuite {
     assert(thenDomain.memento.datebirth.year().get() === 2016, "year birth should match")
   }
 
-  test("Builder can create 'persisted' data models, ready to map later") {
-    val givenPersistedModelWithSurrogateId = BuildOwnerProfilePersistedModel.anyPersisted()
-    assert(givenPersistedModelWithSurrogateId.id.isInstanceOf[Some[_]])
-  }
-
   test("Surrogate id is also mapped properly to domain") {
     val givenPersistedModel = BuildOwnerProfilePersistedModel.anyPersisted()
     val thenMappedDomain = OwnerProfileMapper.toDomain(givenPersistedModel)
 
-    assert(thenMappedDomain.getSurrogateId().isInstanceOf[Some[_]])
+    assert(thenMappedDomain.getSurrogateId().get.isInstanceOf[Long])
   }
 
-  test("Invariants: a persisted one must have a surrogate id in order to be mapped to domai") {
+  test("A persisted one must have a surrogate id in order to be mapped to domai") {
     val givenPersistent = BuildOwnerProfilePersistedModel.anyNoPersisted()
 
     val thrown = intercept[IllegalArgumentException] {
