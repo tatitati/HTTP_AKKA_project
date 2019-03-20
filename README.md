@@ -4,7 +4,8 @@
 
 # Todo:
 
-- [ ] **Persist Auth**
+- [ ] **Complete persist of Token**
+- [ ] **Persist Auth*
 - [ ] How to tag tests? (and filter them in the CLI)
 - [ ] Create custom taks in SBT to run tests in specific app-layers
 - [ ] How to set environment variables like Hosts, port for Redis?, for each environment...scala-env
