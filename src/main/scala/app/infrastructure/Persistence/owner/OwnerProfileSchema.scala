@@ -14,7 +14,7 @@ class OwnerProfileSchema(tag: Tag) extends Table[OwnerProfilePersistModel](tag, 
   def surname = column[String]("surname")
   def email = column[String]("email")
   def emailconfirmed = column[Boolean]("email_confirmed")
-  def datebirth = column[DateTime]("datebirth")
+  def datebirth = column[DateTime]("datebirth", O.SqlType("DATETIME"))
 
   def * = (
     id,

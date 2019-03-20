@@ -13,5 +13,7 @@ class FormatSpec extends FunSuite {
 
     assert(specificdate.toString === "2030-02-20T13:08:20.020Z")
     assert(specificdate.toString("Y-M--d") === "2030-2--20")
+    assert(specificdate.toString("Y-MM-dd H:mm:s") === "2030-02-20 13:08:20")
+
   }
 }
