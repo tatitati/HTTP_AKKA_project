@@ -5,13 +5,10 @@
 # Todo:
 
 - [ ] **Persist owner**
-
-    - [ ] Creeate custom mapper for datetime
-
+    - [ ] Investigate how to persist in a transactional way
+    - [ ] Create custom mapper for datetime
 - [ ] How to tag tests? (and filter them in the CLI)
-
 - [ ] Create custom taks in SBT to run tests in specific app-layers
-
 - [ ] How to set environment variables like Hosts, port for Redis?, for each environment...scala-env
 - [ ] Create database to fix Travis build
 
