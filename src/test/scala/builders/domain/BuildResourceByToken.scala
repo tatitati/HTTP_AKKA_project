@@ -1,7 +1,7 @@
-package test.builders
+package builders.domain
 
 import app.domain.resource.{ResourceByToken, Scope, Token}
-import builders.authorizes.BuildScope
+import test.builders.Faker
 
 object BuildResourceByToken {
 
@@ -38,4 +38,3 @@ object BuildResourceByToken {
     )
   }
 }
-

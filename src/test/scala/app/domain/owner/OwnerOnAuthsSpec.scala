@@ -1,10 +1,8 @@
 package test.app.domain.ownerstore
 
 import app.domain.owner.{Auth, Auths, AuthsMemento}
-import builders.authorizes.BuildAuths
+import builders.domain._
 import org.scalatest.FunSuite
-import test.builders.authorizes.BuildAuth
-import test.builders._
 
 class OwnerOnAuthsSpec extends FunSuite {
 

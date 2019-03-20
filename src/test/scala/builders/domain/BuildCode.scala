@@ -1,9 +1,9 @@
-package test.builders
+package builders.domain
 
 import app.domain.RandomTextGenerator
 import app.domain.resource.Code
-import com.github.nscala_time.time.Imports.DateTime
 import com.github.nscala_time.time.Imports._
+import test.builders.Faker
 
 object BuildCode extends RandomTextGenerator {
 

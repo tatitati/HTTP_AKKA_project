@@ -1,10 +1,8 @@
-package test.builders.authorizes
+package builders.domain
 
 import app.domain.owner.Auth
 import app.domain.resource.{Scope, Token}
 import app.domain.third.Third
-import builders.authorizes.BuildScope
-import test.builders.{BuildThird, BuildToken}
 
 object BuildAuth {
 

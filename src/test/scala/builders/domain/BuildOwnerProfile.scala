@@ -1,7 +1,8 @@
-package test.builders
+package builders.domain
 
 import app.domain.owner.OwnerProfile
-import com.github.nscala_time.time.Imports.{DateTime, _}
+import com.github.nscala_time.time.Imports.DateTime
+import test.builders.Faker
 
 object BuildOwnerProfile {
 

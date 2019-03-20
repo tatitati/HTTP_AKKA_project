@@ -1,7 +1,6 @@
-package test.builders
+package builders.domain
 
 import app.domain.owner.{Auths, Owner, OwnerProfile}
-import builders.authorizes.BuildAuths
 
 object BuildOwner {
     def any(

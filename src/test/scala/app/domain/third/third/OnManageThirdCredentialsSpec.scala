@@ -1,7 +1,7 @@
 package test.app.domain.thirdstore.third
 
+import builders.domain.BuildThird
 import org.scalatest.FunSuite
-import test.builders.BuildThird
 
 class OnManageThirdCredentialsSpec extends FunSuite {
 

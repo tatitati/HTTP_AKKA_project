@@ -1,10 +1,8 @@
 package test.app.domain.ownerstore
 
 import app.domain.owner.{Auth, Auths}
-import builders.authorizes.BuildAuths
+import builders.domain.{BuildAuth, BuildAuths, BuildThird, BuildThirdCredentials}
 import org.scalatest.FunSuite
-import test.builders.{BuildThird, BuildThirdCredentials, BuildThirdProfile}
-import test.builders.authorizes.BuildAuth
 
 class AuthsSpec extends FunSuite {
   test("Builder can create a list of permissions with custom ids") {

@@ -1,8 +1,6 @@
-package builders.authorizes
+package builders.domain
 
 import app.domain.owner.Auths
-import test.builders.{BuildThird, BuildThirdCredentials, BuildThirdProfile}
-import test.builders.authorizes.BuildAuth
 
 object BuildAuths {
 

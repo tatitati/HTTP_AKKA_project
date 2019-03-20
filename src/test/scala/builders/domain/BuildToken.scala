@@ -1,9 +1,9 @@
-package test.builders
+package builders.domain
 
 import java.util.UUID
-
 import app.domain.resource.Token
 import com.github.nscala_time.time.Imports._
+import test.builders.Faker
 
 object BuildToken {
   def anyLive(

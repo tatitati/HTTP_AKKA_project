@@ -1,8 +1,8 @@
 package test.app.infrastructure.Persistence.owner
 
 import app.infrastructure.Persistence.owner.{OwnerProfileMapper, OwnerProfilePersistModel}
+import builders.domain.BuildOwnerProfile
 import org.scalatest.FunSuite
-import test.builders.BuildOwnerProfile
 
 class OwnerProfileMapperToPersistedModelSpec extends FunSuite {
 

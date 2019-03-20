@@ -1,9 +1,9 @@
 package test.app.domain.resource.ResourceByToken
 
 import app.domain.resource.Token
+import builders.domain.{BuildResourceByToken, BuildToken, BuildUuid}
 import org.scalatest.FunSuite
 import org.scalatest.Matchers._
-import test.builders.{BuildResourceByToken, BuildToken, BuildUuid}
 
 class ContainsTokenSpec extends FunSuite{
 

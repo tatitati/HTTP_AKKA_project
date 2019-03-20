@@ -1,4 +1,4 @@
-package builders.authorizes
+package builders.domain
 
 import app.domain.resource.Scope
 import test.builders.Faker

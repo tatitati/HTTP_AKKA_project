@@ -1,7 +1,7 @@
 package app.domain.owner
 
 import app.domain.resource.{Scope, Token}
-import app.domain.third.{Third, ThirdProfile, ThirdProfileMemento}
+import app.domain.third.{Third, ThirdProfileMemento}
 
 class Auth(
             private val givenToThird: Third,

@@ -1,4 +1,4 @@
-package test.builders
+package builders.domain
 
 import app.domain.third.{Third, ThirdCredentials, ThirdProfile}
 

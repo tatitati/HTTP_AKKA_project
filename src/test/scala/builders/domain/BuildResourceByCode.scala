@@ -1,10 +1,8 @@
-package test.builders
+package builders.domain
 
 import app.domain.owner.OwnerProfile
 import app.domain.resource.{Code, ResourceByCode, Scope}
-import app.domain.third.{Third, ThirdProfile}
-import builders.authorizes.BuildScope
-import com.github.nscala_time.time.Imports._
+import app.domain.third.Third
 
 object BuildResourceByCode {
 
@@ -31,4 +29,3 @@ object BuildResourceByCode {
     )
   }
 }
-

@@ -1,9 +1,8 @@
 package test.app.domain.resource.ResourceByToken
 
-import builders.authorizes.BuildScope
+import builders.domain.{BuildResourceByToken, BuildScope}
 import org.scalatest.FunSuite
 import org.scalatest.Matchers._
-import test.builders.BuildResourceByToken
 
 class ContainsOwnerProfileSpec extends FunSuite{
 

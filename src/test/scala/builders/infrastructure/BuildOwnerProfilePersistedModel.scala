@@ -1,7 +1,8 @@
 package test.builders.infrastructure
 
 import app.infrastructure.Persistence.owner.OwnerProfilePersistModel
-import test.builders.{BuildSurrogateId, Faker}
+import builders.domain.BuildSurrogateId
+import test.builders.Faker
 import com.github.nscala_time.time.Imports.DateTime
 
 object BuildOwnerProfilePersistedModel {

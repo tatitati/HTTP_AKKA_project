@@ -1,9 +1,9 @@
 package test.app.domain.resource
 
 import app.domain.resource._
+import builders.domain.BuildResourceByCode
 import com.github.nscala_time.time.Imports.DateTime
 import org.scalatest.FunSuite
-import test.builders.BuildResourceByCode
 
 class ResourceByCodeSpec extends FunSuite {
 
