@@ -7,21 +7,29 @@ import test.builders.Faker
 
 object BuildToken {
   def anyLive(
+               withSurrogateId: Option[Long] =  BuildSurrogateId.any(),
                withTokenType: String = "bearer",
                withExpirationIn: Int = 10,
                withRefreshToken: UUID = java.util.UUID.randomUUID,
                withAccessToken: UUID = java.util.UUID.randomUUID
              ): Token = {
-    new Token(
+    val token = new Token(
       accessToken = withAccessToken,
       tokenType = withTokenType,
       refreshToken = withRefreshToken,
       generatedIn = DateTime.now() - 5.seconds,
       expiresIn = withExpirationIn
     )
+
+    if (withSurrogateId != None) {
+        token.setSurrogateId(withSurrogateId)
+    }
+
+    token
   }
 
   def anyExpired(
+                  withSurrogateId: Option[Long] =  BuildSurrogateId.any(),
                   withTokenType: String = "bearer",
                   withExpirationIn: Int = 10,
                   withRefreshToken: UUID = java.util.UUID.randomUUID,
@@ -36,7 +44,10 @@ object BuildToken {
     )
   }
 
-  def any(): Token = {
-    Faker(anyLive(), anyExpired())
+  def any(withSurrogateId: Option[Long] =  BuildSurrogateId.any()): Token = {
+    Faker(
+      anyLive(withSurrogateId),
+      anyExpired(withSurrogateId)
+    )
   }
 }

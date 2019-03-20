@@ -5,10 +5,10 @@ import test.builders.Faker
 
 object BuildScopePersistedModel {
   def any(
-       withId: Option[Long] = Faker(Some(Faker.number()), None),
-       withFirstname: Boolean = Faker.boolean,
-       withSurname: Boolean = Faker.boolean,
-       withEmail: Boolean = Faker.boolean
+           withId: Option[Long] = Faker(Some(Faker.int()), None),
+           withFirstname: Boolean = Faker.boolean,
+           withSurname: Boolean = Faker.boolean,
+           withEmail: Boolean = Faker.boolean
      ): ScopePersistedModel = {
     ScopePersistedModel(
       id = withId,
@@ -18,7 +18,7 @@ object BuildScopePersistedModel {
     )
   }
 
-  def anyWithOnlyEmail(withId: Option[Long] = Faker(Some(Faker.number()), None)): ScopePersistedModel = {
+  def anyWithOnlyEmail(withId: Option[Long] = Faker(Some(Faker.int()), None)): ScopePersistedModel = {
     any(
       withId = withId,
       withFirstname = false,

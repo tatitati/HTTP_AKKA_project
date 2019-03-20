@@ -18,8 +18,12 @@ object Faker {
     Random.nextBoolean()
   }
 
-  def number(): Int = {
+  def int(): Int = {
     Random.nextInt()
+  }
+
+  def long(): Long = {
+    Random.nextLong()
   }
 
   def date(): DateTime = {
