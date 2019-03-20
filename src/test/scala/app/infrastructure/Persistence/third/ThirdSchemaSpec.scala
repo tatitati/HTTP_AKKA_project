@@ -6,7 +6,6 @@ import org.scalatest.{BeforeAndAfterEach, FunSuite}
 import slick.jdbc.MySQLProfile.api._
 import slick.jdbc.meta.MTable
 import slick.lifted.TableQuery
-import test.app.infrastructure.Persistence.owner.OwnerProfileSchema
 
 class ThirdSchemaSpec extends FunSuite with BeforeAndAfterEach with Exec {
   val ownerSchema = TableQuery[ThirdSchema]

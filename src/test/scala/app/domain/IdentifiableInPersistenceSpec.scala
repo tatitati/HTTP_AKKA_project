@@ -39,12 +39,9 @@ class IdentifiableInPersistenceSpec extends FunSuite {
   test("I cannot set NONE") {
     val a = new Concrete()
 
-    a.setSurrogateId(withSurrogateId = Some(23))
-
-
     val thrown = intercept[IllegalArgumentException] {
       a.setSurrogateId(withSurrogateId = None)
     }
-    assert(thrown.getMessage() === "Surrogate ID cannot be modified once that is set")
+    assert(thrown.getMessage() === "Surrogate ID cannot be initialized to None")
   }
 }
