@@ -24,6 +24,7 @@ case class ResourceByCode(
     ResourceByCodeMemento(
       // third
       third.getSurrogateId().get,
+      third.Uuid,
       third.getProfile.name,
       third.getCredentials.clientId,
       third.getCredentials.clientSecret,

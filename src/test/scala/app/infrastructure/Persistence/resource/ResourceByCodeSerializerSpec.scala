@@ -13,7 +13,8 @@ class ResourceByCodeSerializerSpec extends FunSuite {
 
     assert(inJson ===
       """{"third":{
-          |"id":22,
+          |"surrogateid":22,
+          |"uuid":"47331985-9cd6-4632-b505-fceb476100a1",
           |"name":"whatever",
           |"clientid":"client_id",
           |"clientsecret":"client_secret",
@@ -47,7 +48,8 @@ class ResourceByCodeSerializerSpec extends FunSuite {
     val givenJson =
       """{
         |"third":{
-          |"id":22,
+          |"surrogateid":22,
+          |"uuid":"47331985-9cd6-4632-b505-fceb476100a1",
           |"name":"whatever",
           |"clientid":"client_id",
           |"clientsecret":"client_secret",

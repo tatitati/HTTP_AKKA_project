@@ -1,12 +1,14 @@
 package test.builders.infrastructure
 
 import app.infrastructure.Persistence.third.ThirdPersistModel
+import builders.domain.BuildUuid
 import test.builders.Faker
 
 object BuildThirdPersistedModel {
 
   def any(
            withId: Option[Long] = Faker(Some(Faker.long()), None),
+           withUUID: String = BuildUuid.any().toString,
            withName: String = Faker.text(),
            withCallback: String = Faker.text(),
            withHomepage: String = Faker.text(),
@@ -16,6 +18,7 @@ object BuildThirdPersistedModel {
          ): ThirdPersistModel = {
     ThirdPersistModel(
         withId,
+        withUUID,
         withName,
         withCallback,
         withHomepage,
@@ -26,6 +29,7 @@ object BuildThirdPersistedModel {
   }
 
   def anyPersisted(
+           withUUID: String = BuildUuid.any().toString,
            withName: String = Faker.text(),
            withCallback: String = Faker.text(),
            withHomepage: String = Faker.text(),
@@ -33,8 +37,9 @@ object BuildThirdPersistedModel {
            withClientId: String = Faker.text(),
            withClientSecret: String = Faker.text()
          ): ThirdPersistModel = {
-    ThirdPersistModel(
-      Faker(Some(Faker.int())),
+    any(
+      withId = Faker(Some(Faker.int())),
+      withUUID,
       withName,
       withCallback,
       withHomepage,
@@ -45,6 +50,7 @@ object BuildThirdPersistedModel {
   }
 
   def anyNoPersisted(
+                    withUUID: String = BuildUuid.any().toString,
                     withName: String = Faker.text(),
                     withCallback: String = Faker.text(),
                     withHomepage: String = Faker.text(),
@@ -52,8 +58,9 @@ object BuildThirdPersistedModel {
                     withClientId: String = Faker.text(),
                     withClientSecret: String = Faker.text()
                   ): ThirdPersistModel = {
-    ThirdPersistModel(
-      None,
+    any(
+      withId = None,
+      withUUID,
       withName,
       withCallback,
       withHomepage,

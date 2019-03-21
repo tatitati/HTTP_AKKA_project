@@ -20,6 +20,7 @@ object BuildResourceByCode {
     any(
       BuildThird.any(
         withSurrogateId = Some(22),
+        withUUID = BuildUuid.uuidOne(),
         withThirdProfile = BuildThirdProfile.specific(),
         withCredentials = BuildThirdCredentials.specific()
       ),

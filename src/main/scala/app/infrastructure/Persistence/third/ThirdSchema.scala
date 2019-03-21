@@ -6,6 +6,7 @@ import slick.lifted.Tag
 
 class ThirdSchema(tag: Tag) extends Table[ThirdPersistModel](tag, "third") {
   def id = column[Option[Long]]("id", O.PrimaryKey, O.AutoInc)
+  def uuid = column[String]("uuid")
   def name = column[String]("name")
   def callback = column[String]("callback")
   def homepage = column[String]("homepage")
@@ -15,6 +16,7 @@ class ThirdSchema(tag: Tag) extends Table[ThirdPersistModel](tag, "third") {
 
   def * = (
     id,
+    uuid,
     name,
     callback,
     homepage,

@@ -1,5 +1,7 @@
 package app.infrastructure.Persistence.resource
 
+import java.util.UUID
+
 import app.domain.owner.OwnerProfile
 import app.domain.resource.{Code, ResourceByCode, Scope}
 import app.domain.third.{Third, ThirdCredentials, ThirdProfile}
@@ -14,7 +16,8 @@ object ResourceByCodeSerializer {
     val memento = resourceByCode.memento()
     val givenMap = Json.obj(
       "third" -> Json.obj(
-          "id" -> memento.thirdId,
+          "surrogateid" -> memento.thirdSurrogateId,
+          "uuid" -> memento.thirdUuid,
           "name" -> memento.thirdProfileName,
           "clientid" -> memento.thirdClientId,
           "clientsecret" -> memento.thirdClientSecret,
@@ -56,7 +59,9 @@ object ResourceByCodeSerializer {
 
     val parsed = Json.parse(serialized)
 
-    val thirdId = (parsed \ "third" \ "id").as[Long]
+    val surrogateId = (parsed \ "third" \ "surrogateid").as[Long]
+    val uuid = (parsed \ "third" \ "uuid").as[String]
+
 
     val thirdProfile = new ThirdProfile(
       name = (parsed \ "third" \ "name").as[String],
@@ -91,8 +96,12 @@ object ResourceByCodeSerializer {
       state = (parsed \ "code" \ "state").as[String],
     )
 
-    val third = Third(profile = thirdProfile, credentials = thirdCredentials)
-    third.setSurrogateId(Some(thirdId))
+    val third = Third(
+      Uuid = UUID.fromString(uuid),
+      profile = thirdProfile,
+      credentials = thirdCredentials
+    )
+    third.setSurrogateId(Some(surrogateId))
 
     new ResourceByCode(
       third,
