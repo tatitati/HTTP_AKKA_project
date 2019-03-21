@@ -23,7 +23,9 @@ class ScopeSchemaSpec extends FunSuite with BeforeAndAfterEach with Exec {
 
   test("Can save one scope persistent model") {
     val persistentModel = BuildScopePersistedModel.anyWithOnlyEmail(withId = None)
-    exec(scopeSchema += persistentModel)
+    val numRowsInserted = exec(scopeSchema += persistentModel)
+
+    assert(numRowsInserted === 1)
   }
 
   override def beforeEach() {
