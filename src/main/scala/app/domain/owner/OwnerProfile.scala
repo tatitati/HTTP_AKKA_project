@@ -4,9 +4,9 @@ import app.domain.IdentifiableInPersistence
 import com.github.nscala_time.time.Imports.DateTime
 
 class OwnerProfile (
+              private var email: String,
               private var firstname: String,
               private var surname: String,
-              private var email: String,
               private var emailconfirmed: Boolean,
               private var datebirth: DateTime
              ) extends IdentifiableInPersistence {
@@ -30,6 +30,10 @@ class OwnerProfile (
 
   def setDatebirth(newdatebirth: DateTime): Unit = {
     datebirth = newdatebirth
+  }
+
+  def equals(ownerProfile: OwnerProfile): Boolean = {
+    email == ownerProfile.memento.email
   }
 
   def memento: OwnerProfileMemento = {

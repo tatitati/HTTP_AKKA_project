@@ -6,7 +6,7 @@ import org.scalatest.FunSuite
 
 class OwnerOnProfileSpec extends FunSuite {
 
-  test("Rreturn a memento of profile, no editable, to external world") {
+  test("Return a memento of profile, no editable, to external world") {
     val givenUser = BuildOwner.any(
       withProfile = BuildOwnerProfile.any(
         withFirstname = "gutierrez"
