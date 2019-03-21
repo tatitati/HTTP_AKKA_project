@@ -10,7 +10,7 @@ class AuthSpec extends FunSuite {
   test("Auth have a UUID as identifier") {
     val givenAuth = BuildAuth.any()
 
-    assert(givenAuth.getUUID.isInstanceOf[UUID] == true)
+    assert(givenAuth.uuid.isInstanceOf[UUID] == true)
   }
 
   test("User can know what permissions were granted to a third") {
