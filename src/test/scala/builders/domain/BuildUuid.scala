@@ -10,4 +10,8 @@ object BuildUuid {
   def uuidTwo(): UUID = {
     UUID.fromString("b89a1ccb-18c9-41d0-bebc-48634b151991")
   }
+
+  def any(): UUID = {
+    UUID.randomUUID()
+  }
 }

@@ -1,10 +1,17 @@
 package test.app.domain.ownerstore
 
-import app.domain.owner.Auth
+import java.util.UUID
+
 import builders.domain.{BuildAuth, BuildScope, BuildThird, BuildThirdProfile}
 import org.scalatest.FunSuite
 
 class AuthSpec extends FunSuite {
+
+  test("Auth have a UUID as identifier") {
+    val givenAuth = BuildAuth.any()
+
+    assert(givenAuth.getUUID.isInstanceOf[UUID] == true)
+  }
 
   test("User can know what permissions were granted to a third") {
     val givenAuth = BuildAuth.any(
@@ -15,7 +22,7 @@ class AuthSpec extends FunSuite {
     assert(givenAuth.canThirdReadSurname === true, "=> Third should be able to access to surname")
   }
 
-  test("User can see basic information about the third that was granted permissions") {
+  test("User can see basic information about the third") {
     val givenAuth = BuildAuth.any(
         withThird = BuildThird.any(
           withThirdProfile = BuildThirdProfile.any(
@@ -26,10 +33,5 @@ class AuthSpec extends FunSuite {
 
     assert(givenAuth.getThirdProfile.name == "CircleCI", "=> Should show third-name")
     assert(givenAuth.getThirdProfile.description == "any description", "=> Should show third-description")
-  }
-
-  test("Auth can have a token (or not if it was revoked)") {
-    val givenAuth = BuildAuth.any()
-    givenAuth.isInstanceOf[Auth]
   }
 }
