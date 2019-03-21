@@ -7,7 +7,7 @@ import org.scalatest.FunSuite
 class AuthsSpec extends FunSuite {
   test("Builder can create a list of permissions with custom ids") {
     val listmap = BuildAuths.withClientIds("clientid1", "clientid2", "clientid3")
-    assert(listmap.count === 3)
+    assert(listmap.getList.size === 3)
   }
 
   test("can find auth by clientid") {
@@ -54,13 +54,13 @@ class AuthsSpec extends FunSuite {
 
     assert(listmap.findAuth("clientid1").isInstanceOf[Some[Auth]])
     assert(listmap.findAuth("clientid3") === None)
-    assert(listmap.count() === 1)
+    assert(listmap.getList.size === 1)
 
     listmap.addAuth(auth)
 
     assert(listmap.findAuth("clientid1").isInstanceOf[Some[Auth]])
     assert(listmap.findAuth("clientid3").isInstanceOf[Some[Auth]])
-    assert(listmap.count() === 2)
+    assert(listmap.getList.size === 2)
   }
 
   test("Cannot add twice the same to list") {
