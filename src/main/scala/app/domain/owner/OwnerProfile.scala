@@ -32,10 +32,6 @@ class OwnerProfile (
     datebirth = newdatebirth
   }
 
-  def equals(ownerProfile: OwnerProfile): Boolean = {
-    email == ownerProfile.memento.email
-  }
-
   def memento: OwnerProfileMemento = {
     OwnerProfileMemento(
       firstname,

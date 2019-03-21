@@ -17,4 +17,8 @@ class Owner(private var profile: OwnerProfile, private var listAuth: Auths) {
   def setEmail(email: String): Unit = profile.setEmail(email)
   def confirmEmail(): Unit = profile.confirmEmail()
   def setDatebirth(datebirth: DateTime): Unit = profile.setDatebirth(datebirth)
+
+  def equals(thirdOwner: Owner): Boolean = {
+    this.profile.memento.email == thirdOwner.getOwnerProfile.email
+  }
 }
