@@ -1,6 +1,7 @@
 package test.app.domain.auth
 
-import builders.domain.{BuildToken, BuildUuid}
+import app.domain.auth.BuildToken
+import builders.BuildUuid
 import org.scalatest.FunSuite
 
 class TokenOnRefreshSpec extends FunSuite{

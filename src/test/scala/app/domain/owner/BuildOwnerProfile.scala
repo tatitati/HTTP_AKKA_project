@@ -1,6 +1,6 @@
-package builders.domain
+package app.domain.owner
 
-import app.domain.owner.OwnerProfile
+import builders.BuildSurrogateId
 import com.github.nscala_time.time.Imports.DateTime
 import test.builders.Faker
 

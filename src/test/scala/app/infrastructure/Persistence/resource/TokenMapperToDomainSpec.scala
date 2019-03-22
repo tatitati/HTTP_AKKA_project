@@ -1,7 +1,6 @@
 package app.infrastructure.Persistence.resource
 
 import app.domain.auth.Token
-import builders.infrastructure.BuildTokenPersistedModel
 import org.scalatest.FunSuite
 import test.builders.Faker
 

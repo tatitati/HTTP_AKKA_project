@@ -1,6 +1,6 @@
 package test.app.domain.ownerstore
 
-import builders.domain.BuildOwnerProfile
+import app.domain.owner.BuildOwnerProfile
 import org.scalatest.FunSuite
 import com.github.nscala_time.time.Imports.DateTime
 

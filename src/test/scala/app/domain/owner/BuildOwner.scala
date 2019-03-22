@@ -1,6 +1,4 @@
-package builders.domain
-
-import app.domain.owner.{Auths, Owner, OwnerProfile}
+package app.domain.owner
 
 object BuildOwner {
     def any(

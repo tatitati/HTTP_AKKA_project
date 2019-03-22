@@ -1,10 +1,9 @@
 package test.app.infrastructure.repository.owner
 
 import app.domain.owner.OwnerProfile
-import app.infrastructure.Persistence.owner.OwnerProfileMapper
+import app.infrastructure.Persistence.owner.{BuildOwnerProfilePersistedModel, OwnerProfileMapper}
 import org.joda.time.DateTime
 import org.scalatest.FunSuite
-import test.builders.infrastructure.BuildOwnerProfilePersistedModel
 
 class OwnerProfileMapperToDomainSpec extends FunSuite {
 

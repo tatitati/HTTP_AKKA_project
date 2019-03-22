@@ -1,7 +1,7 @@
 package test.app.infrastructure.Persistence.resource
 
+import app.domain.auth.BuildScope
 import app.infrastructure.Persistence.resource.ScopeMapper
-import builders.domain.BuildScope
 import org.scalatest.FunSuite
 
 class ScopeMapperToPersistedSpec extends FunSuite {

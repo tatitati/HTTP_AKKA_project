@@ -1,7 +1,8 @@
 package test.app.infrastructure.repository.third
 
+import app.domain.third.{BuildThird, BuildThirdCredentials, BuildThirdProfile}
 import app.infrastructure.Persistence.third.{ThirdMapper, ThirdPersistModel}
-import builders.domain.{BuildThird, BuildThirdCredentials, BuildThirdProfile}
+import builders.domain.{BuildThirdCredentials, BuildThirdProfile}
 import org.scalatest.FunSuite
 
 class ThirdMapperToPersistenceSpec extends FunSuite {

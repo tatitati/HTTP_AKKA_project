@@ -1,13 +1,15 @@
 package test.app.domain.auth
 
 import java.util.UUID
-
-import builders.domain.{BuildAuth, BuildScope, BuildThird, BuildThirdProfile}
+import app.domain.auth._
+import app.domain.owner.OwnerEmail
+import app.domain.third.ThirdUUID
+import builders.domain._
 import org.scalatest.FunSuite
 
 class AuthSpec extends FunSuite {
 
-  test("Auth have a UUID as identifier") {
+  test("Have a UUID as identifier") {
     val givenAuth = BuildAuth.any()
 
     assert(givenAuth.uuid.isInstanceOf[UUID] == true)
@@ -18,20 +20,18 @@ class AuthSpec extends FunSuite {
       withScope = BuildScope.onlySurname()
     )
 
-    assert(givenAuth.canThirdReadFirstname === false, "=> Third should be able to access to firstname")
-    assert(givenAuth.canThirdReadSurname === true, "=> Third should be able to access to surname")
+    assert(givenAuth.canReadFirstname === false, "=> Third should be able to access to firstname")
+    assert(givenAuth.canReadSurname === true, "=> Third should be able to access to surname")
   }
 
-  test("User can see basic information about the third") {
-    val givenAuth = BuildAuth.any(
-        withThird = BuildThird.any(
-          withThirdProfile = BuildThirdProfile.any(
-            withName = "CircleCI", withDescription = "any description"
-          )
-        )
-    )
-
-    assert(givenAuth.getThirdProfile.name == "CircleCI", "=> Should show third-name")
-    assert(givenAuth.getThirdProfile.description == "any description", "=> Should show third-description")
+  private def any(
+          withUuid: AuthUUID,
+          withThirdUUID: ThirdUUID,
+          withOwnerEmail: OwnerEmail,
+          withScope: Scope,
+          withToken: Option[Token],
+          withCode: Option[Code]
+         ): Auth = {
+    new Auth(withUuid, withThirdUUID, withOwnerEmail, withScope, withToken, withCode)
   }
 }

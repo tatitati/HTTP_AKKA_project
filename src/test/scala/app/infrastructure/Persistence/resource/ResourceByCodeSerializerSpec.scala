@@ -1,7 +1,7 @@
 package test.app.infrastructure.Persistence.resource
 
+import app.domain.resource.BuildResourceByCode
 import app.infrastructure.Persistence.resource.ResourceByCodeSerializer
-import builders.domain.BuildResourceByCode
 import org.scalatest.FunSuite
 
 class ResourceByCodeSerializerSpec extends FunSuite {

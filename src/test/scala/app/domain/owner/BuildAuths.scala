@@ -1,6 +1,7 @@
-package builders.domain
+package app.domain.owner
 
-import app.domain.owner.Auths
+import app.domain.third.{BuildThird, BuildThirdCredentials}
+import builders.domain.BuildThirdCredentials
 
 object BuildAuths {
 

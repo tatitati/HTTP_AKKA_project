@@ -1,7 +1,6 @@
 package test.app.domain.resource
 
-import app.domain.resource._
-import builders.domain.BuildResourceByCode
+import app.domain.resource.{BuildResourceByCode, _}
 import com.github.nscala_time.time.Imports.DateTime
 import org.scalatest.FunSuite
 

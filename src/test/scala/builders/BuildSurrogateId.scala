@@ -1,4 +1,4 @@
-package builders.domain
+package builders
 
 import test.builders.Faker
 

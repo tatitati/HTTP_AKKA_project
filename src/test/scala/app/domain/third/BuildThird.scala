@@ -1,8 +1,9 @@
-package builders.domain
+package app.domain.third
 
 import java.util.UUID
 
-import app.domain.third.{Third, ThirdCredentials, ThirdProfile}
+import builders.{BuildSurrogateId, BuildUuid}
+import builders.domain.BuildUuid
 
 object BuildThird {
     def any(

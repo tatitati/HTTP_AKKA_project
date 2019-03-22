@@ -1,6 +1,7 @@
 package test.app.domain.resource.ResourceByToken
 
-import builders.domain.{BuildResourceByToken, BuildScope}
+import app.domain.auth.BuildScope
+import app.domain.resource.BuildResourceByToken
 import org.scalatest.FunSuite
 import org.scalatest.Matchers._
 

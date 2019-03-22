@@ -1,7 +1,7 @@
 package test.app.domain.ownerstore
 
-import app.domain.owner.OwnerProfileMemento
-import builders.domain.{BuildOwner, BuildOwnerProfile}
+import app.domain.owner.{BuildOwner, BuildOwnerProfile, OwnerProfileMemento}
+import builders.domain.BuildOwnerProfile
 import org.scalatest.FunSuite
 
 class OwnerOnProfileSpec extends FunSuite {

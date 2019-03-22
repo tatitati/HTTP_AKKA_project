@@ -1,6 +1,5 @@
-package builders.domain
+package app.domain.third
 
-import app.domain.third.ThirdCredentials
 import test.builders.Faker
 
 object BuildThirdCredentials {

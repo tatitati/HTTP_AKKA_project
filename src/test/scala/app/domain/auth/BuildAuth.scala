@@ -1,9 +1,9 @@
-package builders.domain
+package test.app.domain.auth
 
 import java.util.UUID
 
-import app.domain.auth.{Auth, Scope, Token}
-import app.domain.third.Third
+import app.domain.third.{BuildThird, Third}
+import builders.BuildUuid
 
 object BuildAuth {
 

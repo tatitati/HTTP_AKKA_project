@@ -1,9 +1,9 @@
-package builders.domain
+package app.domain.resource
 
 import app.domain.auth.{Code, Scope}
-import app.domain.owner.OwnerProfile
-import app.domain.resource.ResourceByCode
-import app.domain.third.Third
+import app.domain.owner.{BuildOwnerProfile, OwnerProfile}
+import app.domain.third.{BuildThird, BuildThirdCredentials, BuildThirdProfile, Third}
+import builders.BuildUuid
 
 object BuildResourceByCode {
 

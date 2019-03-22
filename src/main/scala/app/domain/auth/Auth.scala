@@ -1,19 +1,18 @@
 package app.domain.auth
 
-import java.util.UUID
-import app.domain.third.{Third, ThirdProfileMemento}
+import app.domain.owner.OwnerEmail
+import app.domain.third.ThirdUUID
 
 class Auth(
-            val uuid: UUID,
-            private val givenToThird: Third,
-            private val withScope: Scope,
-            private val throughToken: Option[Token]
+            val uuid: AuthUUID,
+            private val thirdUUID: ThirdUUID,
+            private val ownerEmail: OwnerEmail,
+            private val scope: Scope,
+            private var token: Option[Token],
+            private var code: Option[Code]
   ) {
 
-  def getThirdProfile: ThirdProfileMemento = givenToThird.getProfile
-  def thirdClientId(): String = givenToThird.getCredentials.clientId
-
-  def canThirdReadFirstname: Boolean = withScope.firstname
-  def canThirdReadSurname: Boolean = withScope.surname
-  def canThirdReadEmail: Boolean = withScope.email
+  def canReadFirstname: Boolean = scope.firstname
+  def canReadSurname: Boolean = scope.surname
+  def canReadEmail: Boolean = scope.email
 }

@@ -1,8 +1,7 @@
 package test.app.infrastructure.Persistence.resource
 
 import app.infrastructure.Persistence.Exec
-import app.infrastructure.Persistence.resource.ScopeSchema
-import builders.infrastructure.BuildScopePersistedModel
+import app.infrastructure.Persistence.resource.{BuildScopePersistedModel, ScopeSchema}
 import org.scalatest.{BeforeAndAfterEach, FunSuite}
 import slick.jdbc.MySQLProfile.api._
 import slick.jdbc.meta.MTable

@@ -1,8 +1,8 @@
-package builders.infrastructure
+package app.infrastructure.Persistence.resource
 
-import app.infrastructure.Persistence.resource.TokenPersistentModel
-import builders.domain.{BuildSurrogateId, BuildUuid}
-import com.github.nscala_time.time.Imports._
+import builders.{BuildSurrogateId, BuildUuid}
+import builders.domain.BuildUuid
+import com.github.nscala_time.time.Imports.DateTime
 import test.builders.Faker
 
 object BuildTokenPersistedModel {

@@ -1,7 +1,8 @@
-package builders.domain
+package app.domain.resource
 
 import app.domain.auth.{Scope, Token}
-import app.domain.resource.{ResourceByToken}
+import app.domain.owner.BuildOwnerProfile
+import app.domain.third.BuildThirdProfile
 import test.builders.Faker
 
 object BuildResourceByToken {

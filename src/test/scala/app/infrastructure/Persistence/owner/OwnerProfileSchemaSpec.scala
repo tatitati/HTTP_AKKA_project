@@ -6,7 +6,6 @@ import slick.jdbc.MySQLProfile.api._
 import slick.jdbc.meta.MTable
 import slick.lifted.TableQuery
 import test.app.infrastructure.Persistence.owner.OwnerProfileSchema
-import test.builders.infrastructure.BuildOwnerProfilePersistedModel
 
 class OwnerProfileSchemaSpec extends FunSuite with BeforeAndAfterEach with Exec {
   val ownerSchema = TableQuery[OwnerProfileSchema]

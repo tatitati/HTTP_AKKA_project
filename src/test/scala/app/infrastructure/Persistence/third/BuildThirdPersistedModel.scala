@@ -1,7 +1,6 @@
-package test.builders.infrastructure
+package app.infrastructure.Persistence.third
 
-import app.infrastructure.Persistence.third.ThirdPersistModel
-import builders.domain.BuildUuid
+import builders.BuildUuid
 import test.builders.Faker
 
 object BuildThirdPersistedModel {

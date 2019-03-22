@@ -1,6 +1,6 @@
 package test.app.domain.auth
 
-import builders.domain.BuildToken
+import app.domain.auth.BuildToken
 import org.scalatest.FunSuite
 
 class TokenOnExpirationSpec extends FunSuite{
