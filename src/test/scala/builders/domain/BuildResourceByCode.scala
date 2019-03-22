@@ -1,7 +1,8 @@
 package builders.domain
 
+import app.domain.auth.{Code, Scope}
 import app.domain.owner.OwnerProfile
-import app.domain.resource.{Code, ResourceByCode, Scope}
+import app.domain.resource.ResourceByCode
 import app.domain.third.Third
 
 object BuildResourceByCode {

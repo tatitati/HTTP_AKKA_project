@@ -1,4 +1,4 @@
-package test.app.domain.ownerstore
+package test.app.domain.auth
 
 import java.util.UUID
 

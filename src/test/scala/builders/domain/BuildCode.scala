@@ -1,7 +1,7 @@
 package builders.domain
 
 import app.domain.RandomTextGenerator
-import app.domain.resource.Code
+import app.domain.auth.Code
 import com.github.nscala_time.time.Imports._
 import test.builders.Faker
 

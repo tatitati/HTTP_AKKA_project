@@ -1,8 +1,6 @@
-package app.domain.owner
+package app.domain.auth
 
 import java.util.UUID
-
-import app.domain.resource.{Scope, Token}
 import app.domain.third.{Third, ThirdProfileMemento}
 
 class Auth(

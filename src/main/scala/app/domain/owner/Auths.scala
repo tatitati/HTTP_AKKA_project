@@ -1,5 +1,7 @@
 package app.domain.owner
 
+import app.domain.auth.Auth
+
 case class Auths(private var auths: Vector[Auth]) {
 
   def count() :Int = auths.size

@@ -1,6 +1,6 @@
 package app.domain.resource
 
-import app.domain.factories.FactoryToken
+import app.domain.auth.{Code, Scope}
 import app.domain.owner.OwnerProfile
 import app.domain.third.Third
 

@@ -2,8 +2,9 @@ package app.infrastructure.Persistence.resource
 
 import java.util.UUID
 
+import app.domain.auth.{Code, Scope}
 import app.domain.owner.OwnerProfile
-import app.domain.resource.{Code, ResourceByCode, Scope}
+import app.domain.resource.ResourceByCode
 import app.domain.third.{Third, ThirdCredentials, ThirdProfile}
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat

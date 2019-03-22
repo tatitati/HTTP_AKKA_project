@@ -1,7 +1,8 @@
 package builders.domain
 
 import java.util.UUID
-import app.domain.resource.Token
+
+import app.domain.auth.Token
 import com.github.nscala_time.time.Imports._
 import test.builders.Faker
 

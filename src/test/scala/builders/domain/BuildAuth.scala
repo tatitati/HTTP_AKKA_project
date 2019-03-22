@@ -2,8 +2,7 @@ package builders.domain
 
 import java.util.UUID
 
-import app.domain.owner.Auth
-import app.domain.resource.{Scope, Token}
+import app.domain.auth.{Auth, Scope, Token}
 import app.domain.third.Third
 
 object BuildAuth {

@@ -1,6 +1,6 @@
-package app.domain.factories
+package app.domain.resource
 
-import app.domain.resource.Token
+import app.domain.auth.Token
 import com.github.nscala_time.time.Imports.DateTime
 
 object FactoryToken {

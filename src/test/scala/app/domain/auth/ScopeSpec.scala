@@ -1,6 +1,6 @@
-package test.app.domain.resource
+package test.app.domain.auth
 
-import app.domain.resource.Scope
+import app.domain.auth.Scope
 import org.scalatest.FunSuite
 
 class ScopeSpec extends FunSuite {

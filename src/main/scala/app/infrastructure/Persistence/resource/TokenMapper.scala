@@ -2,7 +2,7 @@ package app.infrastructure.Persistence.resource
 
 import java.util.UUID
 
-import app.domain.resource.Token
+import app.domain.auth.Token
 
 object TokenMapper {
   def toPersistence(token: Token): TokenPersistentModel = {

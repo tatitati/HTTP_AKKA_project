@@ -1,6 +1,6 @@
 package app.infrastructure.Persistence.resource
 
-import app.domain.resource.Scope
+import app.domain.auth.Scope
 
 object ScopeMapper {
 

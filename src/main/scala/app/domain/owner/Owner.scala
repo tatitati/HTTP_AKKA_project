@@ -1,5 +1,6 @@
 package app.domain.owner
 
+import app.domain.auth.Auth
 import com.github.nscala_time.time.Imports.DateTime
 
 class Owner(private var profile: OwnerProfile, private var listAuth: Auths) {

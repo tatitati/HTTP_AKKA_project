@@ -1,9 +1,9 @@
-package test.app.domain.token
+package test.app.domain.auth
 
 import builders.domain.{BuildToken, BuildUuid}
 import org.scalatest.FunSuite
 
-class CanBeRefreshedSpec extends FunSuite{
+class TokenOnRefreshSpec extends FunSuite{
   test("Must be used the valid refresh_token and the token must be expired") {
     val rightRefreshToken = BuildUuid.uuidOne()
     val wrongRefreshToken = BuildUuid.uuidTwo()

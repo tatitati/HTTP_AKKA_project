@@ -1,6 +1,7 @@
 package builders.domain
 
-import app.domain.resource.{ResourceByToken, Scope, Token}
+import app.domain.auth.{Scope, Token}
+import app.domain.resource.{ResourceByToken}
 import test.builders.Faker
 
 object BuildResourceByToken {

@@ -1,4 +1,4 @@
-package app.domain.resource
+package app.domain.auth
 
 import com.github.nscala_time.time.Imports.DateTime
 
