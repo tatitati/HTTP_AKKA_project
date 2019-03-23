@@ -1,9 +1,9 @@
 package test.app.domain.auth
 
 import java.util.UUID
-
+import app.domain.auth.Token
 import builders.BuildSurrogateId
-import com.github.nscala_time.time.Imports.DateTime
+import com.github.nscala_time.time.Imports._
 import test.builders.Faker
 
 object BuildToken {

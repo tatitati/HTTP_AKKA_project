@@ -1,6 +1,7 @@
 package app.domain.resource
 
-import app.domain.auth.{Code, Scope}
+import app.domain.auth.Scope
+import app.domain.code.Code
 import app.domain.owner.{BuildOwnerProfile, OwnerProfile}
 import app.domain.third.{BuildThird, BuildThirdCredentials, BuildThirdProfile, Third}
 import builders.BuildUuid

@@ -4,7 +4,7 @@ import app.domain.owner.{BuildOwner, BuildOwnerProfile, OwnerProfileMemento}
 import builders.domain.BuildOwnerProfile
 import org.scalatest.FunSuite
 
-class OwnerOnProfileSpec extends FunSuite {
+class OwnerActingOnProfileSpec extends FunSuite {
 
   test("Has an editable profile that only the owner can edit") {
     val givenOwner = BuildOwner.any(

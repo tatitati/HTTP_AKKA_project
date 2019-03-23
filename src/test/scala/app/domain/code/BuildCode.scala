@@ -1,4 +1,4 @@
-package test.app.domain.auth
+package app.domain.code
 
 import app.domain.RandomTextGenerator
 import com.github.nscala_time.time.Imports.DateTime

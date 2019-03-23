@@ -2,7 +2,8 @@ package app.infrastructure.Persistence.resource
 
 import java.util.UUID
 
-import app.domain.auth.{Code, Scope}
+import app.domain.auth.Scope
+import app.domain.code.Code
 import app.domain.owner.OwnerProfile
 import app.domain.resource.ResourceByCode
 import app.domain.third.{Third, ThirdCredentials, ThirdProfile}

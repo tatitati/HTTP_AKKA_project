@@ -1,6 +1,5 @@
 package app.domain.owner
 
-import app.domain.IdentifiableInPersistence
 import com.github.nscala_time.time.Imports.DateTime
 
 class OwnerProfile (
@@ -9,7 +8,7 @@ class OwnerProfile (
               private var surname: String,
               private var emailconfirmed: Boolean,
               private var datebirth: DateTime
-             ) extends IdentifiableInPersistence {
+             ) {
 
   def setFirstname(newfirstname: String): Unit = {
     firstname = newfirstname

@@ -1,18 +1,26 @@
 package test.app.domain.auth
 
-import java.util.UUID
-
-import app.domain.third.{BuildThird, Third}
+import app.domain.auth.{Auth, AuthId, Scope, Token}
+import app.domain.owner.OwnerId
+import app.domain.third.ThirdId
 import builders.BuildUuid
+import test.builders.Faker
 
 object BuildAuth {
 
   def any(
-           withUUID: UUID = BuildUuid.any(),
-           withThird: Third = BuildThird.any(),
+           withId: AuthId = AuthId(BuildUuid.any()),
+           withThird: ThirdId = ThirdId(BuildUuid.any()),
+           withOwnerId: OwnerId = OwnerId(Faker.text()),
            withScope: Scope = BuildScope.any(),
-           withToken: Option[Token] = Some(BuildToken.any())
+           withToken: Token = BuildToken.any()
          ): Auth = {
-    new Auth(withUUID, withThird, withScope, withToken)
+    new Auth(
+      authId = withId,
+      thirdId = withThird,
+      ownerId = withOwnerId,
+      scope = withScope,
+      token = withToken
+    )
   }
 }

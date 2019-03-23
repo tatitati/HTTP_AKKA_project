@@ -1,6 +1,5 @@
-package test.app.domain.auth
+package app.domain.code
 
-import app.domain.auth.Scope
 import test.builders.Faker
 
 object BuildScope {
