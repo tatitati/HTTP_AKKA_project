@@ -4,7 +4,11 @@ import app.domain.model.auth.AuthId
 import app.domain.model.owner.{OwnerId, OwnerProfile, OwnerProfileMemento}
 import com.github.nscala_time.time.Imports.DateTime
 
-class Owner(val ownerId: OwnerId, var profile: OwnerProfile, private var auths: Vector[AuthId]) {
+class Owner(
+             val ownerId: OwnerId,
+             var profile: OwnerProfile,
+             private var auths: Vector[AuthId]
+           ) {
 
   def equals(owner: Owner): Boolean = {
     ownerId.equals(owner.ownerId)
