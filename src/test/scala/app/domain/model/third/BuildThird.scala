@@ -1,7 +1,7 @@
 package app.domain.third
 
 import java.util.UUID
-import builders.{BuildSurrogateId, BuildUuid}
+import test.builders.{BuildSurrogateId, BuildUuid}
 
 object BuildThird {
     def any(

@@ -1,7 +1,7 @@
 package app.domain.third
 
 import java.util.UUID
-import builders.BuildUuid
+import test.builders.BuildUuid
 import org.scalatest.FunSuite
 
 class ThirdSpec extends FunSuite {

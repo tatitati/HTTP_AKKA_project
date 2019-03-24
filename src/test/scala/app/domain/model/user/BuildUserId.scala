@@ -1,12 +1,16 @@
-package test.app.domain.model.owner
+package test.app.domain.model.user
 
-import java.util.UUID
 import app.domain.model.user.UserId
-import builders.BuildUuid
+import scala.util.Random
 
 object BuildUserId {
 
-  def any(withValue: UUID = BuildUuid.any()): UserId = {
+  def any(withValue: String = text()): UserId = {
     UserId(withValue)
+  }
+
+  private def text(length: Int = 10): String = {
+    val value = for(i <- 1 to length) yield { Random.nextPrintableChar() }
+    value.mkString
   }
 }

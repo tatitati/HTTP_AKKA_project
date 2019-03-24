@@ -1,24 +1,23 @@
 package app.domain.model.user
 
-import app.domain.owner.{BuildUser, BuildUserProfile}
-import builders.BuildUuid
+import test.app.domain.user.{BuildUser, BuildUserProfile}
 import org.scalatest.FunSuite
 import test.app.domain.model.auth.BuildAuthId
-import test.app.domain.model.owner.BuildUserId
+import test.app.domain.model.user.BuildUserId
 
 class UserSpec extends FunSuite {
 
   test("Can compare two owners") {
     val owner1 = BuildUser.any(
-      withUserId = BuildUserId.any(withValue = BuildUuid.uuidOne())
+      withUserId = BuildUserId.any(withValue = "email1")
     )
 
     val owner2 = BuildUser.any(
-      withUserId = BuildUserId.any(withValue = BuildUuid.uuidTwo())
+      withUserId = BuildUserId.any(withValue = "email2")
     )
 
     val owner3 = BuildUser.any(
-      withUserId = BuildUserId.any(withValue = BuildUuid.uuidTwo())
+      withUserId = BuildUserId.any(withValue = "email2")
     )
 
     assert(owner1.equals(owner2) === false)

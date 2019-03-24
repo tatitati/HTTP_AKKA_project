@@ -1,6 +1,4 @@
-package builders
-
-import test.builders.Faker
+package test.builders
 
 object BuildSurrogateId {
   def any(): Option[Long] = {

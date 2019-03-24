@@ -3,7 +3,7 @@ package test.app.domain.model.auth
 import java.util.UUID
 
 import app.domain.model.auth.AuthId
-import builders.BuildUuid
+import test.builders.BuildUuid
 
 object BuildAuthId {
 

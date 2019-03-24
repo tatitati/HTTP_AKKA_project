@@ -2,7 +2,7 @@ package app.domain.model.auth
 
 import java.util.UUID
 
-import builders.BuildSurrogateId
+import test.builders.BuildSurrogateId
 import com.github.nscala_time.time.Imports._
 import test.builders.Faker
 

@@ -1,4 +1,4 @@
-package app.domain.owner
+package app.domain.user
 
 import app.domain.model.auth.AuthId
 import app.domain.model.user.{UserId, UserProfile, UserProfileMemento}

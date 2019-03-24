@@ -1,7 +1,7 @@
 package test.app.domain.model.ownerstore
 
 import app.domain.model.user.UserProfileMemento
-import app.domain.owner.BuildUserProfile
+import test.app.domain.user.BuildUserProfile
 import org.scalatest.FunSuite
 
 class UserProfileSpec extends FunSuite {
