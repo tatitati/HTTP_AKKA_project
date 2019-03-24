@@ -1,6 +1,6 @@
-package app.domain.code
+package app.domain.model.code
 
-import app.domain.IdentifiableInPersistence
+import app.domain.model.IdentifiableInPersistence
 
 case class Scope(
                   val firstname: Boolean,
