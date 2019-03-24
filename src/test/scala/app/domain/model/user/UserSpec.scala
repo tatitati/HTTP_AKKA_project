@@ -36,18 +36,16 @@ class UserSpec extends FunSuite {
     )
 
     assert(owner.getProfileMemento.firstname === "firstname")
-    owner.setFirstname("new firstname")
+    owner.updateFirstname("new firstname")
     assert(owner.getProfileMemento.firstname === "new firstname")
   }
 
   test("Can check if is related to an specific Auth") {
-    val owner = BuildUser.any(withAuths = Vector(
-      BuildAuthId.any1(),
-      BuildAuthId.any(),
-    ))
-
+    val auth0 = BuildAuthId.any()
     val auth1 = BuildAuthId.any1()
     val auth2 = BuildAuthId.any2()
+
+    val owner = BuildUser.any(withAuths = Vector(auth1, auth0))
 
     assert(owner.exist(auth1) === true)
     assert(owner.exist(auth2) === false)

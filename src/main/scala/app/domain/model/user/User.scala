@@ -16,9 +16,11 @@ class User(
 
   def getProfileMemento: UserProfileMemento = profile.memento
 
-  def setFirstname(firstname: String): Unit = profile.firstname = firstname
-  def setSurname(surname: String): Unit = profile.surname = surname
-  def setEmail(email: String): Unit = profile.email = email
+  def updateFirstname(firstname: String): Unit = profile.firstname = firstname
+  def updateSurname(surname: String): Unit = profile.surname = surname
+  def updateEmail(email: String): Unit = {
+    profile.email = email
+  }
   def confirmEmail(isConfirmed: Boolean): Unit = profile.emailconfirmed = isConfirmed
   def setDatebirth(datebirth: DateTime): Unit = profile.datebirth = datebirth
 
