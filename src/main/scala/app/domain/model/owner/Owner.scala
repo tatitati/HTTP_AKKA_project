@@ -14,7 +14,7 @@ class Owner(
     ownerId.equals(owner.ownerId)
   }
 
-  def getOwnerProfile: OwnerProfileMemento = profile.memento
+  def getProfileMemento: OwnerProfileMemento = profile.memento
 
   def setFirstname(firstname: String): Unit = profile.firstname = firstname
   def setSurname(surname: String): Unit = profile.surname = surname

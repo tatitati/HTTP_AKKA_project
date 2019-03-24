@@ -1,42 +1,46 @@
 package app.domain.third
 
 import java.util.UUID
-
-import app.domain.{IdentifiableInPersistence, RandomTextGenerator}
+import app.domain.model.IdentifiableInPersistence
+import scala.util.Random
 
 case class Third(
                   val Uuid: UUID,
                   private var profile: ThirdProfile,
-                  private var credentials: ThirdCredentials)
-  extends IdentifiableInPersistence with RandomTextGenerator {
+                  private var credentials: Credentials)
+  extends IdentifiableInPersistence {
 
-  def getCredentials: ThirdCredentials = credentials
-  def getProfile: ThirdProfileMemento = profile.memento
+  def getCredentials: Credentials = credentials
+  def getProfileMemento: ThirdProfileMemento = profile.memento
 
   def refreshCredentials(): Unit = {
-    credentials = ThirdCredentials(
+    credentials = Credentials(
       clientId = makeRandomText(),
       clientSecret = makeRandomText()
     )
   }
 
   def updateName(withName: String): Unit = {
-    profile.updateName(withName)
+    profile.name = withName
   }
 
   def updateCallbackUrl(withCallback: String): Unit = {
-    profile.updateCallbackUrl(withCallback)
+    profile.callback = withCallback
   }
 
   def updateHomepage(withHomepage: String): Unit = {
-    profile.updateHomepage(withHomepage)
+    profile.homepage = withHomepage
   }
 
   def updateDescription(withDescription: String): Unit = {
-    profile.updateDescription(withDescription)
+    profile.description = withDescription
   }
 
   def equals(third: Third): Boolean = {
     this.Uuid.equals(third.Uuid)
+  }
+
+  private def makeRandomText(length: Int = 10): String = {
+    Random.alphanumeric take length mkString
   }
 }

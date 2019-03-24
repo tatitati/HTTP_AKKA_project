@@ -28,7 +28,7 @@ class OwnerSpec extends FunSuite {
   test("Get right properties") {
     val owner = BuildOwner.any()
 
-    assert(owner.getOwnerProfile.isInstanceOf[OwnerProfileMemento])
+    assert(owner.getProfileMemento.isInstanceOf[OwnerProfileMemento])
   }
 
   test("Can edit profile") {
@@ -36,9 +36,9 @@ class OwnerSpec extends FunSuite {
       withProfile = BuildOwnerProfile.specific()
     )
 
-    assert(owner.getOwnerProfile.firstname === "firstname")
+    assert(owner.getProfileMemento.firstname === "firstname")
     owner.setFirstname("new firstname")
-    assert(owner.getOwnerProfile.firstname === "new firstname")
+    assert(owner.getProfileMemento.firstname === "new firstname")
   }
 
   test("Can check if is related to an specific Auth") {

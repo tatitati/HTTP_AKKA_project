@@ -1,7 +1,6 @@
 package app.domain.third
 
 import java.util.UUID
-
 import builders.BuildUuid
 import org.scalatest.FunSuite
 
@@ -14,17 +13,9 @@ class ThirdSpec extends FunSuite {
   }
 
   test("Equals use the key to compare") {
-    val third1 = BuildThird.any(
-      withUUID = BuildUuid.uuidOne()
-    )
-
-    val third2 = BuildThird.any(
-      withUUID = BuildUuid.uuidTwo()
-    )
-
-    val third3 = BuildThird.any(
-      withUUID = BuildUuid.uuidTwo()
-    )
+    val third1 = BuildThird.any(withUUID = BuildUuid.uuidOne())
+    val third2 = BuildThird.any(withUUID = BuildUuid.uuidTwo())
+    val third3 = BuildThird.any(withUUID = BuildUuid.uuidTwo())
 
     assert(third1.equals(third2) === false)
     assert(third2.equals(third3) === true)
@@ -39,15 +30,14 @@ class ThirdSpec extends FunSuite {
 
     givenThird.updateName("second name")
 
-    assert(givenThird.getProfile.name === "second name")
+    assert(givenThird.getProfileMemento.name === "second name")
   }
 
-  test("can refresh third credentials if they are compromised") {
+  test("can refresh credentials") {
     val givenThird = BuildThird.any()
+
     val credentialsOriginal = givenThird.getCredentials
-
     givenThird.refreshCredentials()
-
     val credentialsUpdated = givenThird.getCredentials
 
     assert(credentialsOriginal !== credentialsUpdated)
