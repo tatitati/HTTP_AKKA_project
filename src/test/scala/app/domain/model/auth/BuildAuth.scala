@@ -17,7 +17,7 @@ object BuildAuth {
            withToken: Token = BuildToken.any()
          ): Auth = {
     new Auth(
-      authId = withId,
+      id = withId,
       thirdId = withThird,
       userId = withUserId,
       scope = withScope,

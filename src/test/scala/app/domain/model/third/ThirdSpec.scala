@@ -9,13 +9,13 @@ class ThirdSpec extends FunSuite {
   test("Identifier UUID the proper type") {
     val third = BuildThird.any()
 
-    assert(third.Uuid.isInstanceOf[UUID] === true)
+    assert(third.id.isInstanceOf[UUID] === true)
   }
 
   test("Equals use the key to compare") {
-    val third1 = BuildThird.any(withUUID = BuildUuid.uuidOne())
-    val third2 = BuildThird.any(withUUID = BuildUuid.uuidTwo())
-    val third3 = BuildThird.any(withUUID = BuildUuid.uuidTwo())
+    val third1 = BuildThird.any(withId = BuildUuid.uuidOne())
+    val third2 = BuildThird.any(withId = BuildUuid.uuidTwo())
+    val third3 = BuildThird.any(withId = BuildUuid.uuidTwo())
 
     assert(third1.equals(third2) === false)
     assert(third2.equals(third3) === true)

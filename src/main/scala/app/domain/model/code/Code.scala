@@ -5,7 +5,7 @@ import app.domain.model.user.UserId
 import app.domain.model.third.ThirdId
 
 case class Code(
-                 val codeId: CodeId,
+                 val id: CodeId,
                  val ownerId: UserId,
                  val thirdId: ThirdId,
                  val state: String,

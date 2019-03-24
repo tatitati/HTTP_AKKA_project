@@ -5,7 +5,7 @@ import app.domain.model.IdentifiableInPersistence
 import scala.util.Random
 
 case class Third(
-                  val Uuid: UUID,
+                  val id: UUID,
                   private var profile: ThirdProfile,
                   private var credentials: Credentials)
   extends IdentifiableInPersistence {
@@ -13,7 +13,7 @@ case class Third(
   def getCredentials: Credentials = credentials
   def getProfileMemento: ThirdProfileMemento = profile.memento
   def equals(third: Third): Boolean = {
-    this.Uuid.equals(third.Uuid)
+    this.id.equals(third.id)
   }
 
   def refreshCredentials(): Unit = {

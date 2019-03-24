@@ -5,7 +5,7 @@ import app.domain.model.user.UserId
 import app.domain.model.third.ThirdId
 
 class Auth(
-            val authId: AuthId,
+            val id: AuthId,
             private val thirdId: ThirdId,
             private val userId: UserId,
             private val scope: AuthScope,
@@ -13,7 +13,7 @@ class Auth(
   ) extends IdentifiableInPersistence {
 
   def equals(auth: Auth): Boolean = {
-    authId.equals(auth.authId)
+    id.equals(auth.id)
   }
 
   def canReadFirstname: Boolean = scope.firstname

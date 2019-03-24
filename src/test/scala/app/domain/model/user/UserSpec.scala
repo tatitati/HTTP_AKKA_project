@@ -9,15 +9,15 @@ class UserSpec extends FunSuite {
 
   test("Can compare two owners") {
     val owner1 = BuildUser.any(
-      withUserId = BuildUserId.any(withValue = "email1")
+      withId = BuildUserId.any(withValue = "email1")
     )
 
     val owner2 = BuildUser.any(
-      withUserId = BuildUserId.any(withValue = "email2")
+      withId = BuildUserId.any(withValue = "email2")
     )
 
     val owner3 = BuildUser.any(
-      withUserId = BuildUserId.any(withValue = "email2")
+      withId = BuildUserId.any(withValue = "email2")
     )
 
     assert(owner1.equals(owner2) === false)
