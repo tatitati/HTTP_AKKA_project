@@ -1,3 +1,5 @@
 package app.domain.model.owner
 
-case class OwnerId(value: String)
+import java.util.UUID
+
+case class OwnerId(value: UUID)

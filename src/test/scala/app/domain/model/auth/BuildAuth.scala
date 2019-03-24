@@ -4,14 +4,13 @@ import app.domain.model.auth._
 import app.domain.model.owner.OwnerId
 import app.domain.model.third.ThirdId
 import builders.BuildUuid
-import test.builders.Faker
 
 object BuildAuth {
 
   def any(
            withId: AuthId = AuthId(BuildUuid.any()),
            withThird: ThirdId = ThirdId(BuildUuid.any()),
-           withOwnerId: OwnerId = OwnerId(Faker.text()),
+           withOwnerId: OwnerId = OwnerId(BuildUuid.any()),
            withScope: AuthScope = BuildScope.any(),
            withToken: Token = BuildToken.any()
          ): Auth = {

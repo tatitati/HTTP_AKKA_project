@@ -1,6 +1,7 @@
 package app.domain.model.owner
 
 import app.domain.owner.{BuildOwner, BuildOwnerProfile}
+import builders.BuildUuid
 import org.scalatest.FunSuite
 import test.app.domain.model.auth.BuildAuthId
 import test.app.domain.model.owner.BuildOwnerId
@@ -9,15 +10,15 @@ class OwnerSpec extends FunSuite {
 
   test("Can compare two owners") {
     val owner1 = BuildOwner.any(
-      withOwnerId = BuildOwnerId.any(withValue = "emailA")
+      withOwnerId = BuildOwnerId.any(withValue = BuildUuid.uuidOne())
     )
 
     val owner2 = BuildOwner.any(
-      withOwnerId = BuildOwnerId.any(withValue = "emailB")
+      withOwnerId = BuildOwnerId.any(withValue = BuildUuid.uuidTwo())
     )
 
     val owner3 = BuildOwner.any(
-      withOwnerId = BuildOwnerId.any(withValue = "emailB")
+      withOwnerId = BuildOwnerId.any(withValue = BuildUuid.uuidTwo())
     )
 
     assert(owner1.equals(owner2) === false)
