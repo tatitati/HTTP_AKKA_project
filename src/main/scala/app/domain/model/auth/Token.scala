@@ -1,7 +1,6 @@
 package app.domain.model.auth
 
 import java.util.UUID
-
 import app.domain.model.IdentifiableInPersistence
 import com.github.nscala_time.time.Imports._
 

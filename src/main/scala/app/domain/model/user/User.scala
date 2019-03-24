@@ -5,13 +5,13 @@ import app.domain.model.user.{UserId, UserProfile, UserProfileMemento}
 import com.github.nscala_time.time.Imports.DateTime
 
 class User(
-            val ownerId: UserId,
+            val userId: UserId,
             var profile: UserProfile,
             private var auths: Vector[AuthId]
            ) {
 
   def equals(owner: User): Boolean = {
-    ownerId.equals(owner.ownerId)
+    userId.equals(owner.userId)
   }
 
   def getProfileMemento: UserProfileMemento = profile.memento

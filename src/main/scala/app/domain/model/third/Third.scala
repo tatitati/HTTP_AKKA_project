@@ -12,6 +12,9 @@ case class Third(
 
   def getCredentials: Credentials = credentials
   def getProfileMemento: ThirdProfileMemento = profile.memento
+  def equals(third: Third): Boolean = {
+    this.Uuid.equals(third.Uuid)
+  }
 
   def refreshCredentials(): Unit = {
     credentials = Credentials(
@@ -34,10 +37,6 @@ case class Third(
 
   def updateDescription(withDescription: String): Unit = {
     profile.description = withDescription
-  }
-
-  def equals(third: Third): Boolean = {
-    this.Uuid.equals(third.Uuid)
   }
 
   private def makeRandomText(length: Int = 10): String = {
