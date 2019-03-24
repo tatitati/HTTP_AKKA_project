@@ -9,8 +9,30 @@ class TokenSpec extends FunSuite{
     val givenLiveToken = BuildToken.anyLive()
     val givenExpiredToken = BuildToken.anyExpired()
 
-    assert(givenLiveToken.isLive === false)
-    assert(givenExpiredToken.isLive === true)
+    assert(givenLiveToken.isLive === true)
+    assert(givenExpiredToken.isLive === false)
+  }
+
+  test("Cannot refresh if is still live") {
+    val refreshToken = BuildUuid.uuidOne()
+    val liveToken = BuildToken.anyLive(withRefreshToken = refreshToken)
+
+    assert(liveToken.canBeRefreshed(refreshToken, "refresh_token") === false, "aaa")
+  }
+
+  test("Cannot refresh if used wrong GRANT TYPE") {
+    val refreshToken = BuildUuid.uuidOne()
+    val expiredToken = BuildToken.anyExpired(withRefreshToken = refreshToken)
+
+    assert(expiredToken.canBeRefreshed(refreshToken, "wrong_gran_type") === false, "bbbb")
+  }
+
+  test("Cannot refresh if used wrong refresh_token") {
+    val refreshToken = BuildUuid.uuidOne()
+    val wrongRefreshToken = BuildUuid.uuidTwo()
+    val expiredToken = BuildToken.anyExpired(withRefreshToken = refreshToken)
+
+    assert(expiredToken.canBeRefreshed(wrongRefreshToken, "refresh_token") === false)
   }
 
   test("Can refresh if is expired and is used the correct refresh_token") {
@@ -20,17 +42,6 @@ class TokenSpec extends FunSuite{
       withRefreshToken = rightRefreshToken
     )
 
-    assert(expiredToken.canRefreshWithParams(rightRefreshToken, "refresh_token") === true)
-  }
-
-  test("Cannot refresh token if using wrong GRANT TYPE") {
-    val rightRefreshToken = BuildUuid.uuidOne()
-    val wrongRefreshToken = BuildUuid.uuidTwo()
-    val expiredToken = BuildToken.anyExpired(
-      withRefreshToken = rightRefreshToken
-    )
-
-    assert(expiredToken.canRefreshWithParams(wrongRefreshToken, "refresh_token") === false)
-    assert(expiredToken.canRefreshWithParams(rightRefreshToken, "wrong_gran_type") === false)
+    assert(expiredToken.canBeRefreshed(rightRefreshToken, "refresh_token") === true)
   }
 }

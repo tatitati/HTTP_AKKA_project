@@ -18,9 +18,9 @@ class Token(
     expireInDate >= now
   }
 
-  def canRefreshWithParams(givenRefreshToken: UUID, givenGrantType: String): Boolean = {
-    givenGrantType match {
-      case "refresh_token" => refreshToken.equals(givenRefreshToken)
+  def canBeRefreshed(withRefreshToken: UUID, grantType: String): Boolean = {
+    grantType match {
+      case "refresh_token" if !isLive => refreshToken.equals(withRefreshToken)
       case _ => false
     }
   }
