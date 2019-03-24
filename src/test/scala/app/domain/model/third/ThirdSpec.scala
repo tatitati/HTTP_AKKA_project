@@ -42,4 +42,10 @@ class ThirdSpec extends FunSuite {
 
     assert(credentialsOriginal !== credentialsUpdated)
   }
+
+  test("The profile returned is a memento") {
+    val givenThird = BuildThird.any()
+
+    assert(givenThird.getProfileMemento.isInstanceOf[ThirdProfileMemento])
+  }
 }

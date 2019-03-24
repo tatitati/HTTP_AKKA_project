@@ -1,13 +1,13 @@
 package app.domain.model.auth
 
 import app.domain.model.IdentifiableInPersistence
-import app.domain.model.owner.OwnerId
+import app.domain.model.user.UserId
 import app.domain.model.third.ThirdId
 
 class Auth(
             val authId: AuthId,
             private val thirdId: ThirdId,
-            private val ownerId: OwnerId,
+            private val userId: UserId,
             private val scope: AuthScope,
             private var token: Token
   ) extends IdentifiableInPersistence {

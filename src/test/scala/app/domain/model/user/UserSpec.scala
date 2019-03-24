@@ -1,24 +1,24 @@
-package app.domain.model.owner
+package app.domain.model.user
 
-import app.domain.owner.{BuildOwner, BuildOwnerProfile}
+import app.domain.owner.{BuildUser, BuildUserProfile}
 import builders.BuildUuid
 import org.scalatest.FunSuite
 import test.app.domain.model.auth.BuildAuthId
-import test.app.domain.model.owner.BuildOwnerId
+import test.app.domain.model.owner.BuildUserId
 
-class OwnerSpec extends FunSuite {
+class UserSpec extends FunSuite {
 
   test("Can compare two owners") {
-    val owner1 = BuildOwner.any(
-      withOwnerId = BuildOwnerId.any(withValue = BuildUuid.uuidOne())
+    val owner1 = BuildUser.any(
+      withUserId = BuildUserId.any(withValue = BuildUuid.uuidOne())
     )
 
-    val owner2 = BuildOwner.any(
-      withOwnerId = BuildOwnerId.any(withValue = BuildUuid.uuidTwo())
+    val owner2 = BuildUser.any(
+      withUserId = BuildUserId.any(withValue = BuildUuid.uuidTwo())
     )
 
-    val owner3 = BuildOwner.any(
-      withOwnerId = BuildOwnerId.any(withValue = BuildUuid.uuidTwo())
+    val owner3 = BuildUser.any(
+      withUserId = BuildUserId.any(withValue = BuildUuid.uuidTwo())
     )
 
     assert(owner1.equals(owner2) === false)
@@ -26,14 +26,14 @@ class OwnerSpec extends FunSuite {
   }
 
   test("Get right properties") {
-    val owner = BuildOwner.any()
+    val owner = BuildUser.any()
 
-    assert(owner.getProfileMemento.isInstanceOf[OwnerProfileMemento])
+    assert(owner.getProfileMemento.isInstanceOf[UserProfileMemento])
   }
 
   test("Can edit profile") {
-    val owner = BuildOwner.any(
-      withProfile = BuildOwnerProfile.specific()
+    val owner = BuildUser.any(
+      withProfile = BuildUserProfile.specific()
     )
 
     assert(owner.getProfileMemento.firstname === "firstname")
@@ -42,7 +42,7 @@ class OwnerSpec extends FunSuite {
   }
 
   test("Can check if is related to an specific Auth") {
-    val owner = BuildOwner.any(withAuths = Vector(
+    val owner = BuildUser.any(withAuths = Vector(
       BuildAuthId.any1(),
       BuildAuthId.any(),
     ))

@@ -1,8 +1,8 @@
-package app.domain.model.owner
+package app.domain.model.user
 
 import com.github.nscala_time.time.Imports.DateTime
 
-class OwnerProfile (
+class UserProfile(
               var email: String,
               var firstname: String,
               var surname: String,
@@ -10,8 +10,8 @@ class OwnerProfile (
               var datebirth: DateTime
              ) {
 
-  def memento: OwnerProfileMemento = {
-    OwnerProfileMemento(
+  def memento: UserProfileMemento = {
+    UserProfileMemento(
       firstname,
       surname,
       email,

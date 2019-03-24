@@ -1,11 +1,11 @@
 package app.domain.owner
 
-import app.domain.model.owner.OwnerProfile
+import app.domain.model.user.UserProfile
 import builders.BuildSurrogateId
 import com.github.nscala_time.time.Imports.DateTime
 import test.builders.Faker
 
-object BuildOwnerProfile {
+object BuildUserProfile {
 
   def any(
            withSurrogateId: Option[Long] =  BuildSurrogateId.any(),
@@ -14,9 +14,9 @@ object BuildOwnerProfile {
            withEmail: String = Faker.text(),
            withEmailConfirmed: Boolean = Faker.boolean(),
            withDatebirth: DateTime = Faker.date()
-         ): OwnerProfile = {
+         ): UserProfile = {
 
-    new OwnerProfile(
+    new UserProfile(
       firstname = withFirstname,
       surname = withSurname,
       email = withEmail,
@@ -25,8 +25,8 @@ object BuildOwnerProfile {
     )
   }
 
-  def specific(): OwnerProfile = {
-    new OwnerProfile(
+  def specific(): UserProfile = {
+    new UserProfile(
       email = "email",
       emailconfirmed = true,
       firstname = "firstname",

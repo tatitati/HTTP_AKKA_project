@@ -1,20 +1,20 @@
 package app.domain.owner
 
 import app.domain.model.auth.AuthId
-import app.domain.model.owner.{OwnerId, OwnerProfile, OwnerProfileMemento}
+import app.domain.model.user.{UserId, UserProfile, UserProfileMemento}
 import com.github.nscala_time.time.Imports.DateTime
 
-class Owner(
-             val ownerId: OwnerId,
-             var profile: OwnerProfile,
-             private var auths: Vector[AuthId]
+class User(
+            val ownerId: UserId,
+            var profile: UserProfile,
+            private var auths: Vector[AuthId]
            ) {
 
-  def equals(owner: Owner): Boolean = {
+  def equals(owner: User): Boolean = {
     ownerId.equals(owner.ownerId)
   }
 
-  def getProfileMemento: OwnerProfileMemento = profile.memento
+  def getProfileMemento: UserProfileMemento = profile.memento
 
   def setFirstname(firstname: String): Unit = profile.firstname = firstname
   def setSurname(surname: String): Unit = profile.surname = surname
