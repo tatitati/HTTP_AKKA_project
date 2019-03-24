@@ -7,12 +7,12 @@ class TokenSpec extends FunSuite{
 
   test("Know if a token is live") {
     val givenToken = BuildToken.anyLive()
-    assert(givenToken.isExpired === false)
+    assert(givenToken.isLive === false)
   }
 
   test("Know if a token is expired") {
     val givenToken = BuildToken.anyExpired()
-    assert(givenToken.isExpired === true)
+    assert(givenToken.isLive === true)
   }
 
   test("Can refresh if is expired and is used the correct refresh_token") {

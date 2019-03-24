@@ -12,10 +12,10 @@ class Token(
              val generatedIn: DateTime
   ) extends IdentifiableInPersistence {
 
-  def isExpired: Boolean = {
+  def isLive: Boolean = {
     val expireInDate = generatedIn + expiresIn.seconds
     val now = DateTime.now()
-    expireInDate < now
+    expireInDate >= now
   }
 
   def canRefreshWithParams(givenRefreshToken: UUID, givenGrantType: String): Boolean = {

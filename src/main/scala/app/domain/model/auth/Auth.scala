@@ -16,7 +16,18 @@ class Auth(
     id.equals(auth.id)
   }
 
-  def canReadFirstname: Boolean = scope.firstname
-  def canReadSurname: Boolean = scope.surname
-  def canReadEmail: Boolean = scope.email
+  def canReadFirstname: Boolean = token.isLive match {
+    case true => scope.firstname
+    case _ => false
+  }
+
+  def canReadSurname: Boolean = token.isLive match {
+    case true => scope.surname
+    case _ => false
+  }
+
+  def canReadEmail: Boolean = token.isLive match {
+    case true => scope.email
+    case _ => false
+  }
 }
