@@ -40,6 +40,19 @@ class UserSpec extends FunSuite {
     assert(owner.getProfileMemento.firstname === "new firstname")
   }
 
+  test("Set confirmed email to false after updating email") {
+    val owner = BuildUser.any(
+      withProfile = BuildUserProfile.any(
+        withEmail = "myemail",
+        withEmailConfirmed = true
+      )
+    )
+
+    owner.updateEmail("any new email")
+
+    assert(owner.getProfileMemento.emailconfirmed === false)
+  }
+
   test("Can check if is related to an specific Auth") {
     val auth0 = BuildAuthId.any()
     val auth1 = BuildAuthId.any1()
