@@ -12,7 +12,7 @@ object BuildAuth {
            withId: AuthId = AuthId(BuildUuid.any()),
            withThird: ThirdId = ThirdId(BuildUuid.any()),
            withOwnerId: OwnerId = OwnerId(Faker.text()),
-           withScope: Scope = BuildScope.any(),
+           withScope: AuthScope = BuildScope.any(),
            withToken: Token = BuildToken.any()
          ): Auth = {
     new Auth(

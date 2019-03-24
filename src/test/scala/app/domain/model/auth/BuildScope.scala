@@ -1,12 +1,12 @@
 package test.app.domain.model.auth
 
-import app.domain.model.auth.Scope
+import app.domain.model.auth.AuthScope
 import test.builders.Faker
 
 object BuildScope {
 
-  def onlyEmailAndFirstname(withSurrogateId: Option[Long] = None): Scope = {
-    val scope = new Scope(true, false, true)
+  def onlyEmailAndFirstname(withSurrogateId: Option[Long] = None): AuthScope = {
+    val scope = new AuthScope(true, false, true)
 
     if (withSurrogateId != None) {
       scope.setSurrogateId(withSurrogateId)
@@ -15,8 +15,8 @@ object BuildScope {
     scope
   }
 
-  def onlySurname(withSurrogateId: Option[Long] = None): Scope = {
-    val scope = new Scope(false, true, false)
+  def onlySurname(withSurrogateId: Option[Long] = None): AuthScope = {
+    val scope = new AuthScope(false, true, false)
 
     if (withSurrogateId != None) {
       scope.setSurrogateId(withSurrogateId)
@@ -25,7 +25,7 @@ object BuildScope {
     scope
   }
 
-  def any(withSurrogateId: Option[Long] = None): Scope = {
+  def any(withSurrogateId: Option[Long] = None): AuthScope = {
     Faker(
       onlyEmailAndFirstname(withSurrogateId),
       onlySurname(withSurrogateId)

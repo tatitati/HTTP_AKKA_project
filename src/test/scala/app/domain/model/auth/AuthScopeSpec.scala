@@ -1,13 +1,13 @@
 package test.app.domain.model.auth
 
-import app.domain.model.auth.Scope
+import app.domain.model.auth.AuthScope
 import org.scalatest.FunSuite
 
-class ScopeSpec extends FunSuite {
+class AuthScopeSpec extends FunSuite {
 
   test("An scope that forbid everything cannot be created") {
     val thrown = intercept[IllegalArgumentException] {
-      Scope(false, false, false)
+      AuthScope(false, false, false)
     }
     assert(thrown.getMessage() === "An scope that forbid everything doesnt make sense")
   }

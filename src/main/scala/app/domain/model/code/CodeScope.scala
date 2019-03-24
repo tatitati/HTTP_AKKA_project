@@ -2,7 +2,7 @@ package app.domain.model.code
 
 import app.domain.model.IdentifiableInPersistence
 
-case class Scope(
+case class CodeScope(
                   val firstname: Boolean,
                   val surname: Boolean,
                   val email: Boolean

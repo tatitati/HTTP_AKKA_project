@@ -2,7 +2,7 @@ package app.domain.model.auth
 
 import app.domain.model.IdentifiableInPersistence
 
-case class Scope(
+case class AuthScope(
                   val firstname: Boolean,
                   val surname: Boolean,
                   val email: Boolean
