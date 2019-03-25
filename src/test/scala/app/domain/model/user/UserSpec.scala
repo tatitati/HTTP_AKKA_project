@@ -27,7 +27,7 @@ class UserSpec extends FunSuite {
   test("Get right properties") {
     val owner = BuildUser.any()
 
-    assert(owner.getProfileMemento.isInstanceOf[UserProfileMemento])
+    assert(owner.getProfile.isInstanceOf[UserProfile])
   }
 
   test("Can edit profile") {
@@ -35,9 +35,9 @@ class UserSpec extends FunSuite {
       withProfile = BuildUserProfile.specific()
     )
 
-    assert(owner.getProfileMemento.firstname === "firstname")
+    assert(owner.getProfile.firstname === "firstname")
     owner.updateFirstname("new firstname")
-    assert(owner.getProfileMemento.firstname === "new firstname")
+    assert(owner.getProfile.firstname === "new firstname")
   }
 
   test("Set confirmed email to false after updating email") {
@@ -50,7 +50,7 @@ class UserSpec extends FunSuite {
 
     owner.updateEmail("any new email")
 
-    assert(owner.getProfileMemento.emailconfirmed === false)
+    assert(owner.getProfile.emailconfirmed === false)
   }
 
   test("Can check if is related to an specific Auth") {

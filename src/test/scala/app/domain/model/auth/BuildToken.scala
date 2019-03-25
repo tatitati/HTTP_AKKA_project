@@ -14,19 +14,13 @@ object BuildToken {
                withRefreshToken: UUID = java.util.UUID.randomUUID,
                withAccessToken: UUID = java.util.UUID.randomUUID
              ): Token = {
-    val token = new Token(
+    new Token(
       accessToken = withAccessToken,
       tokenType = withTokenType,
       refreshToken = withRefreshToken,
       generatedIn = DateTime.now() - 5.seconds,
       expiresIn = withExpirationIn
     )
-
-    if (withSurrogateId != None) {
-        token.setSurrogateId(withSurrogateId)
-    }
-
-    token
   }
 
   def anyExpired(

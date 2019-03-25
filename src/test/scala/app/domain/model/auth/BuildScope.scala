@@ -6,23 +6,11 @@ import test.builders.Faker
 object BuildScope {
 
   def onlyEmailAndFirstname(withSurrogateId: Option[Long] = None): AuthScope = {
-    val scope = new AuthScope(true, false, true)
-
-    if (withSurrogateId != None) {
-      scope.setSurrogateId(withSurrogateId)
-    }
-
-    scope
+    new AuthScope(true, false, true)
   }
 
   def onlySurname(withSurrogateId: Option[Long] = None): AuthScope = {
-    val scope = new AuthScope(false, true, false)
-
-    if (withSurrogateId != None) {
-      scope.setSurrogateId(withSurrogateId)
-    }
-
-    scope
+    new AuthScope(false, true, false)
   }
 
   def any(withSurrogateId: Option[Long] = None): AuthScope = {

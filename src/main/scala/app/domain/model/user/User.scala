@@ -1,12 +1,12 @@
 package app.domain.user
 
 import app.domain.model.auth.AuthId
-import app.domain.model.user.{UserId, UserProfile, UserProfileMemento}
+import app.domain.model.user.{UserId, UserProfile}
 import com.github.nscala_time.time.Imports.DateTime
 
 class User(
             val id: UserId,
-            var profile: UserProfile,
+            private var profile: UserProfile,
             private var auths: Vector[AuthId]
            ) {
 
@@ -14,15 +14,26 @@ class User(
     id.equals(owner.id)
   }
 
-  def getProfileMemento: UserProfileMemento = profile.memento
-
-  def updateFirstname(firstname: String): Unit = profile.firstname = firstname
-  def updateSurname(surname: String): Unit = profile.surname = surname
-  def updateEmail(email: String): Unit = {
-    profile.email = email
+  def getProfile: UserProfile = {
+    profile
   }
-  def confirmEmail(isConfirmed: Boolean): Unit = profile.emailconfirmed = isConfirmed
-  def setDatebirth(datebirth: DateTime): Unit = profile.datebirth = datebirth
+
+  def updateFirstname(firstname: String): Unit = {
+    profile = profile.copy(firstname = firstname)
+  }
+  def updateSurname(surname: String): Unit = {
+    profile = profile.copy(surname = surname)
+  }
+  def updateEmail(email: String): Unit = {
+    profile = profile.copy(email = email, emailconfirmed = false)
+  }
+  def confirmEmail(): Unit = {
+    profile = profile.copy(emailconfirmed = true)
+  }
+
+  def setDatebirth(datebirth: DateTime): Unit = {
+    profile.copy(datebirth = datebirth)
+  }
 
   def exist(authId: AuthId): Boolean = {
     auths.exists(authId.equals(_))
