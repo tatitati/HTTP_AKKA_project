@@ -1,7 +1,7 @@
-package app.domain.model.auth
+package test.app.domain.model.auth
 
 import java.util.UUID
-
+import app.domain.model.auth.Token
 import test.builders.BuildSurrogateId
 import com.github.nscala_time.time.Imports._
 import test.builders.Faker

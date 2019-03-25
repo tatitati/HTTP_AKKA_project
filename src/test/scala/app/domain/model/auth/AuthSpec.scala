@@ -1,7 +1,7 @@
 package test.app.domain.model.auth
 
-import app.domain.model.auth.BuildToken
 import org.scalatest.FunSuite
+import test.builders.BuildUuid
 
 class AuthSpec extends FunSuite {
 
@@ -32,5 +32,22 @@ class AuthSpec extends FunSuite {
 
     assert(givenAuth.canReadFirstname === false)
     assert(givenAuth.canReadSurname === false)
+  }
+
+  test("Can refresh token if allowed") {
+    val givenRefreshToken = BuildUuid.uuidOne()
+    val givenAuth = BuildAuth.any(
+      withToken = BuildToken.anyExpired(withRefreshToken = givenRefreshToken),
+      withScope = BuildScope.onlyEmailAndFirstname()
+    )
+
+    assert(givenAuth.getToken.isLive === false)
+
+    val originalToken = givenAuth.getToken
+    val wasRefreshed = givenAuth.refreshToken(givenRefreshToken, "refresh_token")
+    val newtoken = givenAuth.getToken
+
+    assert(givenAuth.getToken.isLive === true)
+    assert(originalToken.equals(newtoken) === false)
   }
 }

@@ -1,4 +1,4 @@
-package app.domain.model.auth
+package test.app.domain.model.auth
 
 import test.builders.BuildUuid
 import org.scalatest.FunSuite
@@ -17,14 +17,14 @@ class TokenSpec extends FunSuite{
     val refreshToken = BuildUuid.uuidOne()
     val liveToken = BuildToken.anyLive(withRefreshToken = refreshToken)
 
-    assert(liveToken.canBeRefreshed(refreshToken, "refresh_token") === false, "aaa")
+    assert(liveToken.canBeRefreshed(refreshToken, "refresh_token") === false)
   }
 
   test("Cannot refresh if used wrong GRANT TYPE") {
     val refreshToken = BuildUuid.uuidOne()
     val expiredToken = BuildToken.anyExpired(withRefreshToken = refreshToken)
 
-    assert(expiredToken.canBeRefreshed(refreshToken, "wrong_gran_type") === false, "bbbb")
+    assert(expiredToken.canBeRefreshed(refreshToken, "wrong_gran_type") === false)
   }
 
   test("Cannot refresh if used wrong refresh_token") {
