@@ -7,8 +7,6 @@
 - [ ] **Complete persistence of Token firstly to persist later Auth**
 - [ ] **Think about Auth, it reference another whole aggregate (third), but it shouldnt**
 - [ ] Add license file
-- [ ] in infrastructure/user ther is a mapper. Changes in domain ripple to changes into this mapper, in a different layer.
-Should we put this domain + infrastructure under the same folder-component "user"?, in this way the changes of one component keeps together at least, and might make mroe obvious that something is wrong when something from this component that is not an ID is needed outside. We can keep a better boundary persistence (AKKA: aggregate)?
 - [ ] How to tag tests? (and filter them in the CLI)
 - [ ] Create custom taks in SBT to run tests in specific app-layers
 - [ ] How to set environment variables like Hosts, port for Redis?, for each environment...scala-env
