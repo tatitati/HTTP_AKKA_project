@@ -18,7 +18,7 @@ object UserMapper {
     )
 
     fromPersistent.id match {
-      case None => throw new IllegalArgumentException("A UserPersistentModel is expected to have a surrogate id in order to be mapped to domain")
+      case None => throw new IllegalArgumentException("A persisted UserPersistentModel is expected to have a surrogate id in order to be mapped to domain")
       case Some(value) if value.isInstanceOf[Long] => domain.setSurrogateId(fromPersistent.id)
     }
 
