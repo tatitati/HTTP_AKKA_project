@@ -6,8 +6,7 @@ import com.github.nscala_time.time.Imports.DateTime
 
 class User(
             val id: UserId,
-            private var profile: UserProfile,
-            private var auths: Vector[AuthId]
+            private var profile: UserProfile
            ) {
 
   def equals(owner: User): Boolean = {
@@ -33,9 +32,5 @@ class User(
 
   def setDatebirth(datebirth: DateTime): Unit = {
     profile.copy(datebirth = datebirth)
-  }
-
-  def exist(authId: AuthId): Boolean = {
-    auths.exists(authId.equals(_))
   }
 }

@@ -9,9 +9,8 @@ import test.app.domain.model.user.BuildUserId
 object BuildUser {
     def any(
              withId: UserId = BuildUserId.any(),
-             withProfile: UserProfile = BuildUserProfile.any(),
-             withAuths: Vector[AuthId] = Vector(BuildAuthId.any(), BuildAuthId.any())
+             withProfile: UserProfile = BuildUserProfile.any()
            ):User  = {
-      new User(withId, withProfile, withAuths)
+      new User(withId, withProfile)
     }
 }

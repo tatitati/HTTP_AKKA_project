@@ -52,16 +52,4 @@ class UserSpec extends FunSuite {
 
     assert(owner.getProfile.emailconfirmed === false)
   }
-
-  test("Can check if is related to an specific Auth") {
-    val auth0 = BuildAuthId.any()
-    val auth1 = BuildAuthId.any1()
-    val auth2 = BuildAuthId.any2()
-
-    val owner = BuildUser.any(withAuths = Vector(auth1, auth0))
-
-    assert(owner.exist(auth1) === true)
-    assert(owner.exist(auth2) === false)
-  }
-
 }

@@ -9,11 +9,15 @@ import com.github.nscala_time.time.Imports.DateTime
 
 class Auth(
       val id: AuthId,
-      private val thirdId: ThirdId,
-      private val userId: UserId,
+      val thirdId: ThirdId,
+      val userId: UserId,
       private val scope: AuthScope,
       private var token: Token
   ) extends IdentifiableInPersistence {
+
+  def getToken: Token = {
+    token
+  }
 
   def equals(auth: Auth): Boolean = {
     id.equals(auth.id)
@@ -32,10 +36,6 @@ class Auth(
   def canReadEmail: Boolean = token.isLive match {
     case true => scope.email
     case _ => false
-  }
-
-  def getToken: Token = {
-    token
   }
 
   def refreshToken(refreshToken: UUID, grantType: String): Unit = {
