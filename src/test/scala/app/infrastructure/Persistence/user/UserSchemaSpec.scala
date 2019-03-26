@@ -1,14 +1,14 @@
-package app.infrastructure.Persistence.owner
+package test.app.infrastructure.Persistence.user
 
 import app.infrastructure.Persistence.Exec
+import app.infrastructure.Persistence.user.UserSchema
 import org.scalatest.{BeforeAndAfterEach, FunSuite}
 import slick.jdbc.MySQLProfile.api._
 import slick.jdbc.meta.MTable
 import slick.lifted.TableQuery
-import test.app.infrastructure.Persistence.owner.OwnerProfileSchema
 
-class OwnerProfileSchemaSpec extends FunSuite with BeforeAndAfterEach with Exec {
-  val ownerSchema = TableQuery[OwnerProfileSchema]
+class UserSchemaSpec extends FunSuite with BeforeAndAfterEach with Exec {
+  val ownerSchema = TableQuery[UserSchema]
   implicit val db = Database.forConfig("mydb")
 
   test("database forconfig type is:") {
@@ -17,11 +17,11 @@ class OwnerProfileSchemaSpec extends FunSuite with BeforeAndAfterEach with Exec 
 
   test("owner_profile table exists") {
     val tables = exec(MTable.getTables).toList
-    assert(tables.exists(_.name.name == "owner_profile") === true)
+    assert(tables.exists(_.name.name == "user") === true)
   }
 
   test("Can save one owner profile persistence model") {
-    val persistentModel = BuildOwnerProfilePersistedModel.anyNoPersisted()
+    val persistentModel = BuildUserPersistentModel.anyNoPersisted()
     exec(ownerSchema += persistentModel)
   }
 

@@ -1,11 +1,11 @@
-package test.app.infrastructure.Persistence.owner
+package app.infrastructure.Persistence.user
 
-import app.infrastructure.Persistence.owner.OwnerProfilePersistModel
+import app.infrastructure.Persistence.owner.UserPersistentModel
 import com.github.nscala_time.time.Imports.DateTime
 import slick.jdbc.MySQLProfile.api._
 import slick.lifted.Tag
 
-class OwnerProfileSchema(tag: Tag) extends Table[OwnerProfilePersistModel](tag, "owner_profile") {
+class UserSchema(tag: Tag) extends Table[UserPersistentModel](tag, "user") {
 
   import app.infrastructure.Persistence.CustomDateTimeToTimestamp._
 
@@ -23,5 +23,5 @@ class OwnerProfileSchema(tag: Tag) extends Table[OwnerProfilePersistModel](tag, 
     email,
     emailconfirmed,
     datebirth
-  ).mapTo[OwnerProfilePersistModel]
+  ).mapTo[UserPersistentModel]
 }

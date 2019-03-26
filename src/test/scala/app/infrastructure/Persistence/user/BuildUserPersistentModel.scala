@@ -1,10 +1,10 @@
-package app.infrastructure.Persistence.owner
+package test.app.infrastructure.Persistence.user
 
-import builders.BuildSurrogateId
+import app.infrastructure.Persistence.owner.UserPersistentModel
 import com.github.nscala_time.time.Imports.DateTime
-import test.builders.Faker
+import test.builders.{BuildSurrogateId, Faker}
 
-object BuildOwnerProfilePersistedModel {
+object BuildUserPersistentModel {
 
   def any(
            withSurrogateId: Option[Long] =  BuildSurrogateId.any(),
@@ -13,8 +13,8 @@ object BuildOwnerProfilePersistedModel {
            withEmail: String = Faker.text(),
            withIsEmailConfirmed: Boolean = Faker.boolean(),
            withDateBirth: DateTime = Faker.date()
-         ): OwnerProfilePersistModel = {
-    OwnerProfilePersistModel(
+         ): UserPersistentModel = {
+    UserPersistentModel(
       withSurrogateId,
       withFirstname,
       withSurname,
@@ -31,8 +31,8 @@ object BuildOwnerProfilePersistedModel {
                     withEmail: String = Faker.text(),
                     withIsEmailConfirmed: Boolean = Faker.boolean(),
                     withDateBirth: DateTime = Faker.date()
-                  ): OwnerProfilePersistModel = {
-    OwnerProfilePersistModel(
+                  ): UserPersistentModel = {
+    UserPersistentModel(
       withSurrogateId,
       withFirstname,
       withSurname,
@@ -48,8 +48,8 @@ object BuildOwnerProfilePersistedModel {
                       withEmail: String = Faker.text(),
                       withIsEmailConfirmed: Boolean = Faker.boolean(),
                       withDateBirth: DateTime = Faker.date()
-                    ): OwnerProfilePersistModel = {
-    OwnerProfilePersistModel(
+                    ): UserPersistentModel = {
+    UserPersistentModel(
       None,
       withFirstname,
       withSurname,
