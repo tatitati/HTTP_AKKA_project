@@ -1,7 +1,7 @@
 package test.app.domain.model.auth
 
 import java.util.UUID
-import app.domain.model.auth.Token
+import app.domain.model.auth.AuthToken
 import test.builders.BuildSurrogateId
 import com.github.nscala_time.time.Imports._
 import test.builders.Faker
@@ -13,8 +13,8 @@ object BuildToken {
                withExpirationIn: Int = 10,
                withRefreshToken: UUID = java.util.UUID.randomUUID,
                withAccessToken: UUID = java.util.UUID.randomUUID
-             ): Token = {
-    new Token(
+             ): AuthToken = {
+    new AuthToken(
       accessToken = withAccessToken,
       tokenType = withTokenType,
       refreshToken = withRefreshToken,
@@ -29,8 +29,8 @@ object BuildToken {
                   withExpirationIn: Int = 10,
                   withRefreshToken: UUID = java.util.UUID.randomUUID,
                   withAccessToken: UUID = java.util.UUID.randomUUID
-                ): Token = {
-    new Token(
+                ): AuthToken = {
+    new AuthToken(
       accessToken = withAccessToken,
       tokenType = withTokenType,
       refreshToken = withRefreshToken,
@@ -39,7 +39,7 @@ object BuildToken {
     )
   }
 
-  def any(withSurrogateId: Option[Long] =  BuildSurrogateId.any()): Token = {
+  def any(withSurrogateId: Option[Long] =  BuildSurrogateId.any()): AuthToken = {
     Faker(
       anyLive(withSurrogateId),
       anyExpired(withSurrogateId)

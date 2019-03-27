@@ -14,7 +14,7 @@ object BuildAuth {
            withThird: ThirdId = ThirdId(BuildUuid.any()),
            withUserId: UserId = UserId(text()),
            withScope: AuthScope = BuildScope.any(),
-           withToken: Token = BuildToken.any()
+           withToken: AuthToken = BuildToken.any()
          ): Auth = {
     new Auth(
       id = withId,

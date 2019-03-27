@@ -3,7 +3,7 @@ package app.domain.model.auth
 import java.util.UUID
 import com.github.nscala_time.time.Imports._
 
-case class Token(
+case class AuthToken(
              val accessToken: UUID,
              val tokenType: String = "bearer",
              val refreshToken: UUID,

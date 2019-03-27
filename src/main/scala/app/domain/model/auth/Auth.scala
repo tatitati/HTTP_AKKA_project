@@ -12,10 +12,10 @@ class Auth(
       val thirdId: ThirdId,
       val userId: UserId,
       private val scope: AuthScope,
-      private var token: Token
+      private var token: AuthToken
   ) extends IdentifiableInPersistence {
 
-  def getToken: Token = {
+  def getToken: AuthToken = {
     token
   }
 
@@ -40,7 +40,7 @@ class Auth(
 
   def refreshToken(refreshToken: UUID, grantType: String): Unit = {
     if(token.canBeRefreshed(refreshToken, grantType)) {
-      token = new Token(
+      token = new AuthToken(
         accessToken = java.util.UUID.randomUUID,
         tokenType = "bearer",
         refreshToken = java.util.UUID.randomUUID,
