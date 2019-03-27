@@ -30,7 +30,7 @@ class ThirdSpec extends FunSuite {
 
     givenThird.updateName("second name")
 
-    assert(givenThird.getProfileMemento.name === "second name")
+    assert(givenThird.getProfile.name === "second name")
   }
 
   test("can refresh credentials") {
@@ -41,11 +41,5 @@ class ThirdSpec extends FunSuite {
     val credentialsUpdated = givenThird.getCredentials
 
     assert(credentialsOriginal !== credentialsUpdated)
-  }
-
-  test("The profile returned is a memento") {
-    val givenThird = BuildThird.any()
-
-    assert(givenThird.getProfileMemento.isInstanceOf[ThirdProfileMemento])
   }
 }

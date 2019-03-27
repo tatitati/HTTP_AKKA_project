@@ -7,13 +7,13 @@ object BuildThirdCredentials {
   def any(
            withClientid: String = Faker.text(),
            withClientsecret: String = Faker.text()
-         ): Credentials = {
+         ): ThirdCredentials = {
 
-    Credentials(withClientid, withClientsecret)
+    ThirdCredentials(withClientid, withClientsecret)
   }
 
-  def specific(): Credentials = {
-    Credentials(
+  def specific(): ThirdCredentials = {
+    ThirdCredentials(
       clientId = "client_id",
       clientSecret = "client_secret"
     )

@@ -1,6 +1,6 @@
 package app.infrastructure.Persistence.third
 
-case class ThirdPersistModel(
+case class ThirdPersistentModel(
   id: Option[Long] = None,
   uuid: String,
   name: String,

@@ -8,7 +8,7 @@ object BuildThird {
              withSurrogateId: Option[Long] =  BuildSurrogateId.anyPersisted(),
              withId: UUID = BuildUuid.any(),
              withThirdProfile: ThirdProfile = BuildThirdProfile.any(),
-             withCredentials: Credentials = BuildThirdCredentials.any()
+             withCredentials: ThirdCredentials = BuildThirdCredentials.any()
         ): Third = {
 
       val third = new Third(withId, withThirdProfile, withCredentials)
