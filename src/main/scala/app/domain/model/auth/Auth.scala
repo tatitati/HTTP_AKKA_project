@@ -1,7 +1,6 @@
 package app.domain.model.auth
 
 import java.util.UUID
-
 import app.domain.model.{IdentifiableInPersistence, Scope}
 import app.domain.model.user.UserId
 import app.domain.model.third.ThirdId
