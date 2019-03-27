@@ -11,11 +11,11 @@ object BuildCodeId {
     CodeId(withValue)
   }
 
-  def any1(): CodeId = {
+  def specific1(): CodeId = {
     any(withValue = BuildUuid.uuidOne())
   }
 
-  def any2(): CodeId = {
+  def specific2(): CodeId = {
     any(withValue = BuildUuid.uuidTwo())
   }
 }

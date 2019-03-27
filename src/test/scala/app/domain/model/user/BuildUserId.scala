@@ -5,11 +5,19 @@ import scala.util.Random
 
 object BuildUserId {
 
-  def any(withValue: String = text()): UserId = {
+  def any(withValue: String = randomText()): UserId = {
     UserId(withValue)
   }
 
-  private def text(length: Int = 10): String = {
+  def specific1(): UserId = {
+    UserId("user id one")
+  }
+
+  def specific2(): UserId = {
+    UserId("user id one")
+  }
+
+  private def randomText(length: Int = 10): String = {
     val value = for(i <- 1 to length) yield { Random.nextPrintableChar() }
     value.mkString
   }

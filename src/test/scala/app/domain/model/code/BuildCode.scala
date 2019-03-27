@@ -30,17 +30,13 @@ object BuildCode {
     )
   }
 
-//  def specific(): Code = {
-//    any(
-//      BuildThird.any(
-//        withSurrogateId = Some(22),
-//        withUUID = BuildUuid.uuidOne(),
-//        withThirdProfile = BuildThirdProfile.specific(),
-//        withCredentials = BuildThirdCredentials.specific()
-//      ),
-//      withUserId = BuildOwnerProfile.specific(),
-//      withScope = BuildScope.onlyEmailAndFirstname(),
-//      withCode = BuildCode.specific()
-//    )
-//  }
+  def specific(): Code = {
+    any(
+      withId = BuildCodeId.specific1(),
+      withUserId = BuildUserId.specific1(),
+      withThirdId = BuildThirdId.specific1(),
+      withState = "any state",
+      withScope = BuildScope.onlyEmailAndFirstname()
+    )
+  }
 }

@@ -13,9 +13,9 @@ class ThirdSpec extends FunSuite {
   }
 
   test("Equals use the key to compare") {
-    val third1 = BuildThird.any(withId = BuildThirdId.any1())
-    val third2 = BuildThird.any(withId = BuildThirdId.any2())
-    val third3 = BuildThird.any(withId = BuildThirdId.any2())
+    val third1 = BuildThird.any(withId = BuildThirdId.specific1())
+    val third2 = BuildThird.any(withId = BuildThirdId.specific2())
+    val third3 = BuildThird.any(withId = BuildThirdId.specific2())
 
     assert(third1.equals(third2) === false)
     assert(third2.equals(third3) === true)

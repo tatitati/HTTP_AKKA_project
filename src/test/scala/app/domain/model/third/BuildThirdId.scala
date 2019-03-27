@@ -10,11 +10,11 @@ object BuildThirdId {
     ThirdId(withValue)
   }
 
-  def any1(): ThirdId = {
+  def specific1(): ThirdId = {
     any(withValue = BuildUuid.uuidOne())
   }
 
-  def any2(): ThirdId = {
+  def specific2(): ThirdId = {
     any(withValue = BuildUuid.uuidTwo())
   }
 }
