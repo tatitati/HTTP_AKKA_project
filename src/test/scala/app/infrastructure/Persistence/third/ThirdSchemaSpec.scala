@@ -20,9 +20,6 @@ class ThirdSchemaSpec extends FunSuite with BeforeAndAfterEach with Exec {
     assert(tables.exists(_.name.name == "third") === true)
   }
 
-
-
-
   override def beforeEach() {
     exec(ownerSchema.schema.dropIfExists)
     exec(ownerSchema.schema.create)

@@ -4,7 +4,7 @@ import slick.jdbc.MySQLProfile.api._
 import slick.lifted.Tag
 
 
-class ThirdSchema(tag: Tag) extends Table[ThirdPersistModel](tag, "third") {
+class ThirdSchema(tag: Tag) extends Table[ThirdPersistentModel](tag, "third") {
   def id = column[Option[Long]]("id", O.PrimaryKey, O.AutoInc)
   def uuid = column[String]("uuid")
   def name = column[String]("name")
@@ -23,5 +23,5 @@ class ThirdSchema(tag: Tag) extends Table[ThirdPersistModel](tag, "third") {
     description,
     clientId,
     clientSecret
-  ).mapTo[ThirdPersistModel]
+  ).mapTo[ThirdPersistentModel]
 }
