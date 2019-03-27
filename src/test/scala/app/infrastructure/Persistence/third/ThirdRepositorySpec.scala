@@ -2,7 +2,7 @@ package test.app.infrastructure.Persistence.third
 
 import app.domain.third.Third
 import app.infrastructure.Persistence.Exec
-import app.infrastructure.Persistence.third.{BuildThirdPersistedModel, ThirdPersistModel, ThirdRepository, ThirdSchema}
+import app.infrastructure.Persistence.third.{BuildThirdPersistedModel, ThirdPersistentModel, ThirdRepository, ThirdSchema}
 import org.scalatest.{BeforeAndAfterEach, FunSuite}
 import slick.jdbc.MySQLProfile.api._
 import slick.lifted.TableQuery
@@ -22,7 +22,7 @@ class ThirdRepositorySpec extends FunSuite with BeforeAndAfterEach with Exec {
 
     assert(rows.size === 1)
     assert(rows.isInstanceOf[Vector[_]])
-    assert(rows.head.isInstanceOf[ThirdPersistModel])
+    assert(rows.head.isInstanceOf[ThirdPersistentModel])
     assert(rows.head.name === "my row")
     assert(rows.head.id.isInstanceOf[Some[_]])
   }
