@@ -1,7 +1,6 @@
 package app.infrastructure.Persistence.third
 
-import builders.BuildUuid
-import test.builders.Faker
+import test.builders.{BuildUuid, Faker}
 
 object BuildThirdPersistedModel {
 
@@ -14,8 +13,8 @@ object BuildThirdPersistedModel {
            withDescription: String = Faker.text(),
            withClientId: String = Faker.text(),
            withClientSecret: String = Faker.text()
-         ): ThirdPersistModel = {
-    ThirdPersistModel(
+         ): ThirdPersistentModel = {
+    ThirdPersistentModel(
         withId,
         withUUID,
         withName,
@@ -35,7 +34,7 @@ object BuildThirdPersistedModel {
            withDescription: String = Faker.text(),
            withClientId: String = Faker.text(),
            withClientSecret: String = Faker.text()
-         ): ThirdPersistModel = {
+         ): ThirdPersistentModel = {
     any(
       withId = Faker(Some(Faker.int())),
       withUUID,
@@ -56,7 +55,7 @@ object BuildThirdPersistedModel {
                     withDescription: String = Faker.text(),
                     withClientId: String = Faker.text(),
                     withClientSecret: String = Faker.text()
-                  ): ThirdPersistModel = {
+                  ): ThirdPersistentModel = {
     any(
       withId = None,
       withUUID,
