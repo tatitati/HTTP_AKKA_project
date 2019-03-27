@@ -40,7 +40,7 @@ class Auth(
 
   def refreshToken(refreshToken: UUID, grantType: String): Unit = {
     if(token.canBeRefreshed(refreshToken, grantType)) {
-      token = new AuthToken(
+      token = AuthToken(
         accessToken = java.util.UUID.randomUUID,
         tokenType = "bearer",
         refreshToken = java.util.UUID.randomUUID,
