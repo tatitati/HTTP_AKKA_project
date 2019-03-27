@@ -1,19 +1,20 @@
 package test.app.infrastructure.Persistence.code
 
-import app.domain.resource.{BuildResourceByCode, ResourceByCode}
-import app.infrastructure.Persistence.resource.ResourceByCodeRepository
+import app.domain.code.Code
+import app.infrastructure.Persistence.code.CodeRepository
 import com.redis.RedisClient
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FunSuite}
+import test.app.domain.code.BuildCode
 
 class CodeRepositorySpec extends FunSuite with BeforeAndAfterEach with BeforeAndAfterAll {
 
   val redisClient = new RedisClient("localhost", 6379)
-  val repo = new ResourceByCodeRepository(redisClient)
+  val repo = new CodeRepository(redisClient)
 
-  test("Can persist in redis") {
-    val givenResourceByCode = BuildResourceByCode.any()
+  test("Can persist code in redis") {
+    val givenCode = BuildCode.any()
 
-      assert(repo.save(givenResourceByCode) === true)
+    assert(repo.save(givenCode) === true)
   }
 
   test("Return None when reading an unexisting code") {
@@ -23,14 +24,13 @@ class CodeRepositorySpec extends FunSuite with BeforeAndAfterEach with BeforeAnd
   }
 
   test("Return Some when reading an existing code") {
-    val givenResourceByCode = BuildResourceByCode.any()
+    val givenCode = BuildCode.any()
 
-    repo.save(givenResourceByCode, 1)
+    repo.save(givenCode, 1)
+    val codeFeched = repo.read(givenCode.id.toString())
 
-    val result = repo.read(givenResourceByCode.memento().code)
-
-    assert(result.isInstanceOf[Some[ResourceByCode]])
-    assert(result.get.memento() === givenResourceByCode.memento())
+    assert(codeFeched.isInstanceOf[Some[Code]])
+    assert(codeFeched.get.equals(givenCode))
   }
 
   override def beforeAll() {
