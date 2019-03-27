@@ -1,8 +1,10 @@
 package test.app.domain.model.auth
 
+import app.domain.model.Scope
 import app.domain.model.auth._
 import app.domain.model.user.UserId
 import app.domain.model.third.ThirdId
+import test.app.domain.model.BuildScope
 import test.builders.BuildUuid
 
 import scala.util.Random
@@ -13,7 +15,7 @@ object BuildAuth {
            withId: AuthId = AuthId(BuildUuid.any()),
            withThird: ThirdId = ThirdId(BuildUuid.any()),
            withUserId: UserId = UserId(text()),
-           withScope: AuthScope = BuildScope.any(),
+           withScope: Scope = BuildScope.any(),
            withToken: AuthToken = BuildToken.any()
          ): Auth = {
     new Auth(

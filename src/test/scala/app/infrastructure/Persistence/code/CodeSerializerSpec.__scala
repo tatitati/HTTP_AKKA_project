@@ -1,4 +1,4 @@
-package test.app.infrastructure.Persistence.resource
+package test.app.infrastructure.Persistence.code
 
 import app.domain.resource.BuildResourceByCode
 import app.infrastructure.Persistence.resource.ResourceByCodeSerializer

@@ -1,12 +1,15 @@
-package app.domain.third
+package test.app.domain.third
 
 import java.util.UUID
+
+import app.domain.model.third.ThirdId
+import app.domain.third.{Third, ThirdCredentials, ThirdProfile}
 import test.builders.{BuildSurrogateId, BuildUuid}
 
 object BuildThird {
     def any(
              withSurrogateId: Option[Long] =  BuildSurrogateId.anyPersisted(),
-             withId: UUID = BuildUuid.any(),
+             withId: ThirdId = ThirdId(BuildUuid.any()),
              withThirdProfile: ThirdProfile = BuildThirdProfile.any(),
              withCredentials: ThirdCredentials = BuildThirdCredentials.any()
         ): Third = {

@@ -2,7 +2,7 @@ package app.infrastructure.Persistence.third
 
 import test.builders.{BuildUuid, Faker}
 
-object BuildThirdPersistedModel {
+object BuildThirdPersistentModel {
 
   def any(
            withId: Option[Long] = Faker(Some(Faker.long()), None),

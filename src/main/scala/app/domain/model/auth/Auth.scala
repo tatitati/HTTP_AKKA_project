@@ -2,7 +2,7 @@ package app.domain.model.auth
 
 import java.util.UUID
 
-import app.domain.model.IdentifiableInPersistence
+import app.domain.model.{IdentifiableInPersistence, Scope}
 import app.domain.model.user.UserId
 import app.domain.model.third.ThirdId
 import com.github.nscala_time.time.Imports.DateTime
@@ -11,7 +11,7 @@ class Auth(
       val id: AuthId,
       val thirdId: ThirdId,
       val userId: UserId,
-      private val scope: AuthScope,
+      private val scope: Scope,
       private var token: AuthToken
   ) extends IdentifiableInPersistence {
 

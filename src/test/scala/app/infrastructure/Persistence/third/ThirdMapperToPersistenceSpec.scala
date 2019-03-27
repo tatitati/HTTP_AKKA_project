@@ -1,8 +1,8 @@
 package test.app.infrastructure.repository.third
 
-import app.domain.third.{BuildThird, BuildThirdCredentials, BuildThirdProfile}
 import app.infrastructure.Persistence.third.{ThirdMapper, ThirdPersistentModel}
 import org.scalatest.FunSuite
+import test.app.domain.third.{BuildThird, BuildThirdCredentials, BuildThirdProfile}
 
 class ThirdMapperToPersistenceSpec extends FunSuite {
 
@@ -22,7 +22,7 @@ class ThirdMapperToPersistenceSpec extends FunSuite {
 
     val thenPersistent = ThirdMapper.toPersistent(givenThirdDomain)
 
-    assert(thenPersistent.id === None)
+    assert(thenPersistent.surrogateId === None)
     assert(thenPersistent.name === "whatever")
     assert(thenPersistent.clientId === "client_id")
   }
@@ -31,6 +31,6 @@ class ThirdMapperToPersistenceSpec extends FunSuite {
     val givenThirdDomain = BuildThird.any(withSurrogateId = Some(6))
     val persistent = ThirdMapper.toPersistent(givenThirdDomain)
 
-    assert(persistent.id === Some(6))
+    assert(persistent.surrogateId === Some(6))
   }
 }

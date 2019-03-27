@@ -1,0 +1,23 @@
+package app.infrastructure.Persistence.resource
+
+import app.domain.code.Code
+import com.redis.RedisClient
+
+class CodeRepository(val redisClient: RedisClient) {
+
+  def save(code: Code, expiryTime: Int = 60): Boolean = {
+
+    redisClient.setex(
+      key = code.id.toString,
+      expiry = expiryTime,
+      value = CodeSerializer.toJson(code)
+    )
+  }
+
+  def read(code: String): Option[Code] = {
+    redisClient.get(code) match {
+      case Some(value) => Some(CodeSerializer.toDomain(value))
+      case None => None
+    }
+  }
+}

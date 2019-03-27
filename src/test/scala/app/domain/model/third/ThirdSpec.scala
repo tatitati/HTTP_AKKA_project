@@ -1,21 +1,21 @@
-package app.domain.third
+package test.app.domain.third
 
-import java.util.UUID
-import test.builders.BuildUuid
+import app.domain.model.third.ThirdId
 import org.scalatest.FunSuite
+import test.app.domain.model.third.BuildThirdId
 
 class ThirdSpec extends FunSuite {
 
-  test("Identifier UUID the proper type") {
+  test("Identifier is the proper type") {
     val third = BuildThird.any()
 
-    assert(third.id.isInstanceOf[UUID] === true)
+    assert(third.id.isInstanceOf[ThirdId] === true)
   }
 
   test("Equals use the key to compare") {
-    val third1 = BuildThird.any(withId = BuildUuid.uuidOne())
-    val third2 = BuildThird.any(withId = BuildUuid.uuidTwo())
-    val third3 = BuildThird.any(withId = BuildUuid.uuidTwo())
+    val third1 = BuildThird.any(withId = BuildThirdId.any1())
+    val third2 = BuildThird.any(withId = BuildThirdId.any2())
+    val third3 = BuildThird.any(withId = BuildThirdId.any2())
 
     assert(third1.equals(third2) === false)
     assert(third2.equals(third3) === true)

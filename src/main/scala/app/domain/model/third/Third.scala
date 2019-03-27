@@ -1,11 +1,14 @@
 package app.domain.third
 
 import java.util.UUID
+
 import app.domain.model.IdentifiableInPersistence
+import app.domain.model.third.ThirdId
+
 import scala.util.Random
 
 case class Third(
-                  val id: UUID,
+                  val id: ThirdId,
                   private var profile: ThirdProfile,
                   private var credentials: ThirdCredentials)
   extends IdentifiableInPersistence {

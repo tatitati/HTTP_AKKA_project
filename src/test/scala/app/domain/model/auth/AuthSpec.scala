@@ -1,6 +1,7 @@
 package test.app.domain.model.auth
 
 import org.scalatest.FunSuite
+import test.app.domain.model.BuildScope
 import test.builders.BuildUuid
 
 class AuthSpec extends FunSuite {
