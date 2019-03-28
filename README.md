@@ -4,8 +4,6 @@
 
 # Todo:
 
-- [ ] **Complete persistence of Token firstly to persist later Auth**
-- [ ] **Think about Auth, it reference another whole aggregate (third), but it shouldnt**
 - [ ] Add license file
 - [ ] How to tag tests? (and filter them in the CLI)
 - [ ] Create custom taks in SBT to run tests in specific app-layers
