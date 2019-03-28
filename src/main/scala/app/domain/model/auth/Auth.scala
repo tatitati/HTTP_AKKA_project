@@ -10,7 +10,7 @@ class Auth(
       val id: AuthId,
       val thirdId: ThirdId,
       val userId: UserId,
-      private val scope: Scope,
+      val scope: Scope,
       private var token: AuthToken
   ) extends IdentifiableInPersistence {
 

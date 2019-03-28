@@ -7,9 +7,9 @@ import test.builders.BuildUuid
 class AuthSpec extends FunSuite {
 
   test("I can compare two Auths by identity") {
-    val givenAuth1 = BuildAuth.any(withId = BuildAuthId.any1())
-    val givenAuth2 = BuildAuth.any(withId = BuildAuthId.any2())
-    val givenAuth3 = BuildAuth.any(withId = BuildAuthId.any2())
+    val givenAuth1 = BuildAuth.any(withId = BuildAuthId.specific1())
+    val givenAuth2 = BuildAuth.any(withId = BuildAuthId.specific2())
+    val givenAuth3 = BuildAuth.any(withId = BuildAuthId.specific2())
 
     assert(givenAuth1.equals(givenAuth2) === false)
     assert(givenAuth2.equals(givenAuth3) === true)
