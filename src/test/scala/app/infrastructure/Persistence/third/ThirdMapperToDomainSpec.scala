@@ -1,14 +1,13 @@
 package test.app.infrastructure.repository.third
 
 import app.domain.third.Third
-import app.infrastructure.Persistence.third.ThirdMapper
+import app.infrastructure.Persistence.third.{BuildThirdPersistentModel, ThirdMapper}
 import org.scalatest.FunSuite
-import test.builders.infrastructure.BuildThirdPersistedModel
 
 class ThirdMapperToDomainSpec extends FunSuite {
 
   test("Fields are mapped to domain") {
-    val givenPersistent = BuildThirdPersistedModel.anyPersisted(
+    val givenPersistent = BuildThirdPersistentModel.anyPersisted(
       withName = "whatever",
       withCallback = "callback",
       withClientId = "client_id"
@@ -23,9 +22,9 @@ class ThirdMapperToDomainSpec extends FunSuite {
   }
 
   test("Surrogate id is also mapped properly to domain") {
-    val givenPersistent = BuildThirdPersistedModel.anyPersisted()
+    val givenPersistent = BuildThirdPersistentModel.anyPersisted()
 
-    assert(givenPersistent.id.isInstanceOf[Some[_]])
+    assert(givenPersistent.surrogateId.isInstanceOf[Some[_]])
 
     val thenDomain = ThirdMapper.toDomain(givenPersistent)
 

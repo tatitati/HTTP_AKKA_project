@@ -1,12 +1,19 @@
 package test.app.infrastructure.repository.third
 
-import app.infrastructure.Persistence.third.{ThirdMapper, ThirdPersistModel}
-import builders.domain.{BuildThird, BuildThirdCredentials, BuildThirdProfile}
+import app.infrastructure.Persistence.third.{ThirdMapper, ThirdPersistentModel}
 import org.scalatest.FunSuite
+import test.app.domain.third.{BuildThird, BuildThirdCredentials, BuildThirdProfile}
 
 class ThirdMapperToPersistenceSpec extends FunSuite {
 
-  test("ThirdDomain -> ThirdPersistedModel with no surrogate id in domain yet") {
+  test("ThirdDomain -> ThirdPersistentModel produce a ThirdPersistentModel") {
+    val givenThirdDomain = BuildThird.any()
+    val thenPersistent = ThirdMapper.toPersistent(givenThirdDomain)
+
+    assert(thenPersistent.isInstanceOf[ThirdPersistentModel])
+  }
+
+  test("ThirdDomain -> ThirdPersistentModel gives the expected ThirdPersistentModel") {
     val givenThirdDomain = BuildThird.any(
       withSurrogateId = None,
       withThirdProfile = BuildThirdProfile.specific(),
@@ -15,30 +22,15 @@ class ThirdMapperToPersistenceSpec extends FunSuite {
 
     val thenPersistent = ThirdMapper.toPersistent(givenThirdDomain)
 
-    assert(thenPersistent.isInstanceOf[ThirdPersistModel])
+    assert(thenPersistent.surrogateId === None)
     assert(thenPersistent.name === "whatever")
     assert(thenPersistent.clientId === "client_id")
   }
 
-  test("Surrogate id is mapped to None persistent model") {
-    val givenThirdDomain = BuildThird.any(
-      withSurrogateId = None
-    )
-
-    val thenPersistent = ThirdMapper.toPersistent(givenThirdDomain)
-
-    assert(thenPersistent.isInstanceOf[ThirdPersistModel])
-    assert(thenPersistent.id === None)
-  }
-
   test("Surrogate id is mapped to the proper value in persistent model") {
-    val givenThirdDomain = BuildThird.any(
-      withSurrogateId = Some(6)
-    )
-
+    val givenThirdDomain = BuildThird.any(withSurrogateId = Some(6))
     val persistent = ThirdMapper.toPersistent(givenThirdDomain)
 
-    assert(persistent.isInstanceOf[ThirdPersistModel])
-    assert(persistent.id === Some(6))
+    assert(persistent.surrogateId === Some(6))
   }
 }

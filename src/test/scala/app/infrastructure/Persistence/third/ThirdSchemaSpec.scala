@@ -1,14 +1,14 @@
 package test.app.infrastructure.Persistence.third
 
 import app.infrastructure.Persistence.Exec
-import app.infrastructure.Persistence.third.ThirdSchema
+import app.infrastructure.Persistence.third.{BuildThirdPersistentModel, ThirdSchema}
 import org.scalatest.{BeforeAndAfterEach, FunSuite}
 import slick.jdbc.MySQLProfile.api._
 import slick.jdbc.meta.MTable
 import slick.lifted.TableQuery
 
 class ThirdSchemaSpec extends FunSuite with BeforeAndAfterEach with Exec {
-  val ownerSchema = TableQuery[ThirdSchema]
+  val thirdSchema = TableQuery[ThirdSchema]
   implicit val db = Database.forConfig("mydb")
 
   test("database forconfig type is:") {
@@ -20,12 +20,14 @@ class ThirdSchemaSpec extends FunSuite with BeforeAndAfterEach with Exec {
     assert(tables.exists(_.name.name == "third") === true)
   }
 
-
-
+  test("Can save one owner profile persistence model") {
+    val persistentModel = BuildThirdPersistentModel.anyNoPersisted()
+    exec(thirdSchema += persistentModel)
+  }
 
   override def beforeEach() {
-    exec(ownerSchema.schema.dropIfExists)
-    exec(ownerSchema.schema.create)
+    exec(thirdSchema.schema.dropIfExists)
+    exec(thirdSchema.schema.create)
   }
 }
 
