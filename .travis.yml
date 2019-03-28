@@ -6,6 +6,9 @@ before_script:
   - sudo apt-get install redis
   - redis-server &
 
+before_install:
+  - mysql -e 'CREATE DATABASE play_db;'
+
 install:
   sbt reload update
 
