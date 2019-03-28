@@ -23,6 +23,17 @@ class AuthMapperSpec extends FunSuite {
     val inDomain = AuthMapper.toDomain(persistent)
 
     assert(inDomain.isInstanceOf[Auth])
+    assert(inDomain.getSurrogateId() === None)
+
+  }
+
+  test("Can map surrogate properly") {
+    val persistent = BuildAuthPersistentModel.any(withSurrogateId = Some(6))
+
+    val inDomain = AuthMapper.toDomain(persistent)
+
+    assert(inDomain.isInstanceOf[Auth])
+    assert(inDomain.getSurrogateId() === Some(6))
 
   }
 }

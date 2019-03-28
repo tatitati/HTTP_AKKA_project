@@ -11,7 +11,7 @@ object BuildAuthPersistentModel {
            withUserId: String = Faker.text(),
            withScopeFirstName: Boolean = Faker.boolean(),
            withScopeSurname: Boolean = Faker.boolean(),
-           withScopeEmail: Boolean= Faker.boolean(),
+           withScopeEmail: Boolean = true,
            withTokenType: String = Faker.text(),
            withTokenAccess: String = BuildUuid.any().toString,
            withTokenRefresh: String = BuildUuid.any().toString,

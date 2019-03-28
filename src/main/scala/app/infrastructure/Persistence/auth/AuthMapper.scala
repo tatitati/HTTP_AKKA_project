@@ -27,7 +27,7 @@ object AuthMapper {
   }
 
   def toDomain(persistent: AuthPersistentModel): Auth = {
-    new Auth(
+    val auth = new Auth(
       id = AuthId(UUID.fromString(persistent.id)),
       thirdId = ThirdId(UUID.fromString(persistent.thirdId)),
       userId = UserId(persistent.userId),
@@ -44,5 +44,11 @@ object AuthMapper {
         generatedIn = persistent.tokenGeneratedIn
       )
     )
+
+    if(persistent.surrogateId != None) {
+      auth.setSurrogateId(persistent.surrogateId)
+    }
+
+    auth
   }
 }
