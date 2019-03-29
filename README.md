@@ -4,6 +4,13 @@
 
 # Todo:
 
+- [ ] Simplify builders and isolation of them, unnaply() might help?
+- [ ] Create transformer Code->Auth (this will be a domain service)
+- [ ] Add foreign keys
+- [ ] Add db encryption with sha-256
+- [ ] Design Register/login of a user
+- [ ] Design Register/login of a third
+- [ ] Start Application layer
 - [ ] Add license file
 - [ ] How to tag tests? (and filter them in the CLI)
 - [ ] Create custom taks in SBT to run tests in specific app-layers
