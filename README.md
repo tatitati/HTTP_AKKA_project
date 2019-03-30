@@ -3,8 +3,9 @@
 
 
 # Todo:
-
+## with scala
 - [ ] Investigate default values in case classes. Behaviour is not as I was expecting
+## with code
 - [x] ~Add unique keys for domain ids~
 - [ ] Simplify builders and isolation of them, unnaply() might help?
 - [x] ~Create transformer Code->Auth (this will be a domain service)~
@@ -13,10 +14,16 @@
 - [ ] Design Register/login of a user :fire:
 - [ ] Design Register/login of a third :fire:
 - [ ] Start Application layer
-- [ ] Add license file
+## with sbt
 - [ ] How to tag tests? (and filter them in the CLI)
 - [ ] Create custom taks in SBT to run tests in specific app-layers
 - [ ] How to set environment variables like Hosts, port for Redis?, for each environment...scala-env
+
+
+## with project
+- [ ] Add license file
+
+
 
 
 # Purpose
