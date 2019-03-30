@@ -4,11 +4,17 @@
 
 # Todo:
 
+- [ ] Simplify builders and isolation of them, unnaply() might help?
+- [ ] Create transformer Code->Auth (this will be a domain service)
+- [ ] Add foreign keys
+- [ ] Add db encryption with sha-256  :fire:
+- [ ] Design Register/login of a user :fire:
+- [ ] Design Register/login of a third :fire:
+- [ ] Start Application layer
 - [ ] Add license file
 - [ ] How to tag tests? (and filter them in the CLI)
 - [ ] Create custom taks in SBT to run tests in specific app-layers
 - [ ] How to set environment variables like Hosts, port for Redis?, for each environment...scala-env
-- [ ] Create database in travis.yml to fix build
 
 
 # Purpose
