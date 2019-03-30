@@ -4,7 +4,8 @@ import java.util.UUID
 
 import app.domain.model.third.ThirdId
 import app.domain.third.{Third, ThirdCredentials, ThirdProfile}
-import test.builders.{BuildSurrogateId, BuildUuid}
+import app.infrastructure.Persistence.BuildSurrogateId
+import test.builders.BuildUuid
 
 object BuildThird {
     def any(

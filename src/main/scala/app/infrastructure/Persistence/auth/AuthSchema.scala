@@ -10,7 +10,7 @@ class AuthSchema(tag: Tag) extends Table[AuthPersistentModel](tag, "auth") {
 
   def surrogateid = column[Option[Long]]("id", O.PrimaryKey, O.AutoInc)
 
-  def id = column[String]("authid")
+  def authId = column[String]("authid")
   def thirdid = column[String]("thirdid")
   def userid = column[String]("userid")
 
@@ -19,14 +19,14 @@ class AuthSchema(tag: Tag) extends Table[AuthPersistentModel](tag, "auth") {
   def scopeemail = column[Boolean]("scope_email")
 
   def tokentype = column[String]("token_type")
-  def tokenaccess = column[String]("token_access")
-  def tokenrefresh = column[String]("token_refresh")
+  def tokenaccess = column[String]("token_access", O.SqlType("VARCHAR(255)"))
+  def tokenrefresh = column[String]("token_refresh", O.SqlType("VARCHAR(255)"))
   def tokenexpiresin = column[Int]("token_expiresin")
   def tokengeneratedin = column[DateTime]("generated_in", O.SqlType("DATETIME"))
 
   def * = (
       surrogateid,
-      id,
+      authId,
       thirdid,
       userid,
       scopefirstname,
@@ -38,4 +38,8 @@ class AuthSchema(tag: Tag) extends Table[AuthPersistentModel](tag, "auth") {
       tokenexpiresin,
       tokengeneratedin,
     ).mapTo[AuthPersistentModel]
+
+
+  def tokenAccessIndex = index("auth_tokenaccess_idx", tokenaccess, unique=true)
+  def refreshAccessIndex = index("auth_tokenrefresh_idx", tokenrefresh, unique=true)
 }

@@ -2,8 +2,8 @@ package test.app.domain.user
 
 import app.domain.user.User
 import app.domain.model.user.{UserId, UserProfile}
+import app.infrastructure.Persistence.BuildSurrogateId
 import test.app.domain.model.user.BuildUserId
-import test.builders.BuildSurrogateId
 
 object BuildUser {
     def any(

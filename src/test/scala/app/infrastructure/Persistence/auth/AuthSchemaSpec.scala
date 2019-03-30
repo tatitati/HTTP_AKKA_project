@@ -1,11 +1,11 @@
-package app.infrastructure.Persistence.auth
+package test.app.infrastructure.Persistence.auth
 
 import app.infrastructure.Persistence.Exec
+import app.infrastructure.Persistence.auth.AuthSchema
 import org.scalatest.{BeforeAndAfterEach, FunSuite}
 import slick.jdbc.MySQLProfile.api._
 import slick.jdbc.meta.MTable
 import slick.lifted.TableQuery
-import test.app.infrastructure.Persistence.user.BuildUserPersistentModel
 
 class AuthSchemaSpec extends FunSuite with BeforeAndAfterEach with Exec {
   val authSchema = TableQuery[AuthSchema]

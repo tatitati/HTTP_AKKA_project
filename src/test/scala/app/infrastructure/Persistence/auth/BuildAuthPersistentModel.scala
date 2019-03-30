@@ -1,5 +1,6 @@
-package app.infrastructure.Persistence.auth
+package test.app.infrastructure.Persistence.auth
 
+import app.infrastructure.Persistence.auth.AuthPersistentModel
 import com.github.nscala_time.time.Imports.DateTime
 import test.builders.{BuildUuid, Faker}
 

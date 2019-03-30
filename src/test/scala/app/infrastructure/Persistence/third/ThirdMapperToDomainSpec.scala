@@ -1,8 +1,9 @@
 package test.app.infrastructure.repository.third
 
 import app.domain.third.Third
-import app.infrastructure.Persistence.third.{BuildThirdPersistentModel, ThirdMapper}
+import app.infrastructure.Persistence.third.ThirdMapper
 import org.scalatest.FunSuite
+import test.app.infrastructure.Persistence.third.BuildThirdPersistentModel
 
 class ThirdMapperToDomainSpec extends FunSuite {
 

@@ -1,7 +1,7 @@
 package test.app.infrastructure.Persistence.auth
 
 import app.domain.model.auth.Auth
-import app.infrastructure.Persistence.auth.{AuthMapper, AuthPersistentModel, BuildAuthPersistentModel}
+import app.infrastructure.Persistence.auth.{AuthMapper, AuthPersistentModel}
 import org.scalatest.FunSuite
 import test.app.domain.model.auth.BuildAuth
 
