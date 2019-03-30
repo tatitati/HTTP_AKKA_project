@@ -4,8 +4,10 @@
 
 # Todo:
 
+- [ ] Investigate default values in case classes. Behaviour is not as I was expecting
+- [x] ~Add unique keys for domain ids~
 - [ ] Simplify builders and isolation of them, unnaply() might help?
-- [ ] Create transformer Code->Auth (this will be a domain service)
+- [x] ~Create transformer Code->Auth (this will be a domain service)~
 - [ ] Add foreign keys
 - [ ] Add db encryption with sha-256  :fire:
 - [ ] Design Register/login of a user :fire:
