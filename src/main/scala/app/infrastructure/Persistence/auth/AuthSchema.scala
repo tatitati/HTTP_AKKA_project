@@ -40,6 +40,6 @@ class AuthSchema(tag: Tag) extends Table[AuthPersistentModel](tag, "auth") {
     ).mapTo[AuthPersistentModel]
 
 
-  def tokenAccessIndex = index("auth_tokenaccess_idx", tokenaccess, unique=true)
-  def refreshAccessIndex = index("auth_tokenrefresh_idx", tokenrefresh, unique=true)
+  def tokenAccessIndex = index("auth____tokenaccess____idx", tokenaccess, unique=true)
+  def refreshAccessIndex = index("auth____tokenrefresh____idx", tokenrefresh, unique=true)
 }
