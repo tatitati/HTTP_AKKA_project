@@ -4,6 +4,7 @@
 
 # Todo:
 
+- [ ] Investigate default values in case classes. Behaviour is not as I was expecting
 - [x] ~Add unique keys for domain ids~
 - [ ] Simplify builders and isolation of them, unnaply() might help?
 - [x] ~Create transformer Code->Auth (this will be a domain service)~
