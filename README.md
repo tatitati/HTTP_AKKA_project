@@ -8,7 +8,7 @@
 - [x] ~Add unique keys for domain ids~
 - [ ] Simplify builders and isolation of them, unnaply() might help?
 - [x] ~Create transformer Code->Auth (this will be a domain service)~
-- [ ] Add foreign keys
+- [ ] Add foreign keys (by the last steps)
 - [ ] Add db encryption with sha-256  :fire:
 - [ ] Design Register/login of a user :fire:
 - [ ] Design Register/login of a third :fire:
