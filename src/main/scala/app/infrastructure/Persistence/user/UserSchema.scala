@@ -12,7 +12,7 @@ class UserSchema(tag: Tag) extends Table[UserPersistentModel](tag, "user") {
   def id = column[Option[Long]]("id", O.PrimaryKey, O.AutoInc)
   def firstname = column[String]("firstname")
   def surname = column[String]("surname")
-  def email = column[String]("email")
+  def email = column[String]("email", O.SqlType("VARCHAR(255)"))
   def emailconfirmed = column[Boolean]("email_confirmed")
   def datebirth = column[DateTime]("datebirth", O.SqlType("DATETIME")) // this uses custom mapper type
 
@@ -24,4 +24,6 @@ class UserSchema(tag: Tag) extends Table[UserPersistentModel](tag, "user") {
     emailconfirmed,
     datebirth
   ).mapTo[UserPersistentModel]
+
+  def idIndex = index("user____email____idx", email, unique=true)
 }
