@@ -35,3 +35,8 @@ libraryDependencies ++= Seq(
 )
 
 parallelExecution in Test := false
+
+excludeFilter in (unmanagedSources) ~= { _ ||
+  new FileFilter {
+    def accept(f: File) = f.getPath.containsSlice("/infrastructure/")
+  } }

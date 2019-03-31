@@ -1,4 +1,4 @@
-package app.infrastructure.Persistence
+package app.domain.model
 
 import test.builders.Faker
 

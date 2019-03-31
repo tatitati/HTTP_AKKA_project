@@ -1,8 +1,8 @@
 package test.app.domain.user
 
+import app.domain.model.BuildSurrogateId
 import app.domain.user.User
 import app.domain.model.user.{UserId, UserProfile}
-import app.infrastructure.Persistence.BuildSurrogateId
 import test.app.domain.model.user.BuildUserId
 
 object BuildUser {

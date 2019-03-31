@@ -1,10 +1,8 @@
 package test.app.domain.third
 
-import java.util.UUID
-
+import app.domain.model.BuildSurrogateId
 import app.domain.model.third.ThirdId
 import app.domain.third.{Third, ThirdCredentials, ThirdProfile}
-import app.infrastructure.Persistence.BuildSurrogateId
 import test.builders.BuildUuid
 
 object BuildThird {

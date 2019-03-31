@@ -1,6 +1,6 @@
 package test.app.infrastructure.Persistence.user
 
-import app.infrastructure.Persistence.BuildSurrogateId
+import app.domain.model.BuildSurrogateId
 import app.infrastructure.Persistence.owner.UserPersistentModel
 import com.github.nscala_time.time.Imports.DateTime
 import test.builders.Faker
