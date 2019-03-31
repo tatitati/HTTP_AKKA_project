@@ -10,10 +10,9 @@ object BuildThird {
              withSurrogateId: Option[Long] =  BuildSurrogateId.anyPersisted(),
              withId: ThirdId = ThirdId(BuildUuid.any()),
              withThirdProfile: ThirdProfile = BuildThirdProfile.any(),
-             withCredentials: ThirdCredentials = BuildThirdCredentials.any()
         ): Third = {
 
-      val third = new Third(withId, withThirdProfile, withCredentials)
+      val third = new Third(withId, withThirdProfile)
 
       if (withSurrogateId != None) {
         third.setSurrogateId(withSurrogateId)

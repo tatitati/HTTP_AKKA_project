@@ -9,7 +9,7 @@ object ThirdMapper {
 
   def toDomain(fromPersistent: ThirdPersistentModel): Third = {
     val domain = Third(
-      id = ThirdId(
+      thirdId = ThirdId(
         value = UUID.fromString(fromPersistent.id)
       ),
       profile = ThirdProfile(
@@ -32,7 +32,7 @@ object ThirdMapper {
   def toPersistent(third: Third): ThirdPersistentModel= {
     ThirdPersistentModel(
       surrogateId = third.getSurrogateId(),
-      id = third.id.toString,
+      id = third.thirdId.toString,
       name = third.getProfile.name,
       callback = third.getProfile.callback,
       homepage = third.getProfile.homepage,

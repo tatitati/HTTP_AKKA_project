@@ -9,7 +9,7 @@ class ThirdSpec extends FunSuite {
   test("Identifier is the proper type") {
     val third = BuildThird.any()
 
-    assert(third.id.isInstanceOf[ThirdId] === true)
+    assert(third.thirdId.isInstanceOf[ThirdId] === true)
   }
 
   test("Equals use the key to compare") {
@@ -31,15 +31,5 @@ class ThirdSpec extends FunSuite {
     givenThird.updateName("second name")
 
     assert(givenThird.getProfile.name === "second name")
-  }
-
-  test("can refresh credentials") {
-    val givenThird = BuildThird.any()
-
-    val credentialsOriginal = givenThird.getCredentials
-    givenThird.refreshCredentials()
-    val credentialsUpdated = givenThird.getCredentials
-
-    assert(credentialsOriginal !== credentialsUpdated)
   }
 }

@@ -5,22 +5,13 @@ import app.domain.model.third.ThirdId
 import scala.util.Random
 
 case class Third(
-                  val id: ThirdId,
-                  private var profile: ThirdProfile,
-                  private var credentials: ThirdCredentials)
+                  val thirdId: ThirdId,
+                  private var profile: ThirdProfile)
   extends IdentifiableInPersistence {
 
   def getProfile: ThirdProfile = profile
-  def getCredentials: ThirdCredentials = credentials
   def equals(third: Third): Boolean = {
-    this.id.equals(third.id)
-  }
-
-  def refreshCredentials(): Unit = {
-    credentials = ThirdCredentials(
-      clientId = makeRandomText(),
-      clientSecret = makeRandomText()
-    )
+    this.thirdId.equals(third.thirdId)
   }
 
   def updateName(withName: String): Unit = {

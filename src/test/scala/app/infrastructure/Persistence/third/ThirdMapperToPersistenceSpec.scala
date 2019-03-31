@@ -1,8 +1,9 @@
 package test.app.infrastructure.repository.third
 
+import app.domain.model.app.BuildAppCredentials
 import app.infrastructure.Persistence.third.{ThirdMapper, ThirdPersistentModel}
 import org.scalatest.FunSuite
-import test.app.domain.third.{BuildThird, BuildThirdCredentials, BuildThirdProfile}
+import test.app.domain.third.{BuildThird, BuildThirdProfile}
 
 class ThirdMapperToPersistenceSpec extends FunSuite {
 
@@ -17,7 +18,7 @@ class ThirdMapperToPersistenceSpec extends FunSuite {
     val givenThirdDomain = BuildThird.any(
       withSurrogateId = None,
       withThirdProfile = BuildThirdProfile.specific(),
-      withCredentials = BuildThirdCredentials.specific()
+      withCredentials = BuildAppCredentials.specific()
     )
 
     val thenPersistent = ThirdMapper.toPersistent(givenThirdDomain)
