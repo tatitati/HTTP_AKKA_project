@@ -1,6 +1,6 @@
-package app.domain.model.app
+package app.domain.model.site
 
-case class AppProfile(
+case class SiteProfile(
     name: String,
     domain: String,
     description: String

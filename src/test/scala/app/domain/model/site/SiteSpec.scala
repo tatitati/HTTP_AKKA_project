@@ -1,11 +1,11 @@
-package app.domain.model.app
+package test.app.domain.model.site
 
 import org.scalatest.FunSuite
 
-class AppSpec extends FunSuite {
+class SiteSpec extends FunSuite {
 
   test("App can refresh credentials") {
-      val givenApp = BuildApp.any()
+      val givenApp = BuildSite.any()
 
       val originalCredentials = givenApp.getCredentials
       givenApp.refreshCredentials()
@@ -15,7 +15,7 @@ class AppSpec extends FunSuite {
   }
 
   test("Can update the name of the app") {
-    val givenApp = BuildApp.any()
+    val givenApp = BuildSite.any()
 
     givenApp.updateName("new name")
     givenApp.updateDescription("new description")

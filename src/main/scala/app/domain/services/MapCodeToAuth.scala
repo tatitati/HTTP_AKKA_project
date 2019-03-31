@@ -4,7 +4,7 @@ import java.util.UUID
 
 import com.github.nscala_time.time.Imports._
 import app.domain.code.Code
-import app.domain.model.app.AppId
+import app.domain.model.site.SiteId
 import app.domain.model.auth.{Auth, AuthId, AuthToken}
 import app.domain.model.user.UserId
 
@@ -12,7 +12,7 @@ object MapCodeToAuth {
   def toAuth(code: Code): Auth = {
     new Auth(
       authId = AuthId(UUID.randomUUID()),
-      appId = AppId(code.appId.value),
+      siteId = SiteId(code.siteId.value),
       userId = UserId(code.userId.value),
       scope = code.scope,
       token = generateToken()

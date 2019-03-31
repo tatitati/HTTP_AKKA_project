@@ -1,6 +1,6 @@
 package test.app.infrastructure.repository.third
 
-import app.domain.model.app.BuildAppCredentials
+import app.domain.model.site.BuildAppCredentials
 import app.infrastructure.Persistence.third.{ThirdMapper, ThirdPersistentModel}
 import org.scalatest.FunSuite
 import test.app.domain.third.{BuildThird, BuildThirdProfile}

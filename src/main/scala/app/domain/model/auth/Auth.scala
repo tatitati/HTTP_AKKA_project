@@ -2,14 +2,14 @@ package app.domain.model.auth
 
 import java.util.UUID
 
-import app.domain.model.app.AppId
+import app.domain.model.site.SiteId
 import app.domain.model.{IdentifiableInPersistence, Scope}
 import app.domain.model.user.UserId
 import com.github.nscala_time.time.Imports.DateTime
 
 class Auth(
             val authId: AuthId,
-            val appId: AppId,
+            val siteId: SiteId,
             val userId: UserId,
             val scope: Scope,
             private var token: AuthToken

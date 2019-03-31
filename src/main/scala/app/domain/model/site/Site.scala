@@ -1,19 +1,19 @@
-package app.domain.model.app
+package app.domain.model.site
 
 import app.domain.model.IdentifiableInPersistence
-
 import scala.util.Random
 
-class App(
-         private var credentials: AppCredentials,
-         private var profile: AppProfile)
+class Site(
+            private var siteId: SiteId,
+            private var credentials: SiteCredentials,
+            private var profile: SiteProfile)
   extends IdentifiableInPersistence {
 
   def getCredentials = credentials
   def getProfile = profile
 
   def refreshCredentials(): Unit = {
-    credentials = AppCredentials(
+    credentials = SiteCredentials(
       clientId = makeRandomText(),
       clientSecret = makeRandomText()
     )
