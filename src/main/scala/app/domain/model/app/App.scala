@@ -1,8 +1,8 @@
 package app.domain.model.app
 
 class App(
-         credentials: AppCredentials,
-         profile: AppProfile
+         val credentials: AppCredentials,
+         val profile: AppProfile
          ) {
 
 }
