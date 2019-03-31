@@ -14,7 +14,7 @@ object CodeSerializer {
   def toJson(code: Code): String = {
 
     val givenMap = Json.obj(
-        "id" -> code.id.toString,
+        "id" -> code.codeId.toString,
         "user_id" -> code.userId.toString,
         "third_id" -> code.thirdId.toString,
         "state" -> code.state,
@@ -42,7 +42,7 @@ object CodeSerializer {
     )
 
     new Code(
-      id = CodeId(UUID.fromString(id)),
+      codeId = CodeId(UUID.fromString(id)),
       userId = UserId(userid),
       thirdId = ThirdId(UUID.fromString(thirdid)),
       state = (parsed \ "state").as[String],

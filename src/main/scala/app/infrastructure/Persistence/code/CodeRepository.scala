@@ -9,7 +9,7 @@ class CodeRepository(val redisClient: RedisClient) {
   def save(code: Code, expiryTime: Int = 60): Boolean = {
 
     redisClient.setex(
-      key = code.id.toString,
+      key = code.codeId.toString,
       expiry = expiryTime,
       value = CodeSerializer.toJson(code)
     )

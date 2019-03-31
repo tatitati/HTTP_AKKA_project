@@ -1,27 +1,25 @@
 package test.app.domain.model.auth
 
 import app.domain.model.Scope
+import app.domain.model.app.{AppId, BuildAppId}
 import app.domain.model.auth._
 import app.domain.model.user.UserId
-import app.domain.model.third.ThirdId
 import test.app.domain.model.BuildScope
-import test.app.domain.model.third.BuildThirdId
 import test.app.domain.model.user.BuildUserId
-import test.builders.{BuildUuid, Faker}
 
 object BuildAuth {
 
   def any(
            withSurrogateId: Option[Long] = None,
-           withId: AuthId = AuthId(BuildUuid.any()),
-           withThird: ThirdId = ThirdId(BuildUuid.any()),
-           withUserId: UserId = UserId(Faker.text()),
+           withId: AuthId = BuildAuthId.any(),
+           withAppId: AppId = BuildAppId.any(),
+           withUserId: UserId = BuildUserId.any(),
            withScope: Scope = BuildScope.any(),
            withToken: AuthToken = BuildToken.any()
          ): Auth = {
     val auth = new Auth(
-      id = withId,
-      thirdId = withThird,
+      authId = withId,
+      appId = withAppId,
       userId = withUserId,
       scope = withScope,
       token = withToken
@@ -36,8 +34,8 @@ object BuildAuth {
 
   def specific(): Auth = {
     new Auth(
-      id = BuildAuthId.specific1(),
-      thirdId = BuildThirdId.specific2(),
+      authId = BuildAuthId.specific1(),
+      appId = BuildAppId.specific2(),
       userId = BuildUserId.specific1(),
       scope = BuildScope.onlyEmailAndFirstname(),
       token = BuildToken.specific()

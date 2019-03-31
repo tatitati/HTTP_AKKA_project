@@ -12,8 +12,8 @@ object AuthMapper {
   def toPersistent(auth: Auth): AuthPersistentModel = {
     AuthPersistentModel(
       surrogateId = auth.getSurrogateId(),
-      id = auth.id.toString,
-      thirdId = auth.thirdId.toString(),
+      id = auth.authId.toString,
+      thirdId = auth.appId.toString(),
       userId = auth.userId.toString(),
       scopeFirstName = auth.scope.firstname,
       scopeSurname = auth.scope.surname,
@@ -28,8 +28,8 @@ object AuthMapper {
 
   def toDomain(persistent: AuthPersistentModel): Auth = {
     val auth = new Auth(
-      id = AuthId(UUID.fromString(persistent.id)),
-      thirdId = ThirdId(UUID.fromString(persistent.thirdId)),
+      authId = AuthId(UUID.fromString(persistent.id)),
+      appId = ThirdId(UUID.fromString(persistent.thirdId)),
       userId = UserId(persistent.userId),
       scope = Scope(
         firstname = persistent.scopeFirstName,

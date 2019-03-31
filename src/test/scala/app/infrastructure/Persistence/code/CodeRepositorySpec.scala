@@ -27,7 +27,7 @@ class CodeRepositorySpec extends FunSuite with BeforeAndAfterEach with BeforeAnd
     val givenCode = BuildCode.any()
 
     repo.save(givenCode, 1)
-    val codeFeched = repo.read(givenCode.id.toString())
+    val codeFeched = repo.read(givenCode.codeId.toString())
 
     assert(codeFeched.isInstanceOf[Some[Code]])
     assert(codeFeched.get.equals(givenCode))
