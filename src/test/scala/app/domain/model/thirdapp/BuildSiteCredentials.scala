@@ -1,6 +1,6 @@
-package test.app.domain.model.site
+package test.app.domain.model.thirdapp
 
-import app.domain.model.site.SiteCredentials
+import app.domain.model.thirdapp.SiteCredentials
 import test.builders.Faker
 
 object BuildSiteCredentials {

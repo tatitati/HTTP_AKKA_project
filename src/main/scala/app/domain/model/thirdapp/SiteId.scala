@@ -1,4 +1,4 @@
-package app.domain.model.site
+package app.domain.model.thirdapp
 
 import java.util.UUID
 

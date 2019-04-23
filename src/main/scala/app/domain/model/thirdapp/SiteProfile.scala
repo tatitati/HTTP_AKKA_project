@@ -1,4 +1,4 @@
-package app.domain.model.site
+package app.domain.model.thirdapp
 
 case class SiteProfile(
     name: String,

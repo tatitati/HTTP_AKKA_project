@@ -4,7 +4,7 @@ import java.util.UUID
 
 import com.github.nscala_time.time.Imports._
 import app.domain.code.Code
-import app.domain.model.site.SiteId
+import app.domain.model.thirdapp.SiteId
 import app.domain.model.auth.{Auth, AuthId, AuthToken}
 import app.domain.model.user.UserId
 

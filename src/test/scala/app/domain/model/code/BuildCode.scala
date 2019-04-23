@@ -2,12 +2,12 @@ package test.app.domain.code
 
 import app.domain.code.Code
 import app.domain.model.Scope
-import app.domain.model.site.SiteId
+import app.domain.model.thirdapp.SiteId
 import app.domain.model.code.CodeId
 import app.domain.model.user.UserId
 import test.app.domain.model.BuildScope
 import test.app.domain.model.code.BuildCodeId
-import test.app.domain.model.site.BuildSiteId
+import test.app.domain.model.thirdapp.BuildSiteId
 import test.app.domain.model.user.BuildUserId
 import test.builders.Faker
 

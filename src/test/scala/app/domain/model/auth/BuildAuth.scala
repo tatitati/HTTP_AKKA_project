@@ -1,11 +1,11 @@
 package test.app.domain.model.auth
 
 import app.domain.model.Scope
-import app.domain.model.site.SiteId
+import app.domain.model.thirdapp.SiteId
 import app.domain.model.auth._
 import app.domain.model.user.UserId
 import test.app.domain.model.BuildScope
-import test.app.domain.model.site.BuildSiteId
+import test.app.domain.model.thirdapp.BuildSiteId
 import test.app.domain.model.user.BuildUserId
 
 object BuildAuth {

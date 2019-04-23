@@ -2,7 +2,7 @@ package app.domain.model.auth
 
 import java.util.UUID
 
-import app.domain.model.site.SiteId
+import app.domain.model.thirdapp.SiteId
 import app.domain.model.{IdentifiableInPersistence, Scope}
 import app.domain.model.user.UserId
 import com.github.nscala_time.time.Imports.DateTime

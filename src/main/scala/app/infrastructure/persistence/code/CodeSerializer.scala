@@ -4,7 +4,7 @@ import java.util.UUID
 import app.domain.code.Code
 import app.domain.model.Scope
 import app.domain.model.code.CodeId
-import app.domain.model.site.SiteId
+import app.domain.model.thirdapp.SiteId
 import app.domain.model.user.UserId
 import play.api.libs.json.Json
 

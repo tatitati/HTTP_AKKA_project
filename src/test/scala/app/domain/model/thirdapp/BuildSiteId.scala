@@ -1,7 +1,7 @@
-package test.app.domain.model.site
+package test.app.domain.model.thirdapp
 
 import java.util.UUID
-import app.domain.model.site.SiteId
+import app.domain.model.thirdapp.SiteId
 import test.builders.BuildUuid
 
 object BuildSiteId {

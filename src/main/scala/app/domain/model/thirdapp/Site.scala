@@ -1,4 +1,4 @@
-package app.domain.model.site
+package app.domain.model.thirdapp
 
 import app.domain.model.IdentifiableInPersistence
 import app.domain.model.third.ThirdId

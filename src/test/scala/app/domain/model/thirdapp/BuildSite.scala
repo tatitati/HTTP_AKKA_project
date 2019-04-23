@@ -1,6 +1,6 @@
-package test.app.domain.model.site
+package test.app.domain.model.thirdapp
 
-import app.domain.model.site.{Site, SiteCredentials, SiteId, SiteProfile}
+import app.domain.model.thirdapp.{Site, SiteCredentials, SiteId, SiteProfile}
 import app.domain.model.third.ThirdId
 import test.app.domain.model.third.BuildThirdId
 
