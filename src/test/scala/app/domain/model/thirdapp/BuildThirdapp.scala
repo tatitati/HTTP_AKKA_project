@@ -14,7 +14,7 @@ object BuildThirdapp {
          ): Thirdapp = {
 
     new Thirdapp(
-      siteId = withSiteId,
+      thirdappId = withSiteId,
       thirdId = withThirdId,
       credentials = withCredentials,
       profile = withProfile

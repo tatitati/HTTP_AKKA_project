@@ -5,8 +5,8 @@ import app.domain.model.third.ThirdId
 import scala.util.Random
 
 class Thirdapp(
-                private var siteId: ThirdappId,
-                private var thirdId: ThirdId,
+                val thirdappId: ThirdappId,
+                val thirdId: ThirdId,
                 private var credentials: ThirdappCredentials,
                 private var profile: ThirdappProfile)
   extends IdentifiableInPersistence {
