@@ -1,10 +1,12 @@
 package app.domain.model.site
 
 import app.domain.model.IdentifiableInPersistence
+import app.domain.model.third.ThirdId
 import scala.util.Random
 
 class Site(
             private var siteId: SiteId,
+            private var thirdId: ThirdId,
             private var credentials: SiteCredentials,
             private var profile: SiteProfile)
   extends IdentifiableInPersistence {
