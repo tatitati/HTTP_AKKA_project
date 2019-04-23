@@ -1,4 +1,4 @@
-package test.app.infrastructure.Persistence.owner
+package test.app.infrastructure.persistence.owner
 
 import app.infrastructure.persistence.owner.{UserMapper, UserPersistentModel}
 import org.scalatest.FunSuite

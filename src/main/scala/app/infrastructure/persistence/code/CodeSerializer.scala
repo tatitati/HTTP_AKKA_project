@@ -1,11 +1,10 @@
-package test.app.infrastructure.Persistence.code
+package test.app.infrastructure.persistence.code
 
 import java.util.UUID
-
 import app.domain.code.Code
 import app.domain.model.Scope
 import app.domain.model.code.CodeId
-import app.domain.model.third.ThirdId
+import app.domain.model.site.SiteId
 import app.domain.model.user.UserId
 import play.api.libs.json.Json
 
@@ -16,7 +15,7 @@ object CodeSerializer {
     val givenMap = Json.obj(
         "id" -> code.codeId.toString,
         "user_id" -> code.userId.toString,
-        "third_id" -> code.thirdId.toString,
+        "site_id" -> code.siteId.toString,
         "state" -> code.state,
         "scope" -> Json.obj(
           "firstname" -> code.scope.firstname,
@@ -34,7 +33,7 @@ object CodeSerializer {
 
     val id = (parsed \ "id").as[String]
     val userid = (parsed \ "user_id").as[String]
-    val thirdid = (parsed \ "third_id").as[String]
+    val siteId = (parsed \ "site_id").as[String]
     val scope = Scope(
       firstname = (parsed \ "scope" \ "firstname").as[Boolean],
       surname = (parsed \ "scope" \ "surname").as[Boolean],
@@ -44,7 +43,7 @@ object CodeSerializer {
     new Code(
       codeId = CodeId(UUID.fromString(id)),
       userId = UserId(userid),
-      thirdId = ThirdId(UUID.fromString(thirdid)),
+      siteId = SiteId(UUID.fromString(siteId)),
       state = (parsed \ "state").as[String],
       scope = scope
     )

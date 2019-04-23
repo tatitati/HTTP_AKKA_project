@@ -1,4 +1,4 @@
-package test.app.infrastructure.Persistence.user
+package test.app.infrastructure.persistence.user
 
 import app.domain.model.BuildSurrogateId
 import app.infrastructure.persistence.owner.UserPersistentModel

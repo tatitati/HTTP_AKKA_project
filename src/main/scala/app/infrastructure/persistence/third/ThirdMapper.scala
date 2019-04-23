@@ -1,9 +1,8 @@
 package app.infrastructure.persistence.third
 
 import java.util.UUID
-
 import app.domain.model.third.ThirdId
-import app.domain.third.{Third, ThirdCredentials, ThirdProfile}
+import app.domain.third.{Third, ThirdProfile}
 
 object ThirdMapper {
 
@@ -17,10 +16,6 @@ object ThirdMapper {
         callback = fromPersistent.callback,
         homepage = fromPersistent.homepage,
         description = fromPersistent.description
-      ),
-      credentials = ThirdCredentials(
-        clientId = fromPersistent.clientId,
-        clientSecret = fromPersistent.clientSecret
       )
     )
 
@@ -36,9 +31,7 @@ object ThirdMapper {
       name = third.getProfile.name,
       callback = third.getProfile.callback,
       homepage = third.getProfile.homepage,
-      description = third.getProfile.description,
-      clientId = third.getCredentials.clientId,
-      clientSecret = third.getCredentials.clientSecret
+      description = third.getProfile.description
     )
   }
 }

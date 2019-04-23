@@ -1,4 +1,4 @@
-package test.app.infrastructure.Persistence.code
+package test.app.infrastructure.persistence.code
 
 import app.domain.code.Code
 import app.infrastructure.persistence.code.CodeRepository

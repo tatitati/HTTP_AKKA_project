@@ -1,4 +1,4 @@
-package test.app.infrastructure.Persistence.user
+package test.app.infrastructure.persistence.user
 
 import app.infrastructure.persistence.Exec
 import app.infrastructure.persistence.user.UserSchema

@@ -1,4 +1,4 @@
-package test.app.infrastructure.Persistence.third
+package test.app.infrastructure.persistence.third
 
 import app.infrastructure.persistence.third.ThirdPersistentModel
 import test.builders.{BuildUuid, Faker}
@@ -11,9 +11,7 @@ object BuildThirdPersistentModel {
            withName: String = Faker.text(),
            withCallback: String = Faker.text(),
            withHomepage: String = Faker.text(),
-           withDescription: String = Faker.text(),
-           withClientId: String = Faker.text(),
-           withClientSecret: String = Faker.text()
+           withDescription: String = Faker.text()
          ): ThirdPersistentModel = {
     ThirdPersistentModel(
         withId,
@@ -21,9 +19,7 @@ object BuildThirdPersistentModel {
         withName,
         withCallback,
         withHomepage,
-        withDescription,
-        withClientId,
-        withClientSecret
+        withDescription
     )
   }
 
@@ -32,9 +28,7 @@ object BuildThirdPersistentModel {
            withName: String = Faker.text(),
            withCallback: String = Faker.text(),
            withHomepage: String = Faker.text(),
-           withDescription: String = Faker.text(),
-           withClientId: String = Faker.text(),
-           withClientSecret: String = Faker.text()
+           withDescription: String = Faker.text()
          ): ThirdPersistentModel = {
     any(
       withId = Faker(Some(Faker.int())),
@@ -42,9 +36,7 @@ object BuildThirdPersistentModel {
       withName,
       withCallback,
       withHomepage,
-      withDescription,
-      withClientId,
-      withClientSecret
+      withDescription
     )
   }
 
@@ -53,9 +45,7 @@ object BuildThirdPersistentModel {
                     withName: String = Faker.text(),
                     withCallback: String = Faker.text(),
                     withHomepage: String = Faker.text(),
-                    withDescription: String = Faker.text(),
-                    withClientId: String = Faker.text(),
-                    withClientSecret: String = Faker.text()
+                    withDescription: String = Faker.text()
                   ): ThirdPersistentModel = {
     any(
       withId = None,
@@ -63,9 +53,7 @@ object BuildThirdPersistentModel {
       withName,
       withCallback,
       withHomepage,
-      withDescription,
-      withClientId,
-      withClientSecret
+      withDescription
     )
   }
 }

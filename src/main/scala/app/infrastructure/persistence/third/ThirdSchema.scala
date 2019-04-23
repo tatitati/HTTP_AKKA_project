@@ -11,8 +11,6 @@ class ThirdSchema(tag: Tag) extends Table[ThirdPersistentModel](tag, "third") {
   def callback = column[String]("callback")
   def homepage = column[String]("homepage", O.SqlType("VARCHAR(255)"))
   def description = column[String]("description")
-  def clientId = column[String]("client_id")
-  def clientSecret = column[String]("client_secret")
 
   def * = (
     surrogateId,
@@ -20,9 +18,7 @@ class ThirdSchema(tag: Tag) extends Table[ThirdPersistentModel](tag, "third") {
     name,
     callback,
     homepage,
-    description,
-    clientId,
-    clientSecret
+    description
   ).mapTo[ThirdPersistentModel]
 
   def refreshAccessIndex = index("third____name_and_homepage____idx", (name, homepage), unique=true)

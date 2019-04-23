@@ -6,7 +6,5 @@ case class ThirdPersistentModel(
    name: String,
    callback: String,
    homepage: String,
-   description: String,
-   clientId: String,
-   clientSecret: String
+   description: String
 )

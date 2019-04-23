@@ -1,4 +1,4 @@
-package test.app.infrastructure.Persistence.code
+package test.app.infrastructure.persistence.code
 
 import org.scalatest.FunSuite
 import test.app.domain.code.BuildCode
@@ -14,7 +14,7 @@ class CodeSerializerSpec extends FunSuite {
       """{
         |"id":"47331985-9cd6-4632-b505-fceb476100a1",
         |"user_id":"user id one",
-        |"third_id":"47331985-9cd6-4632-b505-fceb476100a1",
+        |"site_id":"47331985-9cd6-4632-b505-fceb476100a1",
         |"state":"any state",
         |"scope":{
             |"firstname":true,
@@ -30,7 +30,7 @@ class CodeSerializerSpec extends FunSuite {
       """{
           |"id":"47331985-9cd6-4632-b505-fceb476100a1",
           |"user_id":"user id one",
-          |"third_id":"47331985-9cd6-4632-b505-fceb476100a1",
+          |"site_id":"47331985-9cd6-4632-b505-fceb476100a1",
           |"state":"any state",
           |"scope":{
             |"firstname":true,

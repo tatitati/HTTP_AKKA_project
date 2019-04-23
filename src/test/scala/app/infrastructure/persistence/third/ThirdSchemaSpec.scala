@@ -1,4 +1,4 @@
-package test.app.infrastructure.Persistence.third
+package test.app.infrastructure.persistence.third
 
 import app.infrastructure.persistence.Exec
 import app.infrastructure.persistence.third.ThirdSchema

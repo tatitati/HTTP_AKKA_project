@@ -2,7 +2,7 @@ package app.infrastructure.persistence.code
 
 import app.domain.code.Code
 import com.redis.RedisClient
-import test.app.infrastructure.Persistence.code.CodeSerializer
+import test.app.infrastructure.persistence.code.CodeSerializer
 
 class CodeRepository(val redisClient: RedisClient) {
 

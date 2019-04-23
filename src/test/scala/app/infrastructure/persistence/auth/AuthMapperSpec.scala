@@ -1,4 +1,4 @@
-package test.app.infrastructure.Persistence.auth
+package test.app.infrastructure.persistence.auth
 
 import app.domain.model.auth.Auth
 import app.infrastructure.persistence.auth.{AuthMapper, AuthPersistentModel}

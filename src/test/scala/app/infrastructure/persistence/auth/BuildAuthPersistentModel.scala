@@ -1,4 +1,4 @@
-package test.app.infrastructure.Persistence.auth
+package test.app.infrastructure.persistence.auth
 
 import app.infrastructure.persistence.auth.AuthPersistentModel
 import com.github.nscala_time.time.Imports.DateTime
