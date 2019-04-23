@@ -1,5 +1,5 @@
-package app.infrastructure.persistence.thirdapp
-
-class ThirdappRepository {
-
-}
+//package app.infrastructure.persistence.thirdapp
+//
+//class ThirdappRepository {
+//
+//}

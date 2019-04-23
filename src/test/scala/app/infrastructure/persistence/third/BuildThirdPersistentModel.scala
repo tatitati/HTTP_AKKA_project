@@ -6,16 +6,16 @@ import test.builders.{BuildUuid, Faker}
 object BuildThirdPersistentModel {
 
   def any(
-           withId: Option[Long] = Faker(Some(Faker.long()), None),
-           withUUID: String = BuildUuid.any().toString,
+           withSurrogateId: Option[Long] = Faker(Some(Faker.long()), None),
+           withId: String = BuildUuid.any().toString,
            withName: String = Faker.text(),
            withCallback: String = Faker.text(),
            withHomepage: String = Faker.text(),
            withDescription: String = Faker.text()
          ): ThirdPersistentModel = {
     ThirdPersistentModel(
+        withSurrogateId,
         withId,
-        withUUID,
         withName,
         withCallback,
         withHomepage,
@@ -24,15 +24,15 @@ object BuildThirdPersistentModel {
   }
 
   def anyPersisted(
-           withUUID: String = BuildUuid.any().toString,
-           withName: String = Faker.text(),
-           withCallback: String = Faker.text(),
-           withHomepage: String = Faker.text(),
-           withDescription: String = Faker.text()
+            withId: String = BuildUuid.any().toString,
+            withName: String = Faker.text(),
+            withCallback: String = Faker.text(),
+            withHomepage: String = Faker.text(),
+            withDescription: String = Faker.text()
          ): ThirdPersistentModel = {
     any(
-      withId = Faker(Some(Faker.int())),
-      withUUID,
+      withSurrogateId = Faker(Some(Faker.int())),
+      withId,
       withName,
       withCallback,
       withHomepage,
@@ -41,15 +41,15 @@ object BuildThirdPersistentModel {
   }
 
   def anyNoPersisted(
-                    withUUID: String = BuildUuid.any().toString,
-                    withName: String = Faker.text(),
-                    withCallback: String = Faker.text(),
-                    withHomepage: String = Faker.text(),
-                    withDescription: String = Faker.text()
-                  ): ThirdPersistentModel = {
+            withId: String = BuildUuid.any().toString,
+            withName: String = Faker.text(),
+            withCallback: String = Faker.text(),
+            withHomepage: String = Faker.text(),
+            withDescription: String = Faker.text()
+          ): ThirdPersistentModel = {
     any(
-      withId = None,
-      withUUID,
+      withSurrogateId = None,
+      withId,
       withName,
       withCallback,
       withHomepage,
