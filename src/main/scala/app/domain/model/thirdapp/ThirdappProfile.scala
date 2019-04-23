@@ -1,6 +1,6 @@
 package app.domain.model.thirdapp
 
-case class SiteProfile(
+case class ThirdappProfile(
     name: String,
     domain: String,
     description: String

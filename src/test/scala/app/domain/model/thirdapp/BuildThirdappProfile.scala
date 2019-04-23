@@ -1,17 +1,17 @@
 package test.app.domain.model.thirdapp
 
-import app.domain.model.thirdapp.SiteProfile
+import app.domain.model.thirdapp.ThirdappProfile
 import test.builders.Faker
 
-object BuildSiteProfile {
+object BuildThirdappProfile {
 
   def any(
          withName: String = Faker.text(),
          withDomain: String = Faker.text(),
          withDescription: String = Faker.text()
-         ): SiteProfile = {
+         ): ThirdappProfile = {
 
-    SiteProfile(
+    ThirdappProfile(
       name = withName,
       domain = withDomain,
       description = withDescription

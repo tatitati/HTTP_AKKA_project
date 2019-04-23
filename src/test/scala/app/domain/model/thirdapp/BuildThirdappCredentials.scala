@@ -1,20 +1,20 @@
 package test.app.domain.model.thirdapp
 
-import app.domain.model.thirdapp.SiteCredentials
+import app.domain.model.thirdapp.ThirdappCredentials
 import test.builders.Faker
 
-object BuildSiteCredentials {
+object BuildThirdappCredentials {
 
   def any(
            withClientid: String = Faker.text(),
            withClientsecret: String = Faker.text()
-         ): SiteCredentials = {
+         ): ThirdappCredentials = {
 
-    SiteCredentials(withClientid, withClientsecret)
+    ThirdappCredentials(withClientid, withClientsecret)
   }
 
-  def specific(): SiteCredentials = {
-    SiteCredentials(
+  def specific(): ThirdappCredentials = {
+    ThirdappCredentials(
       clientId = "client_id",
       clientSecret = "client_secret"
     )

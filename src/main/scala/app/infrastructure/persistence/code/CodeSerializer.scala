@@ -4,7 +4,7 @@ import java.util.UUID
 import app.domain.code.Code
 import app.domain.model.Scope
 import app.domain.model.code.CodeId
-import app.domain.model.thirdapp.SiteId
+import app.domain.model.thirdapp.ThirdappId
 import app.domain.model.user.UserId
 import play.api.libs.json.Json
 
@@ -15,7 +15,7 @@ object CodeSerializer {
     val givenMap = Json.obj(
         "id" -> code.codeId.toString,
         "user_id" -> code.userId.toString,
-        "site_id" -> code.siteId.toString,
+        "site_id" -> code.thirdappId.toString,
         "state" -> code.state,
         "scope" -> Json.obj(
           "firstname" -> code.scope.firstname,
@@ -43,7 +43,7 @@ object CodeSerializer {
     new Code(
       codeId = CodeId(UUID.fromString(id)),
       userId = UserId(userid),
-      siteId = SiteId(UUID.fromString(siteId)),
+      thirdappId = ThirdappId(UUID.fromString(siteId)),
       state = (parsed \ "state").as[String],
       scope = scope
     )

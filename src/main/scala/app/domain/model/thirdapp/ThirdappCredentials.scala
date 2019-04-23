@@ -1,6 +1,6 @@
 package app.domain.model.thirdapp
 
-case class SiteCredentials(
+case class ThirdappCredentials(
    clientId: String,
    clientSecret: String
 )

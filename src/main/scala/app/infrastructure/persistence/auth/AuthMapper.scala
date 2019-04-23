@@ -4,7 +4,7 @@ import java.util.UUID
 
 import app.domain.model.Scope
 import app.domain.model.auth.{Auth, AuthId, AuthToken}
-import app.domain.model.thirdapp.SiteId
+import app.domain.model.thirdapp.ThirdappId
 import app.domain.model.third.ThirdId
 import app.domain.model.user.UserId
 
@@ -14,7 +14,7 @@ object AuthMapper {
     AuthPersistentModel(
       surrogateId = auth.getSurrogateId(),
       id = auth.authId.toString,
-      thirdId = auth.siteId.toString(),
+      thirdId = auth.thirdappId.toString(),
       userId = auth.userId.toString(),
       scopeFirstName = auth.scope.firstname,
       scopeSurname = auth.scope.surname,
@@ -30,7 +30,7 @@ object AuthMapper {
   def toDomain(persistent: AuthPersistentModel): Auth = {
     val auth = new Auth(
       authId = AuthId(UUID.fromString(persistent.id)),
-      siteId = SiteId(UUID.fromString(persistent.thirdId)),
+      thirdappId = ThirdappId(UUID.fromString(persistent.thirdId)),
       userId = UserId(persistent.userId),
       scope = Scope(
         firstname = persistent.scopeFirstName,
