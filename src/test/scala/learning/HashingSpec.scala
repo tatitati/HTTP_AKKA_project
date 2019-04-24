@@ -5,27 +5,44 @@ import java.security.MessageDigest
 
 class HashingSpec extends FunSuite {
 
-  test("I can has a simple string") {
+  test("I can hash a simple string") {
     val text = "goodbyee"
 
     val hashed = MessageDigest.getInstance("SHA-256")
-      .digest("some string".getBytes("UTF-8"))
+      .digest(text.getBytes("UTF-8"))
       .map("%02x".format(_)).mkString
 
-    assert(hashed == "61d034473102d7dac305902770471fd50f4c5b26f6831a56dd90b5184b3c30fc")
+    println(hashed)
+    assert(hashed == "ba6c6f3caf96c7e7a764b5fbb8675d39013e1a8a077da5cd9ad45e2900114dcc")
   }
 
   test("The hash is always the same") {
     val text = "goodbyee"
 
     val hashed1 = MessageDigest.getInstance("SHA-256")
-      .digest("some string".getBytes("UTF-8"))
+      .digest(text.getBytes("UTF-8"))
       .map("%02x".format(_)).mkString
 
     val hashed2 = MessageDigest.getInstance("SHA-256")
-      .digest("some string".getBytes("UTF-8"))
+      .digest(text.getBytes("UTF-8"))
       .map("%02x".format(_)).mkString
 
     assert(hashed1 == hashed2)
+  }
+
+  test("The hash has a fixed length") {
+    val text1 = "aa"
+    val text2 = "abcdefghijklmn123456789ABCDEFGH_+"
+
+    val hashed1 = MessageDigest.getInstance("SHA-256")
+      .digest(text1.getBytes("UTF-8"))
+      .map("%02x".format(_)).mkString
+
+    val hashed2 = MessageDigest.getInstance("SHA-256")
+      .digest(text2.getBytes("UTF-8"))
+      .map("%02x".format(_)).mkString
+
+    assert(hashed1 == "961b6dd3ede3cb8ecbaacbd68de040cd78eb2ed5889130cceb4c49268ea4d506")
+    assert(hashed2 == "3cef5dc70c098666cf1039d153466634cdc0cdd5fb1f6274767ae6380bb3ad1c")
   }
 }
