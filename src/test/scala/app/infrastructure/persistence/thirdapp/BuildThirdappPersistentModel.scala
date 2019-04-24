@@ -47,22 +47,25 @@ object BuildThirdappPersistentModel {
       withDescription
     )
   }
-//
-//  def anyNoPersisted(
-//                      withUUID: String = BuildUuid.any().toString,
-//                      withName: String = Faker.text(),
-//                      withCallback: String = Faker.text(),
-//                      withHomepage: String = Faker.text(),
-//                      withDescription: String = Faker.text()
-//                    ): ThirdappPersistentModel = {
-//    any(
-//      withId = None,
-//      withUUID,
-//      withName,
-//      withCallback,
-//      withHomepage,
-//      withDescription
-//    )
-//  }
+  def anyNoPersisted(
+                    withId: String = BuildUuid.any().toString,
+                    withThirdId: String = BuildThirdId.any().toString,
+                    withClientId: String = Faker.text(),
+                    withClientSecret: String = Faker.text(),
+                    withName: String = Faker.text(),
+                    withDomain: String = Faker.text(),
+                    withDescription: String = Faker.text(),
+                  ): ThirdappPersistentModel = {
+    ThirdappPersistentModel(
+      None,
+      withId,
+      withThirdId,
+      withClientId,
+      withClientSecret,
+      withName,
+      withDomain,
+      withDescription
+    )
+  }
 }
 

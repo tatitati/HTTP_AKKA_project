@@ -1,7 +1,6 @@
 package app.infrastructure.persistence.thirdapp
 
 import java.util.UUID
-
 import app.domain.model.third.ThirdId
 import app.domain.model.thirdapp.{Thirdapp, ThirdappCredentials, ThirdappId, ThirdappProfile}
 
