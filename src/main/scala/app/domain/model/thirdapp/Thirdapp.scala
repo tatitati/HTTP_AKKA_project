@@ -25,6 +25,14 @@ class Thirdapp(
     profile = profile.copy(name = name)
   }
 
+  def updateUrlCallback(urlCallback: String): Unit = {
+    profile = profile.copy(urlcallback = urlCallback)
+  }
+
+  def updateHomepage(homePage: String): Unit = {
+    profile = profile.copy(homepage = homePage)
+  }
+
   def updateDescription(description: String): Unit = {
     profile = profile.copy(description = description)
   }

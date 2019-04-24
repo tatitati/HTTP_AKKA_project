@@ -10,5 +10,7 @@ case class ThirdappPersistentModel(
   // profile
   name: String,
   domain: String,
-  description: String
+  description: String,
+  homepage: String,
+  urlcallback: String
 )

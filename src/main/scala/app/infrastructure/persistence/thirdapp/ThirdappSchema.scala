@@ -12,6 +12,8 @@ class ThirdappSchema(tag: Tag) extends Table[ThirdappPersistentModel](tag, "thir
   def name = column[String]("name")
   def domain = column[String]("domain")
   def description = column[String]("description")
+  def homepage = column[String]("homepage")
+  def urlcallback = column[String]("urlcallback")
 
   def * = (
       surrogateId,
@@ -22,5 +24,7 @@ class ThirdappSchema(tag: Tag) extends Table[ThirdappPersistentModel](tag, "thir
       name,
       domain,
       description,
+      homepage,
+      urlcallback
     ).mapTo[ThirdappPersistentModel]
 }

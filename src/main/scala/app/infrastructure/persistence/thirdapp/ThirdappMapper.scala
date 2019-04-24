@@ -13,7 +13,9 @@ object ThirdappMapper {
       clientsecret = thirdapp.getCredentials.clientSecret,
       name = thirdapp.getProfile.name,
       domain = thirdapp.getProfile.domain,
-      description = thirdapp.getProfile.description
+      description = thirdapp.getProfile.description,
+      homepage = thirdapp.getProfile.homepage,
+      urlcallback = thirdapp.getProfile.urlcallback,
     )
   }
 
@@ -28,7 +30,9 @@ object ThirdappMapper {
       profile = ThirdappProfile(
         name = thirdappPersistentModel.name,
         domain = thirdappPersistentModel.domain,
-        description = thirdappPersistentModel.description
+        description = thirdappPersistentModel.description,
+        homepage = thirdappPersistentModel.homepage,
+        urlcallback = thirdappPersistentModel.urlcallback,
       )
     )
 

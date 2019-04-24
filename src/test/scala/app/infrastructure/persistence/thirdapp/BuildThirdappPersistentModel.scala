@@ -14,6 +14,8 @@ object BuildThirdappPersistentModel {
            withName: String = Faker.text(),
            withDomain: String = Faker.text(),
            withDescription: String = Faker.text(),
+           withHomepage: String = Faker.text(),
+           withUrlCallback: String = Faker.text(),
          ): ThirdappPersistentModel = {
     ThirdappPersistentModel(
       withSurrogateId,
@@ -23,7 +25,9 @@ object BuildThirdappPersistentModel {
       withClientSecret,
       withName,
       withDomain,
-      withDescription
+      withDescription,
+      withHomepage,
+      withUrlCallback
     )
   }
 
@@ -35,6 +39,8 @@ object BuildThirdappPersistentModel {
                     withName: String = Faker.text(),
                     withDomain: String = Faker.text(),
                     withDescription: String = Faker.text(),
+                    withHomepage: String = Faker.text(),
+                    withUrlCallback: String = Faker.text(),
                   ): ThirdappPersistentModel = {
     ThirdappPersistentModel(
       Some(Faker.long()),
@@ -44,7 +50,9 @@ object BuildThirdappPersistentModel {
       withClientSecret,
       withName,
       withDomain,
-      withDescription
+      withDescription,
+      withHomepage,
+      withUrlCallback
     )
   }
   def anyNoPersisted(
@@ -55,6 +63,8 @@ object BuildThirdappPersistentModel {
                     withName: String = Faker.text(),
                     withDomain: String = Faker.text(),
                     withDescription: String = Faker.text(),
+                    withHomepage: String = Faker.text(),
+                    withUrlCallback: String = Faker.text(),
                   ): ThirdappPersistentModel = {
     ThirdappPersistentModel(
       None,
@@ -64,7 +74,9 @@ object BuildThirdappPersistentModel {
       withClientSecret,
       withName,
       withDomain,
-      withDescription
+      withDescription,
+      withHomepage,
+      withUrlCallback
     )
   }
 }
