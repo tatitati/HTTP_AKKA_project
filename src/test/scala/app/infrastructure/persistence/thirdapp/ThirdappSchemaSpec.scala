@@ -14,12 +14,12 @@ class ThirdappSchemaSpec extends FunSuite with BeforeAndAfterEach with Exec {
     assert(db.isInstanceOf[Database])
   }
 
-  test("third table exists") {
+  test("thirdapp table exists") {
     val tables = exec(MTable.getTables).toList
     assert(tables.exists(_.name.name == "thirdapp") === true)
   }
 
-  test("Can save one owner profile persistence model") {
+  test("Can save one third app persistence model") {
     val persistentModel = BuildThirdappPersistentModel.anyNoPersisted()
     exec(thirdappSchema += persistentModel)
   }
