@@ -19,6 +19,8 @@
 - [ ] Create custom taks in SBT to run tests in specific app-layers
 - [ ] How to set environment variables like Hosts, port for Redis?, for each environment...scala-env
 
+### With general coding concepts:
+- [ ] Investigate thread safe (multiple execution contexts)
 
 ### with project
 - [ ] Add license file
