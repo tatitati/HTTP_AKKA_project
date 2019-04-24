@@ -5,6 +5,7 @@
 # Todo:
 ### with scala
 - [ ] Investigate default values in case classes. Behaviour is not as I was expecting
+
 ### with code
 - [x] ~Add unique keys for domain ids~
 - [ ] Simplify builders and isolation of them, unnaply() might help?
@@ -14,6 +15,8 @@
 - [ ] Design Register/login of a user :fire:
 - [ ] Design Register/login of a third :fire:
 - [ ] Start Application layer
+- [ ] Investigate how to handle user-session
+
 ### with sbt
 - [ ] How to tag tests? (and filter them in the CLI)
 - [ ] Create custom taks in SBT to run tests in specific app-layers
