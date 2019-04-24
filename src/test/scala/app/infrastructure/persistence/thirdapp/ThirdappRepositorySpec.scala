@@ -1,5 +1,6 @@
 package test.app.infrastructure.persistence.thirdapp
 
+import app.domain.model.thirdapp.Thirdapp
 import app.infrastructure.persistence.Exec
 import app.infrastructure.persistence.thirdapp._
 import org.scalatest.{BeforeAndAfterEach, FunSuite}
@@ -25,23 +26,18 @@ class ThirdappRepositorySpec extends FunSuite with BeforeAndAfterEach with Exec 
     assert(rows.head.name === "my row")
     assert(rows.head.surrogateId.isInstanceOf[Some[_]])
   }
+  
+  test("Read return a third aggregate") {
+    ThirdappRepository.save(
+      BuildThirdappPersistentModel.anyNoPersisted(withName = "my row")
+    )
 
-//  test("I understand how to filter") {
-//    val query = thirdappSchema.filter(_.name === "something").result.statements.mkString
-//    assert(query === "select `id`, `thirdid`, `name`, `callback`, `homepage`, `description` from `third` where `name` = 'something'")
-//  }
-//
-//  test("Read return a third aggregate") {
-//    ThirdRepository.save(
-//      BuildThirdPersistentModel.anyNoPersisted(withName = "my row")
-//    )
-//
-//    val third = ThirdRepository.read(byname = "my row")
-//
-//    assert(third.isInstanceOf[Third])
-//    assert(third.getProfile.name === "my row")
-//    assert(third.getSurrogateId().isInstanceOf[Some[_]])
-//  }
+    val third = ThirdappRepository.read(byname = "my row")
+
+    assert(third.isInstanceOf[Thirdapp])
+    assert(third.getProfile.name === "my row")
+    assert(third.getSurrogateId().isInstanceOf[Some[_]])
+  }
 
   override def beforeEach() {
     exec(thirdappSchema.schema.dropIfExists)
