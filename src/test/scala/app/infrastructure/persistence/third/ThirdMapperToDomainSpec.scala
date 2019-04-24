@@ -8,15 +8,13 @@ class ThirdMapperToDomainSpec extends FunSuite {
 
   test("Fields are mapped to domain") {
     val givenPersistent = BuildThirdPersistentModel.anyPersisted(
-      withName = "whatever",
-      withCallback = "callback"
+      withName = "whatever"
     )
 
     val thenDomain = ThirdMapper.toDomain(givenPersistent)
 
     assert(thenDomain.isInstanceOf[Third])
     assert(thenDomain.getProfile.name === "whatever")
-    assert(thenDomain.getProfile.callback === "callback")
   }
 
   test("Surrogate id is also mapped properly to domain") {

@@ -9,16 +9,12 @@ object BuildThirdPersistentModel {
            withSurrogateId: Option[Long] = Faker(Some(Faker.long()), None),
            withId: String = BuildUuid.any().toString,
            withName: String = Faker.text(),
-           withCallback: String = Faker.text(),
-           withHomepage: String = Faker.text(),
            withDescription: String = Faker.text()
          ): ThirdPersistentModel = {
     ThirdPersistentModel(
         withSurrogateId,
         withId,
         withName,
-        withCallback,
-        withHomepage,
         withDescription
     )
   }
@@ -26,16 +22,12 @@ object BuildThirdPersistentModel {
   def anyPersisted(
             withId: String = BuildUuid.any().toString,
             withName: String = Faker.text(),
-            withCallback: String = Faker.text(),
-            withHomepage: String = Faker.text(),
             withDescription: String = Faker.text()
          ): ThirdPersistentModel = {
     any(
       withSurrogateId = Faker(Some(Faker.int())),
       withId,
       withName,
-      withCallback,
-      withHomepage,
       withDescription
     )
   }
@@ -43,16 +35,12 @@ object BuildThirdPersistentModel {
   def anyNoPersisted(
             withId: String = BuildUuid.any().toString,
             withName: String = Faker.text(),
-            withCallback: String = Faker.text(),
-            withHomepage: String = Faker.text(),
             withDescription: String = Faker.text()
           ): ThirdPersistentModel = {
     any(
       withSurrogateId = None,
       withId,
       withName,
-      withCallback,
-      withHomepage,
       withDescription
     )
   }

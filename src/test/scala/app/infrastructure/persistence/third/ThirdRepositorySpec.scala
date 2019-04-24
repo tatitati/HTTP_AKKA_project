@@ -29,7 +29,7 @@ class ThirdRepositorySpec extends FunSuite with BeforeAndAfterEach with Exec {
 
   test("I understand how to filter") {
     val query = thirdSchema.filter(_.name === "something").result.statements.mkString
-    assert(query === "select `id`, `thirdid`, `name`, `callback`, `homepage`, `description` from `third` where `name` = 'something'")
+    assert(query === "select `id`, `thirdid`, `name`, `description` from `third` where `name` = 'something'")
   }
 
   test("Read return a third aggregate") {

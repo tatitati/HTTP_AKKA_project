@@ -13,8 +13,6 @@ object ThirdMapper {
       ),
       profile = ThirdProfile(
         name = fromPersistent.name,
-        callback = fromPersistent.callback,
-        homepage = fromPersistent.homepage,
         description = fromPersistent.description
       )
     )
@@ -29,8 +27,6 @@ object ThirdMapper {
       surrogateId = third.getSurrogateId(),
       id = third.thirdId.toString,
       name = third.getProfile.name,
-      callback = third.getProfile.callback,
-      homepage = third.getProfile.homepage,
       description = third.getProfile.description
     )
   }

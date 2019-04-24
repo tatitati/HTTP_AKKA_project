@@ -18,14 +18,6 @@ case class Third(
     profile = profile.copy(name = withName)
   }
 
-  def updateCallbackUrl(withCallback: String): Unit = {
-    profile = profile.copy(callback = withCallback)
-  }
-
-  def updateHomepage(withHomepage: String): Unit = {
-    profile = profile.copy(homepage = withHomepage)
-  }
-
   def updateDescription(withDescription: String): Unit = {
     profile = profile.copy(description = withDescription)
   }
