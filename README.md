@@ -4,7 +4,8 @@
 
 # Todo:
 
-### Fix: updateCallbackUrl() is used in Third. It should belong to thirdadpp.
+### Fix: 
+- [ ] updateCallbackUrl() is used in Third. It should belong to thirdadpp.
 
 ### with scala
 - [ ] Investigate default values in case classes. Behaviour is not as I was expecting
