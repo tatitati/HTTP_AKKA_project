@@ -4,6 +4,10 @@
 
 # Todo:
 
+### with Docker:
+- [ ] add redis in container
+- [ ] Manage to switch database-container when running tests
+
 ### Fix: 
 - [ ] updateCallbackUrl() is used in Third. It should belong to thirdadpp.
 
