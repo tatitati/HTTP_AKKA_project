@@ -14,7 +14,8 @@ object UserMapper {
           email = fromPersistent.email,
           emailconfirmed = fromPersistent.isEmailConfirmed,
           datebirth = fromPersistent.datebirth
-        )
+        ),
+        registeredDateTime = fromPersistent.registeredDateTime
     )
 
     fromPersistent.id match {
@@ -32,7 +33,8 @@ object UserMapper {
       surname = user.getProfile.surname,
       email = user.getProfile.email,
       isEmailConfirmed = user.getProfile.emailconfirmed,
-      datebirth = user.getProfile.datebirth
+      datebirth = user.getProfile.datebirth,
+      registeredDateTime = user.registeredDateTime
     )
   }
 }

@@ -2,7 +2,7 @@ package test.app.infrastructure.persistence.auth
 
 import app.infrastructure.persistence.auth.AuthPersistentModel
 import com.github.nscala_time.time.Imports.DateTime
-import test.builders.{BuildUuid, Faker}
+import test.builders.{BuildDate, BuildUuid, Faker}
 
 object BuildAuthPersistentModel {
   def any(
@@ -17,7 +17,7 @@ object BuildAuthPersistentModel {
            withTokenAccess: String = BuildUuid.any().toString,
            withTokenRefresh: String = BuildUuid.any().toString,
            withTokenExpiresIn: Int = Faker.int(),
-           withTokenGeneratedIn: DateTime = Faker.date()
+           withTokenGeneratedIn: DateTime = BuildDate.any()
    ): AuthPersistentModel = {
 
       AuthPersistentModel(

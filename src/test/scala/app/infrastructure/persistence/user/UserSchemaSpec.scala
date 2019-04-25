@@ -25,9 +25,9 @@ class UserSchemaSpec extends FunSuite with BeforeAndAfterEach with Exec {
     exec(ownerSchema += persistentModel)
   }
 
-
   override def beforeEach() {
     exec(ownerSchema.schema.dropIfExists)
     exec(ownerSchema.schema.create)
+    //sadfasdf
   }
 }

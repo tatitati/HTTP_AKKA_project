@@ -2,7 +2,6 @@ package app.domain.model.user
 
 import test.app.domain.user.{BuildUser, BuildUserProfile}
 import org.scalatest.FunSuite
-import test.app.domain.model.auth.BuildAuthId
 import test.app.domain.model.user.BuildUserId
 
 class UserSpec extends FunSuite {
@@ -22,12 +21,6 @@ class UserSpec extends FunSuite {
 
     assert(owner1.equals(owner2) === false)
     assert(owner2.equals(owner3) === true)
-  }
-
-  test("Get right properties") {
-    val owner = BuildUser.any()
-
-    assert(owner.getProfile.isInstanceOf[UserProfile])
   }
 
   test("Can edit profile") {

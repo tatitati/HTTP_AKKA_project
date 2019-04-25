@@ -1,3 +1,5 @@
+import sbt.Keys.version
+
 name := "akka-quickstart-scala"
 
 version := "1.0"
@@ -41,3 +43,11 @@ parallelExecution in Test := false
 //  new FileFilter {
 //    def accept(f: File) = f.getPath.containsSlice("/infrastructure/")
 //  } }
+
+val sayHello = taskKey[Unit]("A simple hello")
+val testDomain = taskKey[Unit]("Test Domain layer, ignoring infrastructure")
+
+
+sayHello := {
+  println("hello!!!")
+}

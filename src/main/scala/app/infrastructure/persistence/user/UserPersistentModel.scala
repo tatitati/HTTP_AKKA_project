@@ -8,5 +8,6 @@ case class UserPersistentModel(
   surname: String,
   email: String,
   isEmailConfirmed: Boolean,
-  datebirth: DateTime
+  datebirth: DateTime,
+  registeredDateTime: DateTime
 )

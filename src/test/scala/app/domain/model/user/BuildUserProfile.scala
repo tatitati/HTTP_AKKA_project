@@ -2,7 +2,7 @@ package test.app.domain.user
 
 import app.domain.model.user.UserProfile
 import com.github.nscala_time.time.Imports.DateTime
-import test.builders.Faker
+import test.builders.{BuildDate, Faker}
 
 object BuildUserProfile {
 
@@ -11,7 +11,7 @@ object BuildUserProfile {
            withSurname: String = Faker.text(),
            withEmail: String = Faker.text(),
            withEmailConfirmed: Boolean = Faker.boolean(),
-           withDatebirth: DateTime = Faker.date()
+           withDatebirth: DateTime = BuildDate.any()
          ): UserProfile = {
 
     new UserProfile(

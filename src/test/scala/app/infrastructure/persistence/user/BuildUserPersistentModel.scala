@@ -3,7 +3,7 @@ package test.app.infrastructure.persistence.user
 import app.domain.model.BuildSurrogateId
 import app.infrastructure.persistence.owner.UserPersistentModel
 import com.github.nscala_time.time.Imports.DateTime
-import test.builders.Faker
+import test.builders.{BuildDate, Faker}
 
 object BuildUserPersistentModel {
 
@@ -13,7 +13,8 @@ object BuildUserPersistentModel {
            withSurname: String = Faker.text(),
            withEmail: String = Faker.text(),
            withIsEmailConfirmed: Boolean = Faker.boolean(),
-           withDateBirth: DateTime = Faker.date()
+           withDateBirth: DateTime = BuildDate.any(),
+           withRegisteredDateTime: DateTime = BuildDate.any()
          ): UserPersistentModel = {
     UserPersistentModel(
       withSurrogateId,
@@ -21,7 +22,8 @@ object BuildUserPersistentModel {
       withSurname,
       withEmail,
       withIsEmailConfirmed,
-      withDateBirth
+      withDateBirth,
+      withRegisteredDateTime
     )
   }
 
@@ -31,7 +33,8 @@ object BuildUserPersistentModel {
                     withSurname: String = Faker.text(),
                     withEmail: String = Faker.text(),
                     withIsEmailConfirmed: Boolean = Faker.boolean(),
-                    withDateBirth: DateTime = Faker.date()
+                    withDateBirth: DateTime = BuildDate.any(),
+                    withRegisteredDateTime: DateTime = BuildDate.any()
                   ): UserPersistentModel = {
     UserPersistentModel(
       withSurrogateId,
@@ -39,7 +42,8 @@ object BuildUserPersistentModel {
       withSurname,
       withEmail,
       withIsEmailConfirmed,
-      withDateBirth
+      withDateBirth,
+      withRegisteredDateTime
     )
   }
 
@@ -48,7 +52,8 @@ object BuildUserPersistentModel {
                       withSurname: String = Faker.text(),
                       withEmail: String = Faker.text(),
                       withIsEmailConfirmed: Boolean = Faker.boolean(),
-                      withDateBirth: DateTime = Faker.date()
+                      withDateBirth: DateTime = BuildDate.any(),
+                      withRegisteredDateTime: DateTime = BuildDate.any()
                     ): UserPersistentModel = {
     UserPersistentModel(
       None,
@@ -56,7 +61,8 @@ object BuildUserPersistentModel {
       withSurname,
       withEmail,
       withIsEmailConfirmed,
-      withDateBirth
+      withDateBirth,
+      withRegisteredDateTime
     )
   }
 }
