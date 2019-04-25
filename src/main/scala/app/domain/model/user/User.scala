@@ -5,7 +5,7 @@ import app.domain.model.user._
 import com.github.nscala_time.time.Imports.DateTime
 
 class User(
-            val id: UserId,
+            val id: UserId, // is not the email as the user can change the email
             private var profile: UserProfile,
             val registeredDateTime: DateTime,
             private var emailConfirmed: Boolean
