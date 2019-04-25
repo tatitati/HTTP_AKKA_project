@@ -12,10 +12,10 @@ object UserMapper {
           firstname = fromPersistent.firstname,
           surname = fromPersistent.surname,
           email = fromPersistent.email,
-          emailconfirmed = fromPersistent.isEmailConfirmed,
           datebirth = fromPersistent.datebirth
         ),
-        registeredDateTime = fromPersistent.registeredDateTime
+        registeredDateTime = fromPersistent.registeredDateTime,
+        emailConfirmed = fromPersistent.isEmailConfirmed
     )
 
     fromPersistent.id match {
@@ -32,9 +32,9 @@ object UserMapper {
       firstname = user.getProfile.firstname,
       surname = user.getProfile.surname,
       email = user.getProfile.email,
-      isEmailConfirmed = user.getProfile.emailconfirmed,
       datebirth = user.getProfile.datebirth,
-      registeredDateTime = user.registeredDateTime
+      registeredDateTime = user.registeredDateTime,
+      isEmailConfirmed = user.isEmailConfirmed()
     )
   }
 }

@@ -12,18 +12,18 @@ object BuildUserPersistentModel {
            withFirstname: String = Faker.text(),
            withSurname: String = Faker.text(),
            withEmail: String = Faker.text(),
-           withIsEmailConfirmed: Boolean = Faker.boolean(),
            withDateBirth: DateTime = BuildDate.any(),
-           withRegisteredDateTime: DateTime = BuildDate.any()
+           withRegisteredDateTime: DateTime = BuildDate.any(),
+           withIsEmailConfirmed: Boolean = Faker.boolean(),
          ): UserPersistentModel = {
     UserPersistentModel(
       withSurrogateId,
       withFirstname,
       withSurname,
       withEmail,
-      withIsEmailConfirmed,
       withDateBirth,
-      withRegisteredDateTime
+      withRegisteredDateTime,
+      withIsEmailConfirmed
     )
   }
 
@@ -32,18 +32,18 @@ object BuildUserPersistentModel {
                     withFirstname: String = Faker.text(),
                     withSurname: String = Faker.text(),
                     withEmail: String = Faker.text(),
-                    withIsEmailConfirmed: Boolean = Faker.boolean(),
                     withDateBirth: DateTime = BuildDate.any(),
-                    withRegisteredDateTime: DateTime = BuildDate.any()
+                    withRegisteredDateTime: DateTime = BuildDate.any(),
+                    withIsEmailConfirmed: Boolean = Faker.boolean()
                   ): UserPersistentModel = {
     UserPersistentModel(
       withSurrogateId,
       withFirstname,
       withSurname,
       withEmail,
-      withIsEmailConfirmed,
       withDateBirth,
-      withRegisteredDateTime
+      withRegisteredDateTime,
+      withIsEmailConfirmed
     )
   }
 
@@ -51,18 +51,18 @@ object BuildUserPersistentModel {
                       withFirstname: String = Faker.text(),
                       withSurname: String = Faker.text(),
                       withEmail: String = Faker.text(),
-                      withIsEmailConfirmed: Boolean = Faker.boolean(),
                       withDateBirth: DateTime = BuildDate.any(),
-                      withRegisteredDateTime: DateTime = BuildDate.any()
+                      withRegisteredDateTime: DateTime = BuildDate.any(),
+                      withIsEmailConfirmed: Boolean = Faker.boolean()
                     ): UserPersistentModel = {
     UserPersistentModel(
       None,
       withFirstname,
       withSurname,
       withEmail,
-      withIsEmailConfirmed,
       withDateBirth,
-      withRegisteredDateTime
+      withRegisteredDateTime,
+      withIsEmailConfirmed
     )
   }
 }

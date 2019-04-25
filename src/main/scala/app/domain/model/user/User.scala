@@ -8,10 +8,12 @@ class User(
             val id: UserId,
             private var profile: UserProfile,
             val registeredDateTime: DateTime,
+            private var emailConfirmed: Boolean
    ) extends IdentifiableInPersistence {
 
   def equals(owner: User): Boolean = id.equals(owner.id)
 
+  def isEmailConfirmed(): Boolean = emailConfirmed
   def getProfile: UserProfile = profile
 
   def updateFirstname(firstname: String): Unit = {
@@ -21,10 +23,12 @@ class User(
     profile = profile.copy(surname = surname)
   }
   def updateEmail(email: String): Unit = {
-    profile = profile.copy(email = email, emailconfirmed = false)
+    profile = profile.copy(email = email)
+    emailConfirmed = false
   }
+
   def confirmEmail(): Unit = {
-    profile = profile.copy(emailconfirmed = true)
+    emailConfirmed = true
   }
 
   def setDatebirth(datebirth: DateTime): Unit = {

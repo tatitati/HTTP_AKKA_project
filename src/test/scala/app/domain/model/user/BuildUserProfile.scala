@@ -10,7 +10,6 @@ object BuildUserProfile {
            withFirstname: String =  Faker.text(),
            withSurname: String = Faker.text(),
            withEmail: String = Faker.text(),
-           withEmailConfirmed: Boolean = Faker.boolean(),
            withDatebirth: DateTime = BuildDate.any()
          ): UserProfile = {
 
@@ -18,7 +17,6 @@ object BuildUserProfile {
       firstname = withFirstname,
       surname = withSurname,
       email = withEmail,
-      emailconfirmed = withEmailConfirmed,
       datebirth = withDatebirth
     )
   }
@@ -26,7 +24,6 @@ object BuildUserProfile {
   def specific(): UserProfile = {
     new UserProfile(
       email = "email",
-      emailconfirmed = true,
       firstname = "firstname",
       surname = "surname",
       datebirth = new DateTime("1900-03-10")

@@ -13,18 +13,18 @@ class UserSchema(tag: Tag) extends Table[UserPersistentModel](tag, "user") {
   def firstname = column[String]("firstname")
   def surname = column[String]("surname")
   def email = column[String]("email", O.SqlType("VARCHAR(255)"))
-  def emailconfirmed = column[Boolean]("email_confirmed")
   def datebirth = column[DateTime]("datebirth", O.SqlType("DATETIME")) // this uses custom mapper type
   def registeredDateTime = column[DateTime]("registered_datetime", O.SqlType("DATETIME")) // this uses custom mapper type
+  def emailconfirmed = column[Boolean]("email_confirmed")
 
   def * = (
     id,
     firstname,
     surname,
     email,
-    emailconfirmed,
     datebirth,
-    registeredDateTime
+    registeredDateTime,
+    emailconfirmed
   ).mapTo[UserPersistentModel]
 
   def idIndex = index("user____email____idx", email, unique=true)

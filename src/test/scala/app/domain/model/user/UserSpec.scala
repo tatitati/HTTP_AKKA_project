@@ -36,13 +36,13 @@ class UserSpec extends FunSuite {
   test("Set confirmed email to false after updating email") {
     val owner = BuildUser.any(
       withProfile = BuildUserProfile.any(
-        withEmail = "myemail",
-        withEmailConfirmed = true
-      )
+        withEmail = "myemail"
+      ),
+      withEmailConfirmed = true
     )
 
     owner.updateEmail("any new email")
 
-    assert(owner.getProfile.emailconfirmed === false)
+    assert(owner.isEmailConfirmed() === false)
   }
 }

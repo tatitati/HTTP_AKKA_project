@@ -6,6 +6,5 @@ case class UserProfile(
     val email: String,
     val firstname: String,
     val surname: String,
-    val emailconfirmed: Boolean,
     val datebirth: DateTime
 )
