@@ -17,7 +17,7 @@
 ### with code
 - [x] ~Investigate how to hash a password with sha-256 + salt~
 - [x] ~Add unique keys for domain ids~
-- [ ] ~Add registered date (also needed for hashing+salt in password~
+- [x] ~Add registered date (also needed for hashing+salt in password~
 - [ ] Simplify builders and isolation of them, unnaply() might help?
 - [x] ~Create transformer Code->Auth (this will be a domain service)~
 - [ ] Add foreign keys (by the last steps)
