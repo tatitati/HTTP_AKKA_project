@@ -6,8 +6,9 @@ case class UserPersistentModel(
   id: Option[Long] = None,
   firstname: String,
   surname: String,
-  email: String,
   datebirth: DateTime,
   registeredDateTime: DateTime,
-  isEmailConfirmed: Boolean
+  isEmailConfirmed: Boolean,
+  email: String,
+  hashPassword: String
 )

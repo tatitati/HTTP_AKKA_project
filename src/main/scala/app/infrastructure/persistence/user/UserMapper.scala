@@ -1,6 +1,6 @@
 package app.infrastructure.persistence.owner
 
-import app.domain.model.user.{UserId, UserProfile}
+import app.domain.model.user.{UserCredentials, UserId, UserProfile}
 import app.domain.user.User
 
 object UserMapper {
@@ -11,11 +11,14 @@ object UserMapper {
         profile = UserProfile(
           firstname = fromPersistent.firstname,
           surname = fromPersistent.surname,
-          email = fromPersistent.email,
           datebirth = fromPersistent.datebirth
         ),
         registeredDateTime = fromPersistent.registeredDateTime,
-        emailConfirmed = fromPersistent.isEmailConfirmed
+        emailConfirmed = fromPersistent.isEmailConfirmed,
+        credentials = UserCredentials(
+          email = fromPersistent.email,
+          hashPassword = fromPersistent.hashPassword
+        )
     )
 
     fromPersistent.id match {
@@ -31,10 +34,11 @@ object UserMapper {
       id = user.getSurrogateId(),
       firstname = user.getProfile.firstname,
       surname = user.getProfile.surname,
-      email = user.getProfile.email,
       datebirth = user.getProfile.datebirth,
       registeredDateTime = user.registeredDateTime,
-      isEmailConfirmed = user.isEmailConfirmed()
+      isEmailConfirmed = user.isEmailConfirmed(),
+      email = user.getCredentials().email,
+      hashPassword = user.getCredentials().hashPassword
     )
   }
 }

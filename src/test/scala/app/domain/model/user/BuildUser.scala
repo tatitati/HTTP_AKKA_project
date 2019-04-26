@@ -14,8 +14,15 @@ object BuildUser {
              withProfile: UserProfile = BuildUserProfile.any(),
              withRegisteredDateTime: DateTime = BuildDate.any(),
              withEmailConfirmed: Boolean = Faker.boolean(),
+             withUserCredentials: UserCredentials = BuildUserCredentials.any()
            ):User  = {
-      val user = new User(withId, withProfile, withRegisteredDateTime, withEmailConfirmed)
+      val user = new User(
+        withId,
+        withProfile,
+        withRegisteredDateTime,
+        withEmailConfirmed,
+        withUserCredentials
+      )
 
       if(withSurrogateId != None) {
         user.setSurrogateId(withSurrogateId)

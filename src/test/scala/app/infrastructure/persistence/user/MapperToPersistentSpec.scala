@@ -14,7 +14,6 @@ class MapperToPersistentSpec extends FunSuite {
     val thenPersistence = UserMapper.toPersistent(givenDomain)
 
     assert(thenPersistence.isInstanceOf[UserPersistentModel], "Should be an instance of OwnerProfile")
-    assert(thenPersistence.email === "email", "email should match")
     assert(thenPersistence.datebirth.dayOfMonth().get() === 10, "day month birth should match")
     assert(thenPersistence.datebirth.year().get() === 1900, "year birth should match")
   }
