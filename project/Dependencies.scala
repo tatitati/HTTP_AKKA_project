@@ -6,7 +6,7 @@ object Dependencies {
   val akkaVersion = "2.5.17"
   val akkaHttpVersion = "10.1.7"
 
-  val deps = Seq(
+  val thirdDependencies = Seq(
 
     // prod
     "com.typesafe.akka" %% "akka-actor" % akkaVersion,

@@ -10,7 +10,7 @@ lazy val commonSettings = Seq(
 lazy val root = (project in file("."))
   .settings(
     commonSettings,
-    libraryDependencies ++= deps
+    libraryDependencies ++= thirdDependencies
   )
 
 parallelExecution in Test := false
