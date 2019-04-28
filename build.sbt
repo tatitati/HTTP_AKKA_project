@@ -29,18 +29,6 @@ sayHello := {
 }
 
 
-
-//{
-//  def groupByFirst(tests: Seq[TestDefinition]) =
-//    tests groupBy (_.name(0)) map {
-//      case (letter, tests) =>
-//        val options = ForkOptions().withRunJVMOptions(Vector("-Dfirst.letter"+letter))
-//        new Group(letter.toString, tests, SubProcess(options))
-//    } toSeq
-//
-//  testGrouping in Test := groupByFirst( (definedTests in Test).value )
-//}
-
 //testDomain := {
 //  (excludeFilter in unmanagedSources) ~= { _ ||
 //      new FileFilter {
