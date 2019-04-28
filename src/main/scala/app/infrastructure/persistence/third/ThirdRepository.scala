@@ -7,7 +7,7 @@ import app.infrastructure.persistence.Exec
 
 object ThirdRepository extends Exec {
 
-  val thirdSchema = TableQuery[ThirdappSchema]
+  val thirdSchema = TableQuery[ThirdSchema]
   implicit val db = Database.forConfig("mydb")
 
   def save(persistentModel: ThirdPersistentModel): Unit = {

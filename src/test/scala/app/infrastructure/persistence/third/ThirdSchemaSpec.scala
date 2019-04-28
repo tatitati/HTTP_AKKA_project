@@ -1,14 +1,14 @@
 package test.app.infrastructure.persistence.third
 
 import app.infrastructure.persistence.Exec
-import app.infrastructure.persistence.third.ThirdappSchema
+import app.infrastructure.persistence.third.ThirdSchema
 import org.scalatest.{BeforeAndAfterEach, FunSuite}
 import slick.jdbc.MySQLProfile.api._
 import slick.jdbc.meta.MTable
 import slick.lifted.TableQuery
 
 class ThirdSchemaSpec extends FunSuite with BeforeAndAfterEach with Exec {
-  val thirdSchema = TableQuery[ThirdappSchema]
+  val thirdSchema = TableQuery[ThirdSchema]
   implicit val db = Database.forConfig("mydb")
 
   test("database forconfig type is:") {
