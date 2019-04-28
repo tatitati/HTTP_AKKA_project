@@ -1,15 +1,10 @@
-import sbt.Keys.{parallelExecution, version}
+import sbt.Keys.parallelExecution
 import Dependencies._
-
-lazy val commonSettings = Seq(
-  name := "akka-quickstart-scala",
-  version := "1.0",
-  scalaVersion := "2.12.6"
-)
+import CommonSettings._
 
 lazy val root = (project in file("."))
   .settings(
-    commonSettings,
+    commonsSettings,
     libraryDependencies ++= thirdDependencies
   )
 
