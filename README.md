@@ -27,7 +27,7 @@
 - [ ] Start Application layer
 - [ ] Investigate how to handle user-session
 
-### with sbt :fire::fire:
+### with sbt
 - [x] ~Track dependencies: https://www.scala-sbt.org/0.13/docs/Organizing-Build.html~
 - [ ] Use common settings
 - [ ] Create subprojects for Domain and infrastructure :fire::fire:
