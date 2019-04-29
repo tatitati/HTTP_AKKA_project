@@ -2,10 +2,16 @@ import sbt.Keys.parallelExecution
 import Dependencies._
 import CommonSettings._
 
+
+val sayHello = taskKey[Unit]("A simple hello")
+
 lazy val root = (project in file("."))
   .settings(
     commonsSettings,
-    libraryDependencies ++= thirdDependencies
+    libraryDependencies ++= thirdDependencies,
+    sayHello := {
+      println("hello!!!")
+    }
   )
 
 parallelExecution in Test := false
@@ -17,11 +23,9 @@ parallelExecution in Test := false
 //    def accept(f: File) = f.getPath.containsSlice("/infrastructure/")
 //  } }
 
-val sayHello = taskKey[Unit]("A simple hello")
 
-sayHello := {
-  println("hello!!!")
-}
+
+
 
 
 //testDomain := {
