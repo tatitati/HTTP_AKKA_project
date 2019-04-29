@@ -3,14 +3,36 @@ import Dependencies._
 import CommonSettings._
 
 
-val sayHello = taskKey[Unit]("A simple hello")
+val sayHello = taskKey[Unit]("A simple task")
 
 lazy val root = (project in file("."))
   .settings(
+    name := "root",
     commonsSettings,
     libraryDependencies ++= thirdDependencies,
     sayHello := {
-      println("hello!!!")
+      println("ROOT: pong")
+    }
+  )
+
+lazy val domain = (project in file("domain"))
+  .settings(
+    name := "domain",
+    commonsSettings,
+    libraryDependencies ++= thirdDependencies,
+    sayHello := {
+      println("DOMAIN: pong")
+    }
+  )
+
+
+lazy val infrastructure = (project in file("infrastructure"))
+  .settings(
+    name := "infrastructure",
+    commonsSettings,
+    libraryDependencies ++= thirdDependencies,
+    sayHello := {
+      println("INFRASTRUCTURE: pong")
     }
   )
 
