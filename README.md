@@ -26,6 +26,7 @@
 - [ ] Design Register/login of a third :fire:
 - [ ] Start Application layer
 - [ ] Investigate how to handle user-session
+- [ ] BuildDate, BuildUUID, Faker, duplicated in domain and root project, they should be only in root (if possible)
 
 ### with sbt
 - [x] ~Track dependencies: https://www.scala-sbt.org/0.13/docs/Organizing-Build.html~
