@@ -13,7 +13,7 @@ val sayHello = taskKey[Unit]("A simple task")
 lazy val infrastructure = (project in file("infrastructure"))
   .dependsOn(domain % "test->test;compile->compile")
   .settings(
-    name := "infrastructure",
+    name := "infrastructure subproject",
     commonsSettings,
     libraryDependencies ++= thirdDependencies,
     sayHello := {
@@ -24,7 +24,7 @@ lazy val infrastructure = (project in file("infrastructure"))
 
 lazy val domain = (project in file("domain"))
   .settings(
-    name := "domain",
+    name := "domain subproject",
     commonsSettings,
     libraryDependencies ++= thirdDependencies,
     sayHello := {
@@ -35,7 +35,7 @@ lazy val domain = (project in file("domain"))
 lazy val root = (project in file("."))
   .aggregate(domain,infrastructure)
   .settings(
-    name := "root",
+    name := "root project",
     commonsSettings,
     libraryDependencies ++= thirdDependencies,
     sayHello := {
@@ -49,17 +49,3 @@ lazy val root = (project in file("."))
 //  new FileFilter {
 //    def accept(f: File) = f.getPath.containsSlice("/infrastructure/")
 //  } }
-
-
-
-
-
-
-//testDomain := {
-//  (excludeFilter in unmanagedSources) ~= { _ ||
-//      new FileFilter {
-//        def accept(f: File) = f.getPath.containsSlice("/infrastructure/")
-//      }
-//    }
-//  (testOnly in Test).toTask(s" *").value
-//}

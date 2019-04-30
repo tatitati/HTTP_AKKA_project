@@ -1,7 +1,6 @@
 package domain.model.third
 
 import domain.model.IdentifiableInPersistence
-import domain.model.third.ThirdId
 import scala.util.Random
 
 case class Third(
