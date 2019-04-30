@@ -2,7 +2,7 @@ package infrastructure.test.persistence.user
 
 import infrastructure.persistence.user.{UserMapper, UserPersistentModel}
 import org.scalatest.FunSuite
-import domain.test.model.user.{BuildUser, BuildUserProfile}
+import test.domain.model.user.{BuildUser, BuildUserProfile}
 
 class MapperToPersistentSpec extends FunSuite {
 

@@ -4,7 +4,7 @@ import com.redis.RedisClient
 import domain.model.code.Code
 import infrastructure.persistence.code.CodeRepository
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FunSuite}
-import domain.test.model.code.BuildCode
+import test.domain.model.code.BuildCode
 
 class CodeRepositorySpec extends FunSuite with BeforeAndAfterEach with BeforeAndAfterAll {
 

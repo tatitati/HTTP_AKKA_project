@@ -1,10 +1,10 @@
-package domain.test.model.auth
+package test.domain.model.auth
 
 import java.util.UUID
 
 import domain.model.auth.AuthToken
 import com.github.nscala_time.time.Imports._
-import domain.test.builders.{BuildUuid, Faker}
+import test.domain.builders.{BuildUuid, Faker}
 
 object BuildToken {
   def anyLive(

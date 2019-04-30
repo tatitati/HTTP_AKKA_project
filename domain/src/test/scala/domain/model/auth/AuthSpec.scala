@@ -1,8 +1,8 @@
-package domain.test.model.auth
+package test.domain.model.auth
 
 import org.scalatest.FunSuite
-import domain.test.model.BuildScope
-import domain.test.builders.BuildUuid
+import test.domain.model.BuildScope
+import test.domain.builders.BuildUuid
 
 class AuthSpec extends FunSuite {
 

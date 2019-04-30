@@ -1,7 +1,7 @@
 package infrastructure.test.persistence.third
 
 import infrastructure.persistence.third.ThirdPersistentModel
-import test.builders.{BuildUuid, Faker}
+import test.domain.builders.{BuildUuid, Faker}
 
 object BuildThirdPersistentModel {
 

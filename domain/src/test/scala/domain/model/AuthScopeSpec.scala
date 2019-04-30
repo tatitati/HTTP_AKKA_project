@@ -1,4 +1,4 @@
-package domain.test.model
+package test.domain.model
 
 import domain.model.Scope
 import org.scalatest.FunSuite

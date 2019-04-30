@@ -11,14 +11,15 @@ val sayHello = taskKey[Unit]("A simple task")
 
 
 lazy val infrastructure = (project in file("infrastructure"))
-  .dependsOn(domain)
+  .dependsOn(domain % "test->test;compile->compile")
   .settings(
     name := "infrastructure",
     commonsSettings,
     libraryDependencies ++= thirdDependencies,
     sayHello := {
       println("INFRASTRUCTURE: pong")
-    }
+    },
+    parallelExecution in Test := false
   )
 
 lazy val domain = (project in file("domain"))
@@ -28,7 +29,7 @@ lazy val domain = (project in file("domain"))
     libraryDependencies ++= thirdDependencies,
     sayHello := {
       println("DOMAIN: pong")
-    }
+    },
   )
 
 lazy val root = (project in file("."))
@@ -41,9 +42,6 @@ lazy val root = (project in file("."))
       println("ROOT: pong")
     }
   )
-
-
-parallelExecution in Test := false
 
 
 //filter folder from test and compilation (improve development process as I can go layer by layer)

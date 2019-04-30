@@ -1,9 +1,9 @@
-package domain.test.services
+package test.domain.services
 
 import domain.model.auth.Auth
 import domain.services.MapCodeToAuth
 import org.scalatest.FunSuite
-import domain.test.model.code.BuildCode
+import test.domain.model.code.BuildCode
 
 class MapCodeToAuthSpec extends FunSuite {
 

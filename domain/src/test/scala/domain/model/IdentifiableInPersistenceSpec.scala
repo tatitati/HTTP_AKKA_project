@@ -1,4 +1,4 @@
-package domain.test.model
+package test.domain.model
 
 import domain.model.IdentifiableInPersistence
 import org.scalatest.FunSuite

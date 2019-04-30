@@ -1,7 +1,7 @@
-package domain.test.model.user
+package test.domain.model.user
 
 import domain.model.user.UserCredentials
-import domain.test.builders.Faker
+import test.domain.builders.Faker
 
 object BuildUserCredentials {
   def any(

@@ -1,7 +1,7 @@
-package domain.test.model.thirdapp
+package test.domain.model.thirdapp
 
 import domain.model.thirdapp.ThirdappProfile
-import domain.test.builders.Faker
+import test.domain.builders.Faker
 
 object BuildThirdappProfile {
 

@@ -1,6 +1,6 @@
-package domain.test.model
+package test.domain.model
 
-import domain.test.builders.Faker
+import test.domain.builders.Faker
 
 object BuildSurrogateId {
   def any(): Option[Long] = {

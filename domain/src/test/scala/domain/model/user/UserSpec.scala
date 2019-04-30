@@ -1,4 +1,4 @@
-package domain.test.model.user
+package test.domain.model.user
 
 import org.scalatest.FunSuite
 

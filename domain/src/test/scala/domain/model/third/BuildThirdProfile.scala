@@ -1,7 +1,7 @@
-package domain.test.model.third
+package test.domain.model.third
 
 import domain.model.third.ThirdProfile
-import domain.test.builders.Faker
+import test.domain.builders.Faker
 
 object BuildThirdProfile {
     def any(

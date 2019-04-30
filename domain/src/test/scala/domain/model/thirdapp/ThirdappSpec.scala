@@ -1,4 +1,4 @@
-package domain.test.model.thirdapp
+package test.domain.model.thirdapp
 
 import org.scalatest.FunSuite
 

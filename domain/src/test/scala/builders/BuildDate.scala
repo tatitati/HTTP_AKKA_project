@@ -1,4 +1,4 @@
-package domain.test.builders
+package test.domain.builders
 
 import com.github.nscala_time.time.Imports.{DateTime, _}
 

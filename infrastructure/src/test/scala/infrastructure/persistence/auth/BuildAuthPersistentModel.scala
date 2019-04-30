@@ -2,7 +2,7 @@ package infrastructure.test.persistence.auth
 
 import com.github.nscala_time.time.Imports.DateTime
 import infrastructure.persistence.auth.AuthPersistentModel
-import test.builders.{BuildDate, BuildUuid, Faker}
+import test.domain.builders.{BuildDate, BuildUuid, Faker}
 
 object BuildAuthPersistentModel {
   def any(

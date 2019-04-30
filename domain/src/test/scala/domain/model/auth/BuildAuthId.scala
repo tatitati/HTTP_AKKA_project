@@ -1,9 +1,9 @@
-package domain.test.model.auth
+package test.domain.model.auth
 
 import java.util.UUID
 
 import domain.model.auth.AuthId
-import domain.test.builders.BuildUuid
+import test.domain.builders.BuildUuid
 
 object BuildAuthId {
 

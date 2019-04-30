@@ -1,9 +1,9 @@
-package domain.test.model.third
+package test.domain.model.third
 
-import domain.test.model.BuildSurrogateId
+import test.domain.model.BuildSurrogateId
 import domain.model.third.ThirdId
 import domain.model.third.{Third, ThirdCredentials, ThirdProfile}
-import domain.test.builders.BuildUuid
+import test.domain.builders.BuildUuid
 
 object BuildThird {
     def any(

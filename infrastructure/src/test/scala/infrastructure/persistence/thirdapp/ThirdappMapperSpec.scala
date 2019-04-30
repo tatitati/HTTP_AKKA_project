@@ -3,7 +3,7 @@ package infrastructure.test.persistence.thirdapp
 import domain.model.thirdapp.Thirdapp
 import infrastructure.persistence.thirdapp.{ThirdappMapper, ThirdappPersistentModel}
 import org.scalatest.FunSuite
-import domain.test.model.thirdapp.BuildThirdapp
+import test.domain.model.thirdapp.BuildThirdapp
 
 class ThirdappMapperSpec extends FunSuite {
 

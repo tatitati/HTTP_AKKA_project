@@ -15,7 +15,6 @@ class ApplicationConfSpec extends FunSuite {
     assert(value.hasPath("h2mem1") === true, "h2mem1 should be found in application.conf")
     assert(value.hasPath("h2mem1.connectionPool") === true, "h2mem1.connectionPool should be found in application.conf")
     assert(value.hasPath("h2mem1.url") === true, "h2mem1.url should be found in application.conf")
-    assert(value.hasPath("mydb") === true, "mydb should be found in application.conf")
     assert(value.hasPath("slick") === true, "slick should be found in application.conf")
   }
 
