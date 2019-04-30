@@ -18,7 +18,6 @@ lazy val infrastructure = (project in file("infrastructure"))
   )
 
 lazy val domain = (project in file("domain"))
-  .dependsOn(root)
   .settings(
     name := "domain",
     commonsSettings,
