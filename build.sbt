@@ -5,6 +5,29 @@ import CommonSettings._
 
 val sayHello = taskKey[Unit]("A simple task")
 
+
+lazy val infrastructure = (project in file("infrastructure"))
+  .dependsOn(domain)
+  .settings(
+    name := "infrastructure",
+    commonsSettings,
+    libraryDependencies ++= thirdDependencies,
+    sayHello := {
+      println("INFRASTRUCTURE: pong")
+    }
+  )
+
+lazy val domain = (project in file("domain"))
+  .dependsOn(root)
+  .settings(
+    name := "domain",
+    commonsSettings,
+    libraryDependencies ++= thirdDependencies,
+    sayHello := {
+      println("DOMAIN: pong")
+    }
+  )
+
 lazy val root = (project in file("."))
   .settings(
     name := "root",
@@ -15,26 +38,7 @@ lazy val root = (project in file("."))
     }
   )
 
-lazy val domain = (project in file("domain"))
-  .settings(
-    name := "domain",
-    commonsSettings,
-    libraryDependencies ++= thirdDependencies,
-    sayHello := {
-      println("DOMAIN: pong")
-    }
-  )
 
-
-lazy val infrastructure = (project in file("infrastructure"))
-  .settings(
-    name := "infrastructure",
-    commonsSettings,
-    libraryDependencies ++= thirdDependencies,
-    sayHello := {
-      println("INFRASTRUCTURE: pong")
-    }
-  )
 
 parallelExecution in Test := false
 
