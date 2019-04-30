@@ -1,6 +1,7 @@
 package infrastructure.persistence.code
 
 import com.redis.RedisClient
+import domain.model.code.Code
 
 class CodeRepository(val redisClient: RedisClient) {
 

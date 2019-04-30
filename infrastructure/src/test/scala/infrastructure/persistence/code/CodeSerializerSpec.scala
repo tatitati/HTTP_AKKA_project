@@ -1,6 +1,8 @@
-package infrastructure.persistence.code
+package infrastructure.test.persistence.code
 
+import infrastructure.persistence.code.CodeSerializer
 import org.scalatest.FunSuite
+import domain.test.model.code.BuildCode
 
 class CodeSerializerSpec extends FunSuite {
 

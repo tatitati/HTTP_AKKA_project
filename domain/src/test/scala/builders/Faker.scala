@@ -1,4 +1,4 @@
-package test.builders
+package domain.test.builders
 
 import scala.util.Random
 

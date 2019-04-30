@@ -6,6 +6,8 @@ import slick.lifted.Tag
 
 class UserSchema(tag: Tag) extends Table[UserPersistentModel](tag, "user") {
 
+  import infrastructure.persistence.CustomDateTimeToTimestamp._
+
   def id = column[Option[Long]]("id", O.PrimaryKey, O.AutoInc)
   def firstname = column[String]("firstname")
   def surname = column[String]("surname")

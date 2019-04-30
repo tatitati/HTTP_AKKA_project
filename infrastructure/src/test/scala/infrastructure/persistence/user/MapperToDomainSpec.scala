@@ -1,5 +1,7 @@
-package infrastructure.persistence.user
+package infrastructure.test.persistence.user
 
+import domain.model.user.User
+import infrastructure.persistence.user.UserMapper
 import org.joda.time.DateTime
 import org.scalatest.FunSuite
 

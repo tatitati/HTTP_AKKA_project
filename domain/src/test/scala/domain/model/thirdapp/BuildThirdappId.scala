@@ -1,8 +1,8 @@
-package test.domain.model.thirdapp
+package domain.test.model.thirdapp
 
 import java.util.UUID
 import domain.model.thirdapp.ThirdappId
-import test.builders.BuildUuid
+import domain.test.builders.BuildUuid
 
 object BuildThirdappId {
   def any(withValue: UUID = BuildUuid.any()): ThirdappId = {

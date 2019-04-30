@@ -1,8 +1,6 @@
-package test.domain.model.user
+package domain.test.model.user
 
-import test.domain.model.user.{BuildUser, BuildUserProfile}
 import org.scalatest.FunSuite
-import test.domain.model.user.BuildUserId
 
 class UserSpec extends FunSuite {
 

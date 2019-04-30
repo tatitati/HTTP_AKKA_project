@@ -1,7 +1,7 @@
-package test.domain.model.thirdapp
+package domain.test.model.thirdapp
 
 import domain.model.thirdapp.ThirdappCredentials
-import test.builders.Faker
+import domain.test.builders.Faker
 
 object BuildThirdappCredentials {
 

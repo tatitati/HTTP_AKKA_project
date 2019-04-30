@@ -1,6 +1,10 @@
 package infrastructure.persistence.auth
 
 import java.util.UUID
+import domain.model.Scope
+import domain.model.auth.{Auth, AuthId, AuthToken}
+import domain.model.thirdapp.ThirdappId
+import domain.model.user.UserId
 
 object AuthMapper {
 

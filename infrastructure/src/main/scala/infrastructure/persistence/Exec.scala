@@ -2,7 +2,6 @@ package infrastructure.persistence
 
 import slick.dbio.DBIO
 import slick.jdbc.JdbcProfile
-
 import scala.concurrent.Await
 import scala.concurrent.duration._
 

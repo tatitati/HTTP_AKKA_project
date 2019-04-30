@@ -1,5 +1,7 @@
-package infrastructure.persistence.user
+package infrastructure.test.persistence.user
 
+import infrastructure.persistence.Exec
+import infrastructure.persistence.user.UserSchema
 import org.scalatest.{BeforeAndAfterEach, FunSuite}
 import slick.jdbc.MySQLProfile.api._
 import slick.jdbc.meta.MTable

@@ -1,5 +1,7 @@
 package infrastructure.persistence.thirdapp
 
+import domain.model.thirdapp.Thirdapp
+import infrastructure.persistence.Exec
 import slick.jdbc.MySQLProfile.api._
 import slick.lifted.TableQuery
 

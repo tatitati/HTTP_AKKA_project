@@ -1,4 +1,7 @@
-package infrastructure.persistence.third
+package infrastructure.test.persistence.third
+
+import infrastructure.persistence.third.ThirdPersistentModel
+import test.builders.{BuildUuid, Faker}
 
 object BuildThirdPersistentModel {
 

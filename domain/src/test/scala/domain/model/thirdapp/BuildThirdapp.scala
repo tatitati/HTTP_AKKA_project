@@ -1,8 +1,8 @@
-package test.domain.model.thirdapp
+package domain.test.model.thirdapp
 
 import domain.model.thirdapp.{Thirdapp, ThirdappCredentials, ThirdappId, ThirdappProfile}
 import domain.model.third.ThirdId
-import test.domain.model.third.BuildThirdId
+import domain.test.model.third.BuildThirdId
 
 object BuildThirdapp {
 

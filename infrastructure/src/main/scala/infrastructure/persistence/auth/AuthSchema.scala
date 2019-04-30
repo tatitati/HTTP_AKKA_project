@@ -1,10 +1,12 @@
 package infrastructure.persistence.auth
 
-import com.github.nscala_time.time.Imports.DateTime
 import slick.jdbc.MySQLProfile.api._
+import com.github.nscala_time.time.Imports.DateTime
 import slick.lifted.Tag
 
 class AuthSchema(tag: Tag) extends Table[AuthPersistentModel](tag, "auth") {
+
+  import infrastructure.persistence.CustomDateTimeToTimestamp._
 
   def surrogateid = column[Option[Long]]("id", O.PrimaryKey, O.AutoInc)
 
@@ -23,19 +25,19 @@ class AuthSchema(tag: Tag) extends Table[AuthPersistentModel](tag, "auth") {
   def tokengeneratedin = column[DateTime]("generated_in", O.SqlType("DATETIME"))
 
   def * = (
-      surrogateid,
-      authId,
-      thirdid,
-      userid,
-      scopefirstname,
-      scopesurname,
-      scopeemail,
-      tokentype,
-      tokenaccess,
-      tokenrefresh,
-      tokenexpiresin,
-      tokengeneratedin,
-    ).mapTo[AuthPersistentModel]
+    surrogateid,
+    authId,
+    thirdid,
+    userid,
+    scopefirstname,
+    scopesurname,
+    scopeemail,
+    tokentype,
+    tokenaccess,
+    tokenrefresh,
+    tokenexpiresin,
+    tokengeneratedin,
+  ).mapTo[AuthPersistentModel]
 
 
   def tokenAccessIndex = index("auth____tokenaccess____idx", tokenaccess, unique=true)

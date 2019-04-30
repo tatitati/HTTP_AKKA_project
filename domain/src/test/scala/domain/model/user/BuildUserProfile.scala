@@ -1,8 +1,8 @@
-package test.domain.model.user
+package domain.test.model.user
 
 import domain.model.user.UserProfile
 import com.github.nscala_time.time.Imports.DateTime
-import test.builders.{BuildDate, Faker}
+import domain.test.builders.{BuildDate, Faker}
 
 object BuildUserProfile {
 

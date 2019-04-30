@@ -1,9 +1,9 @@
-package test.domain.model.code
+package domain.test.model.code
 
 import java.util.UUID
 
 import domain.model.code.CodeId
-import test.builders.BuildUuid
+import domain.test.builders.BuildUuid
 
 object BuildCodeId {
 

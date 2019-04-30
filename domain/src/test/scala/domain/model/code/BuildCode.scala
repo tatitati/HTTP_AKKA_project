@@ -1,15 +1,15 @@
-package test.domain.model.code
+package domain.test.model.code
 
 import domain.model.code.Code
 import domain.model.Scope
 import domain.model.thirdapp.ThirdappId
 import domain.model.code.CodeId
 import domain.model.user.UserId
-import test.domain.model.BuildScope
-import test.domain.model.code.BuildCodeId
-import test.domain.model.thirdapp.BuildThirdappId
-import test.domain.model.user.BuildUserId
-import test.builders.Faker
+import domain.test.model.BuildScope
+import domain.test.model.code.BuildCodeId
+import domain.test.model.thirdapp.BuildThirdappId
+import domain.test.model.user.BuildUserId
+import domain.test.builders.Faker
 
 object BuildCode {
 

@@ -1,8 +1,8 @@
-package test.domain.model.third
+package domain.test.model.third
 
 import domain.model.third.ThirdId
 import org.scalatest.FunSuite
-import test.domain.model.third.BuildThirdId
+import domain.test.model.third.BuildThirdId
 
 class ThirdSpec extends FunSuite {
 

@@ -1,4 +1,8 @@
-package infrastructure.persistence.thirdapp
+package infrastructure.test.persistence.thirdapp
+
+import infrastructure.persistence.thirdapp.ThirdappPersistentModel
+import test.builders.{BuildUuid, Faker}
+import domain.test.model.third.BuildThirdId
 
 object BuildThirdappPersistentModel {
 

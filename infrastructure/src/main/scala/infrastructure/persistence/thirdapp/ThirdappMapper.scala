@@ -2,6 +2,9 @@ package infrastructure.persistence.thirdapp
 
 import java.util.UUID
 
+import domain.model.third.ThirdId
+import domain.model.thirdapp.{Thirdapp, ThirdappCredentials, ThirdappId, ThirdappProfile}
+
 object ThirdappMapper {
   def toPersistent(thirdapp: Thirdapp): ThirdappPersistentModel = {
     ThirdappPersistentModel(

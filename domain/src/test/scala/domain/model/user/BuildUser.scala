@@ -1,11 +1,11 @@
-package test.domain.model.user
+package domain.test.model.user
 
-import test.domain.model.BuildSurrogateId
+import domain.test.model.BuildSurrogateId
 import domain.model.user.User
 import domain.model.user._
-import test.domain.model.user.BuildUserId
+import domain.test.model.user.BuildUserId
 import com.github.nscala_time.time.Imports.DateTime
-import test.builders.{BuildDate, Faker}
+import domain.test.builders.{BuildDate, Faker}
 
 object BuildUser {
     def any(

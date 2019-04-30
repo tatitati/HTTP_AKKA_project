@@ -1,4 +1,4 @@
-package test.domain.model.user
+package domain.test.model.user
 
 import domain.model.user.UserId
 import scala.util.Random

@@ -1,6 +1,7 @@
 package infrastructure.persistence.third
 
 import java.util.UUID
+import domain.model.third.{Third, ThirdId, ThirdProfile}
 
 object ThirdMapper {
 

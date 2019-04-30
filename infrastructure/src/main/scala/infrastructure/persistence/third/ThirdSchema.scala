@@ -3,7 +3,6 @@ package infrastructure.persistence.third
 import slick.jdbc.MySQLProfile.api._
 import slick.lifted.Tag
 
-
 class ThirdSchema(tag: Tag) extends Table[ThirdPersistentModel](tag, "third") {
   def surrogateId = column[Option[Long]]("id", O.PrimaryKey, O.AutoInc)
   def thirdId = column[String]("thirdid")

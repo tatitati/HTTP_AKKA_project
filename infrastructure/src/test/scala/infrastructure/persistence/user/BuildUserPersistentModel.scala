@@ -1,6 +1,9 @@
-package infrastructure.persistence.user
+package infrastructure.test.persistence.user
 
 import com.github.nscala_time.time.Imports.DateTime
+import infrastructure.persistence.user.UserPersistentModel
+import test.builders.{BuildDate, Faker}
+import domain.test.model.BuildSurrogateId
 
 object BuildUserPersistentModel {
 

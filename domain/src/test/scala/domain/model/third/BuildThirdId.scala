@@ -1,8 +1,8 @@
-package test.domain.model.third
+package domain.test.model.third
 
 import java.util.UUID
 import domain.model.third.ThirdId
-import test.builders.BuildUuid
+import domain.test.builders.BuildUuid
 
 object BuildThirdId {
 

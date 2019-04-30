@@ -1,5 +1,8 @@
-package infrastructure.persistence.thirdapp
+package infrastructure.test.persistence.thirdapp
 
+import domain.model.thirdapp.Thirdapp
+import infrastructure.persistence.Exec
+import infrastructure.persistence.thirdapp.{ThirdappPersistentModel, ThirdappRepository, ThirdappSchema}
 import org.scalatest.{BeforeAndAfterEach, FunSuite}
 import slick.jdbc.MySQLProfile.api._
 import slick.lifted.TableQuery

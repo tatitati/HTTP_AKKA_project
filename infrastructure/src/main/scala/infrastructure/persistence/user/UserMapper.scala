@@ -1,5 +1,7 @@
 package infrastructure.persistence.user
 
+import domain.model.user.{User, UserCredentials, UserId, UserProfile}
+
 object UserMapper {
 
   def toDomain(fromPersistent: UserPersistentModel): User = {

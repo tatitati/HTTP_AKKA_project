@@ -1,7 +1,11 @@
 import sbt.Keys.parallelExecution
 import Dependencies._
-import CommonSettings._
 
+
+val commonsSettings = Seq(
+  version := "1.0",
+  scalaVersion := "2.12.6"
+)
 
 val sayHello = taskKey[Unit]("A simple task")
 
@@ -28,6 +32,7 @@ lazy val domain = (project in file("domain"))
   )
 
 lazy val root = (project in file("."))
+  .aggregate(domain,infrastructure)
   .settings(
     name := "root",
     commonsSettings,
@@ -36,7 +41,6 @@ lazy val root = (project in file("."))
       println("ROOT: pong")
     }
   )
-
 
 
 parallelExecution in Test := false

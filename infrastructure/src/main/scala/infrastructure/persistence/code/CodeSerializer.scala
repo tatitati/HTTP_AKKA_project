@@ -2,6 +2,10 @@ package infrastructure.persistence.code
 
 import java.util.UUID
 
+import domain.model.Scope
+import domain.model.code.{Code, CodeId}
+import domain.model.thirdapp.ThirdappId
+import domain.model.user.UserId
 import play.api.libs.json.Json
 
 object CodeSerializer {

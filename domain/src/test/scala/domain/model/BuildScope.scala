@@ -1,7 +1,7 @@
-package test.domain.model
+package domain.test.model
 
 import domain.model.Scope
-import test.builders.Faker
+import domain.test.builders.Faker
 
 object BuildScope {
 

@@ -1,12 +1,12 @@
-package test.domain.model.auth
+package domain.test.model.auth
 
 import domain.model.Scope
 import domain.model.thirdapp.ThirdappId
 import domain.model.auth._
 import domain.model.user.UserId
-import test.domain.model.BuildScope
-import test.domain.model.thirdapp.BuildThirdappId
-import test.domain.model.user.BuildUserId
+import domain.test.model.BuildScope
+import domain.test.model.thirdapp.BuildThirdappId
+import domain.test.model.user.BuildUserId
 
 object BuildAuth {
 

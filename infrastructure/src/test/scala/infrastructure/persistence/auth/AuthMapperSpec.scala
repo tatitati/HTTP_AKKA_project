@@ -1,5 +1,8 @@
-package infrastructure.persistence.auth
+package infrastructure.test.persistence.auth
 
+import domain.model.auth.Auth
+import domain.test.model.auth.BuildAuth
+import infrastructure.persistence.auth.{AuthMapper, AuthPersistentModel}
 import org.scalatest.FunSuite
 
 class AuthMapperSpec extends FunSuite {
