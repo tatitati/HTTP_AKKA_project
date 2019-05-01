@@ -5,7 +5,7 @@
 # Todo:
 
 ### with Docker:
-- [ ] add redis in container (this will define better the environment, versions...)
+- [x] ~add redis and mysql in container (this will define better the environment, versions...)~
 - [ ] Manage to switch database-container when running tests (this will define better the environment, versions...)
 
 ### Fix: 
