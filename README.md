@@ -26,14 +26,16 @@
 - [ ] Design Register/login of a third :fire:
 - [ ] Start Application layer
 - [ ] Investigate how to handle user-session
+- [ ] BuildDate, BuildUUID, Faker, duplicated in domain and root project, they should be only in root (if possible)
 
 ### with sbt
 - [x] ~Track dependencies: https://www.scala-sbt.org/0.13/docs/Organizing-Build.html~
-- [ ] Use common settings
-- [ ] Create subprojects for Domain and infrastructure :fire::fire:
+- [x] ~Use common settings~
+- [x] ~Create subprojects for Domain and infrastructure~
 - [ ] How to tag tests? (and filter them in the CLI)
-- [ ] Create custom taks in SBT to run tests in specific app-layers
+- [x] ~Create custom taks in SBT to run tests in specific app-layers~
 - [ ] How to set environment variables like Hosts, port for Redis?, for each environment...scala-env
+- [x] ~Execute test in infrastructure subproject in serie instead of in parallel~
 
 ### With general coding concepts:
 - [ ] Investigate thread safe (multiple execution contexts)
