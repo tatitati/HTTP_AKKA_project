@@ -1,4 +1,4 @@
-package test.learning.Slick.user
+package test.app.learning.Slick.user
 
 import slick.jdbc.MySQLProfile.api._
 import slick.lifted.Tag

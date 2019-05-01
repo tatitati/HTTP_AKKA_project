@@ -1,4 +1,4 @@
-package learning.DateTime
+package test.app.learning.DateTime
 
 import com.github.nscala_time.time.Imports._
 import org.scalatest.FunSuite

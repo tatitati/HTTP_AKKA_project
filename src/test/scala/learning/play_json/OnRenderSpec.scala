@@ -1,4 +1,4 @@
-package test.learning.play_json
+package test.app.learning.play_json
 
 import org.scalatest.FunSuite
 import play.api.libs.json.{JsValue, Json}

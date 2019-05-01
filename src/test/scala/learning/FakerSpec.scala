@@ -1,7 +1,7 @@
-package test.learning
+package test.app.learning
 
 import org.scalatest.FunSuite
-import test.builders.Faker
+import test.domain.builders.Faker
 
 import scala.util.matching.Regex
 

@@ -5,10 +5,10 @@ import domain.model.Scope
 import domain.model.thirdapp.ThirdappId
 import domain.model.code.CodeId
 import domain.model.user.UserId
+import test.domain.builders.Faker
 import test.domain.model.BuildScope
 import test.domain.model.thirdapp.BuildThirdappId
 import test.domain.model.user.BuildUserId
-import test.domain.builders.Faker
 
 object BuildCode {
 

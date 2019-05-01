@@ -1,7 +1,7 @@
 package test.domain.model.auth
 
-import test.domain.builders.BuildUuid
 import org.scalatest.FunSuite
+import test.domain.builders.BuildUuid
 
 class TokenSpec extends FunSuite{
 

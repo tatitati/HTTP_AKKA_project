@@ -1,4 +1,4 @@
-package test.learning.Slick.user
+package test.app.learning.Slick.user
 
 case class User(
                  firstName: String,

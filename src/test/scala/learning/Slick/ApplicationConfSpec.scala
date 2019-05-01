@@ -1,4 +1,4 @@
-package test.learning.Slick
+package test.app.learning.Slick
 
 import com.typesafe.config.{Config, ConfigFactory}
 import org.scalatest.FunSuite

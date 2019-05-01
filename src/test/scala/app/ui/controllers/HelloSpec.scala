@@ -1,4 +1,4 @@
-package test.pp.ui.controllers
+package test.app.ui.controllers
 
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 import org.scalatest.{FunSuite, Matchers}

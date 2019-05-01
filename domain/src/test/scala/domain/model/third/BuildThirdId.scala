@@ -1,6 +1,7 @@
 package test.domain.model.third
 
 import java.util.UUID
+
 import domain.model.third.ThirdId
 import test.domain.builders.BuildUuid
 

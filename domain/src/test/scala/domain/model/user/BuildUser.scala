@@ -3,7 +3,6 @@ package test.domain.model.user
 import test.domain.model.BuildSurrogateId
 import domain.model.user.User
 import domain.model.user._
-import test.domain.model.user.BuildUserId
 import com.github.nscala_time.time.Imports.DateTime
 import test.domain.builders.{BuildDate, Faker}
 

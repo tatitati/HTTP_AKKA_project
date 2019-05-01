@@ -1,7 +1,6 @@
-package test.builders
+package test.domain.builders
 
 import com.github.nscala_time.time.Imports.{DateTime, _}
-
 import scala.util.Random
 
 object BuildDate {
