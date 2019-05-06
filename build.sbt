@@ -1,4 +1,5 @@
 import sbt.Keys.parallelExecution
+import complete.DefaultParsers._
 import Dependencies._
 
 
@@ -8,6 +9,8 @@ val commonsSettings = Seq(
 )
 
 val sayHello = taskKey[Unit]("A simple task")
+val demo = inputKey[Unit]("A demo input task.")
+
 
 
 lazy val infrastructure = (project in file("infrastructure"))
@@ -16,10 +19,20 @@ lazy val infrastructure = (project in file("infrastructure"))
     name := "infrastructure subproject",
     commonsSettings,
     libraryDependencies ++= thirdDependencies,
+    parallelExecution in Test := false,
+    // task
     sayHello := {
       println("INFRASTRUCTURE: pong")
     },
-    parallelExecution in Test := false
+    // input task
+    demo := {
+      // get the result of parsing
+      val args: Seq[String] = spaceDelimited("<arg>").parsed
+      // Here, we also use the value of the `scalaVersion` setting
+      println("The current Scala version is " + scalaVersion.value)
+      println("The arguments to demo were:")
+      args foreach println
+    }
   )
 
 lazy val domain = (project in file("domain"))
@@ -27,9 +40,19 @@ lazy val domain = (project in file("domain"))
     name := "domain subproject",
     commonsSettings,
     libraryDependencies ++= thirdDependencies,
+    // task
     sayHello := {
       println("DOMAIN: pong")
     },
+    // input task
+    demo := {
+      // get the result of parsing
+      val args: Seq[String] = spaceDelimited("<arg>").parsed
+      // Here, we also use the value of the `scalaVersion` setting
+      println("The current Scala version is " + scalaVersion.value)
+      println("The arguments to demo were:")
+      args foreach println
+    }
   )
 
 lazy val root = (project in file("."))
