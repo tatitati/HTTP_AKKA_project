@@ -6,7 +6,9 @@
 
 ### with Docker:
 - [x] ~add redis and mysql in container (this will define better the environment, versions...)~
-- [ ] Manage to switch database-container when running tests (this will define better the environment, versions...)
+- [x] ~Spin up a docker with mysql and a database~
+- [ ] Figure out how to run still travis with docker in order to pass all the test in CI :fire: 
+- [ ] Manage to switch database-container when running tests (this will define better the environment, versions...) :fire:
 
 ### Fix: 
 - [x] ~updateCallbackUrl() is used in Third. It should belong to thirdadpp.~
