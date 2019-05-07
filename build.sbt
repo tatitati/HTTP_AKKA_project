@@ -11,7 +11,14 @@ val commonsSettings = Seq(
 val sayHello = taskKey[Unit]("A simple task")
 val demo = inputKey[Unit]("A demo input task.")
 
-
+demo := {
+  // get the result of parsing
+  val args: Seq[String] = spaceDelimited("<arg>").parsed
+  // Here, we also use the value of the `scalaVersion` setting
+  println("The current Scala version is " + scalaVersion.value)
+  println("The arguments to demo were:")
+  args foreach println
+}
 
 lazy val infrastructure = (project in file("infrastructure"))
   .dependsOn(domain % "test->test;compile->compile")
@@ -23,16 +30,9 @@ lazy val infrastructure = (project in file("infrastructure"))
     // task
     sayHello := {
       println("INFRASTRUCTURE: pong")
-    },
-    // input task
-    demo := {
-      // get the result of parsing
-      val args: Seq[String] = spaceDelimited("<arg>").parsed
-      // Here, we also use the value of the `scalaVersion` setting
-      println("The current Scala version is " + scalaVersion.value)
-      println("The arguments to demo were:")
-      args foreach println
     }
+    // input task
+
   )
 
 lazy val domain = (project in file("domain"))
@@ -43,15 +43,6 @@ lazy val domain = (project in file("domain"))
     // task
     sayHello := {
       println("DOMAIN: pong")
-    },
-    // input task
-    demo := {
-      // get the result of parsing
-      val args: Seq[String] = spaceDelimited("<arg>").parsed
-      // Here, we also use the value of the `scalaVersion` setting
-      println("The current Scala version is " + scalaVersion.value)
-      println("The arguments to demo were:")
-      args foreach println
     }
   )
 
