@@ -8,7 +8,7 @@ services:
 before_install:
   #  If we don't run it in dettached mode then travis is blocked and cannot carry on the build
   - docker-compose up -d
-  env: RESULT=${docker-compose port db 3306}
+  - "export RESULT=${docker-compose port db 3306}"
 
 script:
   - sbt test
