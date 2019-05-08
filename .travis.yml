@@ -3,12 +3,11 @@ scala:
   - 2.12.6
 
 services:
-  - mysql
   - docker
 
 before_install:
   - sbt reload update
-  - docker-compose --version
+  - docker-compose up
 
 script:
   - sbt test
