@@ -6,7 +6,6 @@ services:
   - docker
 
 before_install:
-  - sbt reload update
   - docker-compose up
 
 script:
