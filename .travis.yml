@@ -4,13 +4,14 @@ scala:
 
 services:
   - mysql
+  - docker
 
 before_script:
   - sudo apt-get install redis
   - redis-server &
 
 before_install:
-  - mysql -e 'CREATE DATABASE play_db;'
+  - docker-compose up
 
 install:
   sbt reload update
