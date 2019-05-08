@@ -6,15 +6,9 @@ services:
   - mysql
   - docker
 
-before_script:
-  - sudo apt-get install redis
-  - redis-server &
-
 before_install:
+  - sbt reload update
   - docker-compose up
-
-install:
-  sbt reload update
 
 script:
   - sbt test
