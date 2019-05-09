@@ -1,5 +1,6 @@
 import sbt.Keys.parallelExecution
 import complete.DefaultParsers._
+import scala.sys.process._
 import Dependencies._
 
 
@@ -10,15 +11,6 @@ val commonsSettings = Seq(
 
 val sayHello = taskKey[Unit]("A simple task")
 val demo = inputKey[Unit]("A demo input task.")
-
-demo := {
-  // get the result of parsing
-  val args: Seq[String] = spaceDelimited("<arg>").parsed
-  // Here, we also use the value of the `scalaVersion` setting
-  println("The current Scala version is " + scalaVersion.value)
-  println("The arguments to demo were:")
-  args foreach println
-}
 
 lazy val infrastructure = (project in file("infrastructure"))
   .dependsOn(domain % "test->test;compile->compile")
@@ -31,8 +23,6 @@ lazy val infrastructure = (project in file("infrastructure"))
     sayHello := {
       println("INFRASTRUCTURE: pong")
     }
-    // input task
-
   )
 
 lazy val domain = (project in file("domain"))
@@ -56,10 +46,3 @@ lazy val root = (project in file("."))
       println("ROOT: pong")
     }
   )
-
-
-//filter folder from test and compilation (improve development process as I can go layer by layer)
-//excludeFilter in (unmanagedSources) ~= { _ ||
-//  new FileFilter {
-//    def accept(f: File) = f.getPath.containsSlice("/infrastructure/")
-//  } }
