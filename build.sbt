@@ -1,6 +1,4 @@
 import sbt.Keys.parallelExecution
-import complete.DefaultParsers._
-import scala.sys.process._
 import Dependencies._
 
 
@@ -9,31 +7,20 @@ val commonsSettings = Seq(
   scalaVersion := "2.12.6"
 )
 
-val sayHello = taskKey[Unit]("A simple task")
-val demo = inputKey[Unit]("A demo input task.")
-
 lazy val infrastructure = (project in file("infrastructure"))
   .dependsOn(domain % "test->test;compile->compile")
   .settings(
     name := "infrastructure subproject",
     commonsSettings,
     libraryDependencies ++= thirdDependencies,
-    parallelExecution in Test := false,
-    // task
-    sayHello := {
-      println("INFRASTRUCTURE: pong")
-    }
+    parallelExecution in Test := false
   )
 
 lazy val domain = (project in file("domain"))
   .settings(
     name := "domain subproject",
     commonsSettings,
-    libraryDependencies ++= thirdDependencies,
-    // task
-    sayHello := {
-      println("DOMAIN: pong")
-    }
+    libraryDependencies ++= thirdDependencies
   )
 
 lazy val root = (project in file("."))
@@ -41,8 +28,5 @@ lazy val root = (project in file("."))
   .settings(
     name := "root project",
     commonsSettings,
-    libraryDependencies ++= thirdDependencies,
-    sayHello := {
-      println("ROOT: pong")
-    }
+    libraryDependencies ++= thirdDependencies
   )
