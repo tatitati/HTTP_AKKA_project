@@ -1,19 +1,19 @@
-db:
+service_db:
   container_name: container_db
   image: mysql:5.7
   environment:
     - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     - MYSQL_DATABASE=play_db
 
-redis:
+service_redis:
   container_name: container_redis
   image: redis
 
-scala:
+service_scala:
   container_name: container_scala_sbt
   image: bigtruedata/sbt
   links:
-    - db
-    - redis
+    - service_db
+    - service_redis
   volumes:
     - "~/Desktop/scala_lab/myhttpakka:/app"
