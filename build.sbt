@@ -1,5 +1,5 @@
 import sbt.Keys.parallelExecution
-import Dependencies._
+import MyDependencies._
 
 
 val commonsSettings = Seq(
