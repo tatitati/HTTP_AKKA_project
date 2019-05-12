@@ -8,7 +8,10 @@ import test.domain.model.code.BuildCode
 
 class CodeRepositorySpec extends FunSuite with BeforeAndAfterEach with BeforeAndAfterAll {
 
-  val redisClient = new RedisClient("localhost", 6379)
+  val redisClient = new RedisClient(
+    sys.env.get("CONTAINER_REDIS_PORT_6379_TCP_ADDR").get,
+    6379
+  )
   val repo = new CodeRepository(redisClient)
 
   test("Can persist code in redis") {

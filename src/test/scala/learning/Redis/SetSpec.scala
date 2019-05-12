@@ -5,7 +5,10 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FunSuite}
 
 class SetSpec extends FunSuite with BeforeAndAfterEach with BeforeAndAfterAll {
 
-  val red = new RedisClient("localhost", 6379)
+  val red = new RedisClient(
+    sys.env.get("CONTAINER_REDIS_PORT_6379_TCP_ADDR").get,
+    6379
+  )
 
   test("Can set key-values") {
       red.set("mykey", "my value")

@@ -6,8 +6,11 @@ import com.redis._
 class ConnectSpec extends FunSuite {
 
   test("redis-server is up") {
-    val red = new RedisClient("localhost", 6379)
-    val response = red.ping
+    val redisClient = new RedisClient(
+      sys.env.get("CONTAINER_REDIS_PORT_6379_TCP_ADDR").get,
+      6379
+    )
+    val response = redisClient.ping
 
     assert(response === Some("PONG"))
   }
