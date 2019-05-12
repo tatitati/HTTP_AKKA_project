@@ -3,6 +3,6 @@ dump.rdb
 target
 project/*
 .idea
-!project/Dependencies.scala
+!project/MyDependencies.scala
 !project/build.properties
 
