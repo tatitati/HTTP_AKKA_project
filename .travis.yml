@@ -12,4 +12,4 @@ before_install:
   - 'echo $RESULT'
 
 script:
-  - sbt test
+  - docker exec container_scala_sbt sbt test
