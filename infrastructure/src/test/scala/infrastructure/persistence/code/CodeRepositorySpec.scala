@@ -1,6 +1,7 @@
 package infrastructure.test.persistence.code
 
 import com.redis.RedisClient
+import com.typesafe.config.ConfigFactory
 import domain.model.code.Code
 import infrastructure.persistence.code.CodeRepository
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FunSuite}
@@ -9,8 +10,8 @@ import test.domain.model.code.BuildCode
 class CodeRepositorySpec extends FunSuite with BeforeAndAfterEach with BeforeAndAfterAll {
 
   val redisClient = new RedisClient(
-    sys.env.get("CONTAINER_REDIS_PORT_6379_TCP_ADDR").get,
-    6379
+    ConfigFactory.load().getString("redis.ip"),
+    ConfigFactory.load().getString("redis.port").toInt
   )
   val repo = new CodeRepository(redisClient)
 
