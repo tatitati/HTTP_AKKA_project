@@ -72,9 +72,9 @@ docker-compose up
 
 ```
 docker exec container_scala_sbt sbt test
-                            sbt 'testOnly *app.domain*'
-                            sbt 'testOnly *app.persistence*'
-                            sbt run
+        ...                     sbt 'testOnly *app.domain*'
+        ...                     sbt 'testOnly *app.persistence*'
+        ...                     sbt run
 ```
 
 Visit: http://localhost:8080/ping
